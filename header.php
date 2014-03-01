@@ -10,11 +10,11 @@
     <title>RocReport</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/rocreport/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap theme -->
-    <link href="/rocreport/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- Customized  CSS -->
-    <link href="/rocreport/css/common.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
@@ -44,26 +44,26 @@
 	<?php if ($user_status == 1) { ?> 
 		Hi, <?=$_COOKIE['dmtabs_loggedin_username']?>						
 		&nbsp;|&nbsp;
-		<a href="/rocreport">Home</a>			
+		<a href="">Home</a>			
 		&nbsp;|&nbsp;
-		<a style="font-size: 18px;" href="/rocreport/addupdate"><b>+ Report</b></a>			
+		<a style="font-size: 18px;" href="addupdate"><b>+ Report</b></a>			
 		&nbsp;|&nbsp;		
-		<a href="/rocreport/account?action=logout">Logout</a>					
+		<a href="account?action=logout">Logout</a>					
 		&nbsp;|&nbsp;
-		<a href="/rocreport/about"><img style="width: 16px;" src="/rocreport/img/android-logo.png" /></a>								
+		<a href="about"><img style="width: 16px;" src="img/android-logo.png" /></a>								
 	<?php } else { ?> 
-		<a href="/rocreport/account">Login</a>
+		<a href="account">Login</a>
 		&nbsp;|&nbsp;
-		<a href="/rocreport/account">Register</a>	
+		<a href="account">Register</a>	
 		&nbsp;|&nbsp;
-		<a href="/rocreport">Home</a>	
+		<a href="">Home</a>	
 		&nbsp;|&nbsp;
-		<a href="/rocreport/about"><img style="width: 16px;" src="/rocreport/img/android-logo.png" /></a>						
+		<a href="about"><img style="width: 16px;" src="img/android-logo.png" /></a>						
 	<?php } ?>
 	<br />	
 	<em>
 	<span style="font-size: 12px;">
-	<a href="/rocreport/about">More about this project</a>
+	<a href="about">More about this project</a>
 	</span>
 	</em>
 </div>			
