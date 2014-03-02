@@ -199,7 +199,7 @@ if (defined('ENVIRONMENT'))
  * And away we go...
  *
  */
-require_once BASEPATH.'main-config.php';
+require_once FCPATH.'main-config.php';
 require_once BASEPATH.'core/CodeIgniter.php';
 
 
