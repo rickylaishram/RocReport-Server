@@ -1,9 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	/* Sample file for main-config */
 
-	<?php
-	/* Keep all the secrets here */
-
 	define('RR_ENVIRONMENT', 'production');
 
 
