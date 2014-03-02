@@ -12,8 +12,8 @@ class Client_model extends CI_Model {
 	* @return boolean true if valid; false otherwise
 	*/
 	function isValid($clientid) {
-		$query = $this->db->where($clientid)
-							->get($this->table->client);
+		$query = $this->db->where($clientid)->get($this->table['client']);
+		
 		if($query->num_rows() > 0) {
 			return true;
 		} else {
