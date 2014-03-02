@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Client_model extends CI_COntroller {
+class Client_model extends CI_Model {
 
 	function __construct() {
 		$this->table = $this->config->item('table');
