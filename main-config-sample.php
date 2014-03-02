@@ -3,6 +3,8 @@
 
 	define('RR_BASE_URL', '');
 
+	define('RR_ENCRYPTION_KEY', '');
+
 	/*
 	* Tables
 	*/
