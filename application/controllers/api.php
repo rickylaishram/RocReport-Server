@@ -16,7 +16,18 @@ class Api extends CI_Controller {
 
 		if($clientId && $password && $email) {
 			$this->load->model('client_model', 'client');
-			var_dump($this->client->isValid($clientId));
+			
+			if($this->client->isValid($clientId)) {
+				$data['status'] = true;
+				$data['data'] = array('reason' => 'valid clientid');
+				
+				$this->load->view('api/response', $data);
+			} else {
+				$data['status'] = false;
+				$data['data'] = array('reason' => 'Invalid clientid');
+				
+				$this->load->view('api/response', $data);
+			}
 		}
 
 	}
