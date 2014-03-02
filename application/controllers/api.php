@@ -2,7 +2,7 @@
 class API extends CI_COntroller {
 
 	function __construct() {
-		$this->load->model('client_model', 'client');
+		
 	}
 
 	/*
@@ -17,6 +17,7 @@ class API extends CI_COntroller {
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 
+		$this->load->model('client_model', 'client');
 		var_dump($this->model->isValid($clientId));
 
 	}
