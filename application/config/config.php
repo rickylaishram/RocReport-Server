@@ -357,6 +357,13 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/*
+* Tables
+*
+*/
+$config['table']['client'] = RR_TABLE_CLIENT;
+$config['table']['user'] = RR_TABLE_USER;
+
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
