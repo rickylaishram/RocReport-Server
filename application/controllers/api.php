@@ -14,6 +14,10 @@ class Api extends CI_Controller {
 		$email = $this->input->post('email', true);
 		$password = $this->input->post('password', true);
 
+		var_dump($clientId);
+		var_dump($email);
+		var_dump($password);
+
 		if($clientId && $password && $email) {
 			$this->load->model('client_model', 'client');
 			
