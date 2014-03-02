@@ -1,4 +1,4 @@
 RewriteEngine on
 RewriteRule ^(static|v1|v2)($|/) - [L]
 RewriteCond $1 !^(index\.php|images|robots\.txt)
-RewriteRule ^(.*)$ index.php/$1 [L]
+RewriteRule ^(.*)$ v2/index.php/$1 [L]
