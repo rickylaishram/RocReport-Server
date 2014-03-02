@@ -15,7 +15,7 @@ class Api extends CI_Controller {
 		$password = $this->input->post('password', true);
 
 		$this->load->model('client_model', 'client');
-		var_dump($this->model->isValid($clientId));
+		var_dump($this->client->isValid($clientId));
 
 	}
 
