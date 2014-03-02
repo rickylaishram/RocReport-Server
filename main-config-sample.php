@@ -1,6 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	/* Sample file for main-config */
 
+	define('RR_BASE_URL', '')
+
 	/*
 	* Database
 	*/
