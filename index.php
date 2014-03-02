@@ -1,7 +1,5 @@
 <?php
 
-include_once "main-config.php";
-
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
@@ -201,7 +199,9 @@ if (defined('ENVIRONMENT'))
  * And away we go...
  *
  */
+require_once BASEPATH.'main-config.php';
 require_once BASEPATH.'core/CodeIgniter.php';
+
 
 /* End of file index.php */
 /* Location: ./index.php */
