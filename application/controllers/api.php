@@ -5,7 +5,7 @@ class Api extends CI_Controller {
 	/*
 	* Handles register and login
 	*/
-	function auth($path) {
+	function auth($path="") {
 		switch ($path) {
 			case 'register':
 				$this->_register();
@@ -22,7 +22,7 @@ class Api extends CI_Controller {
 
 
 
-	
+
 	/*
 	* Register new user
 	* Private API
