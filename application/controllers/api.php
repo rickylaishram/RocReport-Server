@@ -58,13 +58,13 @@ class Api extends CI_Controller {
 		$picture = $this->input->post('picture', true);		// Required
 		$novote = $this->input->post('novote', true);		// Required boolean; if true will not prompt for merge with nearby reports
 
-		// Change $novote to boolean
-		$novote = ($novote === 'true');
-
 		if ($client && $token && $latitude && $longitude && $category && $description && $picture & $novote) {
 			$this->load->model('client_model', 'client');
 			$this->load->model('auth_model', 'auth');
 			$this->load->model('report_model', 'report');
+
+			// Change $novote to boolean
+			$novote = ($novote === 'true');
 
 			$email = $this->auth->getEmail($client, $token);
 			if($email) {
