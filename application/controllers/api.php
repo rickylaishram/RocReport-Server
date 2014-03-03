@@ -6,10 +6,45 @@ class Api extends CI_Controller {
 	* Register new user
 	* Private API
 	* @params string, string $email, $password
-	* @return boolean, true is succesful; false otherwise
 	*/
 
 	function register() {
+		$client = $this->input->post('id', True);
+		$email = $this->input->post('email', true);
+		$password = $this->input->post('password', true);
+		$name = $this->input->post('name', True);
+
+		if($client && $password && $email & $name) {
+			$this->load->model('client_model', 'client');
+			
+			if($this->client->isValid($client)) {
+				$this->load->model('user_model', 'user');
+
+				if(!$this->user->exist($email)) {
+					$this->load->model('auth_model', 'auth');
+
+					$salt = $this->auth->generateSalt();
+					$hashedpassword = $this->auth->hash($password, $salt);
+					$this->user->add($email, $hashedpassword, $salt, $name);
+
+					$this->_response_success(array());
+				} else {
+					$this->_response_error(3);
+				}
+			} else {
+				$this->_response_error(2);
+			}
+		} else {
+			$this->_response_error(1);
+		}
+	}
+
+	/*
+	* Login
+	* Private API
+	* @params string, string $email, $password
+	*/
+	function login() {
 		$client = $this->input->post('id', True);
 		$email = $this->input->post('email', true);
 		$password = $this->input->post('password', true);
@@ -18,14 +53,27 @@ class Api extends CI_Controller {
 			$this->load->model('client_model', 'client');
 			
 			if($this->client->isValid($client)) {
-				$this->_response_success(array());
+				$this->load->model('user_model', 'user');
+				
+				if($this->user->exist($email)) {
+					$this->load->model('auth_model', 'auth');
+
+					$user = $this->user->get($email);
+
+					if($this->auth->hash($password, $user->salt) == $user->password) {
+
+					} else {
+						$this->_response_error(5);
+					}
+				} else {
+					$this->_response_error(4);
+				}
 			} else {
-				$this->_response_error_invalid_id();
+				$this->_response_error(2);
 			}
 		} else {
-			$this->_response_error_missing_parameters();
+			$this->_response_error(1);
 		}
-
 	}
 
 	/*
@@ -42,16 +90,29 @@ class Api extends CI_Controller {
 	* Error responses
 	*/
 
-	function _response_error_missing_parameters() {
+	function _response_error($id) {
+		switch ($id) {
+			case 1:		// Missing parameters
+				$data['data'] = array('reason' => 'Missing parameters');
+				break;
+			case 2:
+				$data['data'] = array('reason' => 'Invalid id');
+				break;
+			case 3:
+				$data['data'] = array('reason' => 'User exist');
+				break;
+			case 4:
+				$data['data'] = array('reason' => 'User do not exist');
+				break;
+			case 5:
+				$data['data'] = array('reason' => 'Password and email do not match');
+				break;
+			default:
+				$data['data'] = array('reason' => 'Error');
+				break;
+		}
+
 		$data['status'] = false;
-		$data['data'] = array('reason' => 'Missing parameters');
 		$this->load->view('api/response', $data);
 	}
-
-	function _response_error_invalid_id() {
-		$data['status'] = false;
-		$data['data'] = array('reason' => 'Invalid id');
-		$this->load->view('api/response', $data);
-	}
-
 }

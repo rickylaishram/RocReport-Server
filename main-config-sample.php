@@ -8,8 +8,9 @@
 	/*
 	* Tables
 	*/
-	define('RR_TABLE_CLIENT', 'client');
-	define('RR_TABLE_USER', 'user');
+	define('RR_TABLE_CLIENT', '');
+	define('RR_TABLE_USER', '');
+	define('RR_TABLE_TOKEN', '');
 
 	/*
 	* Database
