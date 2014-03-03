@@ -31,7 +31,7 @@ class User_model extends CI_Model {
 	function exist($email) {
 		$this->db->where('email', $email)->get($this->table['user']);
 
-		if($query->num_rows > 0) {
+		if($query->num_rows() > 0) {
 			return true;
 		} else {
 			return false;
@@ -46,7 +46,7 @@ class User_model extends CI_Model {
 	function get($email) {
 		$query = $this->db->where('email', $email)->get($this->table['user']);
 
-		if($query->num_rows > 0) {
+		if($query->num_rows() > 0) {
 			return $query->row();
 		} else {
 			return false;
