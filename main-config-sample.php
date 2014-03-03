@@ -11,6 +11,10 @@
 	define('RR_TABLE_CLIENT', '');
 	define('RR_TABLE_USER', '');
 	define('RR_TABLE_TOKEN', '');
+	define('RR_TABLE_INFORM', '');
+	define('RR_TABLE_REPORT', '');
+	define('RR_TABLE_UPDATE', '');
+	define('RR_TABLE_VOTE', '');
 
 	/*
 	* Database
