@@ -37,6 +37,10 @@ class Api extends CI_Controller {
 
 	/*
 	* Add a new update
+	* If novote is false, check if there are reports within 100 meters,
+	* 	if yes, returns the list to confirm that it is not duplicate
+	* If novote is not false, this check is not performed.
+	* 	use this after user has confirmed that it is not a duplicate 
 	* Requires authentication
 	*/
 	function _add_report() {
@@ -54,6 +58,9 @@ class Api extends CI_Controller {
 		$picture = $this->input->post('picture', true);		// Required
 		$novote = $this->input->post('novote', true);		// Required boolean; if true will not prompt for merge with nearby reports
 
+		// Change $novote to boolean
+		$novote = ($novote === 'true');
+
 		if ($client && $token && $latitude && $longitude && $category && $description && $picture & $novote) {
 			$this->load->model('client_model', 'client');
 			$this->load->model('auth_model', 'auth');
@@ -64,7 +71,7 @@ class Api extends CI_Controller {
 				$nearby = array();
 
 				// If novote is set to false; check if nearby reports exist
-				if($novote == 'false') {
+				if(!$novote) {
 					$nearby = $this->report->selectNearby(floatval($latitude), floatval($longitude), 100, 5);
 				}
 
