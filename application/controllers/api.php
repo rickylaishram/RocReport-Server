@@ -65,12 +65,12 @@ class Api extends CI_Controller {
 				
 				// If novote is set to false; check if nearby reports exist
 				if($novote == 'false') {
-					$nearby = $this->report->selectNearby($latitude, $longitude, 100, 5);
+					$nearby = $this->report->selectNearby(floatval($latitude), floatval($longitude), 100, 5);
 				}
 
 				// If nearby reports are found return them
 				if(count($nearby) == 0) {
-					$this->report->add($email, $latitude, $longitude, $formatted_address, $country, $admin_level_1, $admin_level_2, $sublocality, $category, $description, $picture) ;
+					$this->report->add($email, floatval($latitude), floatval($longitude), $formatted_address, $country, $admin_level_1, $admin_level_2, $sublocality, $category, $description, $picture) ;
 				}
 
 				$data = array('nearby' => count($nearby), 'details' => $nearby);
