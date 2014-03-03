@@ -61,7 +61,8 @@ class Api extends CI_Controller {
 					$user = $this->user->get($email);
 
 					if($this->auth->hash($password, $user->salt) == $user->password) {
-
+						$token = $this->auth->generateToken($email, $client);
+						$this->_response_success(array('token'=>$token));
 					} else {
 						$this->_response_error(5);
 					}
