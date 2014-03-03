@@ -40,4 +40,18 @@ class Auth_model extends CI_Model {
 
 		return $token;
 	}
+
+	/*
+	* Gets the user email from tokens and client id
+	* @params string, string $clientid, $token
+	* @return string the user email; false if do not exist
+	*/
+	function getEmail($clientid, $token) {
+		$query = $this->db->where('token', $token)->where('client', $clientid)->get($this->table['token']);
+		if ($query->num_rows() > 0) {
+			return $query->row()->email;
+		} else {
+			return false;
+		}
+	}
 }

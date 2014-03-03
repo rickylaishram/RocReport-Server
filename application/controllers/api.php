@@ -19,21 +19,81 @@ class Api extends CI_Controller {
 		}
 	}
 
+	/*
+	* Handles report add, fetch, etc
+	*/
+	function report($path="") {
+		switch ($path) {
+			case 'add':
+				$this->_add_report();
+				break;
+			
+			default:
+				$this->_response_error(6);
+				break;
+		}
+	}
 
 
+	/*
+	* Add a new update
+	* Requires authentication
+	*/
+	function _add_report() {
+		$client = $this->input->post('id', true);			// Required
+		$token = $this->input->post('token', true);			// Required
+		$formatted_address = $this->input->post('formatted_address', true);
+		$country = $this->input->post('country', true);
+		$admin_level_1 = $this->input->post('admin_level_1', true);
+		$admin_level_2 = $this->input->post('admin_level_2', true);
+		$sublocality = $this->input->post('sublocality', true);
+		$latitude = $this->input->post('latitude', true);	// Required
+		$longitude = $this->input->post('longitude', true);	// Required
+		$category = $this->input->post('category', true);	// Required
+		$description = $this->input->post('description', true); // Required
+		$picture = $this->input->post('picture', true);		// Required
+		$novote = $this->input->post('novote', true);		// Required boolean; if true will not prompt for merge with nearby reports
 
+		if ($client && $token && $latitude && $longitude && $category && $description && $picture & $novote) {
+			$this->load->model('client_model', 'client');
+			$this->load->model('auth_model', 'auth');
+			$this->load->model('report_model', 'report');
+
+			$email = $this->auth->getEmail($client, $token);
+			if($email) {
+				$nearby = array();
+
+				// If novote is set to false; check if nearby reports exist
+				if(!$novote) {
+					$nearby = $this->report->selectNearby($latitude, $longitude, 0.1, 5);
+				}
+
+				// If nearby reports are found return them
+				if(count($nearby) == 0) {
+					$this->report->add($email, $latitude, $longitude, $formatted_address, $country, $admin_level_1, $admin_level_2, $sublocality, $category, $description, $picture) ;
+				}
+
+				$data = array('nearby' => count($nearby), 'details' => $nearby);
+				$this->_response_success($data);
+			} else {
+				$this->_response_error(7);
+			}
+		} else {
+			$this->_response_error(1);
+		}
+
+	}
 
 	/*
 	* Register new user
 	* Private API
-	* @params string, string $email, $password
 	*/
 
 	function _register() {
-		$client = $this->input->post('id', True);
+		$client = $this->input->post('id', true);
 		$email = $this->input->post('email', true);
 		$password = $this->input->post('password', true);
-		$name = $this->input->post('name', True);
+		$name = $this->input->post('name', true);
 
 		if($client && $password && $email & $name) {
 			$this->load->model('client_model', 'client');
@@ -63,10 +123,9 @@ class Api extends CI_Controller {
 	/*
 	* Login
 	* Private API
-	* @params string, string $email, $password
 	*/
 	function _login() {
-		$client = $this->input->post('id', True);
+		$client = $this->input->post('id', true);
 		$email = $this->input->post('email', true);
 		$password = $this->input->post('password', true);
 
@@ -131,6 +190,9 @@ class Api extends CI_Controller {
 				break;
 			case 6:
 				$data['data'] = array('reason' => 'Invalid path');
+				break;
+			case 7:
+				$data['data'] = array('reason' => 'Invalid token');
 				break;
 			default:
 				$data['data'] = array('reason' => 'Error');

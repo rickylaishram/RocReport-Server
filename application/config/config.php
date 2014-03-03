@@ -364,6 +364,10 @@ $config['proxy_ips'] = '';
 $config['table']['client'] = RR_TABLE_CLIENT;
 $config['table']['user'] = RR_TABLE_USER;
 $config['table']['token'] = RR_TABLE_TOKEN;
+$config['table']['report'] = RR_TABLE_REPORT;
+$config['table']['update'] = RR_TABLE_UPDATE;
+$config['table']['inform'] = RR_TABLE_INFORM;
+$config['table']['vote'] = RR_TABLE_VOTE;
 
 
 /* End of file config.php */
