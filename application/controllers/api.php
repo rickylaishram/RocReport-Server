@@ -64,7 +64,7 @@ class Api extends CI_Controller {
 				$nearby = array();
 
 				// If novote is set to false; check if nearby reports exist
-				if($novote != 'false') {
+				if($novote == 'false') {
 					$nearby = $this->report->selectNearby($latitude, $longitude, 0.1, 5);
 				}
 
