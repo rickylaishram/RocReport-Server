@@ -32,7 +32,7 @@ class Report_model extends CI_Model {
 		$data = array(
 				'formatted_address' => $formatted_address,
 				'country' => $country,
-				'admin_area_level_1' => $admin_level_1.
+				'admin_area_level_1' => $admin_level_1,
 				'admin_area_level_2' => $admin_level_2,
 				'sublocality' = $sublocality,
 				'latitude' = $latitude,
