@@ -62,7 +62,7 @@ class Api extends CI_Controller {
 			$email = $this->auth->getEmail($client, $token);
 			if($email) {
 				$nearby = array();
-
+				
 				// If novote is set to false; check if nearby reports exist
 				if(!$novote) {
 					$nearby = $this->report->selectNearby($latitude, $longitude, 0.1, 5);
