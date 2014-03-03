@@ -29,7 +29,7 @@ class User_model extends CI_Model {
 	* @return boolean true if exist; false otherwise
 	*/
 	function exist($email) {
-		$this->db->where('email', $email)->get($this->table['user']);
+		$query = $this->db->where('email', $email)->get($this->table['user']);
 
 		if($query->num_rows() > 0) {
 			return true;
