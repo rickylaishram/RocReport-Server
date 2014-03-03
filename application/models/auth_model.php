@@ -12,7 +12,7 @@ class Auth_model extends CI_Model {
 	* @return string hashed value
 	*/
 	function hash($password, $salt) {
-		return sha512($password.$salt);
+		return hash('sha512',$password.$salt);
 	}
 
 	/*
