@@ -18,7 +18,7 @@ class Report_model extends CI_Model {
 		// Based on https://developers.google.com/maps/articles/phpsqlsearch_v3
 		$sql = "SELECT *, ( 6371000 * acos( cos( radians(?) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(?) ) + sin( radians(?) ) * sin( radians( lat ) ) ) ) AS distance FROM ? HAVING distance < ? ORDER BY distance LIMIT 0 , ?";
 
-		$query = $this->db->query($sql, array($latitude, $longitude, $latitude, $distance, $this->table['report'] ,$limit));
+		$query = $this->db->query($sql, array($latitude, $longitude, $latitude, $this->table['report'], $distance, $limit));
 
 		return $query->result();
 	}
