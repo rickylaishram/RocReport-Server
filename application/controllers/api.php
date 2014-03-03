@@ -3,12 +3,33 @@
 class Api extends CI_Controller {
 
 	/*
+	* Handles register and login
+	*/
+	function auth($path) {
+		switch ($path) {
+			case 'register':
+				$this->_register();
+				break;
+			case 'login':
+				$this->_login();
+				break;
+			default:
+				$this->_response_error(6);
+				break;
+		}
+	}
+
+
+
+
+	
+	/*
 	* Register new user
 	* Private API
 	* @params string, string $email, $password
 	*/
 
-	function register() {
+	function _register() {
 		$client = $this->input->post('id', True);
 		$email = $this->input->post('email', true);
 		$password = $this->input->post('password', true);
@@ -44,7 +65,7 @@ class Api extends CI_Controller {
 	* Private API
 	* @params string, string $email, $password
 	*/
-	function login() {
+	function _login() {
 		$client = $this->input->post('id', True);
 		$email = $this->input->post('email', true);
 		$password = $this->input->post('password', true);
@@ -107,6 +128,9 @@ class Api extends CI_Controller {
 				break;
 			case 5:
 				$data['data'] = array('reason' => 'Password and email do not match');
+				break;
+			case 6:
+				$data['data'] = array('reason' => 'Invalid path');
 				break;
 			default:
 				$data['data'] = array('reason' => 'Error');
