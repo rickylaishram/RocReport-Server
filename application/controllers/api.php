@@ -27,13 +27,34 @@ class Api extends CI_Controller {
 			case 'add':
 				$this->_add_report();
 				break;
-			
+			case 'fetch_mine':
+				$this->_reported_by_me();
+				break();
 			default:
 				$this->_response_error(6);
 				break;
 		}
 	}
 
+	/*
+	* Fetch reports reported by me
+	* Requires authentication
+	*/
+	function _reported_by_me() {
+		$client = $this->input->post('id', true);			// Required
+		$token = $this->input->post('token', true);			// Required
+
+		$this->load->model('auth_model', 'auth');
+		$email = $this->auth->getEmail($client, $token);
+
+		if($email) {
+			$this->load->model('report_model', 'report');
+			$data = $this->report->fetch_by_user($email);
+			$this->_response_success($data);
+		} else {
+			$this->_response_error(7);
+		}
+	}
 
 	/*
 	* Add a new update
