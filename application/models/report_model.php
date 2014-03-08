@@ -49,8 +49,8 @@ class Report_model extends CI_Model {
 	* Fetch reports by user
 	*/
 	function fetch_by_user($email) {
-		$this->db->where('email', $email);
-		$this->db->from('report');
+		$this->db->where($this->table['report'].'.email', $email);
+		$this->db->from($this->table['report']);
 		$this->db->join($this->table['update'], $this->table['update'].'.report_id = '.$this->table['report'].'.report_id', 'left');
 		$this->db->join($this->table['vote'], $this->table['vote'].'.report_id = '.$this->table['report'].'.report_id', 'left');
 
