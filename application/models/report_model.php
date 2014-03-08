@@ -44,4 +44,19 @@ class Report_model extends CI_Model {
 			);
 		$this->db->insert($this->table['report'], $data);
 	}
+
+	/*
+	* Fetch reports by user
+	*/
+	function fetch_by_user($email) {
+		$this->db->where('email', $email);
+		$this->db->from('report');
+		$this->db->join('updates', 'update.report_id = report.report_id', 'left');
+		$this->db->join('vote', 'vote.report_id = report.report_id', 'left');
+
+		$query = $this->db->get();
+
+		// Return as pure array because result might need to be json encoded
+		return $query->result_array();
+	}
 }

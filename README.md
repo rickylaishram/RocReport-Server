@@ -14,6 +14,9 @@ Set up .htaccess
 	RewriteRule ^(.*)$ index.php/$1 [L]
 
 
+## Tables
+Refer to table.md
+
 License
 ================
 GPL v3
