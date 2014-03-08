@@ -52,7 +52,7 @@ class Report_model extends CI_Model {
 		$this->db->where('email', $email);
 		$this->db->from('report');
 		$this->db->join($this->table['update'], $this->table['update'].'.report_id = '.$this->table['report'].'.report_id', 'left');
-		$this->db->join($this->table['vote'], .$this->table['vote'].'.report_id = '.$this->table['report'].'.report_id', 'left');
+		$this->db->join($this->table['vote'], $this->table['vote'].'.report_id = '.$this->table['report'].'.report_id', 'left');
 
 		$query = $this->db->get();
 
