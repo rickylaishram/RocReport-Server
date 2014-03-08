@@ -29,7 +29,7 @@ class Api extends CI_Controller {
 				break;
 			case 'fetch_mine':
 				$this->_reported_by_me();
-				break();
+				break;
 			default:
 				$this->_response_error(6);
 				break;
