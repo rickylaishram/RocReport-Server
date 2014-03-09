@@ -7,7 +7,7 @@ class Auth_model extends CI_Model {
 	}
 
 	function add($email, $client, $filename) {
-		$data = ('email' => $email, 'client' => $client, 'filename' => $filename, 'server'=> json_encode($_SERVER));
+		$data = array('email' => $email, 'client' => $client, 'filename' => $filename, 'server'=> json_encode($_SERVER));
 		$this->db->insert($this->table['image'], $data);
 	}
 
