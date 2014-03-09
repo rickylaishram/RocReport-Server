@@ -26,9 +26,12 @@ class Auth extends CI_Controller {
 
 					// Login
 					$token = $this->auth->generateToken($email, $browser['id']);
+
+					var_dump($token);
+
 					$this->session->set_userdata($browser['cookie']['auth'], $token);
 					
-					header('Location: '.base_url());
+					//header('Location: '.base_url());
 				}
 			} else {
 				$data['page_title'] = 'Register | RocReport';
