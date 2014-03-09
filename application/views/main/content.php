@@ -16,6 +16,8 @@
 
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6x__caSSACAJWV9uoEYA6mcP9J4xdo_c&sensor=false"></script>
 		<script type="text/javascript">
+			var map = null;
+
 			function initialize() {
 				// Set map-canvas height
 				var height = $(window).height() - 80;
@@ -45,17 +47,31 @@
 				var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
 
 				var mapOptions = {
-					center: new google.maps.LatLng(-34.397, 150.644),
+					center: new google.maps.LatLng(47.397, 78.644), // random default value
 					zoom: 8,
 					mapTypeControlOptions: {
 						mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
 					},
 				};
-				var map = new google.maps.Map(document.getElementById("map-canvas"),
+				map = new google.maps.Map(document.getElementById("map-canvas"),
 						mapOptions);
 
 				map.mapTypes.set('map_style', styledMap);
 				map.setMapTypeId('map_style');
 			}
 			google.maps.event.addDomListener(window, 'load', initialize);
+
+			
+			$(windows).load(function(){
+				navigator.geolocation.getCurrentPosition(update_map);
+			});
+
+			function update_map(position) {
+				var latitude = position.coords.latitude;
+				var longitude = position.coords.longitude;
+
+				var location = new google.maps.LatLng(latitude, longitude);
+				map.panTo(location);
+
+			}
 		</script>
