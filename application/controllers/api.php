@@ -67,6 +67,7 @@ class Api extends CI_Controller {
 		$client = $this->input->post('id', true);			// Required
 		$token = $this->input->post('token', true);			// Required
 		$report = $this->input->post('report', true);
+		
 		$this->load->model('auth_model', 'auth');
 		$email = $this->auth->getEmail($client, $token);
 
@@ -90,6 +91,7 @@ class Api extends CI_Controller {
 		$client = $this->input->post('id', true);			// Required
 		$token = $this->input->post('token', true);			// Required
 		$report = $this->input->post('report', true);
+		
 		$this->load->model('auth_model', 'auth');
 		$email = $this->auth->getEmail($client, $token);
 
@@ -207,7 +209,7 @@ class Api extends CI_Controller {
 		$email = $this->auth->getEmail($client, $token);
 		$areatypes = $this->config->item('area_type');
 
-		if(in_array($areatype, $areatypes)) {
+		if(in_array($areatype, $areatypes) && $areaname) {
 			$this->load->model('report_model', 'report');
 
 			$data = $this->report->fetch_by_area($email, $areatype, $areaname, $offset, $limit, $orderby);
