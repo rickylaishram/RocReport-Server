@@ -40,13 +40,48 @@ class Api extends CI_Controller {
 	}
 
 	/*
+	* Handles image related stuff
+	*/
+	function image($path="") {
+		switch ($path) {
+			case 'add':
+				# code...
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+	}
+
+	/*
+	* Strore uploaded image
+	* Requires authentication
+	*/
+	function _image_add(){
+		$config['upload_path'] = FCPATH.'static/images/';
+		$config['allowed_types'] = 'jpg|png';
+		$config['max_size']	= '100';
+		$config['max_width']  = '1024';
+		$config['max_height']  = '768';
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload()){
+			//$data = array();
+			$this->_response_success(array());
+		} else {
+			$this->_response_error(7);
+		}
+	}
+
+	/*
 	* Fetch reports reported by me
 	* Requires authentication
 	*/
 	function _reported_by_me() {
 		$client = $this->input->post('id', true);			// Required
 		$token = $this->input->post('token', true);			// Required
-
 		$orderby = $this->input->post('orderby', true);
 
 		/* If order by is not set or invalid, default to score */
