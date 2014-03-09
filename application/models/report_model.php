@@ -186,7 +186,7 @@ class Report_model extends CI_Model {
 	*/
 	function last_update($report_id) {
 		$this->db->where('report_id', $report_id);
-		$this->db->order_by('updates_at', 'DESC');
+		$this->db->order_by('updated_at', 'DESC');
 		$this->db->limit(1);
 		$query = $this->db->get($this->table['update']);
 
