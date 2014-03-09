@@ -3,7 +3,7 @@
 class Auth extends CI_Controller {
 
 	function register() {
-		$this->load-model('auth_model', 'auth');
+		$this->load->model('auth_model', 'auth');
 		$email = $this->auth->isLoggedIn();
 
 		if(!$email) {
