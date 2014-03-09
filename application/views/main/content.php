@@ -35,7 +35,7 @@
 									featureType: "road.arterial",
 									elementType: "geometry",
 									stylers: [
-										{ hue: "#4D4D4D" },
+										{ hue: "#00ffee" },
 										{ saturation: 50 }
 									]
 								},
