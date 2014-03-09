@@ -8,7 +8,7 @@
 		</div>
 		<input type="email" class="form-control" placeholder="Email address" required id="email" name="email">
 		<input type="password" class="form-control" placeholder="Password" required id="pass" name="pass">
-		<button class="btn btn-lg btn-primary btn-block" id="btn_submit" type="submit" disabled="disabled">Register</button>
+		<button class="btn btn-lg btn-primary btn-block" id="btn_submit" type="submit" disabled="disabled">Login</button>
 	</form>
 </div> <!-- /container -->
 

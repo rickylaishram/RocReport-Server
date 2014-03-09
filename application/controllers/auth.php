@@ -79,7 +79,7 @@ class Auth extends CI_Controller {
 				$data['error'] = false;
 
 				$this->load->view('app/header', $data);
-				$this->load->view('auth/register', $data);
+				$this->load->view('auth/login', $data);
 				$this->load->view('app/footer', $data);
 			}
 		} else {
