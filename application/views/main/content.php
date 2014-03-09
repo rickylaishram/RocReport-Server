@@ -17,6 +17,7 @@
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6x__caSSACAJWV9uoEYA6mcP9J4xdo_c&sensor=false"></script>
 		<script type="text/javascript">
 			var map = null;
+			var markers = [];
 
 			function initialize() {
 				// Set map-canvas height
@@ -66,6 +67,15 @@
 				navigator.geolocation.getCurrentPosition(update_map);
 			});
 
+			function addMarker(location) {
+				var marker = new google.maps.Marker({
+					position: location,
+					map: map
+				});
+				marker.setMap(map);
+				//markers.push(marker);
+			}
+
 			function update_map(position) {
 				var latitude = position.coords.latitude;
 				var longitude = position.coords.longitude;
@@ -74,10 +84,12 @@
 				map.panTo(location);
 
 				fetch_reports(latitude, longitude);
+
+				addMarker(location);
 			}
 
 			function fetch_reports(latitude, longitude) {
-				var params = {'latitude': latitude, 'longitude': longitude, 'radius': 10};
+				var params = {'latitude': latitude, 'longitude': longitude, 'radius': 10000};
 				$.post('<?=base_url(); ?>/api/report/fetch_nearby/', params, function(data) {
 					console.log(data);
 				});
