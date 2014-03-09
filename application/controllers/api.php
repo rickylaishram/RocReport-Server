@@ -66,7 +66,7 @@ class Api extends CI_Controller {
 		$email = $this->auth->getEmail($client, $token);
 
 		if($email) {
-			$config['encrypt_name'] = true
+			$config['encrypt_name'] = true;
 			$config['upload_path'] = FCPATH.'static/images/';
 			$config['allowed_types'] = 'jpg|png';
 			$config['max_size']	= '500';
