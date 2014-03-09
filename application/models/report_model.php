@@ -50,7 +50,7 @@ class Report_model extends CI_Model {
 	*/
 	function fetch_by_user($email, $limit, $offset) {
 		$this->db->where('email', $email);
-		$this->db->order_by($this->table['report'].'score', 'DESC');
+		$this->db->order_by('score', 'DESC');
 		$query = $this->db->get($this->table['report'], $limit, $offset);
 		$result = array();
 
@@ -72,8 +72,8 @@ class Report_model extends CI_Model {
 	* always ordered by rank
 	*/
 	function fetch_by_sublocality($email, $name, $offset, $limit) {
-		$this->db->where($this->table['report'].'.sublocality', $name);
-		$this->db->order_by($this->table['report'].'score', 'DESC');
+		$this->db->where('sublocality', $name);
+		$this->db->order_by('score', 'DESC');
 		$query = $this->db->get($this->table['report'], $limit, $offset);
 
 		$result = array();
@@ -96,8 +96,8 @@ class Report_model extends CI_Model {
 	* always ordered by rank
 	*/
 	function fetch_by_area_level_1($email, $name, $offset, $limit) {
-		$this->db->where($this->table['report'].'.admin_area_level_1', $name);
-		$this->db->order_by($this->table['report'].'score', 'DESC');
+		$this->db->where('admin_area_level_1', $name);
+		$this->db->order_by('score', 'DESC');
 		$query = $this->db->get($this->table['report'], $limit, $offset);
 
 		$result = array();
@@ -120,8 +120,8 @@ class Report_model extends CI_Model {
 	* always ordered by rank
 	*/
 	function fetch_by_area_level_2($email, $name, $offset, $limit) {
-		$this->db->where($this->table['report'].'.admin_area_level_2', $name);
-		$this->db->order_by($this->table['report'].'score', 'DESC');
+		$this->db->where('admin_area_level_2', $name);
+		$this->db->order_by('score', 'DESC');
 		$query = $this->db->get($this->table['report'], $limit, $offset);
 
 		$result = array();
@@ -144,8 +144,8 @@ class Report_model extends CI_Model {
 	* always ordered by rank
 	*/
 	function fetch_by_country($email, $name, $offset, $limit) {
-		$this->db->where($this->table['report'].'.country', $name);
-		$this->db->order_by($this->table['report'].'score', 'DESC');
+		$this->db->where('country', $name);
+		$this->db->order_by('score', 'DESC');
 		$query = $this->db->get($this->table['report'], $limit, $offset);
 
 		$result = array();
