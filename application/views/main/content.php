@@ -89,7 +89,8 @@
 				var params = {'latitude': latitude, 'longitude': longitude, 'radius': 10000};
 				$.post('<?=base_url(); ?>/api/report/fetch_nearby/', params, function(data) {
 					console.log(data);
-					if(data.status) {
+					data = JSON.parse(data);
+					if( data.status ) {
 						console.log(data.status);
 						for (var i = data.data.length - 1; i >= 0; i--) {
 							console.log(i);
