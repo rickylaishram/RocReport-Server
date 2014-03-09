@@ -90,10 +90,13 @@
 				$.post('<?=base_url(); ?>/api/report/fetch_nearby/', params, function(data) {
 					console.log(data);
 					if(data.status) {
+						console.log(data.status);
 						for (var i = data.data.length - 1; i >= 0; i--) {
 							console.log(i);
 							var latitude = parseFloat(data.data[i]['latitude']);
 							var longitude = parseFloat(data.data[i]['longitude']);
+							console.log(latitude);
+							console.log(longitude);
 							var location = new google.maps.LatLng(latitude, longitude);
 							addMarker(location);
 						};
