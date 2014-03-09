@@ -12,7 +12,7 @@ class Auth extends CI_Controller {
 			$pass = $this->input->post('pass', true);
 			
 			if($name && $email && $pass) {
-				
+				var_dump($_POST);
 			} else {
 				$data['page_name'] = 'Register | RocReport'
 
@@ -21,7 +21,7 @@ class Auth extends CI_Controller {
 				$this->load->view('app/footer', $data);
 			}
 		} else {
-			header('Location: '.base_url());
+			var_dump($email);
 		}
 		
 	}
