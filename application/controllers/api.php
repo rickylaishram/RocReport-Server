@@ -30,6 +30,9 @@ class Api extends CI_Controller {
 			case 'fetch_mine':
 				$this->_reported_by_me();
 				break;
+			case 'fetch':
+				$this->_reported_by_area();
+				break;
 			default:
 				$this->_response_error(6);
 				break;
@@ -44,16 +47,72 @@ class Api extends CI_Controller {
 		$client = $this->input->post('id', true);			// Required
 		$token = $this->input->post('token', true);			// Required
 
+		$orderby = $this->input->post('orderby', true);
+
+		/* If order by is not set or invalid, default to score */
+		if(!$orderby || (($orderby != 'score') && ($orderby != 'new')) {
+			$orderby = 'score';
+		}
+
 		$this->load->model('auth_model', 'auth');
 		$email = $this->auth->getEmail($client, $token);
 
 		if($email) {
 			$this->load->model('report_model', 'report');
-			$data = $this->report->fetch_by_user($email, 100, 0);
+			$data = $this->report->fetch_by_user($email, 100, 0, $orderby);
 			$this->_response_success($data);
 		} else {
 			$this->_response_error(7);
 		}
+	}
+
+	/*
+	* Fetch reports by area
+	* Does not require authentication
+	*/
+	function _report_by_area() {
+		$client = $this->input->post('id', true);
+		$token = $this->input->post('token', true);
+		$areatype = $this->input->post('type', true);	// Required
+		$areaname = $this->input->post('name', true);	// Required
+		$orderby = $this->input->post('orderby', true);
+		$offset = $this->input->post('offest', true);
+		$limit = $this->input->post('limit', true);
+
+		/* If order by is not set or invalid, default to score */
+		if(!$orderby || (($orderby != 'score') && ($orderby != 'new')) {
+			$orderby = 'score';
+		}
+
+		// If offset if not set, set to 0
+		if(!$offset || !is_numeric($offset)) {
+			$offest = 0;
+		}
+
+		// If linit is not set or valid, set to 10
+		if(!$limit || !is_numeric($limit)) {
+			$limit = 10;
+		}
+
+		// If $limit is greather than 100, set to 100
+		if($limit > 100) {
+			$limit = 100;
+		}
+
+		$this->load->model('auth_model', 'auth');
+		$email = $this->auth->getEmail($client, $token);
+		$areatypes = $this->config->item('area_type');
+
+		if(in_array($areatype, $areatypes)) {
+			$this->load->model('report_model', 'report');
+
+			$data = $this->report->fetch_by_area($email, $areatype, $areaname, $offset, $limit, $orderby);
+
+			$this->_response_success($data);
+		} else {
+			$this->_response_error(9);
+		}
+		
 	}
 
 	/*
@@ -89,20 +148,24 @@ class Api extends CI_Controller {
 
 			$email = $this->auth->getEmail($client, $token);
 			if($email) {
-				$nearby = array();
-				
-				// If novote is set to false; check if nearby reports exist
-				if(!$novote) {
-					$nearby = $this->report->selectNearby(floatval($latitude), floatval($longitude), 100, 5);
-				}
+				if(in_array($category, $categories)) {
+					$nearby = array();
 
-				// If nearby reports are found return them
-				if(count($nearby) == 0) {
-					$this->report->add($email, floatval($latitude), floatval($longitude), $formatted_address, $country, $admin_level_1, $admin_level_2, $sublocality, $category, $description, $picture) ;
-				}
+					// If novote is set to false; check if nearby reports exist
+					if(!$novote) {
+						$nearby = $this->report->selectNearby(floatval($latitude), floatval($longitude), 100, 5);
+					}
 
-				$data = array('nearby' => count($nearby), 'details' => $nearby);
-				$this->_response_success($data);
+					// If nearby reports are found return them
+					if(count($nearby) == 0) {
+						$this->report->add($email, floatval($latitude), floatval($longitude), $formatted_address, $country, $admin_level_1, $admin_level_2, $sublocality, $category, $description, $picture) ;
+					}
+
+					$data = array('nearby' => count($nearby), 'details' => $nearby);
+					$this->_response_success($data);
+				} else {
+					$this->_response_error(8);
+				}
 			} else {
 				$this->_response_error(7);
 			}
@@ -221,6 +284,12 @@ class Api extends CI_Controller {
 				break;
 			case 7:
 				$data['data'] = array('reason' => 'Invalid token');
+				break;
+			case 8:
+				$data['data'] = array('reason' => 'Invalid category');
+				break;
+			case 9:
+				$data['data'] = array('reason' => 'Invalid area type');
 				break;
 			default:
 				$data['data'] = array('reason' => 'Error');

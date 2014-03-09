@@ -48,9 +48,15 @@ class Report_model extends CI_Model {
 	/*
 	* Fetch reports by user
 	*/
-	function fetch_by_user($email, $limit, $offset) {
+	function fetch_by_user($email, $limit, $offset, $orderby) {
 		$this->db->where('email', $email);
-		$this->db->order_by('score', 'DESC');
+		
+		if($type == 'score') {
+			$this->db->order_by('score', 'DESC');
+		} else if($type == 'new') {
+			$this->db->order_by('added_at', 'ASC');
+		}
+		
 		$query = $this->db->get($this->table['report'], $limit, $offset);
 		$result = array();
 
@@ -68,12 +74,42 @@ class Report_model extends CI_Model {
 	}
 
 	/*
-	* Fetch all reports by sublocality
-	* always ordered by rank
+	* Fetch all reports by areatype
 	*/
-	function fetch_by_sublocality($email, $name, $offset, $limit) {
+	function fetch_by_area($email, $areatype, $name, $offset, $limit, $orderby) {
+		$this->db->where($areatype, $name);
+		if($type == 'score') {
+			$this->db->order_by('score', 'DESC');
+		} else if($type == 'new') {
+			$this->db->order_by('added_at', 'ASC');
+		}
+		$query = $this->db->get($this->table['report'], $limit, $offset);
+
+		$result = array();
+
+		foreach ($query->result_array() as $report) {
+			$report['vote_count'] = $this->get_num_votes($report['report_id']);
+			$report['inform_count'] = $this->get_num_inform($report['report_id']);
+			$report['update'] = $this->last_update($report['report_id']);
+			$report['hasVotes'] = $this->hasVoted($report['report_id'], $email);
+			$report['inInform'] = $this->inInform($report['report_id'], $email);
+
+			$result[] = $report;
+		}
+
+		return $result;
+	}
+
+	/*
+	* Fetch all reports by sublocality
+	*/
+	function fetch_by_sublocality($email, $name, $offset, $limit, $orderby) {
 		$this->db->where('sublocality', $name);
-		$this->db->order_by('score', 'DESC');
+		if($type == 'score') {
+			$this->db->order_by('score', 'DESC');
+		} else if($type == 'new') {
+			$this->db->order_by('added_at', 'ASC');
+		}
 		$query = $this->db->get($this->table['report'], $limit, $offset);
 
 		$result = array();
@@ -93,11 +129,14 @@ class Report_model extends CI_Model {
 
 	/*
 	* Fetch all reports by sublocality
-	* always ordered by rank
 	*/
-	function fetch_by_area_level_1($email, $name, $offset, $limit) {
+	function fetch_by_area_level_1($email, $name, $offset, $limit, $orderby) {
 		$this->db->where('admin_area_level_1', $name);
-		$this->db->order_by('score', 'DESC');
+		if($type == 'score') {
+			$this->db->order_by('score', 'DESC');
+		} else if($type == 'new') {
+			$this->db->order_by('added_at', 'ASC');
+		}
 		$query = $this->db->get($this->table['report'], $limit, $offset);
 
 		$result = array();
@@ -117,11 +156,14 @@ class Report_model extends CI_Model {
 
 	/*
 	* Fetch all reports by sublocality
-	* always ordered by rank
 	*/
-	function fetch_by_area_level_2($email, $name, $offset, $limit) {
+	function fetch_by_area_level_2($email, $name, $offset, $limit, $orderby) {
 		$this->db->where('admin_area_level_2', $name);
-		$this->db->order_by('score', 'DESC');
+		if($type == 'score') {
+			$this->db->order_by('score', 'DESC');
+		} else if($type == 'new') {
+			$this->db->order_by('added_at', 'ASC');
+		}
 		$query = $this->db->get($this->table['report'], $limit, $offset);
 
 		$result = array();
@@ -141,11 +183,14 @@ class Report_model extends CI_Model {
 
 	/*
 	* Fetch all reports by country
-	* always ordered by rank
 	*/
-	function fetch_by_country($email, $name, $offset, $limit) {
+	function fetch_by_country($email, $name, $offset, $limit, $orderby) {
 		$this->db->where('country', $name);
-		$this->db->order_by('score', 'DESC');
+		if($type == 'score') {
+			$this->db->order_by('score', 'DESC');
+		} else if($type == 'new') {
+			$this->db->order_by('added_at', 'ASC');
+		}
 		$query = $this->db->get($this->table['report'], $limit, $offset);
 
 		$result = array();
@@ -154,7 +199,7 @@ class Report_model extends CI_Model {
 			$report['vote_count'] = $this->get_num_votes($report['report_id']);
 			$report['inform_count'] = $this->get_num_inform($report['report_id']);
 			$report['update'] = $this->last_update($report['report_id']);
-			$report['hasVotes'] = $this->hasVoted($report['report_id'], $email);
+			$report['hasVoted'] = $this->hasVoted($report['report_id'], $email);
 			$report['inInform'] = $this->inInform($report['report_id'], $email);
 
 			$result[] = $report;
