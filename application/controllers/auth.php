@@ -30,7 +30,6 @@ class Auth extends CI_Controller {
 								'name'   => $browser['cookie']['auth'],
 								'value'  => $token,
 								'expire' => '86500',
-								'domain' => base_url(),
 								'path'   => '/',
 								'prefix' => 'rr_',
 								'secure' => TRUE
