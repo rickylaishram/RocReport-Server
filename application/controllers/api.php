@@ -80,7 +80,7 @@ class Api extends CI_Controller {
 		$limit = $this->input->post('limit', true);
 
 		/* If order by is not set or invalid, default to score */
-		if(!$orderby || (($orderby != 'score') && ($orderby != 'new')) {
+		if(!$orderby || (($orderby != 'score') && ($orderby != 'new'))) {
 			$orderby = 'score';
 		}
 
