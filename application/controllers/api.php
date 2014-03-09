@@ -33,6 +33,12 @@ class Api extends CI_Controller {
 			case 'fetch':
 				$this->_reported_by_area();
 				break;
+			case 'vote':
+				$this->_vote();
+				break;
+			case 'watch':
+				$this->_watch();
+				break;
 			default:
 				$this->_response_error(6);
 				break;
@@ -51,6 +57,51 @@ class Api extends CI_Controller {
 			default:
 				# code...
 				break;
+		}
+	}
+
+	/*
+	* Vote for a report
+	*/
+	function _vote() {
+		$client = $this->input->post('id', true);			// Required
+		$token = $this->input->post('token', true);			// Required
+		$report = $this->input->post('token', true);
+		$this->load->model('auth_model', 'auth');
+		$email = $this->auth->getEmail($client, $token);
+
+		if($email && $report) {
+			$this->load->model('report_model', 'report');
+			$statis = $this->report->vote($email, $report);
+
+			$this->_response_success(array());
+		} else if(!$email) {
+			$this->_response_error(7);
+		} else if(!$report) {
+			$this->_response_error(1);
+		}
+	}
+
+	/*
+	* Add use to watchlist for a report
+	*/
+
+	function _watch() {
+		$client = $this->input->post('id', true);			// Required
+		$token = $this->input->post('token', true);			// Required
+		$report = $this->input->post('token', true);
+		$this->load->model('auth_model', 'auth');
+		$email = $this->auth->getEmail($client, $token);
+
+		if($email && $report) {
+			$this->load->model('report_model', 'report');
+			$statis = $this->report->watch($email, $report);
+
+			$this->_response_success(array());
+		} else if(!$email) {
+			$this->_response_error(7);
+		} else if(!$report) {
+			$this->_response_error(1);
 		}
 	}
 

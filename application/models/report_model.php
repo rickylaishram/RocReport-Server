@@ -46,6 +46,22 @@ class Report_model extends CI_Model {
 	}
 
 	/*
+	* Add a vote for a report
+	*/
+	function vote($email, $report_id) {
+		$data = array('email'=>$email, 'report_id'=>$report_id);
+		$this->db->insert($this->table['vote'], $data);
+	}
+
+	/*
+	* Add user to watchlist for a report
+	*/
+	function watch($email, $report_id) {
+		$data = array('email'=>$email, 'report_id'=>$report_id);
+		$this->db->insert($this->table['inform'], $data);
+	}
+
+	/*
 	* Fetch reports by user
 	*/
 	function fetch_by_user($email, $limit, $offset, $orderby) {
