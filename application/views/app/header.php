@@ -14,4 +14,8 @@
 
 		<!-- Custom styles for this template -->
 		<link href="<?=base_url(); ?>static/css/style.css" rel="stylesheet">
+
+		<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="<?=base_url(); ?>static/js/bootstrap.min.js"></script>
 	</head>
