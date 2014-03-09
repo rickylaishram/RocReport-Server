@@ -27,9 +27,7 @@
 
 				var styles = [
 								{stylers: [
-										{ hue: '#CDCDCD' },
-										{ saturation: 60 },
-										{ lightness: -20 },
+										{ saturation: -80 },
 									]}
 							];
 
