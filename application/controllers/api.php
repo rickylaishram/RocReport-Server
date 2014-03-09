@@ -59,15 +59,21 @@ class Api extends CI_Controller {
 	* Requires authentication
 	*/
 	function _image_add(){
+		$client = $this->input->post('id', true);			// Required
+		$token = $this->input->post('token', true);			// Required
+
+		var_dump($client);
+
 		$config['upload_path'] = FCPATH.'static/images/';
 		$config['allowed_types'] = 'jpg|png';
-		$config['max_size']	= '100';
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
+		$config['max_size']	= '500';
+		$config['max_width']  = '1600';
+		$config['max_height']  = '1600';
 
 		$this->load->library('upload', $config);
 
-		if ( ! $this->upload->do_upload()){
+		$fieldname = 'image';
+		if ( ! $this->upload->do_upload($fieldname)){
 			$error = array('error' => $this->upload->display_errors());
 			$this->_response_success($error);
 		} else {
