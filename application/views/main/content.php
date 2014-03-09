@@ -1,9 +1,11 @@
-		<div class="container">
+		<div class="container-fluid">
 
 			<div class="row">
 				
-				<div class="col-md-3">
-				
+				<div class="col-md-3" id="reports-list-container">
+					<div class="list-group" id="reports-list">
+						
+					</div>
 				</div>
 
 				<div class="col-md-9">
@@ -18,6 +20,7 @@
 		<script type="text/javascript">
 			var map = null;
 			var markers = [];
+			var reports = null;
 
 			function initialize() {
 				// Set map-canvas height
@@ -88,20 +91,31 @@
 			function fetch_reports(latitude, longitude) {
 				var params = {'latitude': latitude, 'longitude': longitude, 'radius': 10000};
 				$.post('<?=base_url(); ?>/api/report/fetch_nearby/', params, function(data) {
-					console.log(data);
 					data = JSON.parse(data);
+					reports = data.data;
 					if( data.status ) {
 						console.log(data.status);
 						for (var i = data.data.length - 1; i >= 0; i--) {
-							console.log(i);
+							var id = data.data[i]['report_id'];
+							var category = data.data[i]['category'];
+							var address = data.data[i]['formatted_address'];
 							var latitude = parseFloat(data.data[i]['latitude']);
 							var longitude = parseFloat(data.data[i]['longitude']);
-							console.log(latitude);
-							console.log(longitude);
 							var location = new google.maps.LatLng(latitude, longitude);
+							
 							addMarker(location);
+
+							$('#reports-list').append(generateListItem(category, address));
 						};
 					}
 				});
+			}
+
+			function generateListItem(category, address, id) {
+				var item ='<a href="#" class="list-group-item report-item" data-id="'+id+'">
+							<h4 class="list-group-item-heading">'+category+'</h4>
+							<p class="list-group-item-text">'+address+'</p>
+						</a>';
+				return item;
 			}
 		</script>
