@@ -33,6 +33,9 @@ class Api extends CI_Controller {
 			case 'fetch':
 				$this->_reported_by_area();
 				break;
+			case 'fetch_nearby':
+				$this->_report_nearby();
+				break;
 			case 'vote':
 				$this->_vote();
 				break;
@@ -103,6 +106,41 @@ class Api extends CI_Controller {
 		} else if(!$email) {
 			$this->_response_error(7);
 		} else if(!$report) {
+			$this->_response_error(1);
+		}
+	}
+
+	/*
+	* Get Nearby Reports
+	* Authentication not necessary
+	*/
+	function _report_nearby(){
+		$client = $this->input->post('id', true);
+		$token = $this->input->post('token', true);
+		$orderby = $this->input->post('orderby', true);
+		$latitude = $this->input->post('latitude', true);	// Required
+		$longitude = $this->input->post('longitude', true);	// Required
+		$radius = $this->input->post('radius', true); // Required
+		$limit = $this->input->post('limit', true); 
+
+		/* If order by is not set or invalid, default to score */
+		if(!$orderby || (($orderby != 'score') && ($orderby != 'new'))) {
+			$orderby = 'score';
+		}
+
+		/* If limit is not defined, set to 10 */
+		if(!$limit || !is_numeric($limit)) {
+			$limit = 10;
+		}
+
+		$this->load->model('auth_model', 'auth');
+		$email = $this->auth->getEmail($client, $token);
+
+		if($latitude && $longitude && $radius) {
+			$this->load->model('report_model', 'report');
+			$data = $this->report->selectNearby($latitude, $longitude, $radius, $limit);
+			$this->_response_success($data);
+		} else {
 			$this->_response_error(1);
 		}
 	}
@@ -218,7 +256,6 @@ class Api extends CI_Controller {
 		} else {
 			$this->_response_error(9);
 		}
-		
 	}
 
 	/*
@@ -254,7 +291,7 @@ class Api extends CI_Controller {
 
 			$email = $this->auth->getEmail($client, $token);
 			if($email) {
-				
+
 				$categories = $this->config->item('category');
 				
 				if(in_array($category, $categories)) {

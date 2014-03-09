@@ -6,7 +6,7 @@
 				
 				</div>
 
-				<div class="col-md-12">
+				<div class="col-md-9">
 					<div id="map-canvas"></div>
 				</div>
 
@@ -73,5 +73,13 @@
 				var location = new google.maps.LatLng(latitude, longitude);
 				map.panTo(location);
 
+				fetch_nearby(latitude, longitude);
+			}
+
+			function fetch_reports(latitude, longitude) {
+				var params = {'latitude': latitude, 'longitude': longitude, 'radius': 10};
+				$.post('/api/report/fetch_nearby/', params, function(data) {
+					console.log(data);
+				});
 			}
 		</script>
