@@ -54,20 +54,25 @@ class Auth extends CI_Controller {
 			if($email && $pass) {
 				$this->load->model('user_model', 'user');
 
+				var_dump($email);
+
 				if(!$this->user->exist($email)) {
 					$this->load->model('auth_model', 'auth');
 					$user = $this->user->get($email);
 					$browser = $this->config->item('browser');
+
+					var_dump($user);
 
 					if($this->auth->hash($pass, $user->salt) == $user->password) {
 						$token = $this->auth->generateToken($email, $browser['id']);
 
 						$this->session->set_userdata($browser['cookie']['auth'], $token);
 						header('Location: '.base_url());
-
 					} else {
-						$data['page_title'] = 'Register | RocReport';
+						$data['page_title'] = 'Login | RocReport';
 						$data['error'] = true;
+
+						var_dump($data);
 
 						$this->load->view('app/header', $data);
 						$this->load->view('auth/login', $data);
@@ -75,7 +80,7 @@ class Auth extends CI_Controller {
 					}
 				}
 			} else {
-				$data['page_title'] = 'Register | RocReport';
+				$data['page_title'] = 'Login | RocReport';
 				$data['error'] = false;
 
 				$this->load->view('app/header', $data);
