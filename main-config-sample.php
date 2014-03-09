@@ -2,7 +2,6 @@
 	/* Sample file for main-config */
 
 	define('RR_BASE_URL', '');
-
 	define('RR_ENCRYPTION_KEY', '');
 
 	/*
@@ -15,6 +14,7 @@
 	define('RR_TABLE_REPORT', '');
 	define('RR_TABLE_UPDATE', '');
 	define('RR_TABLE_VOTE', '');
+	define('RR_TABLE_IMAGE', '');
 
 	/*
 	* Database

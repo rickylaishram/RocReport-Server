@@ -80,7 +80,12 @@ class Api extends CI_Controller {
 				//$error = array('error' => $this->upload->display_errors());
 				$this->_response_error(10);
 			} else {
-				$data = array('upload_data' => $this->upload->data());
+				$this->load->model('image_model', 'image');
+				$upload_data = $this->upload->data();
+
+				$this->image->add($email, $client, $upload_data['file_name']);
+
+				$data = array('image_url' => base_url().'static/images/'.$upload_data['file_name']);
 				$this->_response_success($data);
 			}
 		} else {
