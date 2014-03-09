@@ -18,7 +18,7 @@
 		<script type="text/javascript">
 			function initialize() {
 				// Set map-canvas height
-				$('#map-canvas').height($(window).height() - 70);
+				$('#map-canvas').height($(window).height() - 80);
 
 				var mapOptions = {
 					center: new google.maps.LatLng(-34.397, 150.644),
