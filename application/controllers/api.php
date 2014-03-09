@@ -62,23 +62,29 @@ class Api extends CI_Controller {
 		$client = $this->input->post('id', true);			// Required
 		$token = $this->input->post('token', true);			// Required
 
-		var_dump($client);
+		$this->load->model('auth_model', 'auth');
+		$email = $this->auth->getEmail($client, $token);
 
-		$config['upload_path'] = FCPATH.'static/images/';
-		$config['allowed_types'] = 'jpg|png';
-		$config['max_size']	= '500';
-		$config['max_width']  = '1600';
-		$config['max_height']  = '1600';
+		if($email) {
+			$config['encrypt_name'] = true
+			$config['upload_path'] = FCPATH.'static/images/';
+			$config['allowed_types'] = 'jpg|png';
+			$config['max_size']	= '500';
+			$config['max_width']  = '1600';
+			$config['max_height']  = '1600';
 
-		$this->load->library('upload', $config);
+			$this->load->library('upload', $config);
 
-		$fieldname = 'image';
-		if ( ! $this->upload->do_upload($fieldname)){
-			$error = array('error' => $this->upload->display_errors());
-			$this->_response_success($error);
+			$fieldname = 'image';
+			if ( ! $this->upload->do_upload($fieldname)){
+				//$error = array('error' => $this->upload->display_errors());
+				$this->_response_error(10);
+			} else {
+				$data = array('upload_data' => $this->upload->data());
+				$this->_response_success($data);
+			}
 		} else {
-			$data = array('upload_data' => $this->upload->data());
-			$this->_response_success($data);
+			$this->_response_error(7);
 		}
 	}
 
@@ -334,6 +340,9 @@ class Api extends CI_Controller {
 				break;
 			case 9:
 				$data['data'] = array('reason' => 'Invalid area type');
+				break;
+			case 10:
+				$data['data'] = array('reason' => 'Image upload failed. Check file size.');
 				break;
 			default:
 				$data['data'] = array('reason' => 'Error');
