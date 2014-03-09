@@ -49,7 +49,7 @@ class Api extends CI_Controller {
 
 		if($email) {
 			$this->load->model('report_model', 'report');
-			$data = $this->report->fetch_by_user($email);
+			$data = $this->report->fetch_by_user($email, 100, 0);
 			$this->_response_success($data);
 		} else {
 			$this->_response_error(7);

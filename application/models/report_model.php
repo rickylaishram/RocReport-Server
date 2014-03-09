@@ -48,15 +48,170 @@ class Report_model extends CI_Model {
 	/*
 	* Fetch reports by user
 	*/
-	function fetch_by_user($email) {
-		$this->db->where($this->table['report'].'.email', $email);
-		$this->db->from($this->table['report']);
-		$this->db->join($this->table['update'], $this->table['update'].'.report_id = '.$this->table['report'].'.report_id', 'left');
-		$this->db->join($this->table['vote'], $this->table['vote'].'.report_id = '.$this->table['report'].'.report_id', 'left');
+	function fetch_by_user($email, $limit, $offset) {
+		$this->db->where('email', $email);
+		$this->db->order_by($this->table['report'].'score', 'DESC');
+		$query = $this->db->get($this->table['report'], $limit, $offset);
+		$result = array();
 
-		$query = $this->db->get();
+		foreach ($query->result_array() as $report) {
+			$report['vote_count'] = $this->get_num_votes($report['report_id']);
+			$report['inform_count'] = $this->get_num_inform($report['report_id']);
+			$report['update'] = $this->last_update($report['report_id']);
+			$report['hasVotes'] = $this->hasVoted($report['report_id'], $email);
+			$report['inInform'] = $this->inInform($report['report_id'], $email);
 
-		// Return as pure array because result might need to be json encoded
-		return $query->result_array();
+			$result[] = $report;
+		}
+
+		return $result;
+	}
+
+	/*
+	* Fetch all reports by sublocality
+	* always ordered by rank
+	*/
+	function fetch_by_sublocality($email, $name, $offset, $limit) {
+		$this->db->where($this->table['report'].'.sublocality', $name);
+		$this->db->order_by($this->table['report'].'score', 'DESC');
+		$query = $this->db->get($this->table['report'], $limit, $offset);
+
+		$result = array();
+
+		foreach ($query->result_array() as $report) {
+			$report['vote_count'] = $this->get_num_votes($report['report_id']);
+			$report['inform_count'] = $this->get_num_inform($report['report_id']);
+			$report['update'] = $this->last_update($report['report_id']);
+			$report['hasVotes'] = $this->hasVoted($report['report_id'], $email);
+			$report['inInform'] = $this->inInform($report['report_id'], $email);
+
+			$result[] = $report;
+		}
+
+		return $result;
+	}
+
+	/*
+	* Fetch all reports by sublocality
+	* always ordered by rank
+	*/
+	function fetch_by_area_level_1($email, $name, $offset, $limit) {
+		$this->db->where($this->table['report'].'.admin_area_level_1', $name);
+		$this->db->order_by($this->table['report'].'score', 'DESC');
+		$query = $this->db->get($this->table['report'], $limit, $offset);
+
+		$result = array();
+
+		foreach ($query->result_array() as $report) {
+			$report['vote_count'] = $this->get_num_votes($report['report_id']);
+			$report['inform_count'] = $this->get_num_inform($report['report_id']);
+			$report['update'] = $this->last_update($report['report_id']);
+			$report['hasVotes'] = $this->hasVoted($report['report_id'], $email);
+			$report['inInform'] = $this->inInform($report['report_id'], $email);
+
+			$result[] = $report;
+		}
+
+		return $result;
+	}
+
+	/*
+	* Fetch all reports by sublocality
+	* always ordered by rank
+	*/
+	function fetch_by_area_level_2($email, $name, $offset, $limit) {
+		$this->db->where($this->table['report'].'.admin_area_level_2', $name);
+		$this->db->order_by($this->table['report'].'score', 'DESC');
+		$query = $this->db->get($this->table['report'], $limit, $offset);
+
+		$result = array();
+
+		foreach ($query->result_array() as $report) {
+			$report['vote_count'] = $this->get_num_votes($report['report_id']);
+			$report['inform_count'] = $this->get_num_inform($report['report_id']);
+			$report['update'] = $this->last_update($report['report_id']);
+			$report['hasVotes'] = $this->hasVoted($report['report_id'], $email);
+			$report['inInform'] = $this->inInform($report['report_id'], $email);
+
+			$result[] = $report;
+		}
+
+		return $result;
+	}
+
+	/*
+	* Fetch all reports by country
+	* always ordered by rank
+	*/
+	function fetch_by_country($email, $name, $offset, $limit) {
+		$this->db->where($this->table['report'].'.country', $name);
+		$this->db->order_by($this->table['report'].'score', 'DESC');
+		$query = $this->db->get($this->table['report'], $limit, $offset);
+
+		$result = array();
+
+		foreach ($query->result_array() as $report) {
+			$report['vote_count'] = $this->get_num_votes($report['report_id']);
+			$report['inform_count'] = $this->get_num_inform($report['report_id']);
+			$report['update'] = $this->last_update($report['report_id']);
+			$report['hasVotes'] = $this->hasVoted($report['report_id'], $email);
+			$report['inInform'] = $this->inInform($report['report_id'], $email);
+
+			$result[] = $report;
+		}
+
+		return $result;
+	}
+
+	/*
+	* Returns the number of votes for a report
+	*/
+	function get_num_votes($report_id) {
+		$this->db->where('report_id', $report_id);
+		$num = $this->db->count_all_results($this->table['vote']);
+		return $num;
+	}
+
+	/*
+	* Return the number of informs for a report
+	*/
+	function get_num_inform($report_id) {
+		$this->db->where('report_id', $report_id);
+		$num = $this->db->count_all_results($this->table['inform']);
+		return $num;
+	}
+
+	/*
+	* Return the latest update for the report
+	*/
+	function last_update($report_id) {
+		$this->db->where('report_id', $report_id);
+		$this->db->order_by('updates_at', 'DESC');
+		$this->db->limit(1);
+		$query = $this->db->get($this->table['update']);
+
+		return $query->row();
+	}
+
+	/*
+	* Return true if user has voted
+	*/
+	function hasVoted($report_id, $email) {
+		$this->db->where('report_id', $report_id);
+		$this->db->where('email', $email);
+		$num = $this->db->count_all_results($this->table['vote']);
+
+		return ($num > 0);
+	}
+
+	/*
+	* Return true if user is in inform
+	*/
+	function inInform($report_id, $email) {
+		$this->db->where('report_id', $report_id);
+		$this->db->where('email', $email);
+		$num = $this->db->count_all_results($this->table['inform']);
+
+		return ($num > 0);
 	}
 }
