@@ -6,7 +6,7 @@ class Auth extends CI_Controller {
 		$this->load-model('auth_model', 'auth');
 		$email = $this->auth->isLoggedIn();
 
-		if($email) {
+		if(!$email) {
 			if(!isset($_POST)) {
 				$data['page_name'] = 'Register | RocReport'
 
