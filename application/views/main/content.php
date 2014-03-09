@@ -88,9 +88,10 @@
 			function fetch_reports(latitude, longitude) {
 				var params = {'latitude': latitude, 'longitude': longitude, 'radius': 10000};
 				$.post('<?=base_url(); ?>/api/report/fetch_nearby/', params, function(data) {
-					
+					console.log(data);
 					if(data.status) {
 						for (var i = data.data.length - 1; i >= 0; i--) {
+							console.log(i);
 							var latitude = parseFloat(data.data[i]['latitude']);
 							var longitude = parseFloat(data.data[i]['longitude']);
 							var location = new google.maps.LatLng(latitude, longitude);
