@@ -25,12 +25,12 @@
 				$('#map-canvas').height(height);
 
 
-				var stylesArray = [
-								stylers: [
+				var styles = [
+								{stylers: [
 										{ hue: '#CDCDCD' },
 										{ saturation: 60 },
 										{ lightness: -20 },
-									]
+									]}
 							];
 
 				var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
