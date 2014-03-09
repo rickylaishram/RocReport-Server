@@ -4,6 +4,7 @@ Required parameters are in bold
 
 All responses are in JSON.
 
+---
 #### Register
 
 __POST /api/auth/register/__
@@ -15,7 +16,7 @@ __email__		| Email of the user
 __password__	| Password of the user
 __name__ 		| The username
 
-
+---
 #### Login
 
 __POST /api/auth/login/__
@@ -26,7 +27,7 @@ __id__			| The client id
 __email__ 		| The user email
 __password__ 	| The user password
 
-
+---
 #### Add Report
 
 __Requires Authentication__
@@ -49,7 +50,7 @@ __description__			| Report description
 __picture__				| Link to photo
 __novote__				| If set to false, server will return nearby reports instead of adding new one
 
-
+---
 #### Fetch Reports By Me
 
 __Requires Authentication__
@@ -62,7 +63,7 @@ __id__					| The client id
 __token__ 				| The authentication token
 orderby					| Order by score or new. Defaults to score.
 
-
+---
 #### Fetch Reports In Area
 
 __POST /api/report/fetch/__
@@ -77,7 +78,7 @@ __name__				| Area name
 offset					| Defaults to 0
 limit					| Defaults to 0. Maximum is 100.
 
-
+---
 #### Add vote
 
 __Requires Authentication__
@@ -90,7 +91,7 @@ __id__					| The client id
 __token__ 				| The authentication token
 __report__				| The report id
 
-
+---
 #### Add to watch list
 
 __Requires Authentication__
@@ -103,7 +104,7 @@ __id__					| The client id
 __token__ 				| The authentication token
 __report__				| The report id
 
-
+---
 #### Upload Image
 
 __Requires Authentication__
