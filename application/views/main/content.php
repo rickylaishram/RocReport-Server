@@ -26,9 +26,19 @@
 
 
 				var styles = [
-								{stylers: [
+								{
+									stylers: [
 										{ saturation: -80 },
-									]}
+									]
+								},
+								{
+									featureType: "road.arterial",
+									elementType: "geometry",
+									stylers: [
+										{ hue: "#4D4D4D" },
+										{ saturation: 50 }
+									]
+								},
 							];
 
 				var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
