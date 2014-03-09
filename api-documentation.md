@@ -1,7 +1,7 @@
 ## API Documentation
 
 #### Register
-*POST /api/auth/register/*
+__POST /api/auth/register/__
 
 Parameter 	| Description
 ------------|---------------------
