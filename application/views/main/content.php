@@ -61,8 +61,8 @@
 			}
 			google.maps.event.addDomListener(window, 'load', initialize);
 
-			
-			$(windows).load(function(){
+
+			$(window).load(function(){
 				navigator.geolocation.getCurrentPosition(update_map);
 			});
 
