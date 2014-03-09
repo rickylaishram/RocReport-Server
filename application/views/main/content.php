@@ -18,14 +18,35 @@
 		<script type="text/javascript">
 			function initialize() {
 				// Set map-canvas height
-				$('#map-canvas').height($(window).height() - 80);
+				var height = $(window).height() - 80;
+				if(height < 200) {
+					height = 200;
+				}
+				$('#map-canvas').height(height);
+
+
+				var stylesArray = [
+								stylers: [
+										{ hue: '#CDCDCD' },
+										{ saturation: 60 },
+										{ lightness: -20 },
+									]
+							];
+
+				var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
 
 				var mapOptions = {
 					center: new google.maps.LatLng(-34.397, 150.644),
-					zoom: 8
+					zoom: 8,
+					mapTypeControlOptions: {
+						mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+					},
 				};
 				var map = new google.maps.Map(document.getElementById("map-canvas"),
 						mapOptions);
+
+				map.mapTypes.set('map_style', styledMap);
+				map.setMapTypeId('map_style');
 			}
 			google.maps.event.addDomListener(window, 'load', initialize);
 		</script>
