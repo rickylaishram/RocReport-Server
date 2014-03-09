@@ -76,11 +76,11 @@ class Report_model extends CI_Model {
 	/*
 	* Fetch all reports by areatype
 	*/
-	function fetch_by_area($email, $areatype, $name, $offset, $limit, $orderby) {
-		$this->db->where($areatype, $name);
-		if($type == 'score') {
+	function fetch_by_area($email, $areatype, $areaname, $offset, $limit, $orderby) {
+		$this->db->where($areatype, $areaname);
+		if($orderby == 'score') {
 			$this->db->order_by('score', 'DESC');
-		} else if($type == 'new') {
+		} else if($orderby == 'new') {
 			$this->db->order_by('added_at', 'ASC');
 		}
 		$query = $this->db->get($this->table['report'], $limit, $offset);
@@ -105,9 +105,9 @@ class Report_model extends CI_Model {
 	*/
 	function fetch_by_sublocality($email, $name, $offset, $limit, $orderby) {
 		$this->db->where('sublocality', $name);
-		if($type == 'score') {
+		if($orderby == 'score') {
 			$this->db->order_by('score', 'DESC');
-		} else if($type == 'new') {
+		} else if($orderby == 'new') {
 			$this->db->order_by('added_at', 'ASC');
 		}
 		$query = $this->db->get($this->table['report'], $limit, $offset);
@@ -132,9 +132,9 @@ class Report_model extends CI_Model {
 	*/
 	function fetch_by_area_level_1($email, $name, $offset, $limit, $orderby) {
 		$this->db->where('admin_area_level_1', $name);
-		if($type == 'score') {
+		if($orderby == 'score') {
 			$this->db->order_by('score', 'DESC');
-		} else if($type == 'new') {
+		} else if($orderby == 'new') {
 			$this->db->order_by('added_at', 'ASC');
 		}
 		$query = $this->db->get($this->table['report'], $limit, $offset);
@@ -159,9 +159,9 @@ class Report_model extends CI_Model {
 	*/
 	function fetch_by_area_level_2($email, $name, $offset, $limit, $orderby) {
 		$this->db->where('admin_area_level_2', $name);
-		if($type == 'score') {
+		if($orderby == 'score') {
 			$this->db->order_by('score', 'DESC');
-		} else if($type == 'new') {
+		} else if($orderby == 'new') {
 			$this->db->order_by('added_at', 'ASC');
 		}
 		$query = $this->db->get($this->table['report'], $limit, $offset);
@@ -186,9 +186,9 @@ class Report_model extends CI_Model {
 	*/
 	function fetch_by_country($email, $name, $offset, $limit, $orderby) {
 		$this->db->where('country', $name);
-		if($type == 'score') {
+		if($orderby == 'score') {
 			$this->db->order_by('score', 'DESC');
-		} else if($type == 'new') {
+		} else if($orderby == 'new') {
 			$this->db->order_by('added_at', 'ASC');
 		}
 		$query = $this->db->get($this->table['report'], $limit, $offset);
