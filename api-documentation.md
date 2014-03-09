@@ -1,9 +1,7 @@
 ## API Documentation
 
-#### Authentications
-
-###### Register
-POST /api/auth/register/
+#### Register
+_POST /api/auth/register/_
 
 Parameter 	| Description
 ------------|---------------------
