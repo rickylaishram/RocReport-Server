@@ -67,10 +67,11 @@ class Auth_model extends CI_Model {
 	*/
 	function isLoggedIn() {
 		$browser = $this->config->item('browser');
-		$cookie = $this->input->cookie('rocreport_auth', true);
+		$cookie = $this->input->cookie($browser['cookie']['auth'], true);
 
 		if($cookie) {
 			$token = $cookie['value'];
+			var_dump($token);
 			$email = $this->getEmail($browser['id'], $token);
 			if($email) {
 				return $email;
