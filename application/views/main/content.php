@@ -2,12 +2,12 @@
 
 			<div class="row">
 				
-				<div class="col-md-9">
-					<div id="map-canvas"></div>
-				</div>
-
 				<div class="col-md-3">
 				
+				</div>
+
+				<div class="col-md-12">
+					<div id="map-canvas"></div>
 				</div>
 
 			</div>
@@ -48,7 +48,7 @@
 
 				var mapOptions = {
 					center: new google.maps.LatLng(47.397, 78.644), // random default value
-					zoom: 8,
+					zoom: 12,
 					mapTypeControlOptions: {
 						mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
 					},

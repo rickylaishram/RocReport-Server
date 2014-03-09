@@ -254,6 +254,7 @@ class Api extends CI_Controller {
 
 			$email = $this->auth->getEmail($client, $token);
 			if($email) {
+				
 				$categories = $this->config->item('category');
 				
 				if(in_array($category, $categories)) {
