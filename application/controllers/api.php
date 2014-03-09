@@ -70,7 +70,7 @@ class Api extends CI_Controller {
 	* Fetch reports by area
 	* Does not require authentication
 	*/
-	function _report_by_area() {
+	function _reported_by_area() {
 		$client = $this->input->post('id', true);
 		$token = $this->input->post('token', true);
 		$areatype = $this->input->post('type', true);	// Required
