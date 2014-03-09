@@ -66,7 +66,7 @@ class Api extends CI_Controller {
 	function _vote() {
 		$client = $this->input->post('id', true);			// Required
 		$token = $this->input->post('token', true);			// Required
-		$report = $this->input->post('token', true);
+		$report = $this->input->post('report', true);
 		$this->load->model('auth_model', 'auth');
 		$email = $this->auth->getEmail($client, $token);
 
@@ -89,7 +89,7 @@ class Api extends CI_Controller {
 	function _watch() {
 		$client = $this->input->post('id', true);			// Required
 		$token = $this->input->post('token', true);			// Required
-		$report = $this->input->post('token', true);
+		$report = $this->input->post('report', true);
 		$this->load->model('auth_model', 'auth');
 		$email = $this->auth->getEmail($client, $token);
 
