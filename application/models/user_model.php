@@ -12,7 +12,6 @@ class User_model extends CI_Model {
 	*/
 
 	function add($email, $hashedpassword, $salt, $name) {
-
 		$data = array(
 				'email' => $email,
 				'password' => $hashedpassword,

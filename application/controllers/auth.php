@@ -12,7 +12,34 @@ class Auth extends CI_Controller {
 			$pass = $this->input->post('pass', true);
 			
 			if($name && $email && $pass) {
-				var_dump($_POST);
+				$this->load->model('user_model', 'user');
+
+				if(!$this->user->exist($email)) {
+					$browser = $this->config->item('browser');
+
+					$this->load->model('auth_model', 'auth');
+
+					// Add user
+					$salt = $this->auth->generateSalt();
+					$hashedpassword = $this->auth->hash($pass, $salt);
+					$this->user->add($email, $hashedpassword, $salt, $name);
+
+					// Login
+					$token = $this->auth->generateToken($email, $browser['id']);
+					$cookie = array(
+								'name'   => $browser['cookie']['auth'],
+								'value'  => $token,
+								'expire' => '86500',
+								'domain' => base_url(),
+								'path'   => '/',
+								'prefix' => 'rr_',
+								'secure' => TRUE
+							);
+
+					$this->input->set_cookie($cookie);
+
+					header('Location: '.base_url());
+				}
 			} else {
 				$data['page_name'] = 'Register | RocReport';
 
