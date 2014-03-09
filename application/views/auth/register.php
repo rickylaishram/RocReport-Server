@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
 	<form class="form-signin" role="form">
 		<h2 class="form-signin-heading">Register</h2>
 		<div id="message"></div>
