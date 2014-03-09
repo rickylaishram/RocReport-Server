@@ -7,14 +7,18 @@ class Auth extends CI_Controller {
 		$email = $this->auth->isLoggedIn();
 
 		if(!$email) {
-			if(!isset($_POST)) {
+			$name = $this->input->post('name', true);
+			$email = $this->input->post('email', true);
+			$pass = $this->input->post('pass', true);
+			
+			if($name && $email && $pass) {
+				
+			} else {
 				$data['page_name'] = 'Register | RocReport'
 
 				$this->load->view('app/header', $data);
 				$this->load->view('auth/register', $data);
 				$this->load->view('app/footer', $data);
-			} else {
-
 			}
 		} else {
 			header('Location: '.base_url());
