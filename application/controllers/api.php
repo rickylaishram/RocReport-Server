@@ -68,10 +68,11 @@ class Api extends CI_Controller {
 		$this->load->library('upload', $config);
 
 		if ( ! $this->upload->do_upload()){
-			//$data = array();
-			$this->_response_success(array());
+			$error = array('error' => $this->upload->display_errors());
+			$this->_response_success($error);
 		} else {
-			$this->_response_error(7);
+			$data = array('upload_data' => $this->upload->data());
+			$this->_response_success($data);
 		}
 	}
 
