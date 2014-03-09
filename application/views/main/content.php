@@ -27,12 +27,13 @@
 
 				var styles = [
 								{
+									featureType: "all",
 									stylers: [
 										{ saturation: -80 },
 									]
 								},
 								{
-									featureType: "road.arterial",
+									featureType: "road",
 									elementType: "geometry",
 									stylers: [
 										{ hue: "#00ffee" },
