@@ -45,7 +45,7 @@ class Api extends CI_Controller {
 	function image($path="") {
 		switch ($path) {
 			case 'add':
-				# code...
+				$this->_image_add();
 				break;
 			
 			default:
