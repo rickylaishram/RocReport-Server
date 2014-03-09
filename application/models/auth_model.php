@@ -67,13 +67,9 @@ class Auth_model extends CI_Model {
 	*/
 	function isLoggedIn() {
 		$browser = $this->config->item('browser');
-		$cookie = $this->input->cookie($browser['cookie']['auth'], true);
+		$token = $this->session->set_userdata($browser['cookie']['auth']);
 
-		var_dump($cookie);
-
-		if($cookie) {
-			$token = $cookie['value'];
-			var_dump($token);
+		if($token) {
 			$email = $this->getEmail($browser['id'], $token);
 			if($email) {
 				return $email;

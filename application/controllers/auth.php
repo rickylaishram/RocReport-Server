@@ -26,16 +26,9 @@ class Auth extends CI_Controller {
 
 					// Login
 					$token = $this->auth->generateToken($email, $browser['id']);
-					$cookie = array(
-								'name'   => $browser['cookie']['auth'],
-								'value'  => $token,
-								'expire' => '86500',
-								'secure' => TRUE
-							);
-
-					$this->input->set_cookie($cookie);
-					var_dump($cookie);
-					//header('Location: '.base_url());
+					$this->session->set_userdata($browser['cookie']['auth'], $token);
+					
+					header('Location: '.base_url());
 				}
 			} else {
 				$data['page_title'] = 'Register | RocReport';
