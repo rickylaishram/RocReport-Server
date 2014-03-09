@@ -25,3 +25,9 @@
 	define('RR_DB_NAME', '');
 	define('RR_DB_DRIVER', '');
 	define('RR_DB_PREFIX', '');
+
+	/*
+	* Browser
+	*/
+	define('RR_BROWSER_TOKEN', '');
+	define('RR_BROWSER_COOKIE_AUTH', '');

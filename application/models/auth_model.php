@@ -54,4 +54,31 @@ class Auth_model extends CI_Model {
 			return false;
 		}
 	}
+
+	/*
+	* ---------------------------------------------
+	* Internal functions (Not to be used with APIs)
+	* ---------------------------------------------
+	*/
+
+	/* 
+	* Checks is user logged in
+	* Return false if not; email if logged in
+	*/
+	function isLoggedIn() {
+		$browser = $this->config->item('browser');
+		$cookie = $this->input->cookie('rocreport_auth', true);
+
+		if($cookie) {
+			$token = $cookie['value'];
+			$email = $this->getEmail($browser['id'], $token);
+			if($email) {
+				return $email;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
 }
