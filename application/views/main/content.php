@@ -73,7 +73,7 @@
 				var location = new google.maps.LatLng(latitude, longitude);
 				map.panTo(location);
 
-				fetch_nearby(latitude, longitude);
+				fetch_reports(latitude, longitude);
 			}
 
 			function fetch_reports(latitude, longitude) {
