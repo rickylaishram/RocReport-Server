@@ -69,8 +69,6 @@ class Auth_model extends CI_Model {
 		$browser = $this->config->item('browser');
 		$token = $this->session->userdata($browser['cookie']['auth']);
 
-		var_dump($token);
-
 		if($token) {
 			$email = $this->getEmail($browser['id'], $token);
 			if($email) {
