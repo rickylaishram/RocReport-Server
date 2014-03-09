@@ -27,16 +27,206 @@ class Api extends CI_Controller {
 			case 'add':
 				$this->_add_report();
 				break;
-			
+			case 'fetch_mine':
+				$this->_reported_by_me();
+				break;
+			case 'fetch':
+				$this->_reported_by_area();
+				break;
+			case 'vote':
+				$this->_vote();
+				break;
+			case 'watch':
+				$this->_watch();
+				break;
 			default:
 				$this->_response_error(6);
 				break;
 		}
 	}
 
+	/*
+	* Handles image related stuff
+	*/
+	function image($path="") {
+		switch ($path) {
+			case 'add':
+				$this->_image_add();
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+	}
+
+	/*
+	* Vote for a report
+	*/
+	function _vote() {
+		$client = $this->input->post('id', true);			// Required
+		$token = $this->input->post('token', true);			// Required
+		$report = $this->input->post('report', true);
+		
+		$this->load->model('auth_model', 'auth');
+		$email = $this->auth->getEmail($client, $token);
+
+		if($email && $report) {
+			$this->load->model('report_model', 'report');
+			$statis = $this->report->vote($email, $report);
+
+			$this->_response_success(array());
+		} else if(!$email) {
+			$this->_response_error(7);
+		} else if(!$report) {
+			$this->_response_error(1);
+		}
+	}
+
+	/*
+	* Add use to watchlist for a report
+	*/
+
+	function _watch() {
+		$client = $this->input->post('id', true);			// Required
+		$token = $this->input->post('token', true);			// Required
+		$report = $this->input->post('report', true);
+		
+		$this->load->model('auth_model', 'auth');
+		$email = $this->auth->getEmail($client, $token);
+
+		if($email && $report) {
+			$this->load->model('report_model', 'report');
+			$statis = $this->report->watch($email, $report);
+
+			$this->_response_success(array());
+		} else if(!$email) {
+			$this->_response_error(7);
+		} else if(!$report) {
+			$this->_response_error(1);
+		}
+	}
+
+	/*
+	* Strore uploaded image
+	* Requires authentication
+	*/
+	function _image_add(){
+		$client = $this->input->post('id', true);			// Required
+		$token = $this->input->post('token', true);			// Required
+
+		$this->load->model('auth_model', 'auth');
+		$email = $this->auth->getEmail($client, $token);
+
+		if($email) {
+			$config['encrypt_name'] = true;
+			$config['upload_path'] = FCPATH.'static/images/';
+			$config['allowed_types'] = 'jpg|png';
+			$config['max_size']	= '500';
+			$config['max_width']  = '1600';
+			$config['max_height']  = '1600';
+
+			$this->load->library('upload', $config);
+
+			$fieldname = 'image';
+			if ( ! $this->upload->do_upload($fieldname)){
+				//$error = array('error' => $this->upload->display_errors());
+				$this->_response_error(10);
+			} else {
+				$this->load->model('image_model', 'image');
+				$upload_data = $this->upload->data();
+
+				$this->image->add($email, $client, $upload_data['file_name']);
+
+				$data = array('image_url' => base_url().'static/images/'.$upload_data['file_name']);
+				$this->_response_success($data);
+			}
+		} else {
+			$this->_response_error(7);
+		}
+	}
+
+	/*
+	* Fetch reports reported by me
+	* Requires authentication
+	*/
+	function _reported_by_me() {
+		$client = $this->input->post('id', true);			// Required
+		$token = $this->input->post('token', true);			// Required
+		$orderby = $this->input->post('orderby', true);
+
+		/* If order by is not set or invalid, default to score */
+		if(!$orderby || (($orderby != 'score') && ($orderby != 'new'))) {
+			$orderby = 'score';
+		}
+
+		$this->load->model('auth_model', 'auth');
+		$email = $this->auth->getEmail($client, $token);
+
+		if($email) {
+			$this->load->model('report_model', 'report');
+			$data = $this->report->fetch_by_user($email, 100, 0, $orderby);
+			$this->_response_success($data);
+		} else {
+			$this->_response_error(7);
+		}
+	}
+
+	/*
+	* Fetch reports by area
+	* Does not require authentication
+	*/
+	function _reported_by_area() {
+		$client = $this->input->post('id', true);
+		$token = $this->input->post('token', true);
+		$areatype = $this->input->post('type', true);	// Required
+		$areaname = $this->input->post('name', true);	// Required
+		$orderby = $this->input->post('orderby', true);
+		$offset = $this->input->post('offest', true);
+		$limit = $this->input->post('limit', true);
+
+		/* If order by is not set or invalid, default to score */
+		if(!$orderby || (($orderby != 'score') && ($orderby != 'new'))) {
+			$orderby = 'score';
+		}
+
+		// If offset if not set, set to 0
+		if(!$offset || !is_numeric($offset)) {
+			$offest = 0;
+		}
+
+		// If linit is not set or valid, set to 10
+		if(!$limit || !is_numeric($limit)) {
+			$limit = 10;
+		}
+
+		// If $limit is greather than 100, set to 100
+		if($limit > 100) {
+			$limit = 100;
+		}
+
+		$this->load->model('auth_model', 'auth');
+		$email = $this->auth->getEmail($client, $token);
+		$areatypes = $this->config->item('area_type');
+
+		if(in_array($areatype, $areatypes) && $areaname) {
+			$this->load->model('report_model', 'report');
+
+			$data = $this->report->fetch_by_area($email, $areatype, $areaname, $offset, $limit, $orderby);
+
+			$this->_response_success($data);
+		} else {
+			$this->_response_error(9);
+		}
+		
+	}
 
 	/*
 	* Add a new update
+	* If novote is false, check if there are reports within 100 meters,
+	* 	if yes, returns the list to confirm that it is not duplicate
+	* If novote is not false, this check is not performed.
+	* 	use this after user has confirmed that it is not a duplicate 
 	* Requires authentication
 	*/
 	function _add_report() {
@@ -59,22 +249,31 @@ class Api extends CI_Controller {
 			$this->load->model('auth_model', 'auth');
 			$this->load->model('report_model', 'report');
 
+			// Change $novote to boolean
+			$novote = ($novote === 'true');
+
 			$email = $this->auth->getEmail($client, $token);
 			if($email) {
-				$nearby = array();
+				$categories = $this->config->item('category');
+				
+				if(in_array($category, $categories)) {
+					$nearby = array();
 
-				// If novote is set to false; check if nearby reports exist
-				if($novote == 'false') {
-					$nearby = $this->report->selectNearby(floatval($latitude), floatval($longitude), 100, 5);
+					// If novote is set to false; check if nearby reports exist
+					if(!$novote) {
+						$nearby = $this->report->selectNearby(floatval($latitude), floatval($longitude), 100, 5);
+					}
+
+					// If nearby reports are found return them
+					if(count($nearby) == 0) {
+						$this->report->add($email, floatval($latitude), floatval($longitude), $formatted_address, $country, $admin_level_1, $admin_level_2, $sublocality, $category, $description, $picture) ;
+					}
+
+					$data = array('nearby' => count($nearby), 'details' => $nearby);
+					$this->_response_success($data);
+				} else {
+					$this->_response_error(8);
 				}
-
-				// If nearby reports are found return them
-				if(count($nearby) == 0) {
-					$this->report->add($email, floatval($latitude), floatval($longitude), $formatted_address, $country, $admin_level_1, $admin_level_2, $sublocality, $category, $description, $picture) ;
-				}
-
-				$data = array('nearby' => count($nearby), 'details' => $nearby);
-				$this->_response_success($data);
 			} else {
 				$this->_response_error(7);
 			}
@@ -193,6 +392,15 @@ class Api extends CI_Controller {
 				break;
 			case 7:
 				$data['data'] = array('reason' => 'Invalid token');
+				break;
+			case 8:
+				$data['data'] = array('reason' => 'Invalid category');
+				break;
+			case 9:
+				$data['data'] = array('reason' => 'Invalid area type');
+				break;
+			case 10:
+				$data['data'] = array('reason' => 'Image upload failed. Check file size.');
 				break;
 			default:
 				$data['data'] = array('reason' => 'Error');
