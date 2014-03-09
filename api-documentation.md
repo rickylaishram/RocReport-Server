@@ -79,6 +79,20 @@ offset					| Defaults to 0
 limit					| Defaults to 0. Maximum is 100.
 
 ---
+#### Fetch Nearby Reports
+
+__POST /api/report/report_nearby/__
+
+Parameter				| Description
+------------------------|------------------
+id						| The client id
+token 					| The authentication token
+__laititude__			| The latitude of your location
+__longitude__			| The longitude of your location
+__radius__				| Radius in meters
+limit					| Defaults to 10
+
+---
 #### Add vote
 
 __Requires Authentication__
