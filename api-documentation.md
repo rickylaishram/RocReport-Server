@@ -2,7 +2,7 @@
 
 #### Register
 
-_POST /api/auth/register/_
+__POST /api/auth/register/__
 
 Parameter 	| Description
 ------------|---------------------
