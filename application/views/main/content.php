@@ -78,7 +78,7 @@
 
 			function fetch_reports(latitude, longitude) {
 				var params = {'latitude': latitude, 'longitude': longitude, 'radius': 10};
-				$.post('/api/report/fetch_nearby/', params, function(data) {
+				$.post('<?=base_url(); ?>/api/report/fetch_nearby/', params, function(data) {
 					console.log(data);
 				});
 			}
