@@ -34,11 +34,11 @@ class Auth extends CI_Controller {
 							);
 
 					$this->input->set_cookie($cookie);
-
-					header('Location: '.base_url());
+					var_dump($cookie);
+					//header('Location: '.base_url());
 				}
 			} else {
-				$data['page_name'] = 'Register | RocReport';
+				$data['page_title'] = 'Register | RocReport';
 
 				$this->load->view('app/header', $data);
 				$this->load->view('auth/register', $data);
