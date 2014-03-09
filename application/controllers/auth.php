@@ -14,7 +14,7 @@ class Auth extends CI_Controller {
 			if($name && $email && $pass) {
 				var_dump($_POST);
 			} else {
-				$data['page_name'] = 'Register | RocReport'
+				$data['page_name'] = 'Register | RocReport';
 
 				$this->load->view('app/header', $data);
 				$this->load->view('auth/register', $data);
