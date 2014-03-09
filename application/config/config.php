@@ -358,8 +358,9 @@ $config['rewrite_short_tags'] = FALSE;
 $config['proxy_ips'] = '';
 
 /*
-* Tables
-*
+|--------------------------------------------------------------------------
+| Database Tables
+|--------------------------------------------------------------------------
 */
 $config['table']['client'] = RR_TABLE_CLIENT;
 $config['table']['user'] = RR_TABLE_USER;
@@ -368,6 +369,26 @@ $config['table']['report'] = RR_TABLE_REPORT;
 $config['table']['update'] = RR_TABLE_UPDATE;
 $config['table']['inform'] = RR_TABLE_INFORM;
 $config['table']['vote'] = RR_TABLE_VOTE;
+
+/*
+|--------------------------------------------------------------------------
+| Categories
+|--------------------------------------------------------------------------
+| These are the report categories allowed
+|
+*/
+
+$config['category'] = array('test', 'broken lamp', 'pothole', 'graffiti');
+
+/*
+|--------------------------------------------------------------------------
+| Area types
+|--------------------------------------------------------------------------
+| These are the area types allowed
+|
+*/
+
+$config['area_type'] = array('admin_area_level_1', 'admin_area_level_2', 'sublocality');
 
 
 /* End of file config.php */
