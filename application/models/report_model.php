@@ -20,6 +20,8 @@ class Report_model extends CI_Model {
 
 		$query = $this->db->query($sql, array($latitude, $longitude, $latitude, $distance, $orderby, $offset, $limit));
 		
+		var_dump($query->result());
+
 		$result = array();
 
 		foreach ($query->result_array() as $report) {
