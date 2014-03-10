@@ -2,16 +2,20 @@
 
 			<div class="row">
 				
-				<div class="col-md-3" id="reports-list-container">
+				<div class="col-md-3">
+					
+					<ul class="nav nav-pills nav-justified">
+						<li class="btnSelector active" data-type="score"><a href="#">Important</a></li>
+						<li class="btnSelector" data-type="new"><a href="#">New</a></li>
+					</ul>
+
 					<div class="list-group" id="reports-list">
-						
 					</div>
 				</div>
 
-				<div class="col-md-9">
+				<div class="col-md-9 .hidden-phone">
 					<div id="map-canvas"></div>
 				</div>
-
 			</div>
 
 		</div> <!-- /container -->
@@ -68,6 +72,21 @@
 
 			$(window).load(function(){
 				navigator.geolocation.getCurrentPosition(update_map);
+				left_col_height();
+
+				$(".btnSelector").click(function(){
+					$(".btnSelector active").removeClass("active");
+					$(this).addClass("active");
+
+					var type = $(this).data("type");
+
+					var bounds = map.getBounds();
+
+					var location1 = bounds.getCenter();
+					var location2 = bounds.getNorthEast();
+
+					fetch_reports(location1.d, location1.e, calculateRadius(location1, location2)/2, type);
+				});
 			});
 
 			function addMarker(location) {
@@ -75,7 +94,28 @@
 					position: location,
 					map: map
 				});
-				marker.setMap(map);
+				markers.push(marker);
+			}
+
+			function clearMarkers() {
+				setAllMap(null);
+			}
+
+			// Shows any markers currently in the array.
+			function showMarkers() {
+				setAllMap(map);
+			}
+
+			// Deletes all markers in the array by removing references to them.
+			function deleteMarkers() {
+				clearMarkers();
+				markers = [];
+			}
+
+			function setAllMap(map) {
+				for (var i = 0; i < markers.length; i++) {
+					markers[i].setMap(map);
+				}
 			}
 
 			function update_map(position) {
@@ -85,16 +125,21 @@
 				var location = new google.maps.LatLng(latitude, longitude);
 				map.panTo(location);
 
-				fetch_reports(latitude, longitude);
+				var bounds = map.getBounds();
+
+				var location1 = bounds.getCenter();
+				var location2 = bounds.getNorthEast();
+
+				fetch_reports(latitude, longitude, calculateRadius(location1, location2)/2, 'score');
 			}
 
-			function fetch_reports(latitude, longitude) {
-				var params = {'latitude': latitude, 'longitude': longitude, 'radius': 10000};
+			function fetch_reports(latitude, longitude, radius, type) {
+				var params = {'latitude': latitude, 'longitude': longitude, 'radius': radius, 'type': type};
 				$.post('<?=base_url(); ?>/api/report/fetch_nearby/', params, function(data) {
 					data = JSON.parse(data);
 					reports = data.data;
+					deleteMarkers();
 					if( data.status ) {
-						console.log(data.status);
 						for (var i = data.data.length - 1; i >= 0; i--) {
 							var id = data.data[i]['report_id'];
 							var category = data.data[i]['category'];
@@ -106,7 +151,8 @@
 							addMarker(location);
 
 							$('#reports-list').append(generateListItem(category, address));
-						};
+						}
+						setAllMap(map);
 					}
 				});
 			}
@@ -114,5 +160,33 @@
 			function generateListItem(category, address, id) {
 				var item ='<a href="#" class="list-group-item report-item" data-id="'+id+'"><h4 class="list-group-item-heading">'+category+'</h4><p class="list-group-item-text">'+address+'</p></a>';
 				return item;
+			}
+
+			function left_col_height() {
+				var height = $(window).height() - 120;
+				$('#reports-list').height(height);
+				$('#reports-list').css({overflow-y: scroll});
+			}
+
+			function calculateRadius(location1, location2) {
+				var lat1 = radian(location1.d); 
+				var lon1 = radian(location1.e); 
+				var lat2 = radian(location2.d); 
+				var lon2 = radian(location2.e); 
+
+				var R = 6371000; // in meters
+
+				var dLat = (lat2-lat1);
+				var dLon = (lon2-lon1);
+
+				var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
+				var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+				var d = R * c; 
+
+				return d;
+			}
+
+			function radian(val) {
+				return val*Math.PI/180;
 			}
 		</script>

@@ -9,12 +9,17 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Project name</a>
+					<a class="navbar-brand" href="#">RocReport</a>
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#about">About</a></li>
+						<li class="active"><a href="<?=base_url(); ?>">Home</a></li>
+
+						<?php if($loggedin): ?>
+							<li><a href="<?=base_url(); ?>report/add/">Report Issue</a></li>
+							<li><a href="<?=base_url(); ?>report/my/">My Issues</a></li>
+						<?php endif; ?>
+
 						<li><a href="#contact">Contact</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
