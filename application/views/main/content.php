@@ -140,7 +140,7 @@
 					reports = data.data;
 					
 					deleteMarkers();
-					$('#reports-list').html();
+					$('#reports-list').html("");
 
 					if( data.status ) {
 						for (var i = data.data.length - 1; i >= 0; i--) {
