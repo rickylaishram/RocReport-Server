@@ -144,7 +144,7 @@ class Api extends CI_Controller {
 
 		if($latitude && $longitude && $radius) {
 			$this->load->model('report_model', 'report');
-			$data = $this->report->selectNearby(floatval($latitude), floatval($longitude), intval($radius), intval($offset), intval($limit), $orderby);
+			$data = $this->report->selectNearby($email, floatval($latitude), floatval($longitude), intval($radius), intval($offset), intval($limit), $orderby);
 			$this->_response_success($data);
 		} else {
 			$this->_response_error(1);
