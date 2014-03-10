@@ -13,7 +13,7 @@
 					</div>
 				</div>
 
-				<div class="col-md-9 .hidden-phone">
+				<div class="col-md-9">
 					<div id="map-canvas"></div>
 				</div>
 			</div>
