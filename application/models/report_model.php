@@ -16,9 +16,9 @@ class Report_model extends CI_Model {
 	function selectNearby($email, $latitude, $longitude, $distance, $offset, $limit, $orderby) {
 		// Query based on Havebrsine's formula (in meter)
 		// Based on https://developers.google.com/maps/articles/phpsqlsearch_v3
-		$sql = "SELECT *, ( 6371000 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance FROM ".$this->table['report']." HAVING distance < ? ORDER BY ? DESC LIMIT ? , ?";
+		$sql = "SELECT *, ( 6371000 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance FROM ".$this->table['report']." HAVING distance < ? ORDER BY score DESC LIMIT ? , ?";
 
-		$query = $this->db->query($sql, array($latitude, $longitude, $latitude, $distance, $orderby, $offset, $limit));
+		$query = $this->db->query($sql, array($latitude, $longitude, $latitude, $distance, $offset, $limit));
 		
 		var_dump($query->result());
 
