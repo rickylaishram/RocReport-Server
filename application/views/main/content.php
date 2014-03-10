@@ -4,7 +4,7 @@
 				
 				<div class="col-md-3">
 					
-					<ul class="nav nav-pills nav-justified">
+					<ul class="nav nav-pills nav-justified repSelector">
 						<li class="btnSelector active" data-type="score"><a href="#">Important</a></li>
 						<li class="btnSelector" data-type="new"><a href="#">New</a></li>
 					</ul>
@@ -75,7 +75,7 @@
 				left_col_height();
 
 				$(".btnSelector").click(function(){
-					$(".btnSelector active").removeClass("active");
+					$(".btnSelector.active").removeClass("active");
 					$(this).addClass("active");
 
 					var type = $(this).data("type");
@@ -138,7 +138,10 @@
 				$.post('<?=base_url(); ?>/api/report/fetch_nearby/', params, function(data) {
 					data = JSON.parse(data);
 					reports = data.data;
+					
 					deleteMarkers();
+					$('#reports-list').html();
+
 					if( data.status ) {
 						for (var i = data.data.length - 1; i >= 0; i--) {
 							var id = data.data[i]['report_id'];
@@ -163,7 +166,7 @@
 			}
 
 			function left_col_height() {
-				var height = $(window).height() - 120;
+				var height = $(window).height() - 135;
 				$('#reports-list').height(height);
 				$('#reports-list').css({'overflow-y': 'scroll'});
 			}
