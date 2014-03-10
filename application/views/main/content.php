@@ -1,7 +1,11 @@
 		<div class="container-fluid">
 
 			<div class="row">
-				
+
+				<div class="col-md-9">
+					<div id="map-canvas"></div>
+				</div>
+
 				<div class="col-md-3">
 					
 					<ul class="nav nav-pills nav-justified repSelector">
@@ -12,10 +16,7 @@
 					<div class="list-group" id="reports-list">
 					</div>
 				</div>
-
-				<div class="col-md-9">
-					<div id="map-canvas"></div>
-				</div>
+				
 			</div>
 
 		</div> <!-- /container -->
@@ -166,9 +167,9 @@
 			}
 
 			function left_col_height() {
-				//var height = $(window).height() - 135;
-				//$('#reports-list').height(height);
-				//$('#reports-list').css({'overflow-y': 'scroll'});
+				var height = $(window).height() - 135;
+				$('#reports-list').height(height);
+				$('#reports-list').css({'overflow-y': 'scroll'});
 			}
 
 			function calculateRadius(location1, location2) {
