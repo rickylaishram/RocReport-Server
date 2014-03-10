@@ -122,6 +122,7 @@ class Api extends CI_Controller {
 		$longitude = $this->input->post('longitude', true);	// Required
 		$radius = $this->input->post('radius', true); // Required
 		$limit = $this->input->post('limit', true); 
+		$offset = $this->input->post('offset', true);
 
 		/* If order by is not set or invalid, default to score */
 		if(!$orderby || (($orderby != 'score') && ($orderby != 'new'))) {
@@ -133,12 +134,17 @@ class Api extends CI_Controller {
 			$limit = 10;
 		}
 
+		/* If limit is not defined, set to 10 */
+		if(!$offset || !is_numeric($offset)) {
+			$offset = 10;
+		}
+
 		$this->load->model('auth_model', 'auth');
 		$email = $this->auth->getEmail($client, $token);
 
 		if($latitude && $longitude && $radius) {
 			$this->load->model('report_model', 'report');
-			$data = $this->report->selectNearby($latitude, $longitude, $radius, $limit);
+			$data = $this->report->selectNearby($latitude, $longitude, $radius, $offset, $limit, $orderby);
 			$this->_response_success($data);
 		} else {
 			$this->_response_error(1);

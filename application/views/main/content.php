@@ -134,7 +134,7 @@
 			}
 
 			function fetch_reports(latitude, longitude, radius, type) {
-				var params = {'latitude': latitude, 'longitude': longitude, 'radius': radius, 'type': type};
+				var params = {'latitude': latitude, 'longitude': longitude, 'radius': radius, 'orderby': type};
 				$.post('<?=base_url(); ?>/api/report/fetch_nearby/', params, function(data) {
 					data = JSON.parse(data);
 					reports = data.data;
@@ -143,7 +143,7 @@
 					$('#reports-list').html("");
 
 					if( data.status ) {
-						for (var i = data.data.length - 1; i >= 0; i--) {
+						for (var i = 0; i < data.data.length; i++) {
 							var id = data.data[i]['report_id'];
 							var category = data.data[i]['category'];
 							var address = data.data[i]['formatted_address'];
