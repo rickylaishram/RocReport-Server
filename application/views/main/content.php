@@ -166,9 +166,9 @@
 			}
 
 			function left_col_height() {
-				var height = $(window).height() - 135;
-				$('#reports-list').height(height);
-				$('#reports-list').css({'overflow-y': 'scroll'});
+				//var height = $(window).height() - 135;
+				//$('#reports-list').height(height);
+				//$('#reports-list').css({'overflow-y': 'scroll'});
 			}
 
 			function calculateRadius(location1, location2) {
