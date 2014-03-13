@@ -91,6 +91,8 @@ __laititude__			| The latitude of your location
 __longitude__			| The longitude of your location
 __radius__				| Radius in meters
 limit					| Defaults to 10
+offset					| Defaults to 0
+orderby					| score or new
 
 ---
 #### Add vote

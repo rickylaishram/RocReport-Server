@@ -16,7 +16,7 @@
 					<div class="list-group" id="reports-list">
 					</div>
 				</div>
-				
+
 			</div>
 
 		</div> <!-- /container -->
@@ -34,7 +34,6 @@
 					height = 200;
 				}
 				$('#map-canvas').height(height);
-
 
 				var styles = [
 								{
