@@ -80,4 +80,45 @@ class Auth_model extends CI_Model {
 			return false;
 		}
 	}
+
+	/*
+	* Check if the user is an admin in the area
+	*
+	* Heirarchy:
+	*	$country
+	*	$admin_level_2
+	*	$admin_level_1
+	*	$sublocality
+	*
+	* User who is admin in higher level gains admin rights to lower level
+	* 
+	* Example:
+	* To check if user is an admin in ANY sublocality under "admin_level_2", "admin_level_1", "country"
+	* The function will be called as isAdmin(null, "admin_level_2", "admin_level_1", "country")
+	* Likewise for higher levels.
+	*/
+	function isAdmin($sublocality, $admin_level_2, $admin_level_1, $country) {
+		$email = $this->isLoggedIn();
+		if($email) {
+			$this->db0>select('*');
+			if(!is_null($sublocality)) {
+				$this->db->where('sublocality', $sublocality)
+			}
+			if(!is_null($admin_level_2)) {
+				$this->db->where('admin_level_2', $admin_level_2);
+			}
+			if(!is_null($admin_level_1)) {
+				$this->db->where('admin_level_1', $admin_level_1);
+			}
+			if(!is_null($country)) {
+				$this->db->where('country', $country);
+			}
+			$this->db->where('email', $email);
+			$count = $this->db->count_all_results($this->table['admin']);
+
+			return ($count == 1) ? true : false;
+		} else {
+			return false;
+		}
+	}
 }
