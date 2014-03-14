@@ -136,7 +136,7 @@
 			function fetch_reports(latitude, longitude, radius, type) {
 				var params = {'latitude': latitude, 'longitude': longitude, 'radius': radius, 'orderby': type};
 				console.log(params);
-				$.post('<?=base_url(); ?>/api/report/fetch_nearby/', params, function(data) {
+				$.post('<?=base_url(); ?>api/report/fetch_nearby/', params, function(data) {
 					data = JSON.parse(data);
 					reports = data.data;
 					
