@@ -173,10 +173,10 @@
 			}
 
 			function calculateRadius(location1, location2) {
-				var lat1 = radian(location1.d); 
-				var lon1 = radian(location1.e); 
-				var lat2 = radian(location2.d); 
-				var lon2 = radian(location2.e); 
+				var lat1 = radian(location1.lat()); 
+				var lon1 = radian(location1.lng()); 
+				var lat2 = radian(location2.lat()); 
+				var lon2 = radian(location2.lng()); 
 
 				var R = 6371000; // in meters
 
@@ -186,7 +186,7 @@
 				var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
 				var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
 				var d = R * c; 
-				console.log(d);
+
 				return d;
 			}
 
