@@ -6,6 +6,7 @@ class Main extends CI_Controller {
 		$this->load->model('auth_model', 'auth');
 		
 		$data['page_title'] = 'RocReport';
+		$data['page_id'] = 0;
 		$data['is_logged_in'] = $this->auth->isLoggedIn();
 		$data['is_admin'] = $this->auth->isAdmin(null, null, null, null);
 		$data['is_super_admin'] = $this->auth->isSuperAdmin();
