@@ -102,7 +102,7 @@ class Auth_model extends CI_Model {
 		if($email) {
 			$this->db0>select('*');
 			if(!is_null($sublocality)) {
-				$this->db->where('sublocality', $sublocality)
+				$this->db->where('sublocality', $sublocality);
 			}
 			if(!is_null($admin_level_2)) {
 				$this->db->where('admin_level_2', $admin_level_2);
