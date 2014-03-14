@@ -135,6 +135,7 @@
 
 			function fetch_reports(latitude, longitude, radius, type) {
 				var params = {'latitude': latitude, 'longitude': longitude, 'radius': radius, 'orderby': type};
+				console.log(params);
 				$.post('<?=base_url(); ?>/api/report/fetch_nearby/', params, function(data) {
 					data = JSON.parse(data);
 					reports = data.data;
@@ -185,7 +186,7 @@
 				var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
 				var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
 				var d = R * c; 
-
+				console.log(d);
 				return d;
 			}
 
