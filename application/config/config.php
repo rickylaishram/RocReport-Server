@@ -106,7 +106,7 @@ $config['enable_hooks'] = FALSE;
 | http://codeigniter.com/user_guide/general/creating_libraries.html
 |
 */
-$config['subclass_prefix'] = 'MY_';
+$config['subclass_prefix'] = 'RR_';
 
 
 /*
@@ -378,7 +378,6 @@ $config['table']['image'] = RR_TABLE_IMAGE;
 | These are the report categories allowed
 |
 */
-
 $config['category'] = array('test', 'broken lamp', 'pothole', 'graffiti');
 
 /*
@@ -388,8 +387,17 @@ $config['category'] = array('test', 'broken lamp', 'pothole', 'graffiti');
 | These are the area types allowed
 |
 */
-
 $config['area_type'] = array('admin_area_level_1', 'admin_area_level_2', 'sublocality');
+
+/*
+|--------------------------------------------------------------------------
+| Browser Config
+|--------------------------------------------------------------------------
+| 
+|
+*/
+$config['browser']['cookie']['auth'] = RR_BROWSER_COOKIE_AUTH;
+$config['browser']['id'] = RR_BROWSER_TOKEN;
 
 
 /* End of file config.php */

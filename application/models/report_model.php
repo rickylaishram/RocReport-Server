@@ -13,14 +13,32 @@ class Report_model extends CI_Model {
 	* @return array of the nearby reports
 	*/
 
-	function selectNearby($latitude, $longitude, $distance, $limit) {
+	function selectNearby($email, $latitude, $longitude, $distance, $offset, $limit, $orderby) {
 		// Query based on Havebrsine's formula (in meter)
 		// Based on https://developers.google.com/maps/articles/phpsqlsearch_v3
-		$sql = "SELECT *, ( 6371000 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance FROM ".$this->table['report']." HAVING distance < ? ORDER BY distance LIMIT 0 , ?";
+		$sql = null;
+		
+		if($orderby == 'score') {
+			$sql = "SELECT *, ( 6371000 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance FROM ".$this->table['report']." HAVING distance < ? ORDER BY score DESC LIMIT ? , ?";
+		} else {
+			$sql = "SELECT *, ( 6371000 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance FROM ".$this->table['report']." HAVING distance < ? ORDER BY added_at DESC LIMIT ? , ?";
+		}
 
-		$query = $this->db->query($sql, array($latitude, $longitude, $latitude, $distance, $limit));
+		$query = $this->db->query($sql, array($latitude, $longitude, $latitude, $distance, $offset, $limit));
 
-		return $query->result();
+		$result = array();
+
+		foreach ($query->result_array() as $report) {
+			$report['vote_count'] = $this->get_num_votes($report['report_id']);
+			$report['inform_count'] = $this->get_num_inform($report['report_id']);
+			$report['update'] = $this->last_update($report['report_id']);
+			$report['hasVotes'] = $this->hasVoted($report['report_id'], $email);
+			$report['inInform'] = $this->inInform($report['report_id'], $email);
+
+			$result[] = $report;
+		}
+
+		return $result;
 	}
 
 	/*
