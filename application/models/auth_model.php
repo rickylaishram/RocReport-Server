@@ -100,7 +100,7 @@ class Auth_model extends CI_Model {
 	function isAdmin($sublocality, $admin_level_2, $admin_level_1, $country) {
 		$email = $this->isLoggedIn();
 		if($email) {
-			$this->db0>select('*');
+			$this->db->select('*');
 			if(!is_null($sublocality)) {
 				$this->db->where('sublocality', $sublocality);
 			}
