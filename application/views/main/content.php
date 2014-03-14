@@ -85,7 +85,7 @@
 					var location1 = bounds.getCenter();
 					var location2 = bounds.getNorthEast();
 
-					fetch_reports(location1.d, location1.e, calculateRadius(location1, location2)/2, type);
+					fetch_reports(location1.lat(), location1.lng(), calculateRadius(location1, location2)/2, type);
 				});
 			});
 
