@@ -72,6 +72,11 @@ body {
 
 .list-group-item {
 	margin-bottom: 0px !important;
-	border-bottom: 1px solid rgba(0,221,255,0.5) !important;
+	border: 0px solid rgba(0,0,0,0) !important;
+	border-bottom: 1px solid rgba(0,221,255,0.25) !important;
 	border-radius: 0px !important;
+}
+
+a.list-group-item:hover {
+	background-color: rgba(0,221,255,0.1) !important;
 }
