@@ -44,8 +44,8 @@ body {
 }
 
 .navbar-nav li a:hover {
-	color: rgba(255,255,255,1) !important;
-	border-bottom: 5px solid rgba(0,221,255,0.5) !important;
+	color: rgba(255,255,255,0.75) !important;
+	border-bottom: 5px solid rgba(0,221,255,0.75) !important;
 }
 
 .navbar-nav li a {
