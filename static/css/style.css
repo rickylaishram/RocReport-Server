@@ -38,17 +38,34 @@ body {
 	background-color: rgba(0,153,204,1) !important;
 }
 
-.navbar-nav .active a, .nav-pills li.active a {
+.navbar-nav .active a {
 	color: rgba(255,255,255,1) !important;
 	background-color: rgba(0,0,0,0) !important;
 	border-bottom: 5px solid rgba(0,221,255,1) !important;
 }
 
-.navbar-nav li a:hover, .nav>li>a:hover {
+.navbar-nav li a:hover {
 	color: rgba(255,255,255,0.75) !important;
 	border-bottom: 5px solid rgba(0,221,255,0.75) !important;
 }
 
 .navbar-nav li a {
 	color: rgba(255,255,255,1) !important;
+}
+
+.nav-pills li.active a {
+	color: rgba(0,0,0,1) !important;
+	background-color: rgba(0,0,0,0) !important;
+	border-bottom: 4px solid rgba(0,221,255,1) !important;
+}
+
+.nav-pills li a:hover {
+	color: rgba(0,0,0,0.75) !important;
+	background-color: rgba(0,0,0,0) !important;
+	border-bottom: 4px solid rgba(0,221,255,0.75) !important;
+}
+
+.nav-pills li a {
+	color: rgba(0,0,0,1) !important;
+	border-radius: 0px;
 }
