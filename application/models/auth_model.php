@@ -126,7 +126,7 @@ class Auth_model extends CI_Model {
 		$email = $this->isLoggedIn();
 		if($email) {
 			$this->db->where('email', $email);
-			$count = $this->db->count_all_results($this->table['admin']);
+			$count = $this->db->count_all_results($this->table['sadmin']);
 			return ($count == 1) ? true : false;
 		} else {
 			return false;
