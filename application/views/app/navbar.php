@@ -32,6 +32,10 @@
 						<?php if($is_logged_in): ?>
 							<li><a><?=$is_logged_in; ?></a></li>
 						<?php endif; ?>
+						<?php if($!is_logged_in): ?>
+							<li><a href="<?=base_url(); ?>auth/login/">Login</a></li>
+							<li><a href="<?=base_url(); ?>auth/register/">Register</a></li>
+						<?php endif; ?>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>
