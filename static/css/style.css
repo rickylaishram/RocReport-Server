@@ -31,6 +31,7 @@ body {
 
 .repSelector {
 	margin-bottom: 10px;
+	border-bottom: 1px solid rgba(0,221,255,1) !important;
 }
 
 .navbar-default {
@@ -50,4 +51,21 @@ body {
 
 .navbar-nav li a {
 	color: rgba(255,255,255,1) !important;
+}
+
+.nav-pills li.active a {
+	color: rgba(0,0,0,1) !important;
+	background-color: rgba(0,0,0,0) !important;
+	border-bottom: 4px solid rgba(0,221,255,1) !important;
+}
+
+.nav-pills li a:hover {
+	color: rgba(0,0,0,0.75) !important;
+	background-color: rgba(0,0,0,0) !important;
+	border-bottom: 4px solid rgba(0,221,255,0.75) !important;
+}
+
+.nav-pills li a {
+	color: rgba(0,0,0,1) !important;
+	border-radius: 0px;
 }

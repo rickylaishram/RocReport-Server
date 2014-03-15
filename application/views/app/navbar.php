@@ -30,14 +30,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<?php if($is_logged_in): ?>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><?=$is_logged_in; ?> <b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Logout</a></li>
-									<li class="divider"></li>
-									<li><a href="#">Setting</a></li>
-								</ul>
-							</li>
+							<li><a><?=$is_logged_in; ?></a></li>
 						<?php endif; ?>
 					</ul>
 				</div><!--/.nav-collapse -->
