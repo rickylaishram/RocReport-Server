@@ -88,21 +88,21 @@ class Auth_model extends CI_Model {
 	*	$country
 	*	$admin_level_2
 	*	$admin_level_1
-	*	$sublocality
+	*	$locality
 	*
 	* User who is admin in higher level gains admin rights to lower level
 	* 
 	* Example:
-	* To check if user is an admin in ANY sublocality under "admin_level_2", "admin_level_1", "country"
+	* To check if user is an admin in ANY locality under "admin_level_2", "admin_level_1", "country"
 	* The function will be called as isAdmin(null, "admin_level_2", "admin_level_1", "country")
 	* Likewise for higher levels.
 	*/
-	function isAdmin($sublocality, $admin_level_2, $admin_level_1, $country) {
+	function isAdmin($locality, $admin_level_2, $admin_level_1, $country) {
 		$email = $this->isLoggedIn();
 		if($email) {
 			$this->db->select('*');
-			if(!is_null($sublocality)) {
-				$this->db->where('sublocality', $sublocality);
+			if(!is_null($locality)) {
+				$this->db->where('locality', $locality);
 			}
 			if(!is_null($admin_level_2)) {
 				$this->db->where('admin_level_2', $admin_level_2);

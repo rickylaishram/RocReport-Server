@@ -279,7 +279,7 @@ class Api extends CI_Controller {
 		$country = $this->input->post('country', true);
 		$admin_level_1 = $this->input->post('admin_level_1', true);
 		$admin_level_2 = $this->input->post('admin_level_2', true);
-		$sublocality = $this->input->post('sublocality', true);
+		$locality = $this->input->post('locality', true);
 		$latitude = $this->input->post('latitude', true);	// Required
 		$longitude = $this->input->post('longitude', true);	// Required
 		$category = $this->input->post('category', true);	// Required
@@ -310,7 +310,7 @@ class Api extends CI_Controller {
 
 					// If nearby reports are found return them
 					if(count($nearby) == 0) {
-						$this->report->add($email, floatval($latitude), floatval($longitude), $formatted_address, $country, $admin_level_1, $admin_level_2, $sublocality, $category, $description, $picture) ;
+						$this->report->add($email, floatval($latitude), floatval($longitude), $formatted_address, $country, $admin_level_1, $admin_level_2, $locality, $category, $description, $picture) ;
 					}
 
 					$data = array('nearby' => count($nearby), 'details' => $nearby);
