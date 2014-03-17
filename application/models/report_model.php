@@ -46,13 +46,13 @@ class Report_model extends CI_Model {
 	* @params 
 	* @return report_id
 	*/
-	function add($email, $latitude, $longitude, $formatted_address, $country, $admin_level_1, $admin_level_2, $sublocality, $category, $description, $picture) {
+	function add($email, $latitude, $longitude, $formatted_address, $country, $admin_level_1, $admin_level_2, $locality, $category, $description, $picture) {
 		$data = array(
 				'formatted_address' => $formatted_address,
 				'country' => $country,
 				'admin_area_level_1' => $admin_level_1,
 				'admin_area_level_2' => $admin_level_2,
-				'sublocality' => $sublocality,
+				'locality' => $locality,
 				'latitude' => $latitude,
 				'longitude' => $longitude,
 				'category' => $category,
@@ -135,10 +135,10 @@ class Report_model extends CI_Model {
 	}
 
 	/*
-	* Fetch all reports by sublocality
+	* Fetch all reports by locality
 	*/
-	function fetch_by_sublocality($email, $name, $offset, $limit, $orderby) {
-		$this->db->where('sublocality', $name);
+	function fetch_by_locality($email, $name, $offset, $limit, $orderby) {
+		$this->db->where('locality', $name);
 		if($orderby == 'score') {
 			$this->db->order_by('score', 'DESC');
 		} else if($orderby == 'new') {
@@ -162,7 +162,7 @@ class Report_model extends CI_Model {
 	}
 
 	/*
-	* Fetch all reports by sublocality
+	* Fetch all reports by locality
 	*/
 	function fetch_by_area_level_1($email, $name, $offset, $limit, $orderby) {
 		$this->db->where('admin_area_level_1', $name);
@@ -189,7 +189,7 @@ class Report_model extends CI_Model {
 	}
 
 	/*
-	* Fetch all reports by sublocality
+	* Fetch all reports by locality
 	*/
 	function fetch_by_area_level_2($email, $name, $offset, $limit, $orderby) {
 		$this->db->where('admin_area_level_2', $name);

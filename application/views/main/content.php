@@ -85,7 +85,7 @@
 					var location1 = bounds.getCenter();
 					var location2 = bounds.getNorthEast();
 
-					fetch_reports(location1.d, location1.e, calculateRadius(location1, location2)/2, type);
+					fetch_reports(location1.lat(), location1.lng(), calculateRadius(location1, location2)/2, type);
 				});
 			});
 
@@ -135,7 +135,8 @@
 
 			function fetch_reports(latitude, longitude, radius, type) {
 				var params = {'latitude': latitude, 'longitude': longitude, 'radius': radius, 'orderby': type};
-				$.post('<?=base_url(); ?>/api/report/fetch_nearby/', params, function(data) {
+				console.log(params);
+				$.post('<?=base_url(); ?>api/report/fetch_nearby/', params, function(data) {
 					data = JSON.parse(data);
 					reports = data.data;
 					
@@ -172,10 +173,10 @@
 			}
 
 			function calculateRadius(location1, location2) {
-				var lat1 = radian(location1.d); 
-				var lon1 = radian(location1.e); 
-				var lat2 = radian(location2.d); 
-				var lon2 = radian(location2.e); 
+				var lat1 = radian(location1.lat()); 
+				var lon1 = radian(location1.lng()); 
+				var lat2 = radian(location2.lat()); 
+				var lon2 = radian(location2.lng()); 
 
 				var R = 6371000; // in meters
 

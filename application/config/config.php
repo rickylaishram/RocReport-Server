@@ -370,6 +370,8 @@ $config['table']['update'] = RR_TABLE_UPDATE;
 $config['table']['inform'] = RR_TABLE_INFORM;
 $config['table']['vote'] = RR_TABLE_VOTE;
 $config['table']['image'] = RR_TABLE_IMAGE;
+$config['table']['admin'] = RR_TABLE_ADMIN;
+$config['table']['sadmin'] = RR_TABLE_SADMIN;
 
 /*
 |--------------------------------------------------------------------------
