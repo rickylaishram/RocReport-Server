@@ -46,7 +46,7 @@
 									featureType: "road",
 									elementType: "geometry",
 									stylers: [
-										{ hue: "#00ffee" },
+										{ hue: "#C0C0C0" },
 										{ saturation: 100 }
 									]
 								},
