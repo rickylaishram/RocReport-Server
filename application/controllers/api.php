@@ -300,13 +300,13 @@ class Api extends CI_Controller {
 
 				$categories = $this->config->item('category');
 				$category = strtolower($category);
-				
+
 				if(in_array($category, $categories)) {
 					$nearby = array();
 
 					// If novote is set to false; check if nearby reports exist
 					if(!$novote) {
-						$nearby = $this->report->selectNearby(floatval($latitude), floatval($longitude), 100, 5);
+						$nearby = $this->report->selectNearby(floatval($latitude), floatval($longitude), 100, 5, 0, 10, "score");
 					}
 
 					// If nearby reports are found return them
