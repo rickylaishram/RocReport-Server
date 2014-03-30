@@ -380,7 +380,7 @@ $config['table']['sadmin'] = RR_TABLE_SADMIN;
 | These are the report categories allowed
 |
 */
-$config['category'] = array('test', 'broken lamp', 'pothole', 'graffiti');
+$config['category'] = array('test', 'broken lamp', 'pothole', 'graffiti', 'water leak', 'trash');
 
 /*
 |--------------------------------------------------------------------------
@@ -389,7 +389,7 @@ $config['category'] = array('test', 'broken lamp', 'pothole', 'graffiti');
 | These are the area types allowed
 |
 */
-$config['area_type'] = array('admin_area_level_1', 'admin_area_level_2', 'sublocality');
+$config['area_type'] = array('admin_area_level_1', 'admin_area_level_2', 'sublocality', 'locality');
 
 /*
 |--------------------------------------------------------------------------
