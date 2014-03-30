@@ -299,6 +299,7 @@ class Api extends CI_Controller {
 			if($email) {
 
 				$categories = $this->config->item('category');
+				$category = strtolower($category);
 				
 				if(in_array($category, $categories)) {
 					$nearby = array();
