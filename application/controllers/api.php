@@ -7,7 +7,7 @@ class Api extends CI_Controller {
 	*/
 	function auth($path="") {
 		$this->load->model('client_model', 'client');
-		$id = $this->post->input('id');
+		$id = $this->input->post('id');
 
 		$valid = ($id ? $this->client->isValid($id) : false);
 		$rate_limit = ($valid ? $this->client->check_rate_limit($id) : false);
@@ -40,7 +40,7 @@ class Api extends CI_Controller {
 	*/
 	function report($path="") {
 		$this->load->model('client_model', 'client');
-		$id = $this->post->input('id');
+		$id = $this->input->post('id');
 
 		$valid = ($id ? $this->client->isValid($id) : false);
 		$rate_limit = ($valid ? $this->client->check_rate_limit($id) : false);
