@@ -43,7 +43,7 @@ class Client_model extends CI_Model {
 			return true;
 		} else {
 			$this->db->where('client_id', $clientid);
-			$this->db->where('time < ', (time() - 3600)); // API requests from the last 60 min
+			$this->db->where('time > ', (time() - 3600)); // API requests from the last 60 min
 			$query = $this->db->get($this->table['api_request']);
 
 			if($query->num_rows() < $rate) {
