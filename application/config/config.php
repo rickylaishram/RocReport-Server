@@ -372,6 +372,7 @@ $config['table']['vote'] = RR_TABLE_VOTE;
 $config['table']['image'] = RR_TABLE_IMAGE;
 $config['table']['admin'] = RR_TABLE_ADMIN;
 $config['table']['sadmin'] = RR_TABLE_SADMIN;
+$config['table']['api_request'] = RR_TABLE_API_REQ;
 
 /*
 |--------------------------------------------------------------------------
