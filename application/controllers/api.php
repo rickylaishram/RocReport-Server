@@ -46,7 +46,7 @@ class Api extends CI_Controller {
 		$rate_limit = ($valid ? $this->client->check_rate_limit($id) : false);
 
 		if($id && $valid && $rate_limit ) {
-			$this->client->log_request($id, 'auth/'.$path, $_SERVER['REMOTE_ADDR']);
+			$this->client->log_request($id, 'report/'.$path, $_SERVER['REMOTE_ADDR']);
 			switch ($path) {
 				case 'add':
 					$this->_add_report();
