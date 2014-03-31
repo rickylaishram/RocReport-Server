@@ -6,16 +6,32 @@ class Api extends CI_Controller {
 	* Handles register and login
 	*/
 	function auth($path="") {
-		switch ($path) {
-			case 'register':
-				$this->_register();
-				break;
-			case 'login':
-				$this->_login();
-				break;
-			default:
-				$this->_response_error(6);
-				break;
+		$this->load->model('client_model', 'client');
+		$id = $this->post->input('id');
+
+		$valid = ($id ? $this->client->isValid($id) : false);
+		$rate_limit = ($valid ? $this->client->check_rate_limit($id) : false);
+
+		if($id && $valid && $rate_limit ) {
+			$this->client->log_request($id, 'auth/'.$path, $_SERVER['REMOTE_ADDR']);
+
+			switch ($path) {
+				case 'register':
+					$this->_register();
+					break;
+				case 'login':
+					$this->_login();
+					break;
+				default:
+					$this->_response_error(6);
+					break;
+			}
+		} else if(!$id or !$valid){
+			$this->_response_error(11);
+		} else if(!$rate_limit){
+			$this->_response_error(12);
+		} else {
+			$this->_response_error(10000);
 		}
 	}
 
@@ -23,28 +39,43 @@ class Api extends CI_Controller {
 	* Handles report add, fetch, etc
 	*/
 	function report($path="") {
-		switch ($path) {
-			case 'add':
-				$this->_add_report();
-				break;
-			case 'fetch_mine':
-				$this->_reported_by_me();
-				break;
-			case 'fetch':
-				$this->_reported_by_area();
-				break;
-			case 'fetch_nearby':
-				$this->_report_nearby();
-				break;
-			case 'vote':
-				$this->_vote();
-				break;
-			case 'watch':
-				$this->_watch();
-				break;
-			default:
-				$this->_response_error(6);
-				break;
+		$this->load->model('client_model', 'client');
+		$id = $this->post->input('id');
+
+		$valid = ($id ? $this->client->isValid($id) : false);
+		$rate_limit = ($valid ? $this->client->check_rate_limit($id) : false);
+
+		if($id && $valid && $rate_limit ) {
+			$this->client->log_request($id, 'auth/'.$path, $_SERVER['REMOTE_ADDR']);
+			switch ($path) {
+				case 'add':
+					$this->_add_report();
+					break;
+				case 'fetch_mine':
+					$this->_reported_by_me();
+					break;
+				case 'fetch':
+					$this->_reported_by_area();
+					break;
+				case 'fetch_nearby':
+					$this->_report_nearby();
+					break;
+				case 'vote':
+					$this->_vote();
+					break;
+				case 'watch':
+					$this->_watch();
+					break;
+				default:
+					$this->_response_error(6);
+					break;
+			}
+		} else if(!$id or !$valid){
+			$this->_response_error(11);
+		} else if(!$rate_limit){
+			$this->_response_error(12);
+		} else {
+			$this->_response_error(10000);
 		}
 	}
 
@@ -306,7 +337,7 @@ class Api extends CI_Controller {
 
 					// If novote is set to false; check if nearby reports exist
 					if(!$novote) {
-						$nearby = $this->report->selectNearby($email, floatval($latitude), floatval($longitude), 100, 0, 5, "score");
+						$nearby = $this->report->selectNearby($email, floatval($latitude), floatval($longitude), 100, 0, 5, "new");
 					}
 
 					// If nearby reports are found return them
@@ -446,6 +477,12 @@ class Api extends CI_Controller {
 				break;
 			case 10:
 				$data['data'] = array('reason' => 'Image upload failed. Check file size.');
+				break;
+			case 11:
+				$data['data'] = array('reason' => 'Invalid Client');
+				break;
+			case 12:
+				$data['data'] = array('reason' => 'Rate limit exceeded');
 				break;
 			default:
 				$data['data'] = array('reason' => 'Error');
