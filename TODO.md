@@ -28,6 +28,7 @@
 * API for all the tasks above
 * Send emails to users on watchlist on updates to report
 * Send GCM to users on watchlist on updates to report (Low priority)
+* Add support for APN service for iPhone / iPad pus (Low Priority)
 
 #### Priority
 1. Admin
