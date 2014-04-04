@@ -85,9 +85,9 @@ class Report_model extends CI_Model {
 	function fetch_by_user($email, $limit, $offset, $orderby) {
 		$this->db->where('email', $email);
 		
-		if($type == 'score') {
+		if($orderby == 'score') {
 			$this->db->order_by('score', 'DESC');
-		} else if($type == 'new') {
+		} else if($orderby == 'new') {
 			$this->db->order_by('added_at', 'ASC');
 		}
 		
