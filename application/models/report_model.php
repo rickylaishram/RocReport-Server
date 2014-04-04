@@ -88,7 +88,7 @@ class Report_model extends CI_Model {
 		if($orderby == 'score') {
 			$this->db->order_by('score', 'DESC');
 		} else if($orderby == 'new') {
-			$this->db->order_by('added_at', 'ASC');
+			$this->db->order_by('added_at', 'DESC');
 		}
 		
 		$query = $this->db->get($this->table['report'], $limit, $offset);
