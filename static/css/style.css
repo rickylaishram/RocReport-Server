@@ -107,7 +107,7 @@ a.list-group-item:hover {
 	cursor: pointer;
 }
 
-.admin-content {
+.admin-content, .report-details {
 	display: none;
 }
 

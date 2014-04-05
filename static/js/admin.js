@@ -56,6 +56,20 @@ var admin = {
 		$('#report-details-date').html(report['added_at']);
 		$('#report-details-score').html(report['score']);
 		$('#report-details-vote').html(); // To be added later
+
+		if(report['closed'] === '1') {
+			$('#report-btn-close').hide();
+			$('#report-btn-open').show();
+			$('#report-btn-open').data('id', report['report_id']);
+			$('#report-btn-open').data('id', '');
+		} else {
+			$('#report-btn-open').hide();
+			$('#report-btn-close').show();
+			$('#report-btn-open').data('id', '');
+			$('#report-btn-open').data('id', report['report_id']);
+		}
+
+		$('.report-details').show();
 	},
 
 	fetch_report_details: function(reportid) {
