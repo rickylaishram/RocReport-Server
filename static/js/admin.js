@@ -29,7 +29,7 @@ var admin = {
 		var params = {id: admin.browser_id};
 		$.post(admin.base_url+admin.ep_reports_open, params, function(data) {
 			admin.reports = JSON.parse(data);
-			admin.populate_reports_list(admin.reports);
+			admin.populate_reports_list(admin.reports['data']);
 		});
 	},
 
@@ -38,7 +38,7 @@ var admin = {
 		var params = {id: admin.browser_id};
 		$.post(admin.base_url+admin.ep_reports_closed, params, function(data) {
 			admin.reports = JSON.parse(data);
-			admin.populate_reports_list(admin.reports);
+			admin.populate_reports_list(admin.reports['data']);
 		});
 	},
 
