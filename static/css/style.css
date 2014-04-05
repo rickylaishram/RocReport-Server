@@ -36,6 +36,7 @@ body {
 
 .navbar-default {
 	background-color: rgba(0,153,204,1) !important;
+	border-color: rgba(0,153,204,1) !important;
 }
 
 .navbar-nav .active a {
@@ -84,10 +85,11 @@ a.list-group-item:hover {
 }
 
 .admin-menu {
-	background-color: rgba(0,153,204,0.75) !important;
+	background-color: rgba(0,153,204,0.5) !important;
 	margin-top: -15px !important;
+	padding-top: 15px;
 }
 
-.admin-menu>ul {
+.admin-menu>.list-group>.list-group-item {
 	background-color: rgba(0,0,0,0) !important;
 }
