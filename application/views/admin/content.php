@@ -6,7 +6,12 @@
 			<!-- Reports -->
 			<div id="content-reports">
 				<div class="row">
-					<div class="col-md-3"></div>
+					<!-- Reports List -->
+					<div class="col-md-3">
+						
+					</div>
+
+					<!-- Reports Detail -->
 					<div class="col-md-9"></div>
 				</div>
 			</div>
@@ -14,13 +19,14 @@
 	</div>
 </div>
 
-<?php var_dump($all_reports); ?>
-
 <script src="<?=base_url(); ?>static/js/admin.js"></script>
 <script>
 	$(document).ready(function() {
 		admin.base_url = "<?=base_url(); ?>";
+		admin.ep_reports_open = "admin/api/get_reports";
+		admin.ep_reports_closed = "admin/api/get_reports_closed";
 		admin.browser_id = "<?=$browser['id']; ?>";
+		admin.reports = <?php echo json_encode($all_reports); ?>
 		admin.init();
 	});
 </script>
