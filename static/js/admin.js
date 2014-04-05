@@ -31,6 +31,7 @@ var admin = {
 
 	fetch_open_reports: function() {
 		$('.admin-content').hide();
+		$('.report-details').hide();
 		var params = {id: admin.browser_id};
 		$.post(admin.base_url+admin.ep_reports_open, params, function(data) {
 			var data = JSON.parse(data);
@@ -41,6 +42,7 @@ var admin = {
 
 	fetch_closed_reports: function() {
 		$('.admin-content').hide();
+		$('.report-details').hide();
 		var params = {id: admin.browser_id};
 		$.post(admin.base_url+admin.ep_reports_closed, params, function(data) {
 			var data = JSON.parse(data);
