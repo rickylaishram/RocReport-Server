@@ -100,5 +100,6 @@ a.list-group-item:hover {
 }
 
 .admin-menu>.list-group>.list-group-item:hover {
-	background-color: rgba(0,0,0,0.05);
+	background-color: rgba(0,0,0,0.05) !important;
+	border-left: 5px solid rgba(0,153,205,1) !important;
 }
