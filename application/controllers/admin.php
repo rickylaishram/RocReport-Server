@@ -11,7 +11,7 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	public index() {
+	public function index() {
 		echo "Hello";
 	}
 
