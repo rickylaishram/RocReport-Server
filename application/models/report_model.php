@@ -6,13 +6,11 @@ class Report_model extends CI_Model {
 		$this->table = $this->config->item('table');
 	}
 
-
 	/*
 	* Select the nearby reports (diatances in km)
 	* @params $latitude, $longitude, $distance, $limit
 	* @return array of the nearby reports
 	*/
-
 	function selectNearby($email, $latitude, $longitude, $distance, $offset, $limit, $orderby) {
 		// Query based on Havebrsine's formula (in meter)
 		// Based on https://developers.google.com/maps/articles/phpsqlsearch_v3
