@@ -96,7 +96,7 @@ a.list-group-item:hover {
 }
 
 .admin-menu>.list-group>.list-group-item {
-	background-color: rgba(0,0,0,0) !important;
+	background-color: rgba(0,0,0,0);
 	color: rgba(255,255,255,1);
 }
 
