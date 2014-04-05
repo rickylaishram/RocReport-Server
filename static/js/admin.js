@@ -25,16 +25,29 @@ var admin = {
 	},
 
 	fetch_open_reports: function() {
+		$('.admin-content').hide();
 		var params = {id: admin.browser_id};
 		$.post(admin.base_url+admin.ep_reports_open, params, function(data) {
-			console.log(data);
+			admin.reports = JSON.parse(data);
+			admin.populate_reports_list(admin.reports);
 		});
 	},
 
 	fetch_closed_reports: function() {
+		$('.admin-content').hide();
 		var params = {id: admin.browser_id};
 		$.post(admin.base_url+admin.ep_reports_closed, params, function(data) {
-			console.log(data);
+			admin.reports = JSON.parse(data);
+			admin.populate_reports_list(admin.reports);
 		});
+	},
+
+	populate_reports_list: function(reports) {
+		var list = $('.report-list');
+		list.html('');
+		for (var i = reports.length - 1; i >= 0; i--) {
+			list.append('<a href="#" data-id="'+reports[i]['report_id']+'" data-position="'+i+'">'+reports[i]['category']+' at '+reports[i]['formatted_address']+'</a>');
+		};
+		$('#content-reports').show();
 	},
 }
