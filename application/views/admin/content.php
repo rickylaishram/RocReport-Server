@@ -26,7 +26,7 @@
 		admin.ep_reports_open = "admin/api/get_reports";
 		admin.ep_reports_closed = "admin/api/get_reports_closed";
 		admin.browser_id = "<?=$browser['id']; ?>";
-		admin.reports = <?php echo json_encode($all_reports); ?>
+		
 		admin.init();
 	});
 </script>
