@@ -12,13 +12,13 @@ var admin = {
 			$('.admin-menu-active').removeClass('admin-menu-active');
 			$(this).addClass('admin-menu-active');
 
-			if (id === 0) {
+			if (id === 1) {
 
-			} else if (id === 1) {
-				admin.fetch_open_reports();
 			} else if (id === 2) {
-				admin.fetch_closed_reports();
+				admin.fetch_open_reports();
 			} else if (id === 3) {
+				admin.fetch_closed_reports();
+			} else if (id === 4) {
 
 			};
 		});
