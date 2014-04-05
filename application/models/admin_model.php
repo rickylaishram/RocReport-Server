@@ -19,6 +19,8 @@ class Admin_model extends CI_Model {
 
 			$query = $this->db->get($this->table['report']);
 
+			var_dump($query->result());
+
 			$reports = array_merge($reports, $query->result());
 		}
 
@@ -28,6 +30,8 @@ class Admin_model extends CI_Model {
 	function get_admin_areas($email) {
 		$this->db->where('email', $email);
 		$query = $this->db->get($this->table['admin']);
+
+		var_dump($query->result());
 
 		return $query->result();
 	}
