@@ -18,6 +18,6 @@
 <script>
 	$(document).ready(function() {
 		admin.base_url = "<?=base_url(); ?>";
-		admin.browser_id = "<?=browser['id']; ?>";
+		admin.browser_id = "<?=$browser['id']; ?>";
 	});
 </script>
