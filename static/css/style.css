@@ -85,5 +85,6 @@ a.list-group-item:hover {
 
 //------- Admin --------------//
 .admin-menu {
-	background-color: rgba(0,153,204,0.5) !important;
+	background-color: rgba(0,153,204,0.75) !important;
+	margin-top: -15px;
 }
