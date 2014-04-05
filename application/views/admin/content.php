@@ -16,7 +16,7 @@
 						<div class="row report-details-big">
 							<div id="report-details-category" ></div>
 						</div>
-						<div class="row">
+						<div class="row report-details-big">
 							<div id="report-details-address"></div>
 						</div>
 						<div class="row" class="report-details-small">

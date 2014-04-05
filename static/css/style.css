@@ -114,3 +114,13 @@ a.list-group-item:hover {
 #report-details-map {
 	height: 250px;
 }
+
+.report-details-big {
+	font-size: 25px;
+	font-weight: 500;
+}
+
+.report-details-small {
+	font-size: 14px;
+	font-weight: 300;
+}
