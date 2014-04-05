@@ -15,7 +15,7 @@ class Admin_model extends CI_Model {
 			if(!is_null($area->country)) $this->db->where('country', $area->country);
 			if(!is_null($area->admin_level_1)) $this->db->where('admin_area_level_1', $area->admin_level_1);
 			if(!is_null($area->admin_level_2)) $this->db->where('admin_area_level_2', $area->admin_level_2);
-			if(!is_null($area->sublocality)) $this->db->where('sublocality', $area->sublocality);
+			if(!is_null($area->sublocality)) $this->db->where('locality', $area->sublocality);
 
 			$query = $this->db->get($this->table['report']);
 
