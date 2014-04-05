@@ -50,7 +50,6 @@ class Api extends CI_Controller {
 			switch ($path) {
 				case 'add':
 					$this->_add_report();
-					var_dump($_POST); // For debugging
 					break;
 				case 'fetch_mine':
 					$this->_reported_by_me();
@@ -325,7 +324,7 @@ class Api extends CI_Controller {
 			$this->load->model('report_model', 'report');
 
 			// Change $novote to boolean
-			$novote = ($novote === 'true');
+			$novote = (strtolower($novote) === 'true');
 
 			$email = $this->auth->getEmail($client, $token);
 			if($email) {
