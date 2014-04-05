@@ -14,6 +14,8 @@
 	</div>
 </div>
 
+<?php var_dump($all_reports); ?>
+
 <script src="<?=base_url(); ?>static/js/admin.js"></script>
 <script>
 	$(document).ready(function() {
