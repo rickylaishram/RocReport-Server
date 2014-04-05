@@ -9,12 +9,15 @@ class Admin extends CI_Controller {
 			$this->output->set_status_header('302');
 			$this->output->_display();
 		} else {
+			$this->load->model('admin_model', 'admin');
+
 			$data['page_title'] = 'Admin | RocReport';
 			$data['page_id'] = 3;
 			$data['is_logged_in'] = $this->auth->isLoggedIn();
 			$data['is_admin'] = $this->auth->isAdmin(null, null, null, null);
 			$data['is_super_admin'] = $this->auth->isSuperAdmin();
 			$data['browser'] = $this->config->item('browser');
+			$data['all_reports'] = $this->admin->get_reports($data['is_logged_in']);
 
 			$this->load->view('app/header', $data);
 			$this->load->view('app/navbar', $data);
