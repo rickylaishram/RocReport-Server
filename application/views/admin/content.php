@@ -50,5 +50,7 @@
 		admin.browser_id = "<?=$browser['id']; ?>";
 		
 		admin.init();
+
+		google.maps.event.addDomListener(window, 'load', admin.map_initialize);
 	});
 </script>
