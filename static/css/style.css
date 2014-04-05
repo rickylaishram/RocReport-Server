@@ -87,9 +87,13 @@ a.list-group-item:hover {
 .admin-menu {
 	background-color: rgba(0,153,204,0.5) !important;
 	margin-top: -15px !important;
-	padding-top: 15px;
+}
+
+.admin-menu>.list-group {
+	margin-top:15px;
 }
 
 .admin-menu>.list-group>.list-group-item {
 	background-color: rgba(0,0,0,0) !important;
+	padding: 0px;
 }
