@@ -42,7 +42,7 @@ formatted_address	 	|
 country					| 
 admin_level_1			|
 admin_level_2			|
-sublocality				|
+locality				|
 __latitude__			|
 __longitude__			|
 __category__			| The report category

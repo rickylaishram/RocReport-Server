@@ -52,6 +52,6 @@
 		
 		admin.init();
 
-		google.maps.event.addDomListener(window, 'load', admin.map_initialize);
+		//google.maps.event.addDomListener(window, 'load', admin.map_initialize);
 	});
 </script>
