@@ -84,7 +84,7 @@ var admin = {
 					position: location,
 					map: admin.map
 				});
-		marker.setMap(admin.map);
+		admin.marker.setMap(admin.map);
 
 		$('.report-details').show();
 	},
