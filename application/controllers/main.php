@@ -10,6 +10,7 @@ class Main extends CI_Controller {
 		$data['is_logged_in'] = $this->auth->isLoggedIn();
 		$data['is_admin'] = $this->auth->isAdmin(null, null, null, null);
 		$data['is_super_admin'] = $this->auth->isSuperAdmin();
+		$data['browser_token'] = $this->config->item('browser')['id'];
 
 		$this->load->view('app/header', $data);
 		$this->load->view('app/navbar', $data);
