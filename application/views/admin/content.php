@@ -1,18 +1,20 @@
 		<!-- Content -->
 		<div class="col-md-10">
 			<!-- Overview -->
-			<div id="content-overview"></div>
+			<div id="content-overview" class="admin-content"></div>
 
 			<!-- Reports -->
-			<div id="content-reports">
+			<div id="content-reports" class="admin-content">
 				<div class="row">
 					<!-- Reports List -->
 					<div class="col-md-3">
-						
+						<div class="list-group report-list"></div>
 					</div>
 
 					<!-- Reports Detail -->
-					<div class="col-md-9"></div>
+					<div class="col-md-9 report-details">
+						
+					</div>
 				</div>
 			</div>
 		</div>
