@@ -21,6 +21,10 @@ var admin = {
 			} else if (id === 4) {
 
 			};
+		})
+		.on('click', '.report-item', function() {
+			var reportid = $(this).data('id');
+
 		});
 	},
 
@@ -28,8 +32,9 @@ var admin = {
 		$('.admin-content').hide();
 		var params = {id: admin.browser_id};
 		$.post(admin.base_url+admin.ep_reports_open, params, function(data) {
-			admin.reports = JSON.parse(data);
-			admin.populate_reports_list(admin.reports['data']);
+			var data = JSON.parse(data);
+			admin.reports = data['data'];
+			admin.populate_reports_list(admin.reports);
 		});
 	},
 
@@ -37,17 +42,32 @@ var admin = {
 		$('.admin-content').hide();
 		var params = {id: admin.browser_id};
 		$.post(admin.base_url+admin.ep_reports_closed, params, function(data) {
-			admin.reports = JSON.parse(data);
-			admin.populate_reports_list(admin.reports['data']);
+			var data = JSON.parse(data);
+			admin.reports = data['data'];
+			admin.populate_reports_list(admin.reports);
 		});
+	},
+
+	show_report_details: function(position) {
+		var report = admin.reports[position];
+		$('#report-details-category').html(report['category']);
+		$('#report-details-address').html(report['formatted_address']);
+		$('#report-details-date').html(report['added_at']);
+		$('#report-details-score').html(report['score']);
+		$('#report-details-vote').html(); // To be added later
+	},
+
+	fetch_report_details: function(reportid) {
+
 	},
 
 	populate_reports_list: function(reports) {
 		var list = $('.report-list');
 		list.html('');
 		for (var i = reports.length - 1; i >= 0; i--) {
-			list.append('<a href="#" data-id="'+reports[i]['report_id']+'" data-position="'+i+'" class="list-group-item">'+reports[i]['category']+' at '+reports[i]['formatted_address']+'</a>');
+			list.append('<a href="#" data-id="'+reports[i]['report_id']+'" data-position="'+i+'" class="list-group-item report-item">'+reports[i]['category']+' at '+reports[i]['formatted_address']+'</a>');
 		};
 		$('#content-reports').show();
 	},
+
 }

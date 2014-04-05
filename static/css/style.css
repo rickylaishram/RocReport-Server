@@ -110,3 +110,7 @@ a.list-group-item:hover {
 .admin-content {
 	display: none;
 }
+
+#report-details-map {
+	height: 250px;
+}
