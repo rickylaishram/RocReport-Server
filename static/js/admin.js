@@ -87,4 +87,37 @@ var admin = {
 		$('#content-reports').show();
 	},
 
+	map_initialize: function() {
+		var styles = [
+						{
+							featureType: "all",
+							stylers: [
+								{ saturation: -80 },
+							]
+						},
+						{
+							featureType: "road",
+							elementType: "geometry",
+							stylers: [
+								{ hue: "#CDCDCD" },
+								{ saturation: 100 }
+							]
+						},
+					];
+
+		var styledMap = new google.maps.StyledMapType(styles,{name: "Styled Map"});
+
+		var mapOptions = {
+			center: new google.maps.LatLng(47.397, 78.644), // random default value
+			zoom: 12,
+			mapTypeControlOptions: {
+				mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+			},
+		};
+		map = new google.maps.Map(document.getElementById("report-details-map"),
+						mapOptions);
+
+		map.mapTypes.set('map_style', styledMap);
+		map.setMapTypeId('map_style');
+	},
 }
