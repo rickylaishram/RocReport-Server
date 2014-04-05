@@ -41,7 +41,9 @@ class Admin extends CI_Controller {
 				$this->output->set_status_header('302');
 				$this->output->_display();
 			} else {
+				$this->load->model('admin_model', 'admin');
 				$email = $this->auth->isLoggedIn();
+				
 				switch ($method) {
 					case 'get_reports':
 						$data = $this->admin->get_reports($data['is_logged_in']);
