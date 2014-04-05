@@ -109,3 +109,7 @@ a.list-group-item:hover {
 .admin-content {
 	display: none;
 }
+
+.report-list>a:hover {
+	background-color: rgba(200,200,200,0.5);
+}
