@@ -133,7 +133,7 @@
 			}
 
 			function fetch_reports(latitude, longitude, radius, type) {
-				var params = {'latitude': latitude, 'longitude': longitude, 'radius': radius, 'orderby': type, 'id': 'dhsgfbkjwabefkjwebryt387riugwuifbewhjf'};
+				var params = {'latitude': latitude, 'longitude': longitude, 'radius': radius, 'orderby': type, 'id': '<?=$browser_id; ?>'};
 				console.log(params);
 				$.post('<?=base_url(); ?>api/report/fetch_nearby/', params, function(data) {
 					data = JSON.parse(data);
