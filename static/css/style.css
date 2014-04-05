@@ -83,12 +83,11 @@ a.list-group-item:hover {
 	border-left: 5px solid rgba(0,221,255,0.5) !important;
 }
 
-//------- Admin --------------//
 .admin-menu {
 	background-color: rgba(0,153,204,0.75) !important;
 	margin-top: -15px !important;
 }
 
-.admin-menu>li {
+.admin-menu>ul {
 	background-color: rgba(0,0,0,0) !important;
 }
