@@ -46,7 +46,7 @@ var admin = {
 		var list = $('.report-list');
 		list.html('');
 		for (var i = reports.length - 1; i >= 0; i--) {
-			list.append('<a href="#" data-id="'+reports[i]['report_id']+'" data-position="'+i+'">'+reports[i]['category']+' at '+reports[i]['formatted_address']+'</a>');
+			list.append('<a href="#" data-id="'+reports[i]['report_id']+'" data-position="'+i+'" class="list-group-item">'+reports[i]['category']+' at '+reports[i]['formatted_address']+'</a>');
 		};
 		$('#content-reports').show();
 	},
