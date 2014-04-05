@@ -9,3 +9,4 @@
 				<li class="list-group-item admin-menu-item" data-id="4">Notifications</li>
 			</ul>
 		</div>
+		<div class="col-md-2"></div>
