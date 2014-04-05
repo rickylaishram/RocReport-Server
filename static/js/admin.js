@@ -24,7 +24,8 @@ var admin = {
 		})
 		.on('click', '.report-item', function() {
 			var reportid = $(this).data('id');
-
+			var position = $(this).data('position');
+			admin.show_report_details(position);
 		});
 	},
 
