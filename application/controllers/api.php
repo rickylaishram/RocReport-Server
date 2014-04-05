@@ -50,6 +50,7 @@ class Api extends CI_Controller {
 			switch ($path) {
 				case 'add':
 					$this->_add_report();
+					var_dump($_POST); // For debugging
 					break;
 				case 'fetch_mine':
 					$this->_reported_by_me();
