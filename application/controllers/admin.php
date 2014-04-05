@@ -27,4 +27,42 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	function api($method) {
+		$this->load->model('auth_model', 'auth');
+		$this->load->model('client_model', 'client');
+		$id = $this->input->post('id');
+
+		$valid = ($id ? $this->client->isValid($id) : false);
+		$rate_limit = ($valid ? $this->client->check_rate_limit($id) : false);
+
+		if($id && $valid && $rate_limit ) {
+			if(!$this->auth->isLoggedIn() || !$this->auth->isAdmin(null, null, null, null)) {
+				$this->output->set_header('Location: '.base_url());
+				$this->output->set_status_header('302');
+				$this->output->_display();
+			} else {
+				$email = $this->auth->isLoggedIn();
+				switch ($method) {
+					case 'get_reports':
+						$data = $this->admin->get_reports($data['is_logged_in']);
+						$this->_response_success($data);
+						break;
+					case 'get_reports_closed':
+						$data = $this->admin->get_reports_closed($data['is_logged_in']);
+						$this->_response_success($data);
+						break;
+					default:
+						# code...
+						break;
+				}
+			}
+		}
+	}
+
+	function _response_success($vars) {
+		$data['status'] = true;
+		$data['data'] = $vars;
+		$this->load->view('api/response', $data);
+	}
+
 }
