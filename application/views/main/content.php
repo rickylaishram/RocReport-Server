@@ -18,7 +18,6 @@
 				</div>
 
 			</div>
-
 		</div> <!-- /container -->
 
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6x__caSSACAJWV9uoEYA6mcP9J4xdo_c&sensor=false"></script>

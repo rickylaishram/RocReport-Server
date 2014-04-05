@@ -445,7 +445,6 @@ class Api extends CI_Controller {
 	/*
 	* Error responses
 	*/
-
 	function _response_error($id) {
 		switch ($id) {
 			case 1:		// Missing parameters
