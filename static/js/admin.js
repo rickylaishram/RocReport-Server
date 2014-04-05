@@ -5,6 +5,8 @@ var admin = {
 
 	reports: null,
 	browser_id: null,
+	map: null,
+	marker: null,
 
 	init: function() {
 		$(document).on('click', '.admin-menu-item', function() {
@@ -71,6 +73,19 @@ var admin = {
 			$('#report-btn-open').data('id', report['report_id']);
 		}
 
+		// Set map location
+		if(admin.marker != null) {
+			admin.marker.setMap(null);
+		}
+		
+		var location = new google.maps.LatLng(parseFloat(report['latitude']), parseFloat(report['longitude']));
+		admin.map.panTo(location);
+		admin.marker = new google.maps.Marker({
+					position: location,
+					map: admin.map
+				});
+		marker.setMap(admin.map);
+
 		$('.report-details').show();
 	},
 
@@ -114,10 +129,10 @@ var admin = {
 				mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
 			},
 		};
-		map = new google.maps.Map(document.getElementById("report-details-map"),
+		admin.map = new google.maps.Map(document.getElementById("report-details-map"),
 						mapOptions);
 
-		map.mapTypes.set('map_style', styledMap);
-		map.setMapTypeId('map_style');
+		admin.map.mapTypes.set('map_style', styledMap);
+		admin.map.setMapTypeId('map_style');
 	},
 }
