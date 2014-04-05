@@ -43,14 +43,14 @@ class Admin extends CI_Controller {
 			} else {
 				$this->load->model('admin_model', 'admin');
 				$email = $this->auth->isLoggedIn();
-				
+
 				switch ($method) {
 					case 'get_reports':
-						$data = $this->admin->get_reports($data['is_logged_in']);
+						$data = $this->admin->get_reports($email);
 						$this->_response_success($data);
 						break;
 					case 'get_reports_closed':
-						$data = $this->admin->get_reports_closed($data['is_logged_in']);
+						$data = $this->admin->get_reports_closed($email);
 						$this->_response_success($data);
 						break;
 					default:
