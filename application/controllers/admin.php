@@ -2,7 +2,7 @@
 
 class Admin extends CI_Controller {
 
-	public __construct() {
+	function __construct() {
 		$this->load_model('auth_model', 'auth');
 		if(!$this->auth->isLoggedIn() || !$this->auth->isAdmin(null, null, null, null)) {
 			$this->output->set_header('Location: '.base_url());
