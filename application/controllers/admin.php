@@ -17,7 +17,8 @@ class Admin extends CI_Controller {
 
 			$this->load->view('app/header', $data);
 			$this->load->view('app/navbar', $data);
-			//$this->load->view('main/content.php', $data);
+			$this->load->view('admin/nav.php', $data);
+			$this->load->view('admin/content.php', $data);
 			$this->load->view('app/footer', $data);
 		}
 	}
