@@ -8,10 +8,15 @@ $(window).resize(function() {
 
 function set_admin_nav_height() {
 	if($(window).width() > 768) {
-		$('.admin-menu').height($(window).height() - 50);
+		var height = $(window).height() - 50;
+		$('.admin-menu').height(height);
 		$('.admin-menu').css({position: 'fixed'});
+		$('.report-details').height(height);
+		$('.report-list').height(height);
+
 	} else {
 		$('.admin-menu').height('auto');
 		$('.admin-menu').css({position: 'relative'});
+		$('.report-list').height('auto');
 	}
 }
