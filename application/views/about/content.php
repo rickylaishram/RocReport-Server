@@ -36,4 +36,9 @@
 			<h1>For Developer</h1>
 		</div>
 	</body>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$.fn.fullpage();
+		});
+	</script>
 </html>
