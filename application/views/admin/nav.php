@@ -4,7 +4,7 @@
 		<div class="col-md-2 admin-menu">
 			<ul class="list-group">
 				<!--<li class="list-group-item admin-menu-item" data-id="1">Overview</li>-->
-				<li class="list-group-item admin-menu-item" data-id="2">Open Reports</li>
+				<li class="list-group-item admin-menu-item admin-menu-active" data-id="2">Open Reports</li>
 				<li class="list-group-item admin-menu-item" data-id="3">Closed Reports</li>
 				<!--<li class="list-group-item admin-menu-item" data-id="4">Notifications</li>-->
 			</ul>

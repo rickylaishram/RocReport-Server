@@ -4,7 +4,7 @@
 		<div class="col-md-2 user-menu">
 			<ul class="list-group">
 				<!--<li class="list-group-item user-menu-item" data-id="1">Overview</li>-->
-				<li class="list-group-item user-menu-item" data-id="2">Nearby Reports</li>
+				<li class="list-group-item user-menu-item user-menu-active" data-id="2">Nearby Reports</li>
 				<li class="list-group-item user-menu-item" data-id="3">My Reports</li>
 				<!--<li class="list-group-item user-menu-item" data-id="4">Notifications</li>-->
 			</ul>

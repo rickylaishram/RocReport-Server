@@ -54,6 +54,8 @@ var admin = {
 			var reportid = $(this).data('id');
 			admin.close_report(reportid);
 		});
+
+		admin.fetch_open_reports();
 	},
 
 	fetch_open_reports: function() {
