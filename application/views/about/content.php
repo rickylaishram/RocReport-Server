@@ -26,7 +26,8 @@
 	<body>
 		<div class="section" id="about">
 			<h1>RocReport</h1>
-			<img src="<?=base_url();?>ststic/images/qr-website.png" width="300">
+			<p>This will be a description about rocreport. This will be a description about rocreport. This will be a description about rocreport.</p>
+			<img src="<?=base_url();?>static/images/qr-website.png" width="300">
 		</div>
 		<div class="section" id="get">
 			<h1>Get It</h1>
