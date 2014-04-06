@@ -32,10 +32,6 @@
 								<img src="" id="report-details-image"/>
 							</div>
 						</div>
-						<div class="row"><div class="col-md-12 report-details-update-header">Updates</div></div>
-						<div class="row">
-							<div id="report-details-updates" class="list-group col-md-12" ></div>
-						</div>
 					</div>
 				</div>
 			</div>
