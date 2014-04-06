@@ -1,0 +1,20 @@
+body {
+	font-family: 'Ubuntu', sans-serif;
+	text-align: center;
+}
+
+#about {
+	background-color: rgba(0,0,255,0.1);
+}
+
+#get {
+	background-color: rgba(0,0,255,0.2);
+}
+
+#contact {
+	background-color: rgba(0,0,255,0.3);
+}
+
+#developer {
+	background-color: rgba(0,0,255,0.4);
+}
