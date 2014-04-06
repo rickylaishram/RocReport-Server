@@ -19,8 +19,8 @@ body {
 	position: relative;
 	height: auto;
 	-webkit-box-sizing: border-box;
-		 -moz-box-sizing: border-box;
-					box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	padding: 10px;
 	font-size: 16px;
 	margin-bottom: 10px;
@@ -36,6 +36,7 @@ body {
 
 .navbar-default {
 	background-color: rgba(0,153,204,1) !important;
+	border-color: rgba(0,153,204,1) !important;
 }
 
 .navbar-nav .active a {
@@ -78,7 +79,89 @@ body {
 	border-left: 5px solid rgba(0,221,255,0) !important;
 }
 
-a.list-group-item:hover {
-	background-color: rgba(0,221,255,0) !important;
+a.list-group-item:hover, .report-list-item-active {
+	/*background-color: rgba(0,221,255,0) !important;*/
+	background-color: rgba(200,200,200,0.5) !important;
 	border-left: 5px solid rgba(0,221,255,0.5) !important;
 }
+
+.admin-menu, .user-menu {
+	background-color: rgba(0,153,204,0.5) !important;
+	margin-top: -15px !important;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.admin-menu>.list-group, .user-menu>.list-group {
+	margin-top:15px;
+}
+
+.admin-menu>.list-group>.list-group-item, .user-menu>.list-group>.list-group-item {
+	background-color: rgba(0,0,0,0);
+	color: rgba(255,255,255,1);
+}
+
+.admin-menu>.list-group>.list-group-item:hover, .admin-menu-active, .user-menu>.list-group>.list-group-item:hover, .user-menu-active {
+	background-color: rgba(0,0,0,0.05) !important;
+	border-left: 5px solid rgba(0,153,205,1) !important;
+	cursor: pointer;
+}
+
+.admin-content, .report-details, .user-content {
+	display: none;
+}
+
+#report-details-map {
+	height: 350px;
+}
+
+.report-details-big {
+	font-size: 25px;
+	font-weight: 500;
+}
+
+.report-details-small {
+	font-size: 14px;
+	font-weight: 300;
+}
+
+.report-details-uppercase {
+	text-transform: uppercase;
+}
+
+#report-details-image-container {
+	height: 350px;
+	overflow: hidden;
+}
+
+.report-details, .report-list {
+	overflow: scroll;
+}
+
+#report-update-area {
+	width: 100%;
+}
+
+.report-details>.row {
+	margin-bottom: 15px;
+}
+
+.report-details-update-header {
+	font-size: 18px;
+	border-bottom: 1px solid rgba(175,175,175,1);
+}
+
+#report-details-updates>a {
+	border-bottom: 1px solid rgba(175,175,175,0.5) !important;
+}
+
+#report-details-updates>a:hover {
+	border-left: 5px solid rgba(0,0,0,0) !important;
+	background-color: rgba(0,0,0,0) !important;
+}
+
+#report-details-buttons {
+	border-top: 1px solid rgba(175,175,175,0.5) !important;
+}
+
+

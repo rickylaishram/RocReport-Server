@@ -18,7 +18,6 @@
 				</div>
 
 			</div>
-
 		</div> <!-- /container -->
 
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6x__caSSACAJWV9uoEYA6mcP9J4xdo_c&sensor=false"></script>
@@ -58,7 +57,7 @@
 					center: new google.maps.LatLng(47.397, 78.644), // random default value
 					zoom: 12,
 					mapTypeControlOptions: {
-						mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+						mapTypeIds: [google.maps.MapTypeId.SATELLITE, 'map_style']
 					},
 				};
 				map = new google.maps.Map(document.getElementById("map-canvas"),
@@ -134,7 +133,7 @@
 			}
 
 			function fetch_reports(latitude, longitude, radius, type) {
-				var params = {'latitude': latitude, 'longitude': longitude, 'radius': radius, 'orderby': type};
+				var params = {'latitude': latitude, 'longitude': longitude, 'radius': radius, 'orderby': type, 'id': '<?=$browser["id"]; ?>'};
 				console.log(params);
 				$.post('<?=base_url(); ?>api/report/fetch_nearby/', params, function(data) {
 					data = JSON.parse(data);
@@ -154,7 +153,7 @@
 							
 							addMarker(location);
 
-							$('#reports-list').append(generateListItem(category, address));
+							$('#reports-list').append(generateListItem(category, address, id));
 						}
 						setAllMap(map);
 					}

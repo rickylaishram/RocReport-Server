@@ -324,7 +324,7 @@ class Api extends CI_Controller {
 			$this->load->model('report_model', 'report');
 
 			// Change $novote to boolean
-			$novote = ($novote === 'true');
+			$novote = (strtolower($novote) === 'true');
 
 			$email = $this->auth->getEmail($client, $token);
 			if($email) {
@@ -445,7 +445,6 @@ class Api extends CI_Controller {
 	/*
 	* Error responses
 	*/
-
 	function _response_error($id) {
 		switch ($id) {
 			case 1:		// Missing parameters

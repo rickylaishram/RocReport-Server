@@ -6,22 +6,20 @@ class Report_model extends CI_Model {
 		$this->table = $this->config->item('table');
 	}
 
-
 	/*
 	* Select the nearby reports (diatances in km)
 	* @params $latitude, $longitude, $distance, $limit
 	* @return array of the nearby reports
 	*/
-
 	function selectNearby($email, $latitude, $longitude, $distance, $offset, $limit, $orderby) {
 		// Query based on Havebrsine's formula (in meter)
 		// Based on https://developers.google.com/maps/articles/phpsqlsearch_v3
 		$sql = null;
 		
 		if($orderby == 'score') {
-			$sql = "SELECT *, ( 6371000 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance FROM ".$this->table['report']." HAVING distance < ? ORDER BY score DESC LIMIT ? , ?";
+			$sql = "SELECT *, ( 6371000 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance FROM ".$this->table['report']." HAVING distance < ? AND closed = 0 ORDER BY score DESC LIMIT ? , ?";
 		} else {
-			$sql = "SELECT *, ( 6371000 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance FROM ".$this->table['report']." HAVING distance < ? ORDER BY added_at DESC LIMIT ? , ?";
+			$sql = "SELECT *, ( 6371000 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance FROM ".$this->table['report']." HAVING distance < ? AND closed = 0 ORDER BY added_at DESC LIMIT ? , ?";
 		}
 
 		$query = $this->db->query($sql, array($latitude, $longitude, $latitude, $distance, $offset, $limit));
@@ -85,10 +83,10 @@ class Report_model extends CI_Model {
 	function fetch_by_user($email, $limit, $offset, $orderby) {
 		$this->db->where('email', $email);
 		
-		if($type == 'score') {
+		if($orderby == 'score') {
 			$this->db->order_by('score', 'DESC');
-		} else if($type == 'new') {
-			$this->db->order_by('added_at', 'ASC');
+		} else if($orderby == 'new') {
+			$this->db->order_by('added_at', 'DESC');
 		}
 		
 		$query = $this->db->get($this->table['report'], $limit, $offset);

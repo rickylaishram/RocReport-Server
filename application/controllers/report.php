@@ -1,28 +1,25 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Report extends CI_Controller {
 
 	function index() {
 		$this->load->model('auth_model', 'auth');
-		if(!$this->auth->isLoggedIn() || !$this->auth->isAdmin(null, null, null, null)) {
+		if(!$this->auth->isLoggedIn()) {
 			$this->output->set_header('Location: '.base_url());
 			$this->output->set_status_header('302');
 			$this->output->_display();
 		} else {
-			$this->load->model('admin_model', 'admin');
-
-			$data['page_title'] = 'Admin | RocReport';
-			$data['page_id'] = 3;
+			$data['page_title'] = 'Reports | RocReport';
+			$data['page_id'] = 2;
 			$data['is_logged_in'] = $this->auth->isLoggedIn();
 			$data['is_admin'] = $this->auth->isAdmin(null, null, null, null);
 			$data['is_super_admin'] = $this->auth->isSuperAdmin();
 			$data['browser'] = $this->config->item('browser');
-			$data['all_reports'] = $this->admin->get_reports($data['is_logged_in']);
 
 			$this->load->view('app/header', $data);
 			$this->load->view('app/navbar', $data);
-			$this->load->view('admin/nav.php', $data);
-			$this->load->view('admin/content.php', $data);
+			$this->load->view('user/nav.php', $data);
+			$this->load->view('user/content.php', $data);
 			$this->load->view('app/footer', $data);
 		}
 	}
@@ -36,43 +33,39 @@ class Admin extends CI_Controller {
 		$rate_limit = ($valid ? $this->client->check_rate_limit($id) : false);
 
 		if($id && $valid && $rate_limit ) {
-			if(!$this->auth->isLoggedIn() || !$this->auth->isAdmin(null, null, null, null)) {
+			if(!$this->auth->isLoggedIn()) {
 				$this->output->set_header('Location: '.base_url());
 				$this->output->set_status_header('302');
 				$this->output->_display();
 			} else {
-				$this->load->model('admin_model', 'admin');
 				$email = $this->auth->isLoggedIn();
 
 				switch ($method) {
-					case 'get_reports':
-						$data = $this->admin->get_reports($email);
+					case 'fetch_nearby':
+						$orderby = 'score';
+						$latitude = $this->input->post('latitude', true);	// Required
+						$longitude = $this->input->post('longitude', true);	// Required
+						$radius = 1000;
+						$limit = 100; 
+						$offset = 0;
+
+						$this->load->model('report_model', 'report');
+						$data = $this->report->selectNearby($email, floatval($latitude), floatval($longitude), intval($radius), intval($offset), intval($limit), $orderby);
 						$this->_response_success($data);
 						break;
-					case 'get_reports_closed':
-						$data = $this->admin->get_reports_closed($email);
+					case 'fetch_mine':
+						$this->load->model('report_model', 'report');
+						$orderby = "new";
+						$data = $this->report->fetch_by_user($email, 100, 0, $orderby);
 						$this->_response_success($data);
 						break;
-					case 'save_update':
-						$text = $this->input->post('update');
-						$reportid = $this->input->post('report_id');
-						if($text && $reportid) {
-							$this->admin->save_update($email, $text, $reportid, 'open');
+					case 'vote':
+						$report = $this->input->post('report');
+						if($report) {
+							$this->load->model('report_model', 'report');
+							$this->report->vote($email, $report);
 							$this->_response_success(array());
 						}
-						break;
-					case 'set_open':
-						$report = $this->input->post('report');
-						$this->admin->set_report_open($report);
-						$this->admin->save_update($email, "Report opened", $report, 'open');
-						$this->_response_success($data);
-						break;
-					case 'set_close':
-						$report = $this->input->post('report');
-						$this->admin->set_report_close($report);
-						$this->admin->save_update($email, "Report closed", $report, 'close');
-						$this->_response_success($data);
-						break;
 					default:
 						# code...
 						break;
@@ -86,5 +79,4 @@ class Admin extends CI_Controller {
 		$data['data'] = $vars;
 		$this->load->view('api/response', $data);
 	}
-
 }
