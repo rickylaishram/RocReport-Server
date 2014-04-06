@@ -13,11 +13,6 @@
 
 					<!-- Reports Detail -->
 					<div class="col-md-9 report-details">
-						<div class="row">
-							<div class="col-md-12" id="report-details-image-container">
-								<img src="" id="report-details-image"/>
-							</div>
-						</div>
 						<div class="row report-details-big report-details-uppercase">
 							<div id="report-details-category" class="col-md-12" ></div>
 						</div>
@@ -30,7 +25,10 @@
 							<div id="report-details-vote" class="col-md-4"></div>
 						</div>
 						<div class="row">
-							<div id="report-details-map" class="col-md-12" ></div>
+							<div id="report-details-map" class="col-md-6" ></div>
+							<div class="col-md-6" id="report-details-image-container">
+								<img src="" id="report-details-image"/>
+							</div>
 						</div>
 						<div class="row">
 							<div id="report-details-updates" class="col-md-12" ></div>
