@@ -120,7 +120,7 @@ var admin = {
 	},
 
 	send_update: function(text, reportid) {
-		var params = {id: browser_id, update: text, report_id: reportid};
+		var params = {id: admin.browser_id, update: text, report_id: reportid};
 		$.post(admin.base_url+admin.ep_report_update, params, function() {
 			$('#report-btn-update').prop('disabled', true);
 			$('#report-update-area').val('');
