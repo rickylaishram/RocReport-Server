@@ -25,7 +25,6 @@ var admin = {
 			};
 		})
 		.on('click', '.report-item', function() {
-			admin.map_initialize();
 			var reportid = $(this).data('id');
 			var position = $(this).data('position');
 			admin.show_report_details(position);
@@ -75,6 +74,7 @@ var admin = {
 		}
 
 		// Set map location
+		admin.map_initialize();
 		if(admin.marker != null) {
 			admin.marker.setMap(null);
 		}
@@ -125,7 +125,7 @@ var admin = {
 
 		var mapOptions = {
 			center: new google.maps.LatLng(47.397, 78.644), // random default value
-			zoom: 12,
+			zoom: 18,
 			mapTypeControlOptions: {
 				mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
 			},
