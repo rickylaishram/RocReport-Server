@@ -23,4 +23,53 @@ class Report extends CI_Controller {
 			$this->load->view('app/footer', $data);
 		}
 	}
+
+	function api($method) {
+		$this->load->model('auth_model', 'auth');
+		$this->load->model('client_model', 'client');
+		$id = $this->input->post('id');
+
+		$valid = ($id ? $this->client->isValid($id) : false);
+		$rate_limit = ($valid ? $this->client->check_rate_limit($id) : false);
+
+		if($id && $valid && $rate_limit ) {
+			if(!$this->auth->isLoggedIn()) {
+				$this->output->set_header('Location: '.base_url());
+				$this->output->set_status_header('302');
+				$this->output->_display();
+			} else {
+				$email = $this->auth->isLoggedIn();
+
+				switch ($method) {
+					case 'fetch_nearby':
+						$orderby = 'score';
+						$latitude = $this->input->post('latitude', true);	// Required
+						$longitude = $this->input->post('longitude', true);	// Required
+						$radius = 1000;
+						$limit = 100; 
+						$offset = 0;
+
+						$this->load->model('report_model', 'report');
+						$data = $this->report->selectNearby($email, floatval($latitude), floatval($longitude), intval($radius), intval($offset), intval($limit), $orderby);
+						$this->_response_success($data);
+						break;
+					case 'fetch_mine':
+						$this->load->model('report_model', 'report');
+						$orderby = "new";
+						$data = $this->report->fetch_by_user($email, 100, 0, $orderby);
+						$this->_response_success($data);
+						break;
+					default:
+						# code...
+						break;
+				}
+			}
+		}
+	}
+
+	function _response_success($vars) {
+		$data['status'] = true;
+		$data['data'] = $vars;
+		$this->load->view('api/response', $data);
+	}
 }
