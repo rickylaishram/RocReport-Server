@@ -30,7 +30,7 @@
 								<img src="" id="report-details-image"/>
 							</div>
 						</div>
-						<div class="row"><div class="col-md-12"><b>Updates</b></div></div>
+						<div class="row"><div class="col-md-12 report-details-update-header">Updates</div></div>
 						<div class="row">
 							<div id="report-details-updates" class="list-group col-md-12" ></div>
 						</div>
@@ -45,8 +45,10 @@
 							</div>
 						</div>
 						<div id="report-details-buttons" class="row">
-							<button type="button" class="btn btn-success" id="report-btn-open">Open Report</button>
-							<button type="button" class="btn btn-danger" id="report-btn-close">Close Report</button>
+							<div class="col-md-12">
+								<button type="button" class="btn btn-success" id="report-btn-open">Open Report</button>
+								<button type="button" class="btn btn-danger" id="report-btn-close">Close Report</button>
+							</div>
 						</div>
 					</div>
 				</div>

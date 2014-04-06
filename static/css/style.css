@@ -146,4 +146,18 @@ a.list-group-item:hover, .report-list-item-active {
 	margin-bottom: 15px;
 }
 
+.report-details-update-header {
+	font-size: 18px;
+	border-bottom: 1px solid rgba(175,175,175,1);
+}
+
+#report-details-updates>a {
+	border-bottom: 1px solid rgba(175,175,175,0.5);
+}
+
+#report-details-updates>a:hover {
+	border-left: 0px solid rgba(0,0,0,0);
+	background-color: rgba(0,0,0,0);
+}
+
 
