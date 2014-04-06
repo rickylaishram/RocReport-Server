@@ -30,6 +30,17 @@ var admin = {
 			var position = $(this).data('position');
 			admin.show_report_details(position);
 			$(this).addClass('report-list-item-active');
+		})
+		.on('keyup', '#report-update-area', function() {
+			if($(this).val().length > 0) {
+				$('#report-btn-update').prop('disabled', false);
+			} else {
+				$('#report-btn-update').prop('disabled', false);
+			}
+		})
+		.on('click', '#report-btn-update', function() {
+			var text = $('#report-update-area').text();
+			console.log(text);
 		});
 	},
 

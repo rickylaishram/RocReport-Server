@@ -34,6 +34,16 @@
 						<div class="row">
 							<div id="report-details-updates" class="list-group col-md-12" ></div>
 						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<textarea id="report-update-area"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<button type="button" class="btn btn-success" id="report-btn-update" disabled>Post Update</button>
+							</div>
+						</div>
 						<div id="report-details-buttons" class="row">
 							<button type="button" class="btn btn-success" id="report-btn-open">Open Report</button>
 							<button type="button" class="btn btn-danger" id="report-btn-close">Close Report</button>
