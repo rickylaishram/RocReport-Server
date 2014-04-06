@@ -72,7 +72,7 @@ var admin = {
 		update_list.html('');
 
 		for (var i = 0; i < report['updates'].length; i++) {
-			update_list.append('<a class="list-group-item">By '+report['updates'][i]['updated_by']+' at '+report['updates'][i]['updated_at']+'<br>'+report['updates'][i]['status']+'<br>'+report['updates'][i]['description']+'</a>');
+			update_list.append('<a class="list-group-item">By <b>'+report['updates'][i]['updated_by']+'</b> at '+report['updates'][i]['updated_at']+'<br>'+report['updates'][i]['status']+'<br>'+report['updates'][i]['description']+'</a>');
 		};
 
 		if(report['closed'] === '1') {
