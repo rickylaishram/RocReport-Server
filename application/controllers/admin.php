@@ -53,6 +53,14 @@ class Admin extends CI_Controller {
 						$data = $this->admin->get_reports_closed($email);
 						$this->_response_success($data);
 						break;
+					case 'save_update':
+						$text = $this->input->post('update');
+						$reportid = $this->input->post('report_id');
+						if($text) {
+							$this->admin->save_update($email, $text, $id, 'open');
+							$this->_response_success(array());
+						}
+						break;
 					default:
 						# code...
 						break;

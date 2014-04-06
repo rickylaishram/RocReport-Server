@@ -2,6 +2,9 @@ var admin = {
 	base_url: null,
 	ep_reports_closed: null,
 	ep_reports_open: null,
+	ep_report_update: null,
+	ep_report_set_open: null,
+	ep_report_set_close: null,
 
 	reports: null,
 	browser_id: null,
@@ -35,12 +38,13 @@ var admin = {
 			if($(this).val().length > 0) {
 				$('#report-btn-update').prop('disabled', false);
 			} else {
-				$('#report-btn-update').prop('disabled', false);
+				$('#report-btn-update').prop('disabled', true);
 			}
 		})
 		.on('click', '#report-btn-update', function() {
-			var text = $('#report-update-area').text();
-			console.log(text);
+			var text = $('#report-update-area').val();
+			var reportid = $(this).data('id');
+			admin.send_update(text, reportid);
 		});
 	},
 
@@ -78,6 +82,7 @@ var admin = {
 		$('#report-details-score').html('Score '+report['score']);
 		$('#report-details-vote').html('Votes '+report['vote_count']); // To be added later
 		$('#report-details-image').attr('src', report['picture']);
+		$('#report-btn-update').data('id', report['report_id']);
 
 		var update_list = $('#report-details-updates');
 		update_list.html('');
@@ -114,8 +119,12 @@ var admin = {
 		admin.marker.setMap(admin.map);
 	},
 
-	fetch_report_details: function(reportid) {
-
+	send_update: function(text, reportid) {
+		var params = {id: browser_id, update: text, report_id: reportid};
+		$.post(admin.base_url+admin.ep_report_update, params, function() {
+			$('#report-btn-update').prop('disabled', true);
+			$('#report-update-area').val('');
+		});
 	},
 
 	populate_reports_list: function(reports) {

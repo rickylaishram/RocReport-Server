@@ -138,4 +138,8 @@ a.list-group-item:hover, .report-list-item-active {
 	overflow: scroll;
 }
 
+#report-update-area {
+	width: 100%;
+}
+
 

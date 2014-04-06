@@ -62,6 +62,9 @@
 		admin.base_url = "<?=base_url(); ?>";
 		admin.ep_reports_open = "admin/api/get_reports";
 		admin.ep_reports_closed = "admin/api/get_reports_closed";
+		admin.ep_report_update = "admin/api/save_update";
+		admin.ep_report_set_open = "admin/api/set_open";
+		admin.ep_report_set_close = "admin/api/set_close";
 		admin.browser_id = "<?=$browser['id']; ?>";
 		admin.init();
 		google.maps.event.addDomListener(window, 'load', admin.map_initialize);
