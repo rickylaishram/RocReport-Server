@@ -25,9 +25,11 @@ var admin = {
 			};
 		})
 		.on('click', '.report-item', function() {
+			$('.report-list-item-active').removeClass('report-list-item-active');
 			var reportid = $(this).data('id');
 			var position = $(this).data('position');
 			admin.show_report_details(position);
+			$(this).addClass('report-list-item-active');
 		});
 	},
 
