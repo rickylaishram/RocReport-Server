@@ -13,7 +13,7 @@
 
 					<!-- Reports Detail -->
 					<div class="col-md-9 report-details">
-						<div class="row report-details-big">
+						<div class="row report-details-big report-details-uppercase">
 							<div id="report-details-category" ></div>
 						</div>
 						<div class="row report-details-big">

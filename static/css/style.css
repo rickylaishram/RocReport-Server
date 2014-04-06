@@ -124,3 +124,7 @@ a.list-group-item:hover {
 	font-size: 14px;
 	font-weight: 300;
 }
+
+.report-details-uppercase {
+	text-transform: uppercase;
+}
