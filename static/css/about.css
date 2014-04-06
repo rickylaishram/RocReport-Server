@@ -9,6 +9,11 @@ body {
 	margin-left: auto;
 }
 
+a {
+	color: rgba(0,0,0,1);
+	text-decoration: underline;
+}
+
 #about {
 	background-color: rgba(0,0,255,0.1);
 }
