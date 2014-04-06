@@ -13,19 +13,27 @@
 </div> <!-- /container -->
 
 <script type="text/javascript">
+	$(document).ready(function(){
+		if(($('#pass').val().length > 0) && ($('#email').val().length > 0)) {
+			$('#btn_submit').prop('disabled', false);
+		} else {
+			$('#btn_submit').prop('disabled', true);
+		}
+	});
+
 	$("#pass").on("keyup", function(){
 		if($(this).val().length < 1) {
-			$('#btn_submit').addAttr('disabled', 'diabled');
+			$('#btn_submit').prop('disabled', true);
 		} else {
-			$('#btn_submit').removeAttr('disabled');
+			$('#btn_submit').prop('disabled', false);
 		}
 	});
 
 	$("#email").on("keyup", function(){
 		if($(this).val().length > 0) {
-			$('#btn_submit').removeAttr('disabled');
+			$('#btn_submit').prop('disabled', false);
 		} else {
-			$('#btn_submit').addAttr('disabled', 'diabled');
+			$('#btn_submit').prop('disabled', true);
 		}
 	});
 </script>
