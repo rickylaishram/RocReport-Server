@@ -42,7 +42,7 @@ var user = {
 		var params = {id: user.browser_id, latitude: user.latitude, longitude: user.longitude};
 		$.post(user.base_url+user.ep_reports_nearby, params, function(data) {
 			var data = JSON.parse(data);
-			console.og(data);
+			console.log(data);
 			user.reports = data['data'];
 			user.populate_reports_list(user.reports);
 		});
@@ -73,14 +73,6 @@ var user = {
 		$('#report-details-vote').html('Votes '+report['vote_count']); // To be added later
 		$('#report-details-image').attr('src', report['picture']);
 		$('#report-btn-update').data('id', report['report_id']);
-
-		/*var update_list = $('#report-details-updates');
-		update_list.html('');
-
-		for (var i = 0; i < report['updates'].length; i++) {
-			console.log(report['updates'][i]);
-			update_list.append('<a class="list-group-item">By <b>'+report['updates'][i]['updated_by']+'</b> at '+report['updates'][i]['updated_at']+'<br>'+report['updates'][i]['status']+'<br>'+report['updates'][i]['description']+'</a>');
-		};*/
 
 		// Set map location
 		user.map_initialize();
