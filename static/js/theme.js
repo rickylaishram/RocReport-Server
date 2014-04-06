@@ -2,7 +2,7 @@ $(document).ready(function() {
 	set_admin_nav_height();
 });
 
-$(document).resize(function() {
+$(window).resize(function() {
 	set_admin_nav_height();
 });
 

@@ -55,13 +55,16 @@ var admin = {
 
 	show_report_details: function(position) {
 		$('.report-details').show();
-		
+
+		$('#report-details-image').attr('width', $('#report-details-image-container').width());
+
 		var report = admin.reports[position];
 		$('#report-details-category').html(report['category']);
 		$('#report-details-address').html(report['formatted_address']);
-		$('#report-details-date').html(report['added_at']);
-		$('#report-details-score').html(report['score']);
-		$('#report-details-vote').html(); // To be added later
+		$('#report-details-date').html('Added at '+report['added_at']);
+		$('#report-details-score').html('Score '+report['score']);
+		$('#report-details-vote').html('Votes '+report['vote_count']); // To be added later
+		$('#report-details-image').attr('src', report['image']);
 
 		if(report['closed'] === '1') {
 			$('#report-btn-close').hide();

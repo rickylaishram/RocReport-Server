@@ -13,11 +13,16 @@
 
 					<!-- Reports Detail -->
 					<div class="col-md-9 report-details">
+						<div class="row">
+							<div class="col-md-12" id="report-details-image-container">
+								<img src="" id="report-details-image"/>
+							</div>
+						</div>
 						<div class="row report-details-big report-details-uppercase">
-							<div id="report-details-category" ></div>
+							<div id="report-details-category" class="col-md-12" ></div>
 						</div>
 						<div class="row report-details-big">
-							<div id="report-details-address"></div>
+							<div id="report-details-address" class="col-md-12"></div>
 						</div>
 						<div class="row" class="report-details-small">
 							<div id="report-details-date" class="col-md-4"></div>
@@ -25,10 +30,10 @@
 							<div id="report-details-vote" class="col-md-4"></div>
 						</div>
 						<div class="row">
-							<div id="report-details-map" ></div>
+							<div id="report-details-map" class="col-md-12" ></div>
 						</div>
 						<div class="row">
-							<div id="report-details-updates" ></div>
+							<div id="report-details-updates" class="col-md-12" ></div>
 						</div>
 						<div id="report-details-buttons" class="row">
 							<button type="button" class="btn btn-success" id="report-btn-open">Open Report</button>

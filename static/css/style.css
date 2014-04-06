@@ -79,7 +79,7 @@ body {
 	border-left: 5px solid rgba(0,221,255,0) !important;
 }
 
-a.list-group-item:hover {
+a.list-group-item:hover,  {
 	/*background-color: rgba(0,221,255,0) !important;*/
 	background-color: rgba(200,200,200,0.5) !important;
 	border-left: 5px solid rgba(0,221,255,0.5) !important;
@@ -128,3 +128,10 @@ a.list-group-item:hover {
 .report-details-uppercase {
 	text-transform: uppercase;
 }
+
+#report-details-image-container {
+	height: 200px;
+	overflow: hidden;
+}
+
+
