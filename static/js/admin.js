@@ -168,6 +168,7 @@ var admin = {
 						mapOptions);
 
 		admin.map.mapTypes.set('map_style', styledMap);
-		admin.map.setMapTypeId('map_style');
+		//admin.map.setMapTypeId('map_style');
+		admin.map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
 	},
 }
