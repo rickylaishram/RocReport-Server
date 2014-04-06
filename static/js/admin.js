@@ -25,6 +25,7 @@ var admin = {
 			};
 		})
 		.on('click', '.report-item', function() {
+			admin.map_initialize();
 			var reportid = $(this).data('id');
 			var position = $(this).data('position');
 			admin.show_report_details(position);
