@@ -161,7 +161,7 @@ var admin = {
 			center: new google.maps.LatLng(47.397, 78.644), // random default value
 			zoom: 18,
 			mapTypeControlOptions: {
-				mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+				mapTypeIds: [google.maps.MapTypeId.SATELLITE, 'map_style']
 			},
 		};
 		admin.map = new google.maps.Map(document.getElementById("report-details-map"),
