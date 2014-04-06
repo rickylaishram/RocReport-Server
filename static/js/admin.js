@@ -124,6 +124,7 @@ var admin = {
 		$.post(admin.base_url+admin.ep_report_update, params, function() {
 			$('#report-btn-update').prop('disabled', true);
 			$('#report-update-area').val('');
+			$('#report-details-updates').prepend('<a class="list-group-item">By <b>Me</b> at now<br>open<br>'+text+'</a>')
 		});
 	},
 
