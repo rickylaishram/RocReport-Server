@@ -47,12 +47,18 @@
 <script src="<?=base_url(); ?>static/js/user.js"></script>
 <script>
 	$(document).ready(function() {
+		navigator.geolocation.getCurrentPosition(start);
+	});
+
+	function start(position) {
 		user.base_url = "<?=base_url(); ?>";
-		user.ep_reports_nearby = "api/report/report_nearby/";
-		user.ep_reports_mine = "api/report/fetch_mine/";
-		
+		user.ep_reports_nearby = "report/api/report_nearby/";
+		user.ep_reports_mine = "report/api/fetch_mine/";
+		user.latitude = position.coords.latitude;
+		user.longitude = position.coords.longitude;
+
 		user.browser_id = "<?=$browser['id']; ?>";
 		user.init();
 		google.maps.event.addDomListener(window, 'load', user.map_initialize);
-	});
+	}
 </script>

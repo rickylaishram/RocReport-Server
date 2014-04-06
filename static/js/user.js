@@ -3,6 +3,9 @@ var user = {
 	ep_reports_nearby: null,
 	ep_reports_mine: null,
 
+	latitude: null,
+	longitude: null,
+
 	reports: null,
 	browser_id: null,
 	map: null,
@@ -30,34 +33,14 @@ var user = {
 			var position = $(this).data('position');
 			user.show_report_details(position);
 			$(this).addClass('report-list-item-active');
-		})
-		.on('keyup', '#report-update-area', function() {
-			if($(this).val().length > 0) {
-				$('#report-btn-update').prop('disabled', false);
-			} else {
-				$('#report-btn-update').prop('disabled', true);
-			}
-		})
-		.on('click', '#report-btn-update', function() {
-			var text = $('#report-update-area').val();
-			var reportid = $(this).data('id');
-			user.send_update(text, reportid);
-		})
-		.on('click', '#report-btn-open', function() {
-			var reportid = $(this).data('id');
-			user.open_report(reportid);
-		})
-		.on('click', '#report-btn-close', function() {
-			var reportid = $(this).data('id');
-			user.close_report(reportid);
 		});
 	},
 
 	fetch_reports_nearby: function() {
 		$('.user-content').hide();
 		$('.report-details').hide();
-		var params = {id: user.browser_id};
-		$.post(user.base_url+user.ep_reports_open, params, function(data) {
+		var params = {id: user.browser_id, latitude: user.latitude, longitude: user.longitude};
+		$.post(user.base_url+user.ep_reports_nearby, params, function(data) {
 			var data = JSON.parse(data);
 			console.og(data);
 			user.reports = data['data'];
@@ -69,7 +52,7 @@ var user = {
 		$('.user-content').hide();
 		$('.report-details').hide();
 		var params = {id: user.browser_id};
-		$.post(user.base_url+user.ep_reports_closed, params, function(data) {
+		$.post(user.base_url+user.ep_reports_mine, params, function(data) {
 			var data = JSON.parse(data);
 			console.log(data);
 			user.reports = data['data'];

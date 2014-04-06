@@ -85,29 +85,29 @@ a.list-group-item:hover, .report-list-item-active {
 	border-left: 5px solid rgba(0,221,255,0.5) !important;
 }
 
-.admin-menu {
+.admin-menu, .user-menu {
 	background-color: rgba(0,153,204,0.5) !important;
 	margin-top: -15px !important;
 	padding-right: 0px;
 	padding-left: 0px;
 }
 
-.admin-menu>.list-group {
+.admin-menu>.list-group, .user-menu>.list-group {
 	margin-top:15px;
 }
 
-.admin-menu>.list-group>.list-group-item {
+.admin-menu>.list-group>.list-group-item, .user-menu>.list-group>.list-group-item {
 	background-color: rgba(0,0,0,0);
 	color: rgba(255,255,255,1);
 }
 
-.admin-menu>.list-group>.list-group-item:hover, .admin-menu-active {
+.admin-menu>.list-group>.list-group-item:hover, .admin-menu-active, .user-menu>.list-group>.list-group-item:hover, .user-menu-active {
 	background-color: rgba(0,0,0,0.05) !important;
 	border-left: 5px solid rgba(0,153,205,1) !important;
 	cursor: pointer;
 }
 
-.admin-content, .report-details {
+.admin-content, .report-details, .user-content {
 	display: none;
 }
 
