@@ -64,7 +64,7 @@ var admin = {
 		$('#report-details-date').html('Added at '+report['added_at']);
 		$('#report-details-score').html('Score '+report['score']);
 		$('#report-details-vote').html('Votes '+report['vote_count']); // To be added later
-		$('#report-details-image').attr('src', report['image']);
+		$('#report-details-image').attr('src', report['picture']);
 
 		if(report['closed'] === '1') {
 			$('#report-btn-close').hide();
