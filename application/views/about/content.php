@@ -52,11 +52,11 @@
 				<div class="row">
 					<div class="col-md-6">
 						<h3>Ricky Laishram</h3>
-						<p></p>
+						<p><a href="mailto:rickylaishram@gmail.com">Email</a></p>
 					</div>
 					<div class="col-md-6">
 						<h3>Debjit Saha</h3>
-						<p></p>
+						<p><a href="mailto:debjitsaha87@gmail.com">Email</a></p>
 					</div>
 				</div>
 			</div>
@@ -64,6 +64,13 @@
 		<div class="section" id="developer">
 			<div class="content">
 				<h1>For Developer</h1>
+				<h3>Source Code</h3>
+				<p><a href="https://github.com/rickylaishram/RocReport-Server">Website</a></p>
+				<p><a href="https://github.com/rickylaishram/RocReport-Android">Android</a></p>
+				<p><a href="https://github.com/dkd903/RocReport-ios">iOS</a></p>
+				<h3>API</h3>
+				<p><a href="https://github.com/rickylaishram/RocReport-Server/blob/master/api-documentation.md">Documentation</a></p>
+				<p></p>
 			</div>
 		</div>
 	</body>
