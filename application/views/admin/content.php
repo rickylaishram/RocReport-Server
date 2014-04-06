@@ -36,7 +36,7 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<textarea id="report-update-area"></textarea>
+								<textarea id="report-update-area" placeholder="Enter update here."></textarea>
 							</div>
 						</div>
 						<div class="row">
