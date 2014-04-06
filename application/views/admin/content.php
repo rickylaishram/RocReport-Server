@@ -31,7 +31,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<div id="report-details-updates" class="col-md-12" ></div>
+							<div id="list-group report-details-updates" class="col-md-12" ></div>
 						</div>
 						<div id="report-details-buttons" class="row">
 							<button type="button" class="btn btn-success" id="report-btn-open">Open Report</button>
