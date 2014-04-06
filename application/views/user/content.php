@@ -55,6 +55,8 @@
 		user.base_url = "<?=base_url(); ?>";
 		user.ep_reports_nearby = "report/api/fetch_nearby/";
 		user.ep_reports_mine = "report/api/fetch_mine/";
+		user.ep_vote = "report/api/vote";
+		
 		user.latitude = position.coords.latitude;
 		user.longitude = position.coords.longitude;
 
