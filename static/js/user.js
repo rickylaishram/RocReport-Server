@@ -40,6 +40,8 @@ var user = {
 			var position = $(this).data('position');
 			user.send_vote(reportid, position);
 		});
+
+		user.fetch_reports_nearby();
 	},
 
 	send_vote: function(reportid, position) {
