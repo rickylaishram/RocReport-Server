@@ -152,12 +152,16 @@ a.list-group-item:hover, .report-list-item-active {
 }
 
 #report-details-updates>a {
-	border-bottom: 1px solid rgba(175,175,175,0.5);
+	border-bottom: 1px solid rgba(175,175,175,0.5) !important;
 }
 
 #report-details-updates>a:hover {
-	border-left: 0px solid rgba(0,0,0,0);
-	background-color: rgba(0,0,0,0);
+	border-left: 0px solid rgba(0,0,0,0) !important;
+	background-color: rgba(0,0,0,0) !important;
+}
+
+#report-details-buttons {
+	border-top: 1px solid rgba(175,175,175,0.5) !important;
 }
 
 
