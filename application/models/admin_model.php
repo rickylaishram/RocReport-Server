@@ -89,4 +89,14 @@ class Admin_model extends CI_Model {
 
 		return $query->result();
 	}
+
+	function set_report_open($report_id) {
+		$this->db->where('report_id', $report_id);
+		$this->db->update($this->table['report'], array('closed' => 0));
+	}
+
+	function set_report_close($report_id) {
+		$this->db->where('report_id', $report_id);
+		$this->db->update($this->table['report'], array('closed' => 1));
+	}
 }
