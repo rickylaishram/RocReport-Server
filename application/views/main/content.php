@@ -57,14 +57,15 @@
 					center: new google.maps.LatLng(47.397, 78.644), // random default value
 					zoom: 12,
 					mapTypeControlOptions: {
-						mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+						mapTypeIds: [google.maps.MapTypeId.SATELLITE, 'map_style']
 					},
 				};
 				map = new google.maps.Map(document.getElementById("map-canvas"),
 						mapOptions);
 
 				map.mapTypes.set('map_style', styledMap);
-				map.setMapTypeId('map_style');
+				//map.setMapTypeId('map_style');
+				map.setMapTypeId(oogle.maps.MapTypeId.SATELLITE);
 			}
 			google.maps.event.addDomListener(window, 'load', initialize);
 
