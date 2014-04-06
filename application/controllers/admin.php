@@ -62,13 +62,13 @@ class Admin extends CI_Controller {
 						}
 						break;
 					case 'set_open':
-						$report = $this->input->post('report')
+						$report = $this->input->post('report');
 						$this->admin->set_reports_open($report);
 						$this->admin->save_update($email, "Report opened", $report, 'open');
 						$this->_response_success($data);
 						break;
 					case 'set_close':
-						$report = $this->input->post('report')
+						$report = $this->input->post('report');
 						$this->admin->set_reports_close($report);
 						$this->admin->save_update($email, "Report closed", $report, 'close');
 						$this->_response_success($data);
