@@ -32,6 +32,11 @@
 								<img src="" id="report-details-image"/>
 							</div>
 						</div>
+						<div id="report-details-buttons" class="row">
+							<div class="col-md-12">
+								<button type="button" class="btn btn-success" id="report-btn-vote">Vote</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
