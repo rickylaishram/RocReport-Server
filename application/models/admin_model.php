@@ -78,6 +78,11 @@ class Admin_model extends CI_Model {
 		return $reports;
 	}
 
+	function save_update($email, $text, $reportid, $status) {
+		$data = array('report_id' => $reportid, 'description' => $text, 'updated_by' => $email, 'status' =>$status);
+		$this->db->insert($this->table['update'], $data);
+	}
+
 	function get_admin_areas($email) {
 		$this->db->where('email', $email);
 		$query = $this->db->get($this->table['admin']);
