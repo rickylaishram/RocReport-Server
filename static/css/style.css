@@ -79,7 +79,7 @@ body {
 	border-left: 5px solid rgba(0,221,255,0) !important;
 }
 
-a.list-group-item:hover,  {
+a.list-group-item:hover, .report-list-item-active {
 	/*background-color: rgba(0,221,255,0) !important;*/
 	background-color: rgba(200,200,200,0.5) !important;
 	border-left: 5px solid rgba(0,221,255,0.5) !important;
