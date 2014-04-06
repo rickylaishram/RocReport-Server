@@ -31,9 +31,29 @@
 		</div>
 		<div class="section" id="get">
 			<h1>Get It</h1>
+			<div class="row">
+				<div class="col-md-6">
+					<h3>Android</h3>
+					<p><img src="<?=base_url();?>static/images/qr-website.png" width="200"></p>
+				</div>
+				<div class="col-md-6">
+					<h3>iOS</h3>
+					<p><img src="<?=base_url();?>static/images/qr-website.png" width="200"></p>
+				</div>
+			</div>
 		</div>
 		<div class="section" id="contact">
 			<h1>Contact</h1>
+			<div class="row">
+				<div class="col-md-6">
+					<h3>Ricky Laishram</h3>
+					<p></p>
+				</div>
+				<div class="col-md-6">
+					<h3>Debjit Saha</h3>
+					<p></p>
+				</div>
+			</div>
 		</div>
 		<div class="section" id="developer">
 			<h1>For Developer</h1>
