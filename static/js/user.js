@@ -89,7 +89,7 @@ var user = {
 		$('#report-details-vote').html('Votes '+report['vote_count']); // To be added later
 		$('#report-details-image').attr('src', report['picture']);
 
-		if(report['hasVotes'] === '1') {
+		if(report['hasVotes']) {
 			$('#report-btn-vote').data('id','');
 			$('#report-btn-vote').data('position','');
 			$('#report-btn-vote').hide();
