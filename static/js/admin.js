@@ -45,6 +45,14 @@ var admin = {
 			var text = $('#report-update-area').val();
 			var reportid = $(this).data('id');
 			admin.send_update(text, reportid);
+		})
+		.on('click', '#report-btn-open', function() {
+			var reportid = $(this).data('id');
+			admin.open_report(reportid);
+		})
+		.on('click', '#report-btn-close', function() {
+			var reportid = $(this).data('id');
+			admin.close_report(reportid);
 		});
 	},
 
@@ -67,6 +75,26 @@ var admin = {
 			var data = JSON.parse(data);
 			admin.reports = data['data'];
 			admin.populate_reports_list(admin.reports);
+		});
+	},
+
+	open_report: function(reportid) {
+		var params = {id: admin.browser_id, report: reportid};
+		$.post(admin.base_url+admin.ep_report_set_open, params, function() {
+			$('#report-btn-close').show();
+			$('#report-btn-open').hide();
+			$('#report-btn-open').data('id', '');
+			$('#report-btn-open').data('id', reportid);
+		});
+	},
+
+	close_report: function(reportid) {
+		var params = {id: admin.browser_id, report: reportid};
+		$.post(admin.base_url+admin.ep_report_set_close, params, function() {
+			$('#report-btn-close').hide();
+			$('#report-btn-open').show();
+			$('#report-btn-open').data('id', reportid);
+			$('#report-btn-open').data('id', '');
 		});
 	},
 
@@ -95,12 +123,12 @@ var admin = {
 		if(report['closed'] === '1') {
 			$('#report-btn-close').hide();
 			$('#report-btn-open').show();
-			$('#report-btn-open').data('id', report['report_id']);
+			$('#report-btn-close').data('id', report['report_id']);
 			$('#report-btn-open').data('id', '');
 		} else {
 			$('#report-btn-open').hide();
 			$('#report-btn-close').show();
-			$('#report-btn-open').data('id', '');
+			$('#report-btn-close').data('id', '');
 			$('#report-btn-open').data('id', report['report_id']);
 		}
 

@@ -56,10 +56,22 @@ class Admin extends CI_Controller {
 					case 'save_update':
 						$text = $this->input->post('update');
 						$reportid = $this->input->post('report_id');
-						if($text) {
+						if($text && $reportid) {
 							$this->admin->save_update($email, $text, $reportid, 'open');
 							$this->_response_success(array());
 						}
+						break;
+					case 'set_open':
+						$report = $this->input->post('report')
+						$this->admin->set_reports_open($report);
+						$this->admin->save_update($email, "Report opened", $report, 'open');
+						$this->_response_success($data);
+						break;
+					case 'set_close':
+						$report = $this->input->post('report')
+						$this->admin->set_reports_close($report);
+						$this->admin->save_update($email, "Report closed", $report, 'close');
+						$this->_response_success($data);
 						break;
 					default:
 						# code...
