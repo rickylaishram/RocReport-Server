@@ -54,6 +54,8 @@ var admin = {
 	},
 
 	show_report_details: function(position) {
+		$('.report-details').show();
+		
 		var report = admin.reports[position];
 		$('#report-details-category').html(report['category']);
 		$('#report-details-address').html(report['formatted_address']);
@@ -86,8 +88,6 @@ var admin = {
 					map: admin.map
 				});
 		admin.marker.setMap(admin.map);
-
-		$('.report-details').show();
 	},
 
 	fetch_report_details: function(reportid) {
