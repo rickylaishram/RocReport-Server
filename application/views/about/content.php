@@ -7,12 +7,13 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 
-		<title><?=$page_title; ?></title>
+		<title>About | RocReport</title>
 
 		<!-- Bootstrap core CSS -->
 		<link href="<?=base_url(); ?>static/css/bootstrap.min.css" rel="stylesheet">
 
 		<!-- Custom styles for this template -->
+		<link href="<?=base_url(); ?>static/css/about.css" rel="stylesheet">
 		<link href="<?=base_url(); ?>static/css/jquery.fullPage.css" rel="stylesheet">
 
 		<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
