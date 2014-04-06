@@ -1,7 +1,9 @@
 		<!-- Content -->
 		<div class="col-md-10">
 			<!-- Overview -->
-			<div id="content-overview" class="admin-content"></div>
+			<div id="content-overview" class="admin-content">
+				
+			</div>
 
 			<!-- Reports -->
 			<div id="content-reports" class="admin-content">

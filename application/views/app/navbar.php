@@ -16,7 +16,7 @@
 						<li <?php if($page_id == 0) echo 'class="active"'; ?>><a href="<?=base_url(); ?>">Home</a></li>
 
 						<?php if($is_logged_in): ?>
-							<li <?php if($page_id == 1) echo 'class="active"'; ?> ><a href="<?=base_url(); ?>report/add/">Report Issue</a></li>
+							<!--<li <?php if($page_id == 1) echo 'class="active"'; ?> ><a href="<?=base_url(); ?>report/add/">Report Issue</a></li>-->
 							<li <?php if($page_id == 2) echo 'class="active"'; ?>> <a href="<?=base_url(); ?>report/my/">My Issues</a></li>
 						<?php endif; ?>
 						<?php if($is_admin): ?>

@@ -64,8 +64,7 @@
 						mapOptions);
 
 				map.mapTypes.set('map_style', styledMap);
-				//map.setMapTypeId('map_style');
-				map.setMapTypeId(oogle.maps.MapTypeId.SATELLITE);
+				map.setMapTypeId('map_style');
 			}
 			google.maps.event.addDomListener(window, 'load', initialize);
 
