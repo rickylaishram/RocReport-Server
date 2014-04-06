@@ -48,7 +48,7 @@
 
 	function start(position) {
 		user.base_url = "<?=base_url(); ?>";
-		user.ep_reports_nearby = "report/api/report_nearby/";
+		user.ep_reports_nearby = "report/api/fetch_nearby/";
 		user.ep_reports_mine = "report/api/fetch_mine/";
 		user.latitude = position.coords.latitude;
 		user.longitude = position.coords.longitude;
