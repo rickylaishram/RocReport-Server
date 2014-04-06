@@ -153,7 +153,7 @@
 							
 							addMarker(location);
 
-							$('#reports-list').append(generateListItem(category, address));
+							$('#reports-list').append(generateListItem(category, address, id));
 						}
 						setAllMap(map);
 					}
