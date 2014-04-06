@@ -2,6 +2,7 @@ var user = {
 	base_url: null,
 	ep_reports_nearby: null,
 	ep_reports_mine: null,
+	ep_vote: null,
 
 	latitude: null,
 	longitude: null,
@@ -33,6 +34,21 @@ var user = {
 			var position = $(this).data('position');
 			user.show_report_details(position);
 			$(this).addClass('report-list-item-active');
+		})
+		.on('click', '#report-btn-vote', function() {
+			var reportid = $(this).data('id');
+			var position = $(this).data('position');
+			user.send_vote(reportid, position);
+		});
+	},
+
+	send_vote: function(reportid, position) {
+		var params = {id: user.browser_id, report: reportid};
+		$.post(user.base_url+user.ep_vote, params, function(data) {
+			var data = JSON.parse(data);
+			console.log(data);
+			$('#report-btn-vote').data('id','');
+			$('#report-btn-vote').hide();
 		});
 	},
 
@@ -72,7 +88,16 @@ var user = {
 		$('#report-details-score').html('Score '+report['score']);
 		$('#report-details-vote').html('Votes '+report['vote_count']); // To be added later
 		$('#report-details-image').attr('src', report['picture']);
-		$('#report-btn-update').data('id', report['report_id']);
+
+		if(report['hasVotes'] === '1') {
+			$('#report-btn-vote').data('id','');
+			$('#report-btn-vote').data('position','');
+			$('#report-btn-vote').hide();
+		} else {
+			$('#report-btn-vote').data('id',report['report_id']);
+			$('#report-btn-vote').data('position',position);
+			$('#report-btn-vote').show();
+		}
 
 		// Set map location
 		user.map_initialize();

@@ -10,7 +10,7 @@ class Report extends CI_Controller {
 			$this->output->_display();
 		} else {
 			$data['page_title'] = 'Reports | RocReport';
-			$data['page_id'] = 3;
+			$data['page_id'] = 2;
 			$data['is_logged_in'] = $this->auth->isLoggedIn();
 			$data['is_admin'] = $this->auth->isAdmin(null, null, null, null);
 			$data['is_super_admin'] = $this->auth->isSuperAdmin();
@@ -59,6 +59,13 @@ class Report extends CI_Controller {
 						$data = $this->report->fetch_by_user($email, 100, 0, $orderby);
 						$this->_response_success($data);
 						break;
+					case 'vote':
+						$report = $this->input->post('report');
+						if($report) {
+							$this->load->model('report_model', 'report');
+							$this->report->vote($email, $report);
+							$this->_response_success(array());
+						}
 					default:
 						# code...
 						break;
