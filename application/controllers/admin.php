@@ -57,7 +57,7 @@ class Admin extends CI_Controller {
 						$text = $this->input->post('update');
 						$reportid = $this->input->post('report_id');
 						if($text) {
-							$this->admin->save_update($email, $text, $id, 'open');
+							$this->admin->save_update($email, $text, $reportid, 'open');
 							$this->_response_success(array());
 						}
 						break;
