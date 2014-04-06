@@ -30,7 +30,7 @@
 								<img src="" id="report-details-image"/>
 							</div>
 						</div>
-						<div class="row"><b>Updates<b></div>
+						<div class="row"><div class="col-md-12"><b>Updates</b></div></div>
 						<div class="row">
 							<div id="report-details-updates" class="list-group col-md-12" ></div>
 						</div>

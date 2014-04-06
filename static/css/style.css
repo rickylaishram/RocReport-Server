@@ -142,4 +142,8 @@ a.list-group-item:hover, .report-list-item-active {
 	width: 100%;
 }
 
+.report-details>.row {
+	margin-bottom: 15px;
+}
+
 
