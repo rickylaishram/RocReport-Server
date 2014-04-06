@@ -68,11 +68,12 @@ var admin = {
 		$('#report-details-vote').html('Votes '+report['vote_count']); // To be added later
 		$('#report-details-image').attr('src', report['picture']);
 
-		var update_list = $('.report-details-updates');
+		var update_list = $('#report-details-updates');
 		update_list.html('');
 
 		for (var i = 0; i < report['updates'].length; i++) {
-			update_list.append('<a class="list-group-item">By <b>'+report['updates'][i]->updated_by+'</b> at '+report['updates'][i]->updated_at+'<br>'+report['updates'][i]->status+'<br>'+report['updates'][i]->description+'</a>');
+			console.log(report['updates'][i]);
+			update_list.append('<a class="list-group-item">By <b>'+report['updates'][i]['updated_by']+'</b> at '+report['updates'][i]['updated_at']+'<br>'+report['updates'][i]['status']+'<br>'+report['updates'][i]['description']+'</a>');
 		};
 
 		if(report['closed'] === '1') {

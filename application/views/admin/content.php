@@ -32,7 +32,7 @@
 						</div>
 						<div class="row"><b>Updates<b></div>
 						<div class="row">
-							<div id="list-group report-details-updates" class="col-md-12" ></div>
+							<div id="report-details-updates" class="list-group col-md-12" ></div>
 						</div>
 						<div id="report-details-buttons" class="row">
 							<button type="button" class="btn btn-success" id="report-btn-open">Open Report</button>
