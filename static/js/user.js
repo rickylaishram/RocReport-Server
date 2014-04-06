@@ -74,25 +74,13 @@ var user = {
 		$('#report-details-image').attr('src', report['picture']);
 		$('#report-btn-update').data('id', report['report_id']);
 
-		var update_list = $('#report-details-updates');
+		/*var update_list = $('#report-details-updates');
 		update_list.html('');
 
 		for (var i = 0; i < report['updates'].length; i++) {
 			console.log(report['updates'][i]);
 			update_list.append('<a class="list-group-item">By <b>'+report['updates'][i]['updated_by']+'</b> at '+report['updates'][i]['updated_at']+'<br>'+report['updates'][i]['status']+'<br>'+report['updates'][i]['description']+'</a>');
-		};
-
-		if(report['closed'] === '1') {
-			$('#report-btn-close').hide();
-			$('#report-btn-open').show();
-			$('#report-btn-open').data('id', report['report_id']);
-			$('#report-btn-close').data('id', '');
-		} else {
-			$('#report-btn-open').hide();
-			$('#report-btn-close').show();
-			$('#report-btn-open').data('id', '');
-			$('#report-btn-close').data('id', report['report_id']);
-		}
+		};*/
 
 		// Set map location
 		user.map_initialize();
@@ -107,15 +95,6 @@ var user = {
 					map: user.map
 				});
 		user.marker.setMap(user.map);
-	},
-
-	send_update: function(text, reportid) {
-		var params = {id: user.browser_id, update: text, report_id: reportid};
-		$.post(user.base_url+user.ep_report_update, params, function() {
-			$('#report-btn-update').prop('disabled', true);
-			$('#report-update-area').val('');
-			$('#report-details-updates').prepend('<a class="list-group-item">By <b>Me</b> at now<br>open<br>'+text+'</a>')
-		});
 	},
 
 	populate_reports_list: function(reports) {
