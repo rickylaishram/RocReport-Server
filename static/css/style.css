@@ -134,4 +134,8 @@ a.list-group-item:hover,  {
 	overflow: hidden;
 }
 
+.report-details, .report-list {
+	overflow: scroll;
+}
+
 
