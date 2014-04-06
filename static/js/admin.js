@@ -123,13 +123,13 @@ var admin = {
 		if(report['closed'] === '1') {
 			$('#report-btn-close').hide();
 			$('#report-btn-open').show();
-			$('#report-btn-close').data('id', report['report_id']);
-			$('#report-btn-open').data('id', '');
+			$('#report-btn-open').data('id', report['report_id']);
+			$('#report-btn-close').data('id', '');
 		} else {
 			$('#report-btn-open').hide();
 			$('#report-btn-close').show();
-			$('#report-btn-close').data('id', '');
-			$('#report-btn-open').data('id', report['report_id']);
+			$('#report-btn-open').data('id', '');
+			$('#report-btn-close').data('id', report['report_id']);
 		}
 
 		// Set map location
