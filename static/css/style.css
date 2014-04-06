@@ -156,7 +156,7 @@ a.list-group-item:hover, .report-list-item-active {
 }
 
 #report-details-updates>a:hover {
-	border-left: 0px solid rgba(0,0,0,0) !important;
+	border-left: 5px solid rgba(0,0,0,0) !important;
 	background-color: rgba(0,0,0,0) !important;
 }
 
