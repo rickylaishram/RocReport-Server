@@ -26,6 +26,7 @@
 	<body>
 		<div class="section" id="about">
 			<h1>RocReport</h1>
+			<img src="<?=base_url();?>ststic/images/qr-website.png" width="300">
 		</div>
 		<div class="section" id="get">
 			<h1>Get It</h1>
