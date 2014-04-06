@@ -3,8 +3,10 @@ body {
 	text-align: center;
 }
 
-.section {
-	padding: 25px;
+.content {
+	max-width: 750px;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 #about {
