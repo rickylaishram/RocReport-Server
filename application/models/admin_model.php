@@ -20,7 +20,22 @@ class Admin_model extends CI_Model {
 			$this->db->where('closed', 0);
 			$query = $this->db->get($this->table['report']);
 
-			$reports = array_merge($reports, $query->result());
+			// Fetch vote count and updates
+			foreach ($query->result() as $item) {
+				$this->db->where('report_id', $item->report_id);
+				$votes = $this->db->get($this->table['vote']);
+
+				$item->vote_count = $votes->num_rows();
+
+				$this->db->where('report_id', $item->report_id);
+				$updates = $this->db->get($this->table['update']);
+
+				$item->updates = $updates->result();
+
+				$result[] = $item;
+			}
+
+			//$reports = array_merge($reports, $query->result());
 		}
 
 		return $reports;
