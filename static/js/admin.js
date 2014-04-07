@@ -5,6 +5,7 @@ var admin = {
 	ep_report_update: null,
 	ep_report_set_open: null,
 	ep_report_set_close: null,
+	ep_paymoney: null,
 
 	reports: null,
 	browser_id: null,
@@ -53,9 +54,25 @@ var admin = {
 		.on('click', '#report-btn-close', function() {
 			var reportid = $(this).data('id');
 			admin.close_report(reportid);
-		});
+		})
+		.on('click', '#report-reward', function(){
+			var userEmail = $(this).data('email');
+			var amount = $('#report-payuser').val();
+			admin.sendMoney(userEmail, amount);
+		}
+		);
+
+		
 
 		admin.fetch_open_reports();
+	},
+
+	sendMoney: function(email,amount) {
+		var params = {id: admin.browser_id, amount: amount, user_email: email};
+                $.post(admin.base_url+admin.ep_paymoney, params, function(data) {
+                        //var data = JSON.parse(data);
+                        console.log(data);
+                });
 	},
 
 	fetch_open_reports: function() {
@@ -125,11 +142,14 @@ var admin = {
 		if(report['closed'] === '1') {
 			$('#report-btn-close').hide();
 			$('#report-btn-open').show();
+			$('#report-pay-user').show();
+			$('#report-reward').data('email',report['email']);
 			$('#report-btn-open').data('id', report['report_id']);
 			$('#report-btn-close').data('id', '');
 		} else {
 			$('#report-btn-open').hide();
 			$('#report-btn-close').show();
+			$('#report-pay-user').hide();
 			$('#report-btn-open').data('id', '');
 			$('#report-btn-close').data('id', report['report_id']);
 		}

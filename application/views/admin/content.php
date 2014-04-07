@@ -52,6 +52,12 @@
 								<button type="button" class="btn btn-danger" id="report-btn-close">Close Report</button>
 							</div>
 						</div>
+						<div id="report-pay-user" class="row">
+							<div class="col-md-12">
+								<input type="number" class="form-control" id="report-payuser" placeholder="Enter Amount">
+								<button type="button" class="btn btn-warning" id="report-reward">Reward This User</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -69,6 +75,7 @@
 		admin.ep_report_update = "admin/api/save_update";
 		admin.ep_report_set_open = "admin/api/set_open";
 		admin.ep_report_set_close = "admin/api/set_close";
+		admin.ep_paymoney = "admin/api/pay_money";
 		admin.browser_id = "<?=$browser['id']; ?>";
 		admin.init();
 		google.maps.event.addDomListener(window, 'load', admin.map_initialize);

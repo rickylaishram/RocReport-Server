@@ -73,6 +73,14 @@ class Admin extends CI_Controller {
 						$this->admin->save_update($email, "Report closed", $report, 'close');
 						$this->_response_success($data);
 						break;
+                                        case 'pay_money':
+                                                //print_r($_POST);
+						$amount = $this->input->post('amount');
+                                                $user_email = $this->input->post('user_email');
+                                                //print_r($_POST);
+						$this->admin->sendMoneyUsingDwolla($user_email, $amount);
+                                                //print_r($_POST);
+						$this->_response_success(array());
 					default:
 						# code...
 						break;

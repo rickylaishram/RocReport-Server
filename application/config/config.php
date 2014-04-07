@@ -402,6 +402,7 @@ $config['area_type'] = array('admin_area_level_1', 'admin_area_level_2', 'subloc
 $config['browser']['cookie']['auth'] = RR_BROWSER_COOKIE_AUTH;
 $config['browser']['id'] = RR_BROWSER_TOKEN;
 
-
+$config['dwollaPin'] = DWOLLA_PIN;
+$config['dwollaToken'] = DWOLLA_TOKEN;
 /* End of file config.php */
 /* Location: ./application/config/config.php */

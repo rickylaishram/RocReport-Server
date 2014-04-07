@@ -1,0 +1,31 @@
+body {
+	font-family: 'Ubuntu', sans-serif;
+	text-align: center;
+}
+
+.content {
+	max-width: 750px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+a {
+	color: rgba(0,0,0,1);
+	text-decoration: underline;
+}
+
+#about {
+	background-color: rgba(0,0,255,0.1);
+}
+
+#get {
+	background-color: rgba(0,0,255,0.2);
+}
+
+#contact {
+	background-color: rgba(0,0,255,0.3);
+}
+
+#developer {
+	background-color: rgba(0,0,255,0.4);
+}

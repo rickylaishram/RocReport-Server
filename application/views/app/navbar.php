@@ -17,7 +17,7 @@
 
 						<?php if($is_logged_in): ?>
 							<!--<li <?php if($page_id == 1) echo 'class="active"'; ?> ><a href="<?=base_url(); ?>report/add/">Report Issue</a></li>-->
-							<li <?php if($page_id == 2) echo 'class="active"'; ?>> <a href="<?=base_url(); ?>report/">My Issues</a></li>
+							<li <?php if($page_id == 2) echo 'class="active"'; ?>> <a href="<?=base_url(); ?>report/">Reports</a></li>
 						<?php endif; ?>
 						<?php if($is_admin): ?>
 							<li <?php if($page_id == 3) echo 'class="active"'; ?>><a href="<?=base_url(); ?>admin/">Admin</a></li>
@@ -26,7 +26,6 @@
 							<li <?php if($page_id == 4) echo 'class="active"'; ?>><a href="<?=base_url(); ?>superadmin/">Super Admin</a></li>
 						<?php endif; ?>
 						<li <?php if($page_id == 5) echo 'class="active"'; ?>><a href="<?=base_url(); ?>about/">About</a></li>
-						
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<?php if($is_logged_in): ?>

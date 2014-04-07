@@ -99,4 +99,14 @@ class Admin_model extends CI_Model {
 		$this->db->where('report_id', $report_id);
 		$this->db->update($this->table['report'], array('closed' => 1));
 	}
+
+	function sendMoneyUsingDwolla($email, $amount) {
+		@require("/var/www/v2/application/libraries/Dwolla.php");
+		$Dwolla = new DwollaRestClient();
+		$Dwolla->setToken($this->config->item('dwollaToken'));
+		// Send money to a given Dwolla ID
+		$transactionId = $Dwolla->send($this->config->item('dwollaPin'), $email, $amount);
+		//TO-DO
+		//Save this transaction ID
+	}
 }
