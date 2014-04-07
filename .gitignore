@@ -8,4 +8,4 @@ main-config.php
 
 .htaccess
 
-static/images/*.jpg
+static/images/*
