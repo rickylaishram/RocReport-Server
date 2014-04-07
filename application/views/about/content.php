@@ -25,10 +25,15 @@
 	</head>
 	<body>
 		<div class="section" id="about">
-			<div class="content">
-				<h1>RocReport</h1>
-				<p>This will be a description about rocreport. This will be a description about rocreport. This will be a description about rocreport.</p>
-				<img src="<?=base_url();?>static/images/qr-website.png" width="300">
+			<div class="content" style="max-width: 1000px;">			<h1>RocReport</h1>
+				<p>RocReport is an app to Facilitate Direct Communication between the citizens and the civic authorities by crowdsourcing civic issues. </p>
+
+				<p>It also serves as a market place for Contractors who can have a more open information about the civic issues currently in the city and help them get more work.</p>
+
+				<p>RocReport can be used for home / maintenance issues as well as by organisations to help keep their campuses well-maitained.</p>
+				<!--<img src="<?=base_url();?>static/images/qr-website.png" width="300">-->
+<br /><br /><p><a href="../">Visit</a></p>				
+					<br /><br /><p><img src="http://i.imgur.com/0OB4I4P.png" style="height: 356px;" />&nbsp;&nbsp;<img src = "http://i.imgur.com/cvRoY7D.png" width="200px;" />&nbsp;&nbsp;<img src="http://i.imgur.com/WMKsCKH.png" height="356px;" /> </p>
 			</div>
 		</div>
 		<div class="section" id="get">
