@@ -7,3 +7,5 @@ main-config.php
 .htaccess
 
 .htaccess
+
+static/images/*.jpg
