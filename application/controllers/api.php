@@ -48,7 +48,7 @@ class Api extends CI_Controller {
 		if($id && $valid && $rate_limit ) {
 			switch ($path) {
 				case 'fetch_all':
-					# code...
+					$this->_fetch_all_categories();
 					break;
 				
 				default:
