@@ -22,4 +22,13 @@ class Category_model extends CI_Model {
 		}
 	}
 
+	/*
+	* Get all the categories name and id
+	*/
+	function fetchAll() {
+		$query = $this->db->get($this->table['category']);
+
+		return $query->result();
+	}
+
 }

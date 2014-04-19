@@ -36,6 +36,29 @@ class Api extends CI_Controller {
 	}
 
 	/*
+	* Handle category related api
+	*/
+	function category($path="") {
+		$this->load->model('client_model', 'client');
+		$id = $this->input->post('id');
+
+		$valid = ($id ? $this->client->isValid($id) : false);
+		$rate_limit = ($valid ? $this->client->check_rate_limit($id) : false);
+
+		if($id && $valid && $rate_limit ) {
+			switch ($path) {
+				case 'fetch_all':
+					# code...
+					break;
+				
+				default:
+					# code...
+					break;
+			}
+		}
+	}
+
+	/*
 	* Handles report add, fetch, etc
 	*/
 	function report($path="") {
@@ -92,6 +115,16 @@ class Api extends CI_Controller {
 				# code...
 				break;
 		}
+	}
+
+	/*
+	* Fetch all categories
+	* 	Authentication not needed
+	*/
+	function _fetch_all_categories() {
+		$this->load->model('category_model', 'category');
+		$categories = $this->category->fetchAll();
+		$this->_response_success($categories);
 	}
 
 	/*
