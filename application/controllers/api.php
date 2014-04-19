@@ -322,6 +322,7 @@ class Api extends CI_Controller {
 			$this->load->model('client_model', 'client');
 			$this->load->model('auth_model', 'auth');
 			$this->load->model('report_model', 'report');
+			$this->load->model('category_model', 'category');
 
 			// Change $novote to boolean
 			$novote = (strtolower($novote) === 'true');
@@ -329,10 +330,11 @@ class Api extends CI_Controller {
 			$email = $this->auth->getEmail($client, $token);
 			if($email) {
 
-				$categories = $this->config->item('category');
-				$category = strtolower($category);
+				//$categories = $this->config->item('category');
+				//$category = strtolower($category);
+				$category = $this->category->checkIdValid($category);
 
-				if(in_array($category, $categories)) {
+				if($category) {
 					$nearby = array();
 
 					// If novote is set to false; check if nearby reports exist
