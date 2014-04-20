@@ -373,6 +373,7 @@ $config['table']['image'] = RR_TABLE_IMAGE;
 $config['table']['admin'] = RR_TABLE_ADMIN;
 $config['table']['sadmin'] = RR_TABLE_SADMIN;
 $config['table']['api_request'] = RR_TABLE_API_REQ;
+$config['table']['category'] = RR_TABLE_CATEGORY;
 
 /*
 |--------------------------------------------------------------------------
@@ -381,7 +382,16 @@ $config['table']['api_request'] = RR_TABLE_API_REQ;
 | These are the report categories allowed
 |
 */
-$config['category'] = array('test', 'broken lamp', 'pothole', 'graffiti', 'water leak', 'trash');
+$config['category'] = array(
+						1 => 'vehicle issue',
+						2 => 'street, road, sidewalk',
+						3 => 'animal issues',
+						4 => 'trash, waste',
+						5 => 'street light',
+						6 => 'road sign',
+						7 => 'traffic light',
+						8 => 'plant, tree',
+						);
 
 /*
 |--------------------------------------------------------------------------

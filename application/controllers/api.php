@@ -36,6 +36,29 @@ class Api extends CI_Controller {
 	}
 
 	/*
+	* Handle category related api
+	*/
+	function category($path="") {
+		$this->load->model('client_model', 'client');
+		$id = $this->input->post('id');
+
+		$valid = ($id ? $this->client->isValid($id) : false);
+		$rate_limit = ($valid ? $this->client->check_rate_limit($id) : false);
+
+		if($id && $valid && $rate_limit ) {
+			switch ($path) {
+				case 'fetch_all':
+					$this->_fetch_all_categories();
+					break;
+				
+				default:
+					# code...
+					break;
+			}
+		}
+	}
+
+	/*
 	* Handles report add, fetch, etc
 	*/
 	function report($path="") {
@@ -92,6 +115,16 @@ class Api extends CI_Controller {
 				# code...
 				break;
 		}
+	}
+
+	/*
+	* Fetch all categories
+	* 	Authentication not needed
+	*/
+	function _fetch_all_categories() {
+		$this->load->model('category_model', 'category');
+		$categories = $this->category->fetchAll();
+		$this->_response_success($categories);
 	}
 
 	/*
@@ -322,6 +355,7 @@ class Api extends CI_Controller {
 			$this->load->model('client_model', 'client');
 			$this->load->model('auth_model', 'auth');
 			$this->load->model('report_model', 'report');
+			$this->load->model('category_model', 'category');
 
 			// Change $novote to boolean
 			$novote = (strtolower($novote) === 'true');
@@ -329,10 +363,11 @@ class Api extends CI_Controller {
 			$email = $this->auth->getEmail($client, $token);
 			if($email) {
 
-				$categories = $this->config->item('category');
-				$category = strtolower($category);
+				//$categories = $this->config->item('category');
+				//$category = strtolower($category);
+				$category = $this->category->checkIdValid($category);
 
-				if(in_array($category, $categories)) {
+				if($category) {
 					$nearby = array();
 
 					// If novote is set to false; check if nearby reports exist
