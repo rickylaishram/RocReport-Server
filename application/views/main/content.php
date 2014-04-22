@@ -28,11 +28,17 @@
 
 			function initialize() {
 				// Set map-canvas height
-				var height = $(window).height() - 80;
-				if(height < 200) {
-					height = 200;
+				if($(window).width() <= 768) {
+					var height = ($(window).height() - 80)/2;
+					$('#map-canvas').height(height);
+				} else {
+					var height = $(window).height() - 80;
+					if(height < 200) {
+						height = 200;
+					}
+					$('#map-canvas').height(height);
 				}
-				$('#map-canvas').height(height);
+				
 
 				var styles = [
 								{
