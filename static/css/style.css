@@ -195,9 +195,6 @@ a.list-group-item:hover,
 	z-index: 999;
 }
 
-body {
-	background: #111;
-}
 .loader {
 	position: relative;
 	padding-top: 100px;
@@ -220,8 +217,7 @@ body {
 	width: 5px;
 	height: 5px;
 	border-radius: 5px;
-	background: #fff;
-	/* Pick a color */
+	background: rgba(0,0,240,1);
 }
 .loader .circle:nth-child(2) {
 	animation-delay: 240ms;

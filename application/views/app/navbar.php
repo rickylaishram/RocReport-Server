@@ -1,4 +1,14 @@
 	<body>
+		<div class="loading-container">
+			<div class='loader'>
+				<div class='circle'></div>
+				<div class='circle'></div>
+				<div class='circle'></div>
+				<div class='circle'></div>
+				<div class='circle'></div>
+			</div>
+		</div>
+		
 	<!-- Fixed navbar -->
 		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container-fluid">
@@ -37,15 +47,5 @@
 						<?php endif; ?>
 					</ul>
 				</div><!--/.nav-collapse -->
-			</div>
-		</div>
-
-		<div class="loading-container">
-			<div class='loader'>
-				<div class='circle'></div>
-				<div class='circle'></div>
-				<div class='circle'></div>
-				<div class='circle'></div>
-				<div class='circle'></div>
 			</div>
 		</div>
