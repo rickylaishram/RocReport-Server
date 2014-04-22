@@ -121,7 +121,7 @@ var user = {
 		var list = $('.report-list');
 		list.html('');
 		for (var i = reports.length - 1; i >= 0; i--) {
-			list.append('<a href="#" data-id="'+reports[i]['report_id']+'" data-position="'+i+'" class="list-group-item report-item"><h4 class="list-group-item-heading">'+reports[i]['category']+'</h4><p class="list-group-item-text">'+reports[i]['formatted_address']+'</p></a>');
+			list.append('<a href="#" data-id="'+reports[i]['report_id']+'" data-position="'+i+'" class="list-group-item report-item"><h4 class="list-group-item-heading report-details-uppercase">'+reports[i]['category']+'</h4><p class="list-group-item-text">'+reports[i]['formatted_address']+'</p></a>');
 		};
 		$('#content-reports').show();
 	},

@@ -138,6 +138,11 @@ a.list-group-item:hover,
 	font-weight: 500;
 }
 
+.report-details-medium {
+	font-size: 20px;
+	font-weight: 400;
+}
+
 .report-details-small {
 	font-size: 14px;
 	font-weight: 300;
