@@ -204,7 +204,7 @@ a.list-group-item:hover,
 	margin: 0 auto;
 }
 
-.navjustified>li {
+.nav-justified>li {
 	display: table-cell;
 	width: 1%;
 }
