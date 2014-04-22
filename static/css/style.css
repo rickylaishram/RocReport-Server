@@ -1,6 +1,11 @@
+@font-face {
+	font-family: 'Roboto Light';
+	src: url('../fonts/Roboto-Light.ttf');
+}
+
 body {
 	padding-top: 70px;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: 'Roboto Light', 'Ubuntu', sans-serif;
 }
 
 .navbar-brand, .navbar-brand:hover {
