@@ -18,6 +18,9 @@
 						<div class="row report-details-big report-details-uppercase">
 							<div id="report-details-category" class="col-md-12" ></div>
 						</div>
+						<div class="row report-details-big report-details-uppercase">
+							<div id="report-details-description" class="col-md-12" ></div>
+						</div>
 						<div class="row report-details-big">
 							<div id="report-details-address" class="col-md-12"></div>
 						</div>

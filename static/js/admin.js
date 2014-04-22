@@ -59,10 +59,7 @@ var admin = {
 			var userEmail = $(this).data('email');
 			var amount = $('#report-payuser').val();
 			admin.sendMoney(userEmail, amount);
-		}
-		);
-
-		
+		});
 
 		admin.fetch_open_reports();
 	},
