@@ -166,7 +166,7 @@
 			}
 
 			function generateListItem(category, address, id) {
-				var item ='<a href="#" class="list-group-item report-item" data-id="'+id+'"><h4 class="list-group-item-heading">'+category+'</h4><p class="list-group-item-text">'+address+'</p></a>';
+				var item ='<a href="#" class="list-group-item report-item" data-id="'+id+'"><h4 class="list-group-item-heading report-details-uppercase">'+category+'</h4><p class="list-group-item-text">'+address+'</p></a>';
 				return item;
 			}
 
