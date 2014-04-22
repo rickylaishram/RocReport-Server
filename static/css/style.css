@@ -204,6 +204,11 @@ a.list-group-item:hover,
 	margin: 0 auto;
 }
 
+.navjustified>li {
+	display: table-cell;
+	width: 1%;
+}
+
 span[class*="l-"] {
 	display: inline-block;
 	background: rgba(255,255,255,1);
