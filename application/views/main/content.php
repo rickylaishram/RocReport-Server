@@ -20,7 +20,7 @@
 			</div>
 		</div> <!-- /container -->
 
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6x__caSSACAJWV9uoEYA6mcP9J4xdo_c&sensor=false"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<?= $this->config->item('googleMaps')?>&sensor=false"></script>
 		<script type="text/javascript">
 			var map = null;
 			var markers = [];
