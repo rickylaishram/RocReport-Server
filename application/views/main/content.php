@@ -133,6 +133,9 @@
 			}
 
 			function fetch_reports(latitude, longitude, radius, type) {
+				var loader = $('.loading-container');
+				loader.show();
+				
 				var params = {'latitude': latitude, 'longitude': longitude, 'radius': radius, 'orderby': type, 'id': '<?=$browser["id"]; ?>'};
 				console.log(params);
 				$.post('<?=base_url(); ?>api/report/fetch_nearby/', params, function(data) {
@@ -157,6 +160,8 @@
 						}
 						setAllMap(map);
 					}
+
+					loader.hide();
 				});
 			}
 
