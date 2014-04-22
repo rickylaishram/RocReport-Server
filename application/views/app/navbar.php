@@ -39,3 +39,13 @@
 				</div><!--/.nav-collapse -->
 			</div>
 		</div>
+
+		<div class="loading-container">
+			<div class='loader'>
+				<div class='circle'></div>
+				<div class='circle'></div>
+				<div class='circle'></div>
+				<div class='circle'></div>
+				<div class='circle'></div>
+			</div>
+		</div>
