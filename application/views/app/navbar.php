@@ -1,4 +1,5 @@
 	<body>
+
 	<!-- Fixed navbar -->
 		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container-fluid">
@@ -38,4 +39,14 @@
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>
+		</div>
+
+		<div class="loading-container">
+			<span>Loading</span>
+			<span class="l-1"></span>
+			<span class="l-2"></span>
+			<span class="l-3"></span>
+			<span class="l-4"></span>
+			<span class="l-5"></span>
+			<span class="l-6"></span>
 		</div>

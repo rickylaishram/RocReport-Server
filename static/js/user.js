@@ -45,16 +45,23 @@ var user = {
 	},
 
 	send_vote: function(reportid, position) {
+		var loader = $('.loading-container');
+		loader.show();
+
 		var params = {id: user.browser_id, report: reportid};
 		$.post(user.base_url+user.ep_vote, params, function(data) {
 			var data = JSON.parse(data);
 			console.log(data);
 			$('#report-btn-vote').data('id','');
 			$('#report-btn-vote').hide();
+			loader.hide();
 		});
 	},
 
 	fetch_reports_nearby: function() {
+		var loader = $('.loading-container');
+		loader.show();
+
 		$('.user-content').hide();
 		$('.report-details').hide();
 		var params = {id: user.browser_id, latitude: user.latitude, longitude: user.longitude};
@@ -63,10 +70,14 @@ var user = {
 			console.log(data);
 			user.reports = data['data'];
 			user.populate_reports_list(user.reports);
+			loader.hide();
 		});
 	},
 
 	fetch_reports_mine: function() {
+		var loader = $('.loading-container');
+		loader.show();
+
 		$('.user-content').hide();
 		$('.report-details').hide();
 		var params = {id: user.browser_id};
@@ -75,6 +86,7 @@ var user = {
 			console.log(data);
 			user.reports = data['data'];
 			user.populate_reports_list(user.reports);
+			loader.hide();
 		});
 	},
 
@@ -85,6 +97,7 @@ var user = {
 
 		var report = user.reports[position];
 		$('#report-details-category').html(report['category']);
+		$('#report-details-description').html(report['description']);
 		$('#report-details-address').html(report['formatted_address']);
 		$('#report-details-date').html('Added at '+report['added_at']);
 		$('#report-details-score').html('Score '+report['score']);
@@ -120,7 +133,7 @@ var user = {
 		var list = $('.report-list');
 		list.html('');
 		for (var i = reports.length - 1; i >= 0; i--) {
-			list.append('<a href="#" data-id="'+reports[i]['report_id']+'" data-position="'+i+'" class="list-group-item report-item"><h4 class="list-group-item-heading">'+reports[i]['category']+'</h4><p class="list-group-item-text">'+reports[i]['formatted_address']+'</p></a>');
+			list.append('<a href="#" data-id="'+reports[i]['report_id']+'" data-position="'+i+'" class="list-group-item report-item"><h4 class="list-group-item-heading report-details-uppercase">'+reports[i]['category']+'</h4><p class="list-group-item-text">'+reports[i]['formatted_address']+'</p></a>');
 		};
 		$('#content-reports').show();
 	},

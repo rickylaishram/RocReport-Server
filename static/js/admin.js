@@ -59,10 +59,7 @@ var admin = {
 			var userEmail = $(this).data('email');
 			var amount = $('#report-payuser').val();
 			admin.sendMoney(userEmail, amount);
-		}
-		);
-
-		
+		});
 
 		admin.fetch_open_reports();
 	},
@@ -76,6 +73,9 @@ var admin = {
 	},
 
 	fetch_open_reports: function() {
+		var loader = $('.loading-container');
+		loader.show();
+
 		$('.admin-content').hide();
 		$('.report-details').hide();
 		var params = {id: admin.browser_id};
@@ -83,10 +83,14 @@ var admin = {
 			var data = JSON.parse(data);
 			admin.reports = data['data'];
 			admin.populate_reports_list(admin.reports);
+			loader.hide();
 		});
 	},
 
 	fetch_closed_reports: function() {
+		var loader = $('.loading-container');
+		loader.show();
+
 		$('.admin-content').hide();
 		$('.report-details').hide();
 		var params = {id: admin.browser_id};
@@ -94,20 +98,29 @@ var admin = {
 			var data = JSON.parse(data);
 			admin.reports = data['data'];
 			admin.populate_reports_list(admin.reports);
+			loader.hide();
 		});
 	},
 
 	open_report: function(reportid) {
+		var loader = $('.loading-container');
+		loader.show();
+
 		var params = {id: admin.browser_id, report: reportid};
 		$.post(admin.base_url+admin.ep_report_set_open, params, function() {
 			$('#report-btn-close').show();
 			$('#report-btn-open').hide();
 			$('#report-btn-open').data('id', '');
 			$('#report-btn-open').data('id', reportid);
+
+			loader.hide();
 		});
 	},
 
 	close_report: function(reportid) {
+		var loader = $('.loading-container');
+		loader.show();
+
 		var params = {id: admin.browser_id, report: reportid};
 		$.post(admin.base_url+admin.ep_report_set_close, params, function() {
 			$('#report-btn-close').hide();
@@ -115,6 +128,8 @@ var admin = {
 			$('#report-btn-open').data('id', reportid);
 			$('#report-btn-open').data('id', '');
 		});
+
+		loader.hide();
 	},
 
 	show_report_details: function(position) {
@@ -124,6 +139,7 @@ var admin = {
 
 		var report = admin.reports[position];
 		$('#report-details-category').html(report['category']);
+		$('#report-details-description').html(report['description']);
 		$('#report-details-address').html(report['formatted_address']);
 		$('#report-details-date').html('Added at '+report['added_at']);
 		$('#report-details-score').html('Score '+report['score']);
@@ -170,11 +186,16 @@ var admin = {
 	},
 
 	send_update: function(text, reportid) {
+		var loader = $('.loading-container');
+		loader.show();
+
 		var params = {id: admin.browser_id, update: text, report_id: reportid};
 		$.post(admin.base_url+admin.ep_report_update, params, function() {
 			$('#report-btn-update').prop('disabled', true);
 			$('#report-update-area').val('');
-			$('#report-details-updates').prepend('<a class="list-group-item">By <b>Me</b> at now<br>open<br>'+text+'</a>')
+			$('#report-details-updates').prepend('<a class="list-group-item">By <b>Me</b> at now<br>open<br>'+text+'</a>');
+
+			loader.hide();
 		});
 	},
 
@@ -182,7 +203,7 @@ var admin = {
 		var list = $('.report-list');
 		list.html('');
 		for (var i = reports.length - 1; i >= 0; i--) {
-			list.append('<a href="#" data-id="'+reports[i]['report_id']+'" data-position="'+i+'" class="list-group-item report-item"><h4 class="list-group-item-heading">'+reports[i]['category']+'</h4><p class="list-group-item-text">'+reports[i]['formatted_address']+'</p></a>');
+			list.append('<a href="#" data-id="'+reports[i]['report_id']+'" data-position="'+i+'" class="list-group-item report-item"><h4 class="list-group-item-heading report-details-uppercase">'+reports[i]['category']+'</h4><p class="list-group-item-text">'+reports[i]['formatted_address']+'</p></a>');
 		};
 		$('#content-reports').show();
 	},

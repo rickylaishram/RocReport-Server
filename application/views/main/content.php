@@ -20,7 +20,7 @@
 			</div>
 		</div> <!-- /container -->
 
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6x__caSSACAJWV9uoEYA6mcP9J4xdo_c&sensor=false"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<?= $this->config->item('googleMaps')?>&sensor=false"></script>
 		<script type="text/javascript">
 			var map = null;
 			var markers = [];
@@ -28,11 +28,17 @@
 
 			function initialize() {
 				// Set map-canvas height
-				var height = $(window).height() - 80;
-				if(height < 200) {
-					height = 200;
+				if($(window).width() <= 768) {
+					var height = ($(window).height() - 80)/2;
+					$('#map-canvas').height(height);
+				} else {
+					var height = $(window).height() - 80;
+					if(height < 200) {
+						height = 200;
+					}
+					$('#map-canvas').height(height);
 				}
-				$('#map-canvas').height(height);
+				
 
 				var styles = [
 								{
@@ -46,7 +52,7 @@
 									elementType: "geometry",
 									stylers: [
 										{ hue: "#CDCDCD" },
-										{ saturation: 100 }
+										{ saturation: -100 }
 									]
 								},
 							];
@@ -133,6 +139,9 @@
 			}
 
 			function fetch_reports(latitude, longitude, radius, type) {
+				var loader = $('.loading-container');
+				loader.show();
+				
 				var params = {'latitude': latitude, 'longitude': longitude, 'radius': radius, 'orderby': type, 'id': '<?=$browser["id"]; ?>'};
 				console.log(params);
 				$.post('<?=base_url(); ?>api/report/fetch_nearby/', params, function(data) {
@@ -157,11 +166,13 @@
 						}
 						setAllMap(map);
 					}
+
+					loader.hide();
 				});
 			}
 
 			function generateListItem(category, address, id) {
-				var item ='<a href="#" class="list-group-item report-item" data-id="'+id+'"><h4 class="list-group-item-heading">'+category+'</h4><p class="list-group-item-text">'+address+'</p></a>';
+				var item ='<a href="#" class="list-group-item report-item" data-id="'+id+'"><h4 class="list-group-item-heading report-details-uppercase">'+category+'</h4><p class="list-group-item-text">'+address+'</p></a>';
 				return item;
 			}
 
