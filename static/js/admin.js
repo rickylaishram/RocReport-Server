@@ -121,6 +121,7 @@ var admin = {
 
 		var report = admin.reports[position];
 		$('#report-details-category').html(report['category']);
+		$('#report-details-description').html(report['description']);
 		$('#report-details-address').html(report['formatted_address']);
 		$('#report-details-date').html('Added at '+report['added_at']);
 		$('#report-details-score').html('Score '+report['score']);

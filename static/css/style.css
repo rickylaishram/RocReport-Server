@@ -8,7 +8,8 @@ body {
 	font-family: 'Roboto Light', 'Ubuntu', sans-serif;
 }
 
-.navbar-brand, .navbar-brand:hover {
+.navbar-brand, 
+.navbar-brand:hover {
 	color: rgba(255,255,255,1) !important;
 }
 
@@ -88,7 +89,8 @@ body {
 	border-left: 5px solid rgba(0,221,255,0) !important;
 }
 
-a.list-group-item:hover, .report-list-item-active {
+a.list-group-item:hover, 
+.report-list-item-active {
 	/*background-color: rgba(0,221,255,0) !important;*/
 	background-color: rgba(200,200,200,0.5) !important;
 	border-left: 5px solid rgba(0,221,255,0.5) !important;
@@ -101,22 +103,29 @@ a.list-group-item:hover, .report-list-item-active {
 	padding-left: 0px;
 }
 
-.admin-menu>.list-group, .user-menu>.list-group {
+.admin-menu>.list-group, 
+.user-menu>.list-group {
 	margin-top:15px;
 }
 
-.admin-menu>.list-group>.list-group-item, .user-menu>.list-group>.list-group-item {
+.admin-menu>.list-group>.list-group-item, 
+.user-menu>.list-group>.list-group-item {
 	background-color: rgba(0,0,0,0);
 	color: rgba(255,255,255,1);
 }
 
-.admin-menu>.list-group>.list-group-item:hover, .admin-menu-active, .user-menu>.list-group>.list-group-item:hover, .user-menu-active {
+.admin-menu>.list-group>.list-group-item:hover, 
+.admin-menu-active, 
+.user-menu>.list-group>.list-group-item:hover, 
+.user-menu-active {
 	background-color: rgba(0,0,0,0.05) !important;
 	border-left: 5px solid rgba(0,153,205,1) !important;
 	cursor: pointer;
 }
 
-.admin-content, .report-details, .user-content {
+.admin-content, 
+.report-details, 
+.user-content {
 	display: none;
 }
 
