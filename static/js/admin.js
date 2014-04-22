@@ -73,6 +73,9 @@ var admin = {
 	},
 
 	fetch_open_reports: function() {
+		var loader = $('.loading-container');
+		loader.show();
+
 		$('.admin-content').hide();
 		$('.report-details').hide();
 		var params = {id: admin.browser_id};
@@ -80,10 +83,14 @@ var admin = {
 			var data = JSON.parse(data);
 			admin.reports = data['data'];
 			admin.populate_reports_list(admin.reports);
+			loader.hide();
 		});
 	},
 
 	fetch_closed_reports: function() {
+		var loader = $('.loading-container');
+		loader.show();
+
 		$('.admin-content').hide();
 		$('.report-details').hide();
 		var params = {id: admin.browser_id};
@@ -91,20 +98,29 @@ var admin = {
 			var data = JSON.parse(data);
 			admin.reports = data['data'];
 			admin.populate_reports_list(admin.reports);
+			loader.hide();
 		});
 	},
 
 	open_report: function(reportid) {
+		var loader = $('.loading-container');
+		loader.show();
+
 		var params = {id: admin.browser_id, report: reportid};
 		$.post(admin.base_url+admin.ep_report_set_open, params, function() {
 			$('#report-btn-close').show();
 			$('#report-btn-open').hide();
 			$('#report-btn-open').data('id', '');
 			$('#report-btn-open').data('id', reportid);
+
+			loader.hide();
 		});
 	},
 
 	close_report: function(reportid) {
+		var loader = $('.loading-container');
+		loader.show();
+
 		var params = {id: admin.browser_id, report: reportid};
 		$.post(admin.base_url+admin.ep_report_set_close, params, function() {
 			$('#report-btn-close').hide();
@@ -112,6 +128,8 @@ var admin = {
 			$('#report-btn-open').data('id', reportid);
 			$('#report-btn-open').data('id', '');
 		});
+
+		loader.hide();
 	},
 
 	show_report_details: function(position) {
@@ -168,11 +186,16 @@ var admin = {
 	},
 
 	send_update: function(text, reportid) {
+		var loader = $('.loading-container');
+		loader.show();
+
 		var params = {id: admin.browser_id, update: text, report_id: reportid};
 		$.post(admin.base_url+admin.ep_report_update, params, function() {
 			$('#report-btn-update').prop('disabled', true);
 			$('#report-update-area').val('');
-			$('#report-details-updates').prepend('<a class="list-group-item">By <b>Me</b> at now<br>open<br>'+text+'</a>')
+			$('#report-details-updates').prepend('<a class="list-group-item">By <b>Me</b> at now<br>open<br>'+text+'</a>');
+
+			loader.hide();
 		});
 	},
 

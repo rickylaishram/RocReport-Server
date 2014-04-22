@@ -45,16 +45,23 @@ var user = {
 	},
 
 	send_vote: function(reportid, position) {
+		var loader = $('.loading-container');
+		loader.show();
+
 		var params = {id: user.browser_id, report: reportid};
 		$.post(user.base_url+user.ep_vote, params, function(data) {
 			var data = JSON.parse(data);
 			console.log(data);
 			$('#report-btn-vote').data('id','');
 			$('#report-btn-vote').hide();
+			loader.hide();
 		});
 	},
 
 	fetch_reports_nearby: function() {
+		var loader = $('.loading-container');
+		loader.show();
+
 		$('.user-content').hide();
 		$('.report-details').hide();
 		var params = {id: user.browser_id, latitude: user.latitude, longitude: user.longitude};
@@ -63,10 +70,14 @@ var user = {
 			console.log(data);
 			user.reports = data['data'];
 			user.populate_reports_list(user.reports);
+			loader.hide();
 		});
 	},
 
 	fetch_reports_mine: function() {
+		var loader = $('.loading-container');
+		loader.show();
+
 		$('.user-content').hide();
 		$('.report-details').hide();
 		var params = {id: user.browser_id};
@@ -75,6 +86,7 @@ var user = {
 			console.log(data);
 			user.reports = data['data'];
 			user.populate_reports_list(user.reports);
+			loader.hide();
 		});
 	},
 
