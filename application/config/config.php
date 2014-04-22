@@ -414,5 +414,7 @@ $config['browser']['id'] = RR_BROWSER_TOKEN;
 
 $config['dwollaPin'] = DWOLLA_PIN;
 $config['dwollaToken'] = DWOLLA_TOKEN;
+
+$config['googleMaps'] = GOOGLE_MAP;
 /* End of file config.php */
 /* Location: ./application/config/config.php */
