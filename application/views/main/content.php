@@ -46,7 +46,7 @@
 									elementType: "geometry",
 									stylers: [
 										{ hue: "#CDCDCD" },
-										{ saturation: 100 }
+										{ saturation: 20 }
 									]
 								},
 							];
