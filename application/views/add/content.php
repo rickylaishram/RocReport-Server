@@ -126,7 +126,7 @@
 					},
 
 					fetchAddress: function (latitude, longitude) {
-						var url = "https://maps.googleapis.com/maps/api/geocode/json?&sensor=true_or_false&key=<?= $this->config->item('googleMaps')?>latlng=";
+						var url = "https://maps.googleapis.com/maps/api/geocode/json?&sensor=true&key=<?= $this->config->item('googleMaps')?>latlng=";
 						$.get(url+latitude+','+longitude, function(data) {
 							var data = JSON.parse(data);
 
