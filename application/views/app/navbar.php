@@ -19,6 +19,7 @@
 						<?php if($is_logged_in): ?>
 							<!--<li <?php if($page_id == 1) echo 'class="active"'; ?> ><a href="<?=base_url(); ?>report/add/">Report Issue</a></li>-->
 							<li <?php if($page_id == 2) echo 'class="active"'; ?>> <a href="<?=base_url(); ?>report/">Reports</a></li>
+							<li <?php if($page_id == 6) echo 'class="active"'; ?>> <a href="<?=base_url(); ?>add_report/">Add Report</a></li>
 						<?php endif; ?>
 						<?php if($is_admin): ?>
 							<li <?php if($page_id == 3) echo 'class="active"'; ?>><a href="<?=base_url(); ?>admin/">Admin</a></li>
@@ -43,10 +44,10 @@
 
 		<div class="loading-container">
 			<span>Loading</span>
-			<span class="l-1"></span>
-			<span class="l-2"></span>
-			<span class="l-3"></span>
-			<span class="l-4"></span>
-			<span class="l-5"></span>
-			<span class="l-6"></span>
+			<span class="loading-dot-1"></span>
+			<span class="loading-dot-2"></span>
+			<span class="loading-dot-3"></span>
+			<span class="loading-dot-4"></span>
+			<span class="loading-dot-5"></span>
+			<span class="loading-dot-6"></span>
 		</div>

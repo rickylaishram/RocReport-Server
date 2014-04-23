@@ -18,6 +18,42 @@
 				</div>
 
 			</div>
+
+			<!-- The details modal -->
+			<div class="modal fade details-modal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-body">
+
+							<div class="row">
+								<div id="report-details-image-container">
+									<img src="" id="report-details-image" class="report-details-photo"/>
+								</div>
+							</div>
+							<div class="row report-details-big report-details-uppercase">
+								<div id="report-details-category" ></div>
+							</div>
+							<div class="row report-details-medium">
+								<div id="report-details-description" ></div>
+							</div>
+							<div class="row report-details-medium">
+								<div id="report-details-address" ></div>
+							</div>
+							<div class="row report-details-small">
+								<div id="report-details-date" ></div>
+							</div>
+							<div class="row report-details-small">
+								<div id="report-details-score" ></div>
+							</div>
+							<div class="row report-details-small">
+								<div id="report-details-votes" ></div>
+							</div>
+			
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div> <!-- /container -->
 
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<?= $this->config->item('googleMaps')?>&sensor=false"></script>
@@ -79,7 +115,7 @@
 				navigator.geolocation.getCurrentPosition(update_map);
 				left_col_height();
 
-				$(".btnSelector").click(function(){
+				/*$(".btnSelector").click(function(){
 					$(".btnSelector.active").removeClass("active");
 					$(this).addClass("active");
 
@@ -91,7 +127,32 @@
 					var location2 = bounds.getNorthEast();
 
 					fetch_reports(location1.lat(), location1.lng(), calculateRadius(location1, location2)/2, type);
-				});
+				});*/
+
+				$(document)
+					.on("click", ".btnSelector", function(){
+						$(".btnSelector.active").removeClass("active");
+						$(this).addClass("active");
+
+						var type = $(this).data("type");
+
+						var bounds = map.getBounds();
+
+						var location1 = bounds.getCenter();
+						var location2 = bounds.getNorthEast();
+
+						fetch_reports(location1.lat(), location1.lng(), calculateRadius(location1, location2)/2, type);
+					})
+					.on("click", ".report-item", function() {
+						var category = $(this).data('category');
+						var description = $(this).data('description');
+						var address = $(this).data('address');
+						var image = $(this).data('image');
+						var score = $(this).data('score');
+						var vote = $(this).data('votes');
+
+						display_details(category, description, address, image, score, vote);
+					});
 			});
 
 			function addMarker(location) {
@@ -158,11 +219,15 @@
 							var address = data.data[i]['formatted_address'];
 							var latitude = parseFloat(data.data[i]['latitude']);
 							var longitude = parseFloat(data.data[i]['longitude']);
+							var image = data.data[i]['picture'];
+							var votes = data.data[i]['vote_count'];
+							var score = data.data[i]['score'];
+							var description = data.data[i]['description'];
 							var location = new google.maps.LatLng(latitude, longitude);
 							
 							addMarker(location);
 
-							$('#reports-list').append(generateListItem(category, address, id));
+							$('#reports-list').append(generateListItem(category, address, id, image, votes, score, description, latitude, longitude));
 						}
 						setAllMap(map);
 					}
@@ -171,9 +236,19 @@
 				});
 			}
 
-			function generateListItem(category, address, id) {
-				var item ='<a href="#" class="list-group-item report-item" data-id="'+id+'"><h4 class="list-group-item-heading report-details-uppercase">'+category+'</h4><p class="list-group-item-text">'+address+'</p></a>';
+			function generateListItem(category, address, id, image, votes, score, description, latitude, longitude) {
+				var item ='<a href="#" class="list-group-item report-item" data-id="'+id+'" data-image="'+image+'" data-votes="'+votes+'" data-score="'+score+'" data-category="'+category+'" data-address="'+address+'" data-description="'+description+'" data-latitude="'+latitude+'" data-longitude="'+longitude+'" ><h4 class="list-group-item-heading report-details-uppercase">'+category+'</h4><p class="list-group-item-text">'+address+'</p></a>';
 				return item;
+			}
+
+			function display_details(category, description, address, image, score, vote) {
+
+				$('#report-details-image').attr('src', image);
+				$('#report-details-category').html(category);
+				$("#report-details-description").html(description);
+				$('#report-details-address').html(address);
+				
+				$('.details-modal').modal('toggle');
 			}
 
 			function left_col_height() {
