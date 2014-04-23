@@ -39,6 +39,27 @@ body {
 	z-index: 2;
 }
 
+.form-addr .form-addr-heading,
+.form-addr .checkbox {
+	margin-bottom: 10px;
+}
+.form-addr .checkbox {
+	font-weight: normal;
+}
+.form-addr .form-control {
+	position: relative;
+	height: auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+.form-addr .form-control:focus {
+	z-index: 2;
+}
+
 .repSelector {
 	margin-bottom: 10px;
 	border-bottom: 1px solid rgba(0,221,255,1) !important;
@@ -274,4 +295,10 @@ span.l-6 { -webkit-animation-delay: 0s; -moz-animation-delay: 0s; -ms-animation-
 
 .report-details-photo {
 	width: 100%;
+}
+
+.filter-option {
+	font-size: 16px;
+	color: #555;
+	padding: 4px 0;
 }
