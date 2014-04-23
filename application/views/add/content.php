@@ -20,6 +20,7 @@
 
 							<input id="issueDesc" type="text" class="form-control" placeholder="Description of Issue" required>
 							<input id="issueAddr" type="text" class="form-control" placeholder="Enter the Address" required>
+							<input id="issueFormattedAddress" type="text" disabled>
 							<input id="issueLat" type="hidden" value="0">
 							<input id="issueLong" type="hidden" value="0">
 							<input id="locStatus" type="hidden" value="0">
@@ -91,7 +92,7 @@
 
 					addIssue: function(latitude, longitude, category, description, picture) {
 						if ($("#locStatus").val() === "2") {
-							var params = {id: app_add.browser_id, latitude: latitude, longitude: longitude, category: category, description: description, picture: picture, novote: "TRUE"};
+							var params = {id: app_add.browser_id, latitude: latitude, longitude: longitude, category: category, description: description, picture: picture, novote: "TRUE", formatted_address: app_add.formatted_address};
 			                $.post(app_add.base_url+app_add.add_report, params, function(data) {
 			                        var dataRecv = JSON.parse(data);
 			                        if (dataRecv.status === true) {
@@ -128,9 +129,8 @@
 					fetchAddress: function (latitude, longitude) {
 						var url = "https://maps.googleapis.com/maps/api/geocode/json?&sensor=true&key=<?= $this->config->item('googleMaps')?>&latlng=";
 						$.get(url+latitude+','+longitude, function(data) {
-							//var data = JSON.parse(data);
 
-							console.log(data['results'][1]['formatted_address']);
+							app_add.formatted_address = data['results'][1]['formatted_address']);
 							$(".loading-container").hide();
 						});
 					}
