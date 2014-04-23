@@ -48,7 +48,7 @@
 							<div class="row report-details-small">
 								<div id="report-details-votes" ></div>
 							</div>
-
+			
 						</div>
 					</div>
 				</div>
@@ -243,6 +243,7 @@
 
 			function display_details(category, description, address, image, score, vote) {
 				$('#report-details-image').attr('src', image);
+				$('#report-details-image').attr('width', $('#report-details-image-container').width());
 				$('#report-details-category').html(category);
 				$("#report-details-description").html(description);
 				$('#report-details-address').html(address);

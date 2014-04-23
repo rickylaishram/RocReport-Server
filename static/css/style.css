@@ -267,3 +267,7 @@ span.l-6 { -webkit-animation-delay: 0s; -moz-animation-delay: 0s; -ms-animation-
 	50% { transform: translateX(30px); opacity: 0; }
 	100% { opacity: 0; }
 }
+
+.modal-content {
+	border-radius: 0px;
+}
