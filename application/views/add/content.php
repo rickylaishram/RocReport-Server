@@ -43,7 +43,7 @@
 
 			$(document).ready(function() {
 				//google.maps.event.addDomListener(window, 'load', admin.map_initialize);
-				$("#loading-container").hide();
+				$(".loading-container").hide();
 				$('form').on('submit', function(e){
  					e.preventDefault();
  					return false;
