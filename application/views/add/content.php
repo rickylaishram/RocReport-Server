@@ -32,6 +32,17 @@
 		</div> <!-- /container -->
 
 		<script type="text/javascript">
+			var formatted_address = null;
+
+			function fetchAddress(latitude, longitude) {
+				var url = "https://maps.googleapis.com/maps/api/geocode/json?&sensor=true_or_false&key=<?= $this->config->item('googleMaps')?>latlng=";
+				$.get(url+latitude+','+longitude, function(data) {
+					var data = JSON.parse(data);
+
+					console.log(data['results'][1]['formatted_address']);
+				});
+			}
+
         	$(window).on('load', function () {
 
             	$('.selectpicker').selectpicker({
@@ -100,6 +111,8 @@
 								+ " - " + "Longitude: " + position.coords.longitude);
 								//console.log(position);
 							});
+
+							fetchAddress(position.coords.latitude, position.coords.longitude);
 						} else{ 
 							$("#issueAddr").val("Geolocation Not supported :(");
 							$("#addReport").remove();
