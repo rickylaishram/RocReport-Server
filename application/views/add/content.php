@@ -130,7 +130,8 @@
 						var url = "https://maps.googleapis.com/maps/api/geocode/json?&sensor=true&key=<?= $this->config->item('googleMaps')?>&latlng=";
 						$.get(url+latitude+','+longitude, function(data) {
 
-							app_add.formatted_address = data['results'][1]['formatted_address']);
+							app_add.formatted_address = data['results'][1]['formatted_address'];
+							$("#issueFormattedAddress").val(app_add.formatted_address);
 							$(".loading-container").hide();
 						});
 					}
