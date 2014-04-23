@@ -257,12 +257,12 @@ span[class*="loading-dot-"] {
 	animation-fill-mode: both;
 }
 
-span.l-1 { -webkit-animation-delay: 1s; -moz-animation-delay: 1s; -ms-animation-delay: 1s; animation-delay: 1s; }
-span.l-2 { -webkit-animation-delay: 0.8s; -moz-animation-delay: 0.8s; -ms-animation-delay: 0.8s; animation-delay: 0.8s; }
-span.l-3 { -webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; -ms-animation-delay: 0.6s; animation-delay: 0.6s; }
-span.l-4 { -webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; -ms-animation-delay: 0.4s; animation-delay: 0.4s; }
-span.l-5 { -webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; -ms-animation-delay: 0.2s; animation-delay: 0.2s; }
-span.l-6 { -webkit-animation-delay: 0s; -moz-animation-delay: 0s; -ms-animation-delay: 0s; animation-delay: 0s; }
+span.loading-dot-1 { -webkit-animation-delay: 1s; -moz-animation-delay: 1s; -ms-animation-delay: 1s; animation-delay: 1s; }
+span.loading-dot-2 { -webkit-animation-delay: 0.8s; -moz-animation-delay: 0.8s; -ms-animation-delay: 0.8s; animation-delay: 0.8s; }
+span.loading-dot-3 { -webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; -ms-animation-delay: 0.6s; animation-delay: 0.6s; }
+span.loading-dot-4 { -webkit-animation-delay: 0.4s; -moz-animation-delay: 0.4s; -ms-animation-delay: 0.4s; animation-delay: 0.4s; }
+span.loading-dot-5 { -webkit-animation-delay: 0.2s; -moz-animation-delay: 0.2s; -ms-animation-delay: 0.2s; animation-delay: 0.2s; }
+span.loading-dot-6 { -webkit-animation-delay: 0s; -moz-animation-delay: 0s; -ms-animation-delay: 0s; animation-delay: 0s; }
 
 @-webkit-keyframes loader {
 	0% { -webkit-transform: translateX(-30px); opacity: 0; }
