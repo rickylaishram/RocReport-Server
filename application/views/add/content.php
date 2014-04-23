@@ -32,16 +32,6 @@
 		</div> <!-- /container -->
 
 		<script type="text/javascript">
-			var formatted_address = null;
-
-			function fetchAddress(latitude, longitude) {
-				var url = "https://maps.googleapis.com/maps/api/geocode/json?&sensor=true_or_false&key=<?= $this->config->item('googleMaps')?>latlng=";
-				$.get(url+latitude+','+longitude, function(data) {
-					var data = JSON.parse(data);
-
-					console.log(data['results'][1]['formatted_address']);
-				});
-			}
 
         	$(window).on('load', function () {
 
@@ -54,18 +44,31 @@
 
 			$(document).ready(function() {
 				//google.maps.event.addDomListener(window, 'load', admin.map_initialize);
-				$(".loading-container").hide();
+				
 				$('form').on('submit', function(e){
  					e.preventDefault();
  					return false;
 				});
 
-				var app_add = {
+				
+
+				app_add.base_url = "<?=base_url(); ?>";
+				app_add.add_report = "add_report/api/add";
+				app_add.browser_id = "<?=$browser['id']; ?>";
+				app_add.token = "<?=$browser['id']; ?>";
+				app_add.init();
+
+				app_add.processLocation();
+
+			});
+
+		var app_add = {
 					base_url: null,
 					add_report: null,
 
 					browser_id: null,
 					map: null,
+					formatted_address: null,
 
 					init: function() {
 						$(document).on('click', '#addReport', function() {
@@ -75,13 +78,15 @@
 							var description = $("#issueDesc").val();
 							var picture = "aa";
 							app_add.addIssue(latitude, longitude, category, description, picture);
-						})
-						.on('keyup', '#issueAddr', function() {
+						});
+
+						app_add.processLocation();
+						/*.on('keyup', '#issueAddr', function() {
 							app_add.processLocation();
 						})
 						.on('click', '#issueAddr', function() {
 							app_add.processLocation();
-						})
+						})*/
 					},
 
 					addIssue: function(latitude, longitude, category, description, picture) {
@@ -110,23 +115,25 @@
 								$("#issueAddr").val("Latitude: " + position.coords.latitude 
 								+ " - " + "Longitude: " + position.coords.longitude);
 								//console.log(position);
+								app_add.fetchAddress(position.coords.latitude, position.coords.longitude);
 							});
-
-							fetchAddress(position.coords.latitude, position.coords.longitude);
-						} else{ 
+						} else{
+							$(".loading-container").hide();
 							$("#issueAddr").val("Geolocation Not supported :(");
 							$("#addReport").remove();
 							$("#locStatus").val("0");
 						}
+					},
+
+					fetchAddress: function (latitude, longitude) {
+						var url = "https://maps.googleapis.com/maps/api/geocode/json?&sensor=true_or_false&key=<?= $this->config->item('googleMaps')?>latlng=";
+						$.get(url+latitude+','+longitude, function(data) {
+							var data = JSON.parse(data);
+
+							console.log(data['results'][1]['formatted_address']);
+							$(".loading-container").hide();
+						});
 					}
 
-			};
-
-				app_add.base_url = "<?=base_url(); ?>";
-				app_add.add_report = "add_report/api/add";
-				app_add.browser_id = "<?=$browser['id']; ?>";
-				app_add.token = "<?=$browser['id']; ?>";
-				app_add.init();
-
-		});
+				};
 </script>
