@@ -20,7 +20,7 @@
 
 							<input id="issueDesc" type="text" class="form-control" placeholder="Description of Issue" required>
 							<input id="issueAddr" type="text" class="form-control" placeholder="Enter the Address" required>
-							<input id="issueFormattedAddress" type="text" disabled>
+							<input id="issueFormattedAddress" class="form-control" type="text" disabled>
 							<input id="issueLat" type="hidden" value="0">
 							<input id="issueLong" type="hidden" value="0">
 							<input id="locStatus" type="hidden" value="0">
