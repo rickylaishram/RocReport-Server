@@ -27,7 +27,7 @@
 
 							<div class="row">
 								<div id="report-details-image-container">
-									<img src="" id="report-details-image"/>
+									<img src="" id="report-details-image" class="report-details-photo"/>
 								</div>
 							</div>
 							<div class="row report-details-big report-details-uppercase">
@@ -242,13 +242,13 @@
 			}
 
 			function display_details(category, description, address, image, score, vote) {
-				$('.details-modal').modal('toggle');
 
 				$('#report-details-image').attr('src', image);
 				$('#report-details-category').html(category);
 				$("#report-details-description").html(description);
 				$('#report-details-address').html(address);
-				$('#report-details-image').attr('width', $('#report-details-image-container').width());
+				
+				$('.details-modal').modal('toggle');
 			}
 
 			function left_col_height() {

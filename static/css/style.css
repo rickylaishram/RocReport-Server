@@ -271,3 +271,7 @@ span.l-6 { -webkit-animation-delay: 0s; -moz-animation-delay: 0s; -ms-animation-
 .modal-content {
 	border-radius: 0px;
 }
+
+.report-details-photo {
+	width: 100%;
+}
