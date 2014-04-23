@@ -242,13 +242,13 @@
 			}
 
 			function display_details(category, description, address, image, score, vote) {
+				$('.details-modal').modal('toggle');
+
 				$('#report-details-image').attr('src', image);
-				$('#report-details-image').attr('width', $('#report-details-image-container').width());
 				$('#report-details-category').html(category);
 				$("#report-details-description").html(description);
 				$('#report-details-address').html(address);
-
-				$('.details-modal').modal('toggle');
+				$('#report-details-image').attr('width', $('#report-details-image-container').width());
 			}
 
 			function left_col_height() {
