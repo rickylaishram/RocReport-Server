@@ -44,10 +44,10 @@
 
 		<div class="loading-container">
 			<span>Loading</span>
-			<span class="l-1"></span>
-			<span class="l-2"></span>
-			<span class="l-3"></span>
-			<span class="l-4"></span>
-			<span class="l-5"></span>
-			<span class="l-6"></span>
+			<span class="loading-dot-1"></span>
+			<span class="loading-dot-2"></span>
+			<span class="loading-dot-3"></span>
+			<span class="loading-dot-4"></span>
+			<span class="loading-dot-5"></span>
+			<span class="loading-dot-6"></span>
 		</div>

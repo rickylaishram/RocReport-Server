@@ -230,7 +230,7 @@ a.list-group-item:hover,
 	width: 1%;
 }
 
-span[class*="l-"] {
+span[class*="loading-dot-"] {
 	display: inline-block;
 	background: rgba(255,255,255,1);
 	width: 4px;
