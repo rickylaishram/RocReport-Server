@@ -4,15 +4,15 @@ class Add_report extends CI_Controller {
 
 	function index() {
 		$this->load->model('auth_model', 'auth');
-		if(!$this->auth->isLoggedIn() || !$this->auth->isAdmin(null, null, null, null)) {
+		if(!$this->auth->isLoggedIn()) {
 			$this->output->set_header('Location: '.base_url()."auth/login?next=add_report");
 			$this->output->set_status_header('302');
 			$this->output->_display();
 		} else {
 			$this->load->model('admin_model', 'admin');
 
-			$data['page_title'] = 'Admin | RocReport';
-			$data['page_id'] = 3;
+			$data['page_title'] = 'Add a report | RocReport';
+			$data['page_id'] = 6;
 			$data['is_logged_in'] = $this->auth->isLoggedIn();
 			$data['is_admin'] = $this->auth->isAdmin(null, null, null, null);
 			$data['is_super_admin'] = $this->auth->isSuperAdmin();
@@ -21,8 +21,8 @@ class Add_report extends CI_Controller {
 
 			$this->load->view('app/header', $data);
 			$this->load->view('app/navbar', $data);
-			$this->load->view('admin/nav.php', $data);
-			$this->load->view('admin/content.php', $data);
+			//$this->load->view('admin/nav.php', $data);
+			$this->load->view('add/content.php', $data);
 			$this->load->view('app/footer', $data);
 		}
 	}
@@ -36,51 +36,67 @@ class Add_report extends CI_Controller {
 		$rate_limit = ($valid ? $this->client->check_rate_limit($id) : false);
 
 		if($id && $valid && $rate_limit ) {
-			if(!$this->auth->isLoggedIn() || !$this->auth->isAdmin(null, null, null, null)) {
+			if(!$this->auth->isLoggedIn()) {
 				$this->output->set_header('Location: '.base_url());
 				$this->output->set_status_header('302');
 				$this->output->_display();
 			} else {
-				$this->load->model('admin_model', 'admin');
 				$email = $this->auth->isLoggedIn();
 
 				switch ($method) {
-					case 'get_reports':
-						$data = $this->admin->get_reports($email);
-						$this->_response_success($data);
-						break;
-					case 'get_reports_closed':
-						$data = $this->admin->get_reports_closed($email);
-						$this->_response_success($data);
-						break;
-					case 'save_update':
-						$text = $this->input->post('update');
-						$reportid = $this->input->post('report_id');
-						if($text && $reportid) {
-							$this->admin->save_update($email, $text, $reportid, 'open');
-							$this->_response_success(array());
+					case 'add':
+						$client = $this->input->post('id', true);			// Required
+						$formatted_address = $this->input->post('formatted_address', true);
+						$country = $this->input->post('country', true);
+						$admin_level_1 = $this->input->post('admin_level_1', true);
+						$admin_level_2 = $this->input->post('admin_level_2', true);
+						$locality = $this->input->post('locality', true);
+						$latitude = $this->input->post('latitude', true);	// Required
+						$longitude = $this->input->post('longitude', true);	// Required
+						$category = $this->input->post('category', true);	// Required
+						$description = $this->input->post('description', true); // Required
+						$picture = $this->input->post('picture', true);		// Required
+						$novote = $this->input->post('novote', true);		// Required boolean; if true will not prompt for merge with nearby reports
+
+						if ($client && $latitude && $longitude && $category && $description && $picture & $novote) {
+							$this->load->model('client_model', 'client');
+							$this->load->model('auth_model', 'auth');
+							$this->load->model('report_model', 'report');
+							$this->load->model('category_model', 'category');
+
+							// Change $novote to boolean
+							$novote = (strtolower($novote) === 'true');
+							if($email) {
+
+								//$categories = $this->config->item('category');
+								//$category = strtolower($category);
+								$category = $this->category->checkIdValid($category);
+
+								if($category) {
+									$nearby = array();
+
+									// If novote is set to false; check if nearby reports exist
+									if(!$novote) {
+										$nearby = $this->report->selectNearby($email, floatval($latitude), floatval($longitude), 100, 0, 5, "new");
+									}
+
+									// If nearby reports are found return them
+									if(count($nearby) == 0) {
+										$this->report->add($email, floatval($latitude), floatval($longitude), $formatted_address, $country, $admin_level_1, $admin_level_2, $locality, $category, $description, $picture) ;
+									}
+
+									$data = array('nearby' => count($nearby), 'details' => $nearby);
+									$this->_response_success($data);
+								} else {
+									$this->_response_error(8);
+								}
+							} else {
+								$this->_response_error(7);
+							}
+						} else {
+							$this->_response_error(1);
 						}
 						break;
-					case 'set_open':
-						$report = $this->input->post('report');
-						$this->admin->set_report_open($report);
-						$this->admin->save_update($email, "Report opened", $report, 'open');
-						$this->_response_success($data);
-						break;
-					case 'set_close':
-						$report = $this->input->post('report');
-						$this->admin->set_report_close($report);
-						$this->admin->save_update($email, "Report closed", $report, 'close');
-						$this->_response_success($data);
-						break;
-                                        case 'pay_money':
-                                                //print_r($_POST);
-						$amount = $this->input->post('amount');
-                                                $user_email = $this->input->post('user_email');
-                                                //print_r($_POST);
-						$this->admin->sendMoneyUsingDwolla($user_email, $amount);
-                                                //print_r($_POST);
-						$this->_response_success(array());
 					default:
 						# code...
 						break;
@@ -94,5 +110,55 @@ class Add_report extends CI_Controller {
 		$data['data'] = $vars;
 		$this->load->view('api/response', $data);
 	}
+
+	/*
+	* Error responses
+	*/
+	function _response_error($id) {
+		switch ($id) {
+			case 1:		// Missing parameters
+				$data['data'] = array('reason' => 'Missing parameters');
+				break;
+			case 2:
+				$data['data'] = array('reason' => 'Invalid id');
+				break;
+			case 3:
+				$data['data'] = array('reason' => 'User exist');
+				break;
+			case 4:
+				$data['data'] = array('reason' => 'User do not exist');
+				break;
+			case 5:
+				$data['data'] = array('reason' => 'Password and email do not match');
+				break;
+			case 6:
+				$data['data'] = array('reason' => 'Invalid path');
+				break;
+			case 7:
+				$data['data'] = array('reason' => 'Invalid token');
+				break;
+			case 8:
+				$data['data'] = array('reason' => 'Invalid category');
+				break;
+			case 9:
+				$data['data'] = array('reason' => 'Invalid area type');
+				break;
+			case 10:
+				$data['data'] = array('reason' => 'Image upload failed. Check file size.');
+				break;
+			case 11:
+				$data['data'] = array('reason' => 'Invalid Client');
+				break;
+			case 12:
+				$data['data'] = array('reason' => 'Rate limit exceeded');
+				break;
+			default:
+				$data['data'] = array('reason' => 'Error');
+				break;
+		}
+
+		$data['status'] = false;
+		$this->load->view('api/response', $data);
+	}	
 
 }
