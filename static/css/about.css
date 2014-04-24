@@ -15,17 +15,21 @@ a {
 }
 
 #about {
+	padding: 15px 0;
 	background-color: rgba(0,0,255,0.1);
 }
 
 #get {
+	padding: 15px 0;
 	background-color: rgba(0,0,255,0.2);
 }
 
 #contact {
+	padding: 15px 0;
 	background-color: rgba(0,0,255,0.3);
 }
 
 #developer {
+	padding: 15px 0;
 	background-color: rgba(0,0,255,0.4);
 }
