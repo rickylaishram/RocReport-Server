@@ -24,7 +24,7 @@
 							<input id="issueLat" type="hidden" value="0">
 							<input id="issueLong" type="hidden" value="0">
 							<input id="locStatus" type="hidden" value="0">
-							
+							<input type="file" name="issueImage" id="issueImage" class="form-control" required>
 						<button id="addReport" class="btn btn-lg btn-warning btn-block" type="submit">Submit Issue</button>
 					</form>
 				</div>
@@ -55,6 +55,7 @@
 
 				app_add.base_url = "<?=base_url(); ?>";
 				app_add.add_report = "add_report/api/add";
+				app_add.add_image = "add_report/api/image";
 				app_add.browser_id = "<?=$browser['id']; ?>";
 				app_add.token = "<?=$browser['id']; ?>";
 				app_add.init();
@@ -63,10 +64,11 @@
 
 			});
 
-		var app_add = {
+			var app_add = {
 					base_url: null,
 					add_report: null,
-
+					add_image: null,
+					
 					browser_id: null,
 					map: null,
 					formatted_address: null,
@@ -77,10 +79,8 @@
 							var longitude = $("#issueLong").val();
 							var category = $("#issueCat").val();
 							var description = $("#issueDesc").val();
-							var picture = "aa";
-							app_add.addIssue(latitude, longitude, category, description, picture);
+							app_add.addIssue(latitude, longitude, category, description);
 						});
-
 						app_add.processLocation();
 						/*.on('keyup', '#issueAddr', function() {
 							app_add.processLocation();
@@ -90,9 +90,39 @@
 						})*/
 					},
 
-					addIssue: function(latitude, longitude, category, description, picture) {
+					addIssue: function(latitude, longitude, category, description) {
 						if ($("#locStatus").val() === "2") {
-							var params = {id: app_add.browser_id, latitude: latitude, longitude: longitude, category: category, description: description, picture: picture, novote: "TRUE", formatted_address: app_add.formatted_address};
+
+							//upload file
+						    /*$.ajax({
+					            type: "POST",
+					            url: app_add.base_url+app_add.add_image,
+					            enctype: 'multipart/form-data',
+					            data: {
+					                file: $("#issueImage").val(),
+					                id: app_add.browser_id
+					            },
+					            success: function (data) {
+					                console.log(data);
+					                var dataRecv =  JSON.parse(data);
+				                        if (dataRecv.status === true) {
+											var params = {id: app_add.browser_id, picture: dataRecv.data.image_url, latitude: latitude, longitude: longitude, category: category, description: description, picture: picture, novote: "TRUE", formatted_address: app_add.formatted_address};
+							                $.post(app_add.base_url+app_add.add_report, params, function(data) {
+							                        var dataRecv = JSON.parse(data);
+							                        if (dataRecv.status === true) {
+							                        	alert ("Your report has been added. Thank you :-)");
+							                        	top.location.href = app_add.base_url;
+							                        } else {
+							                        	alert ("There was an error: " + dataRecv.data.reason);
+							                        }
+							                });
+				                        } else {
+				                        	alert ("There was an error: " + dataRecv.data.reason);
+				                        }					                					                
+					            },
+    						});*/
+							var picture = 'static/images/rocreport.png';
+							var params = {id: app_add.browser_id, picture: picture, latitude: latitude, longitude: longitude, category: category, description: description, picture: picture, novote: "TRUE", formatted_address: app_add.formatted_address};
 			                $.post(app_add.base_url+app_add.add_report, params, function(data) {
 			                        var dataRecv = JSON.parse(data);
 			                        if (dataRecv.status === true) {
@@ -101,7 +131,7 @@
 			                        } else {
 			                        	alert ("There was an error: " + dataRecv.data.reason);
 			                        }
-			                });
+			                });		
 						}
 					},
 

@@ -97,6 +97,34 @@ class Add_report extends CI_Controller {
 							$this->_response_error(1);
 						}
 						break;
+					case 'image':
+						if($email) {
+							$config['encrypt_name'] = true;
+							$config['upload_path'] = FCPATH.'static/images/';
+							$config['allowed_types'] = 'jpg|png';
+							$config['max_size']	= '500';
+							$config['max_width']  = '1600';
+							$config['max_height']  = '1600';
+
+							$this->load->library('upload', $config);
+
+							$fieldname = 'image';
+							if ( ! $this->upload->do_upload($fieldname)){
+								print_r(array('error' => $this->upload->display_errors()));
+								$this->_response_error(10);
+							} else {
+								$this->load->model('image_model', 'image');
+								$upload_data = $this->upload->data();
+
+								$this->image->add($email, $client, $upload_data['file_name']);
+
+								$data = array('image_url' => base_url().'static/images/'.$upload_data['file_name']);
+								$this->_response_success($data);
+							}
+						} else {
+							$this->_response_error(7);
+						}						
+						break;
 					default:
 						# code...
 						break;
