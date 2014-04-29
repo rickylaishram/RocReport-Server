@@ -28,9 +28,11 @@ class Add_report extends CI_Controller {
 	}
 
 	function api($method) {
+
 		$this->load->model('auth_model', 'auth');
 		$this->load->model('client_model', 'client');
 		$id = $this->input->post('id');
+		if (!$id) $id = $this->input->get('id');
 
 		$valid = ($id ? $this->client->isValid($id) : false);
 		$rate_limit = ($valid ? $this->client->check_rate_limit($id) : false);
@@ -98,32 +100,53 @@ class Add_report extends CI_Controller {
 						}
 						break;
 					case 'image':
-						if($email) {
-							$config['encrypt_name'] = true;
-							$config['upload_path'] = FCPATH.'static/images/';
-							$config['allowed_types'] = 'jpg|png';
-							$config['max_size']	= '500';
-							$config['max_width']  = '1600';
-							$config['max_height']  = '1600';
+						$client = $this->input->get('id', true);			// Required
+						if($email && $client) {
 
-							$this->load->library('upload', $config);
+							@require(FCPATH.'application/libraries/Uploader.php');
 
-							$fieldname = 'image';
-							if ( ! $this->upload->do_upload($fieldname)){
-								print_r(array('error' => $this->upload->display_errors()));
-								$this->_response_error(10);
+							$upload_dir = FCPATH.'static/images/';
+							$valid_extensions = array('gif', 'png', 'jpeg', 'jpg');
+
+							$Upload = new FileUpload('image');
+							$ext = $Upload->getExtension(); // Get the extension of the uploaded file
+							$Upload->newFileName = md5($email).time().'.'.$ext;
+							$result = $Upload->handleUpload($upload_dir, $valid_extensions);
+
+							if (!$result) {
+							    echo json_encode(array('success' => false, 'msg' => $Upload->getErrorMsg()));   
 							} else {
 								$this->load->model('image_model', 'image');
-								$upload_data = $this->upload->data();
-
-								$this->image->add($email, $client, $upload_data['file_name']);
-
-								$data = array('image_url' => base_url().'static/images/'.$upload_data['file_name']);
-								$this->_response_success($data);
+								//echo $email;
+								//echo $client;
+								//echo $Upload->getFileName();
+								$this->image->add($email, $client, $Upload->getFileName());
+							    echo json_encode(array('success' => true, 'file' => base_url().'static/images/'.$Upload->getFileName()));
 							}
+							
 						} else {
 							$this->_response_error(7);
 						}						
+						break;
+					case 'imageprogress':
+						if (isset($_REQUEST['progresskey'])) 
+						  $status = apc_fetch('upload_'.$_REQUEST['progresskey']);
+						else 
+						  exit(json_encode(array('success' => false)));
+
+						$pct = 0;
+						$size = 0;
+
+						if (is_array($status)) {
+						  if (array_key_exists('total', $status) && array_key_exists('current', $status)) {
+						    if ($status['total'] > 0) {
+						      $pct = round( ( $status['current'] / $status['total']) * 100 );
+						      $size = round($status['total'] / 1024);
+						    }
+						  }
+						}
+
+						echo json_encode(array('success' => true, 'pct' => $pct, 'size' => $size));
 						break;
 					default:
 						# code...
