@@ -416,5 +416,6 @@ $config['dwollaPin'] = DWOLLA_PIN;
 $config['dwollaToken'] = DWOLLA_TOKEN;
 
 $config['googleMaps'] = GOOGLE_MAP;
+$config['analytics'] = RR_GA_CODE;
 /* End of file config.php */
 /* Location: ./application/config/config.php */
