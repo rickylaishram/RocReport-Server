@@ -62,7 +62,7 @@
 			  
 				var uploader = new ss.SimpleUpload({
 				      	button: 'upload-btn', // HTML element used as upload button
-				      	url: '/add_report/api/image', // URL of server-side upload handler
+				      	url: '<?=base_url(); ?>add_report/api/image', // URL of server-side upload handler
 				      	name: 'image', // Parameter name of the uploaded file
 				      	data: {id:"<?=$browser['id']; ?>"},
 				      	method:"POST",
