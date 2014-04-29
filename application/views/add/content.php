@@ -3,10 +3,10 @@
 			<div class="row">
 
 				<div class="col-md-6">
-					<form class="form-addr" role="form">
+					<form id="fileUploadForm" class="form-addr" role="form" method="post" enctype="multipart/formdata">
 						<h2 class="form-addr-heading">Add A New Report</h2>
 
-		                    <select id="issueCat" class="selectpicker show-tick form-control" required data-live-search="true">
+		                    <select id="issueCat" class="selectpicker show-tick form-control" required data-live-search="true" required>
 		                        <option value="0">Select a Category		                    
 		                        <option value="1">vehicle issue
 								<option value="2">street, road, sidewalk
@@ -24,15 +24,62 @@
 							<input id="issueLat" type="hidden" value="0">
 							<input id="issueLong" type="hidden" value="0">
 							<input id="locStatus" type="hidden" value="0">
-							<input type="file" name="issueImage" id="issueImage" class="form-control" required>
-						<button id="addReport" class="btn btn-lg btn-warning btn-block" type="submit">Submit Issue</button>
+							<input id="picUrl" type="hidden" value="0">
+							<!--<input type="file" name="image" id="issueImage" class="form-control" required>-->
+							<input type="button" id="upload-btn" class="btn btn-primary btn-large clearfix" value="Choose an Image">
+							<img id="uploadedImg" src="" style="width: 150px; height: 150px; border-radius: 5px; display: none; margin-left: 10px;" />  
+							<button id="addReport" class="btn btn-lg btn-warning btn-block" type="submit" style="margin-top: 10px;">Submit Issue</button>
 					</form>
+
+					<div id="errormsg" class="clearfix redtext">
+					</div>	              
+					<div id="pic-progress-wrap" class="progress-wrap" style="margin-top:10px;margin-bottom:10px;">
+					</div>	
+					
+					<div id="picbox" class="clear" style="padding-top:0px;padding-bottom:10px;">
+					</div>
+
+
+
 				</div>
 
 			</div>
 		</div> <!-- /container -->
 
 		<script type="text/javascript">
+
+			function safe_tags( str ) {
+			  return String( str )
+			           .replace( /&/g, '&amp;' )
+			           .replace( /"/g, '&quot;' )
+			           .replace( /'/g, '&#39;' )
+			           .replace( /</g, '&lt;' )
+			           .replace( />/g, '&gt;' );
+			}
+
+
+			window.onload = function() {
+			  
+				var uploader = new ss.SimpleUpload({
+				      	button: 'upload-btn', // HTML element used as upload button
+				      	url: '/add_report/api/image', // URL of server-side upload handler
+				      	name: 'image', // Parameter name of the uploaded file
+				      	data: {id:"<?=$browser['id']; ?>"},
+				      	method:"POST",
+						onComplete: function(filename, response) {
+							console.log(response + "-" + filename);
+				          	if (!response) {
+				            	alert('Upload Failed - '+response+'. Please try again!');
+				            	return false;            
+				          	} else {
+				          		responseFinal = JSON.parse(response);
+				          		$("#picUrl").val(responseFinal.file);
+				          		$("#uploadedImg").attr("src", responseFinal.file).show();
+				          	}
+        				}
+				});
+			};
+
 
         	$(window).on('load', function () {
 
@@ -45,13 +92,11 @@
 
 			$(document).ready(function() {
 				//google.maps.event.addDomListener(window, 'load', admin.map_initialize);
-				
+				var interval;
 				$('form').on('submit', function(e){
  					e.preventDefault();
  					return false;
 				});
-
-				
 
 				app_add.base_url = "<?=base_url(); ?>";
 				app_add.add_report = "add_report/api/add";
@@ -59,7 +104,6 @@
 				app_add.browser_id = "<?=$browser['id']; ?>";
 				app_add.token = "<?=$browser['id']; ?>";
 				app_add.init();
-
 				app_add.processLocation();
 
 			});
@@ -79,49 +123,14 @@
 							var longitude = $("#issueLong").val();
 							var category = $("#issueCat").val();
 							var description = $("#issueDesc").val();
-							app_add.addIssue(latitude, longitude, category, description);
+							var picture = $("#picUrl").val();
+							app_add.addIssue(latitude, longitude, category, description, picture);
 						});
 						app_add.processLocation();
-						/*.on('keyup', '#issueAddr', function() {
-							app_add.processLocation();
-						})
-						.on('click', '#issueAddr', function() {
-							app_add.processLocation();
-						})*/
 					},
 
-					addIssue: function(latitude, longitude, category, description) {
-						if ($("#locStatus").val() === "2") {
-
-							//upload file
-						    /*$.ajax({
-					            type: "POST",
-					            url: app_add.base_url+app_add.add_image,
-					            enctype: 'multipart/form-data',
-					            data: {
-					                file: $("#issueImage").val(),
-					                id: app_add.browser_id
-					            },
-					            success: function (data) {
-					                console.log(data);
-					                var dataRecv =  JSON.parse(data);
-				                        if (dataRecv.status === true) {
-											var params = {id: app_add.browser_id, picture: dataRecv.data.image_url, latitude: latitude, longitude: longitude, category: category, description: description, picture: picture, novote: "TRUE", formatted_address: app_add.formatted_address};
-							                $.post(app_add.base_url+app_add.add_report, params, function(data) {
-							                        var dataRecv = JSON.parse(data);
-							                        if (dataRecv.status === true) {
-							                        	alert ("Your report has been added. Thank you :-)");
-							                        	top.location.href = app_add.base_url;
-							                        } else {
-							                        	alert ("There was an error: " + dataRecv.data.reason);
-							                        }
-							                });
-				                        } else {
-				                        	alert ("There was an error: " + dataRecv.data.reason);
-				                        }					                					                
-					            },
-    						});*/
-							var picture = 'static/images/rocreport.png';
+					addIssue: function(latitude, longitude, category, description, picture) {
+						if ($("#locStatus").val() === "2" && category != "0" && description != "" && picture != "0") {
 							var params = {id: app_add.browser_id, picture: picture, latitude: latitude, longitude: longitude, category: category, description: description, picture: picture, novote: "TRUE", formatted_address: app_add.formatted_address};
 			                $.post(app_add.base_url+app_add.add_report, params, function(data) {
 			                        var dataRecv = JSON.parse(data);
@@ -132,6 +141,12 @@
 			                        	alert ("There was an error: " + dataRecv.data.reason);
 			                        }
 			                });		
+						} else if (category == "0") {
+							alert("Please select a Category");
+						} else if (description == "") {
+							alert("Please add a description");
+						} else if (picture == "0") {
+							alert("Please choose a picture");
 						}
 					},
 

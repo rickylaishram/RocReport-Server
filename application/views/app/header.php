@@ -24,6 +24,7 @@
 		<script src="<?=base_url(); ?>static/js/theme.js"></script>
 		<?php if( $this->router->class == "add_report" ) { ?>
 		<script type="text/javascript" src="<?=base_url(); ?>static/js/bootstrap-select.min.js"></script>
+		<script type="text/javascript" src="<?=base_url(); ?>static/js/SimpleAjaxUploader.js"></script>
 	    <link rel="stylesheet" type="text/css" href="<?=base_url(); ?>static/css/bootstrap-select.min.css">
 	    <?php } ?>
 	</head>
