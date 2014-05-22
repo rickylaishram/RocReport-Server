@@ -31,8 +31,8 @@ class Main extends CI_Controller {
 		$data['browser'] = $this->config->item('browser');
 
 		if($this->input->post('email') && valid_email($this->input->post('email'))) {
-			$from = $this->input->get('email');
-			$message = $this->input->get('message');
+			$from = $this->input->post('email');
+			$message = $this->input->post('message');
 			$emails = $this->config->item('email');
 
 			foreach ($emails as $email) {
@@ -45,10 +45,7 @@ class Main extends CI_Controller {
 				$this->email->send();
 			}
 
-			var_dump($from);
-			var_dump($message);
-
-			//header('Location: '.base_url());
+			header('Location: '.base_url());
 		} else {
 			$this->load->view('app/header', $data);
 			$this->load->view('app/navbar', $data);	
