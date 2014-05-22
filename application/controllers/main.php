@@ -21,6 +21,7 @@ class Main extends CI_Controller {
 	function contact() {
 		$this->load->model('auth_model', 'auth');
 		$this->load->helper('email');
+		$this->load->library('email');
 		
 		$data['page_title'] = 'Contact Us | RocReport';
 		$data['page_id'] = 7;
