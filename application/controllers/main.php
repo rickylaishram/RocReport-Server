@@ -31,13 +31,23 @@ class Main extends CI_Controller {
 
 		if($this->input->post('email') && valid_email($this->input->post('email'))) {
 			$from = $this->input->get('email');
-			$text = $this->input->get('text');
+			$message = $this->input->get('message');
 			$emails = $this->config->item('email');
 
 			foreach ($emails as $email) {
-				send_email($email, 'Rocreport Email from '.$from, $message.' from '.$from);
+				$this->email->from('mailman@rocreport.org', 'RocReport Mailman');
+				$this->email->to($email); 
+
+				$this->email->subject('Contact Us - '.$from);
+				$this->email->message($message);
+
+				$this->email->send();
 			}
-			header('Location: '.base_url());
+
+			var_dump($from);
+			var_dump($message);
+
+			//header('Location: '.base_url());
 		} else {
 			$this->load->view('app/header', $data);
 			$this->load->view('app/navbar', $data);	
