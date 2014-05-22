@@ -9,6 +9,6 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('#loading-container').hide();
+		$('.loading-container').hide();
 	});
 </script>
