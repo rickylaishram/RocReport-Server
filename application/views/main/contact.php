@@ -8,4 +8,7 @@
 </div> <!-- /container -->
 
 <script type="text/javascript">
+	$(document).ready(function() {
+		$('#loading-container').hide();
+	});
 </script>
