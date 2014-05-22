@@ -23,7 +23,7 @@ class Main extends CI_Controller {
 		$this->load->helper('email');
 		
 		$data['page_title'] = 'Contact Us | RocReport';
-		$data['page_id'] = 6;
+		$data['page_id'] = 7;
 		$data['is_logged_in'] = $this->auth->isLoggedIn();
 		$data['is_admin'] = $this->auth->isAdmin(null, null, null, null);
 		$data['is_super_admin'] = $this->auth->isSuperAdmin();
