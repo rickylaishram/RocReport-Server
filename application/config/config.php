@@ -417,5 +417,8 @@ $config['dwollaToken'] = DWOLLA_TOKEN;
 
 $config['googleMaps'] = GOOGLE_MAP;
 $config['analytics'] = RR_GA_CODE;
+
+$config['email'][0] = RR_EMAIL_0;
+$config['email'][1] = RR_EMAIL_1;
 /* End of file config.php */
 /* Location: ./application/config/config.php */

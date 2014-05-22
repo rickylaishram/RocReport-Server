@@ -13,7 +13,7 @@
 </div> <!-- /container -->
 
 <script type="text/javascript">
-	$(document).ready(function(){
+	$(window).load(function(){
 		if(($('#pass').val().length > 0) && ($('#email').val().length > 0)) {
 			$('#btn_submit').prop('disabled', false);
 		} else {

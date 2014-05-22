@@ -31,3 +31,7 @@
 	*/
 	define('RR_BROWSER_TOKEN', '');
 	define('RR_BROWSER_COOKIE_AUTH', '');
+
+	/* Contact Emails */
+	define('RR_EMAIL_0', '');
+	define('RR_EMAIL_1', '');
