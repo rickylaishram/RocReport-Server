@@ -29,12 +29,7 @@ class Main extends CI_Controller {
 		$data['is_super_admin'] = $this->auth->isSuperAdmin();
 		$data['browser'] = $this->config->item('browser');
 
-		if(!$this->input->get('email') && valid_email($this->input->get('email'))) {
-			$this->load->view('app/header', $data);
-			$this->load->view('app/navbar', $data);	
-			$this->load->view('main/contact.php', $data);
-			$this->load->view('app/footer', $data);
-		} else {
+		if($this->input->post('email') && valid_email($this->input->post('email'))) {
 			$from = $this->input->get('email');
 			$text = $this->input->get('text');
 			$emails = $this->config->item('email');
@@ -43,6 +38,11 @@ class Main extends CI_Controller {
 				send_email($email, 'Rocreport Email from '.$from, $message.' from '.$from);
 			}
 			header('Location: '.base_url());
+		} else {
+			$this->load->view('app/header', $data);
+			$this->load->view('app/navbar', $data);	
+			$this->load->view('main/contact.php', $data);
+			$this->load->view('app/footer', $data);
 		}
 		
 		
