@@ -2,6 +2,5 @@ uploads/*
 *.apk
 
 main-config.php
-.htaccess
 
 static/images/*
