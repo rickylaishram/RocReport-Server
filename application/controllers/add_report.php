@@ -28,9 +28,11 @@ class Add_report extends CI_Controller {
 	}
 
 	function api($method) {
+
 		$this->load->model('auth_model', 'auth');
 		$this->load->model('client_model', 'client');
 		$id = $this->input->post('id');
+		if (!$id) $id = $this->input->get('id');
 
 		$valid = ($id ? $this->client->isValid($id) : false);
 		$rate_limit = ($valid ? $this->client->check_rate_limit($id) : false);
@@ -96,6 +98,55 @@ class Add_report extends CI_Controller {
 						} else {
 							$this->_response_error(1);
 						}
+						break;
+					case 'image':
+						$client = $this->input->get('id', true);			// Required
+						if($email && $client) {
+
+							@require(FCPATH.'application/libraries/Uploader.php');
+
+							$upload_dir = FCPATH.'static/images/';
+							$valid_extensions = array('gif', 'png', 'jpeg', 'jpg');
+
+							$Upload = new FileUpload('image');
+							$ext = $Upload->getExtension(); // Get the extension of the uploaded file
+							$Upload->newFileName = md5($email).time().'.'.$ext;
+							$result = $Upload->handleUpload($upload_dir, $valid_extensions);
+
+							if (!$result) {
+							    echo json_encode(array('success' => false, 'msg' => $Upload->getErrorMsg()));   
+							} else {
+								$this->load->model('image_model', 'image');
+								//echo $email;
+								//echo $client;
+								//echo $Upload->getFileName();
+								$this->image->add($email, $client, $Upload->getFileName());
+							    echo json_encode(array('success' => true, 'file' => base_url().'static/images/'.$Upload->getFileName()));
+							}
+							
+						} else {
+							$this->_response_error(7);
+						}						
+						break;
+					case 'imageprogress':
+						if (isset($_REQUEST['progresskey'])) 
+						  $status = apc_fetch('upload_'.$_REQUEST['progresskey']);
+						else 
+						  exit(json_encode(array('success' => false)));
+
+						$pct = 0;
+						$size = 0;
+
+						if (is_array($status)) {
+						  if (array_key_exists('total', $status) && array_key_exists('current', $status)) {
+						    if ($status['total'] > 0) {
+						      $pct = round( ( $status['current'] / $status['total']) * 100 );
+						      $size = round($status['total'] / 1024);
+						    }
+						  }
+						}
+
+						echo json_encode(array('success' => true, 'pct' => $pct, 'size' => $size));
 						break;
 					default:
 						# code...

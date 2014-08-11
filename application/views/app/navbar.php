@@ -28,6 +28,7 @@
 							<li <?php if($page_id == 4) echo 'class="active"'; ?>><a href="<?=base_url(); ?>superadmin/">Super Admin</a></li>
 						<?php endif; ?>
 						<li <?php if($page_id == 5) echo 'class="active"'; ?>><a href="<?=base_url(); ?>about/">About</a></li>
+						<li <?php if($page_id == 7) echo 'class="active"'; ?>><a href="<?=base_url(); ?>main/contact/">Contact Us</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<?php if($is_logged_in): ?>
