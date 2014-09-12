@@ -80,7 +80,7 @@
 			this.el.emailInput.on('keyup', {self: this}, this.handler.keyUpEmail);
 		}
 	};
-	window['r_register'] = register;
+	window['RR']['register'] = register;
 
 	/**
 	 * Login page
@@ -122,7 +122,7 @@
 					this.el.submitBtn.prop('disabled', true);
 				}
 			},
-		}
+		},
 		init: function() {
 			this.misc.checkAutofill();
 
@@ -130,7 +130,7 @@
 			this.el.emailInput.on('keyup', {self: this}, this.handler.keyUpEmail);
 		}
 	};
-	window['r_login'] = login;
+	window['RR']['login'] = login;
 
 
 })(window)
