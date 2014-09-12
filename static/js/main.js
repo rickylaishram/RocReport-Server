@@ -13,7 +13,7 @@
 			pass2Input: 	$('#pass2'),
 			nameInput: 		$('#name'),
 			emailInput: 	$('#email'),
-			messageWarn: 	$('#message alert'),
+			messageWarn: 	$('#message .alert'),
 			submitBtn: 		$('#btn_submit'),
 		},
 		messg: {
@@ -75,5 +75,5 @@
 	};
 	window['register'] = register;
 
-	
+
 })(window)
