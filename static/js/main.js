@@ -80,7 +80,7 @@
 			this.el.emailInput.on('keyup', {self: this}, this.handler.keyUpEmail);
 		}
 	};
-	window['RR']['register'] = register;
+	window['r_register'] = register;
 
 	/**
 	 * Login page
@@ -130,7 +130,7 @@
 			this.el.emailInput.on('keyup', {self: this}, this.handler.keyUpEmail);
 		}
 	};
-	window['RR']['login'] = login;
+	window['r_login'] = login;
 
 
 })(window)
