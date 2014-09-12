@@ -65,7 +65,7 @@
 			}
 		},
 		init: function() {
-			console.log(1);s
+			console.log($);
 			this.el.messageWarn.hide();
 			
 			this.el.pass1Input.on('keyup', this.handler.keyUpPass1);
