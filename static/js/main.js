@@ -40,7 +40,7 @@
 					pass = self.el.pass1Input.val();
 
 				/* Check if passwords match */
-				if(self.el.pass2Input.val() == pass) {
+				if(self.el.pass2Input.val() != pass) {
 					self.el.messageWarn.show().text(self.messg.passMismatch);
 					self.el.submitBtn.prop('disabled', true);
 				} else {
