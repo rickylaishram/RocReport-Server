@@ -14,5 +14,5 @@
 
 <script src="<?=base_url(); ?>static/js/main.js"></script>
 <script type="text/javascript">
-	register.init();
+	RR.register.init();
 </script>

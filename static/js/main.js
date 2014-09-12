@@ -60,6 +60,8 @@
 				}
 			},
 			keyUpEmail: function(e) {
+				var self = e.data.self;
+
 				if(self.el.emailInput.val().length > 0 ){
 					self.el.messageWarn.hide();
 					self.el.submitBtn.prop('disabled', false);
@@ -78,7 +80,57 @@
 			this.el.emailInput.on('keyup', {self: this}, this.handler.keyUpEmail);
 		}
 	};
-	window['register'] = register;
+	window['RR']['register'] = register;
+
+	/**
+	 * Login page
+	 */
+	var login = {
+		el: {
+			passInput: 	$('#pass'),
+			emailInput: 	$('#email'),
+			submitBtn: 		$('#btn_submit'),
+		},
+		handler: {
+			keyUpPass: function(e) {
+				var self = e.data.self;
+
+				/* If password length is less than 5 char do not allow registration */
+				if(self.el.passInput.val().length < 1){
+					self.el.submitBtn.prop('disabled', true);
+				} else {
+					self.el.submitBtn.prop('disabled', false);
+				}
+			},
+			keyUpEmail: function(e) {
+				var self = e.data.self;
+
+				if(self.el.emailInput.val().length > 0 ){
+					self.el.submitBtn.prop('disabled', false);
+				} else {
+					self.el.submitBtn.prop('disabled', true);
+				}
+			}
+		},
+		misc: {
+			/* Check for auto filled email, pass */
+			checkAutofill: function() {
+				if((this.el.passInput.val().length > 0)
+					&& (this.el.emailInput.val().length > 0)) {
+					this.el.submitBtn.prop('disabled', false);
+				} else {
+					this.el.submitBtn.prop('disabled', true);
+				}
+			},
+		}
+		init: function() {
+			this.misc.checkAutofill();
+
+			this.el.passInput.on('keyup', {self: this}, this.handler.keyUpPass);
+			this.el.emailInput.on('keyup', {self: this}, this.handler.keyUpEmail);
+		}
+	};
+	window['RR']['login'] = login;
 
 
 })(window)
