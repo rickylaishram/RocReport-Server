@@ -23,58 +23,59 @@
 			emailEmpty: 	'Email cannot be empty',
 		},
 		handler: {
-			self: this,
-			keyUpPass1: function() {
-				console.log(this.self);
-				console.log(this);
+			keyUpPass1: function(e) {
+				var self = e.data.self;
+
 				/* If password length is less than 5 char do not allow registration */
-				if(this.self.el.pass1Input.val().length < 5){
-					this.self.el.messageWarn.show().text(this.messg.passLength);
-					this.self.el.submitBtn.prop('disabled', true);
+				if(self.el.pass1Input.val().length < 5){
+					self.el.messageWarn.show().text(self.messg.passLength);
+					self.el.submitBtn.prop('disabled', true);
 				} else {
-					this.self.el.messageWarn.hide();
-					this.self.el.submitBtn.prop('disabled', false);
+					self.el.messageWarn.hide();
+					self.el.submitBtn.prop('disabled', false);
 				}
 			},
-			keyUpPass2: function() {
-				var pass = this.self.el.pass1Input.val();
+			keyUpPass2: function(e) {
+				var self = e.data.self,
+					pass = self.el.pass1Input.val();
 
 				/* Check if passwords match */
-				if(this.self.el.pass2Input.val() == pass) {
-					this.self.el.messageWarn.show().text(this.messg.passMismatch);
-					this.self.el.submitBtn.prop('disabled', true);
+				if(self.el.pass2Input.val() == pass) {
+					self.el.messageWarn.show().text(self.messg.passMismatch);
+					self.el.submitBtn.prop('disabled', true);
 				} else {
-					this.self.el.messageWarn.hide();
-					this.self.el.submitBtn.prop('disabled', false);
+					self.el.messageWarn.hide();
+					self.el.submitBtn.prop('disabled', false);
 				}
 			},
-			keyUpName: function() {
-				if(this.self.el.nameInput.val().length > 0 ){
-					this.self.el.messageWarn.hide();
-					this.self.el.submitBtn.prop('disabled', false);
+			keyUpName: function(e) {
+				var self = e.data.self;
+
+				if(self.el.nameInput.val().length > 0 ){
+					self.el.messageWarn.hide();
+					self.el.submitBtn.prop('disabled', false);
 				} else {
-					this.self.el.messageWarn.show().text(this.messg.nameEmpty);
-					this.self.el.submitBtn.prop('disabled', true);
+					self.el.messageWarn.show().text(self.messg.nameEmpty);
+					self.el.submitBtn.prop('disabled', true);
 				}
 			},
-			keyUpEmail: function() {
-				if(this.self.el.emailInput.val().length > 0 ){
-					this.self.el.messageWarn.hide();
-					this.self.el.submitBtn.prop('disabled', false);
+			keyUpEmail: function(e) {
+				if(self.el.emailInput.val().length > 0 ){
+					self.el.messageWarn.hide();
+					self.el.submitBtn.prop('disabled', false);
 				} else {
-					this.self.el.messageWarn.show().text(this.messg.emailEmpty);
-					this.self.el.submitBtn.prop('disabled', true);
+					self.el.messageWarn.show().text(self.messg.emailEmpty);
+					self.el.submitBtn.prop('disabled', true);
 				}
 			}
 		},
 		init: function() {
-			console.log($);
 			this.el.messageWarn.hide();
 			
-			this.el.pass1Input.on('keyup',  this.handler.keyUpPass1);
-			this.el.pass2Input.on('keyup', this.handler.keyUpPass2);
-			this.el.nameInput.on('keyup', this.handler.keyUpName);
-			this.el.emailInput.on('keyup', this.handler.keyUpEmail);
+			this.el.pass1Input.on('keyup', {self: this}, this.handler.keyUpPass1);
+			this.el.pass2Input.on('keyup', {self: this}, this.handler.keyUpPass2);
+			this.el.nameInput.on('keyup', {self: this}, this.handler.keyUpName);
+			this.el.emailInput.on('keyup', {self: this}, this.handler.keyUpEmail);
 		}
 	};
 	window['register'] = register;
