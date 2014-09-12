@@ -114,7 +114,7 @@
 		},
 		misc: {
 			/* Check for auto filled email, pass */
-			checkAutofill: function(self) {
+			checkAutofill: function(e) {
 				var self = e.data.self;
 
 				if((self.el.passInput.val().length > 0)
