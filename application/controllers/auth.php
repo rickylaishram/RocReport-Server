@@ -2,6 +2,11 @@
 
 class Auth extends CI_Controller {
 
+	/**
+	 * Register new user
+	 *
+	 * Users have to apply to upgrade to Contractor or CityAdmin
+	 */
 	function register() {
 		$this->load->model('auth_model', 'auth');
 		$email = $this->auth->isLoggedIn();
@@ -43,6 +48,9 @@ class Auth extends CI_Controller {
 		}
 	}
 
+	/**
+	 * Login user
+	 */
 	function login() {
 		$this->load->model('auth_model', 'auth');
 		$email = $this->auth->isLoggedIn();
