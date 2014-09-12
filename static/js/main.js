@@ -115,6 +115,8 @@
 		misc: {
 			/* Check for auto filled email, pass */
 			checkAutofill: function(self) {
+				var self = e.data.self;
+
 				if((self.el.passInput.val().length > 0)
 					&& (self.el.emailInput.val().length > 0)) {
 					self.el.submitBtn.prop('disabled', false);
@@ -124,7 +126,7 @@
 			},
 		},
 		init: function() {
-			this.misc.checkAutofill(this);
+			$(document).on('ready', {self: this}, this.misc.checkAutofill);
 
 			this.el.passInput.on('keyup', {self: this}, this.handler.keyUpPass);
 			this.el.emailInput.on('keyup', {self: this}, this.handler.keyUpEmail);
