@@ -35,7 +35,7 @@
 				}
 			},
 			keyUpPass2: function() {
-				var pass = this.self..el.pass1Input.val();
+				var pass = this.self.el.pass1Input.val();
 
 				/* Check if passwords match */
 				if(this.self.el.pass2Input.val() == pass) {
