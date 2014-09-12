@@ -87,7 +87,7 @@
 	 */
 	var login = {
 		el: {
-			passInput: 	$('#pass'),
+			passInput: 		$('#pass'),
 			emailInput: 	$('#email'),
 			submitBtn: 		$('#btn_submit'),
 		},
@@ -114,17 +114,17 @@
 		},
 		misc: {
 			/* Check for auto filled email, pass */
-			checkAutofill: function() {
-				if((this.el.passInput.val().length > 0)
-					&& (this.el.emailInput.val().length > 0)) {
-					this.el.submitBtn.prop('disabled', false);
+			checkAutofill: function(self) {
+				if((self.el.passInput.val().length > 0)
+					&& (self.el.emailInput.val().length > 0)) {
+					self.el.submitBtn.prop('disabled', false);
 				} else {
-					this.el.submitBtn.prop('disabled', true);
+					self.el.submitBtn.prop('disabled', true);
 				}
 			},
 		},
 		init: function() {
-			this.misc.checkAutofill();
+			this.misc.checkAutofill(this);
 
 			this.el.passInput.on('keyup', {self: this}, this.handler.keyUpPass);
 			this.el.emailInput.on('keyup', {self: this}, this.handler.keyUpEmail);
