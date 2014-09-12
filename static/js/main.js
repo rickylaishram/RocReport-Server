@@ -36,7 +36,7 @@
 			keyUpPass2: function() {
 				var pass = this.el.pass1Input.val();
 
-				/* CHeck if passwords match */
+				/* Check if passwords match */
 				if(this.el.pass2Input.val() == pass) {
 					this.el.messageWarn.show().text(this.messg.passMismatch);
 					this.el.submitBtn.prop('disabled', true);
@@ -65,6 +65,7 @@
 			}
 		},
 		init: function() {
+			console.log(1);s
 			this.el.messageWarn.hide();
 			
 			this.el.pass1Input.on('keyup', this.handler.keyUpPass1);
