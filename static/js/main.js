@@ -26,6 +26,7 @@
 			self: this,
 			keyUpPass1: function() {
 				console.log(this.self);
+				console.log(this);
 				/* If password length is less than 5 char do not allow registration */
 				if(this.self.el.pass1Input.val().length < 5){
 					this.self.el.messageWarn.show().text(this.messg.passLength);
