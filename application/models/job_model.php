@@ -14,7 +14,7 @@ class Job_model extends CI_Model {
 	function search_nearby_type($type, $latitude, $longitude, $distance) {
 		// Query based on Havebrsine's formula (in meter)
 		// Based on https://developers.google.com/maps/articles/phpsqlsearch_v3
-		$sql = "SELECT longitude, latitude, report_id, description, added_at, formatted_address, picture, ( 6371000 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance FROM ".$this->table['report']." HAVING distance < ? AND closed = 0 AND category = ? ORDER BY added_at DESC";
+		$sql = "SELECT longitude, latitude, report_id, description, added_at, formatted_address, picture, colosed, category, ( 6371000 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance FROM ".$this->table['report']." HAVING distance < ? AND closed = 0 AND category = ? ORDER BY added_at DESC";
 
 		$query = $this->db->query($sql, array($latitude, $longitude, $latitude, $distance, $type));
 
