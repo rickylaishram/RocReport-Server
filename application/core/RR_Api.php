@@ -37,10 +37,10 @@ class RR_Api extends CI_Controller {
 		}
 	}
 
-	/*
-	* Sends success resonse
-	* @params array data to be sent to client
-	*/
+	/**
+	 * Sends success resonse
+	 * @param array data to be sent to client
+	 */
 	protected function _response_success($vars) {
 		$data['status'] = true;
 		$data['data'] = $vars;
