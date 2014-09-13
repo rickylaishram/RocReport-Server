@@ -10,10 +10,6 @@ class Auth extends RR_Api {
 		$email = $this->input->post('email', true);
 		$password = $this->input->post('password', true);
 
-		var_dump($this->auth_data);
-		var_dump($email);
-		var_dump($password);
-
 		// Make sure we have all parameters
 		if(!$client || !$password || !$email)
 			$this->_response_error(1);
