@@ -123,7 +123,7 @@ class RR_Apilogin extends RR_Api {
 /**
  * Contractor API controller
  */
-class RR_Apicontractor extends RR_Api_Login {
+class RR_Apicontractor extends RR_Apilogin {
 	$this->load->model('auth_model', 'auth');
 	if(!$this->auth->isContractor()) {
 		$this->_response_error(13);
