@@ -18,7 +18,7 @@ class RR_Apilogin extends RR_Api {
 		if(!$client || !$token)
 			$this->_response_error(1);
 
-		$this->load->model('auth_model', 'client');
+		$this->load->model('auth_model', 'auth');
 
 		$email = $this->auth->getEmail($client, $token);
 
