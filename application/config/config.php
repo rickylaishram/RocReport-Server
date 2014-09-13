@@ -435,36 +435,5 @@ $config['analytics'] = RR_GA_CODE;
 $config['email'][0] = RR_EMAIL_0;
 $config['email'][1] = RR_EMAIL_1;
 
-/*
-| -------------------------------------------------------------------------
-| Native spl_autoload_register() - by Kenneth Vogt
-| -------------------------------------------------------------------------
-|
-| Here is an updated version of Phil Sturgeon’s code:
-|
-| Thanks to Phil Sturgeon and Kenneth Vogt.
-|
-| NOTE:
-| Requires PHP 5.3.+
-| As of CI 3.0 Dev - The constant EXT has been removed modified
-| should work for all version of CI and PHP 5.3
-|
-| Place at the bottom of your ./application/config/config.php file.
-| -------------------------------------------------------------------------
-*/
-spl_autoload_register(function($class)
-{
- if (strpos($class, 'CI_') !== 0)
- {
-  if (file_exists($file = APPPATH . 'core/' . $class . '.php'))
-  {
-   include $file;
-  }
-  elseif (file_exists($file = APPPATH . 'libraries/' . $class . '.php'))
-  {
-   include $file;
-  }
- }
-}); 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
