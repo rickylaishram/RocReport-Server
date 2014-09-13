@@ -35,7 +35,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<?php if($is_logged_in): ?>
-							<li><a><?=$is_logged_in; ?></a></li>
+							<li><a><?=$user_data['name']; ?></a></li>
 						<?php endif; ?>
 						<?php if(!$is_logged_in): ?>
 							<li><a href="<?=base_url(); ?>auth/login/">Login</a></li>
@@ -46,7 +46,7 @@
 			</div>
 		</div>
 
-		<div class="loading-container">
+		<!--<div class="loading-container">
 			<span>Loading</span>
 			<span class="loading-dot-1"></span>
 			<span class="loading-dot-2"></span>
@@ -54,4 +54,4 @@
 			<span class="loading-dot-4"></span>
 			<span class="loading-dot-5"></span>
 			<span class="loading-dot-6"></span>
-		</div>
+		</div>-->
