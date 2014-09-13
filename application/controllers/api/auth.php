@@ -44,7 +44,7 @@ class Auth extends RR_Api {
 		$password = $this->input->post('password', true);
 		$name = $this->input->post('name', true);
 
-		if(!$client || !$password || !$email || !$name))
+		if(!$client || !$password || !$email || !$name)
 			$this->_response_error(1);
 
 		$this->load->model('user_model', 'user');
