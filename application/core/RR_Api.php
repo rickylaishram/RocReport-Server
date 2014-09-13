@@ -109,7 +109,7 @@ class RR_Api extends CI_Controller {
 /**
  * APIs that require user to be logged in should extend this class
  */
-class RR_ApiLogin extends RR_Api {
+class RR_Apilogin extends RR_Api {
 	public function __construct(){
 		parent::__construct();
 		
@@ -123,7 +123,7 @@ class RR_ApiLogin extends RR_Api {
 /**
  * Contractor API controller
  */
-class RR_ApiContractor extends RR_Api_Login {
+class RR_Apicontractor extends RR_Api_Login {
 	$this->load->model('auth_model', 'auth');
 	if(!$this->auth->isContractor()) {
 		$this->_response_error(13);
