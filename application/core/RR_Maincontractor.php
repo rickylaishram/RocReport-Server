@@ -14,7 +14,7 @@ class RR_Maincontractor extends RR_Mainlogin {
 		
 		$this->load->model('auth_model', 'auth');
 
-		if(!$this->auth->isContractor($this->user_data['email'])) {
+		if(!$this->auth->isContractor($this->data['user_data']['email'])) {
 			$this->output->set_header('Location: '.base_url());
 			$this->output->set_status_header('302');
 			$this->output->_display();
@@ -22,7 +22,7 @@ class RR_Maincontractor extends RR_Mainlogin {
 		}
 
 		$this->load->model('contractor_model', 'con');
-		$this->contractor_data = $this->con->getData($this->user_data['email']);
+		$this->contractor_data = $this->con->getData($this->data['user_data']['email']);
 
 		$this->data['is_contractor'] = true;
 	}
