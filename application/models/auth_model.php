@@ -69,16 +69,15 @@ class Auth_model extends CI_Model {
 		$browser = $this->config->item('browser');
 		$token = $this->session->userdata($browser['cookie']['auth']);
 
-		if($token) {
-			$email = $this->getEmail($browser['id'], $token);
-			if($email) {
-				return $email;
-			} else {
-				return false;
-			}
-		} else {
+		if(!$token)
 			return false;
-		}
+		
+		$email = $this->getEmail($browser['id'], $token);
+		
+		if(!$email)
+			return false;
+		
+		return $email;
 	}
 
 	/*
@@ -99,37 +98,47 @@ class Auth_model extends CI_Model {
 	*/
 	function isAdmin($locality, $admin_level_2, $admin_level_1, $country) {
 		$email = $this->isLoggedIn();
-		if($email) {
-			$this->db->select('*');
-			if(!is_null($locality)) {
-				$this->db->where('locality', $locality);
-			}
-			if(!is_null($admin_level_2)) {
-				$this->db->where('admin_level_2', $admin_level_2);
-			}
-			if(!is_null($admin_level_1)) {
-				$this->db->where('admin_level_1', $admin_level_1);
-			}
-			if(!is_null($country)) {
-				$this->db->where('country', $country);
-			}
-			$this->db->where('email', $email);
-			$count = $this->db->count_all_results($this->table['admin']);
-
-			return ($count == 1) ? true : false;
-		} else {
+		if(!$email)
 			return false;
+
+		$this->db->select('*');
+		if(!is_null($locality)) {
+			$this->db->where('locality', $locality);
 		}
+		if(!is_null($admin_level_2)) {
+			$this->db->where('admin_level_2', $admin_level_2);
+		}
+		if(!is_null($admin_level_1)) {
+			$this->db->where('admin_level_1', $admin_level_1);
+		}
+		if(!is_null($country)) {
+			$this->db->where('country', $country);
+		}
+		$this->db->where('email', $email);
+		$count = $this->db->count_all_results($this->table['admin']);
+
+		return ($count == 1) ? true : false;
 	}
 
 	function isSuperAdmin() {
 		$email = $this->isLoggedIn();
-		if($email) {
-			$this->db->where('email', $email);
-			$count = $this->db->count_all_results($this->table['sadmin']);
-			return ($count == 1) ? true : false;
-		} else {
+		if(!$email)
 			return false;
-		}
+
+		$this->db->where('email', $email);
+		$count = $this->db->count_all_results($this->table['sadmin']);
+		return ($count == 1) ? true : false;
+	}
+
+	function isContractor() {
+		$email = $this->isLoggedIn();
+
+		if(!$email) 
+			return false;
+
+		$this->db->where('email', $email);
+		$query = $this->db->count_all_results($this->table['contractor']);
+
+		return ($count == 1) ? true : false;
 	}
 }

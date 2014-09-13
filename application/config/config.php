@@ -374,6 +374,10 @@ $config['table']['admin'] = RR_TABLE_ADMIN;
 $config['table']['sadmin'] = RR_TABLE_SADMIN;
 $config['table']['api_request'] = RR_TABLE_API_REQ;
 $config['table']['category'] = RR_TABLE_CATEGORY;
+$config['table']['contractor'] = RR_TABLE_CONTRACTOR;
+$config['table']['bid'] = RR_TABLE_BID;
+$config['table']['rate_contractor'] = RR_TABLE_RATE_CON;
+$config['table']['rate_user'] = RR_TABLE_RATE_USER;
 
 /*
 |--------------------------------------------------------------------------
@@ -392,7 +396,17 @@ $config['category'] = array(
 						7 => 'traffic light',
 						8 => 'plant, tree',
 						);
-
+/*
+|--------------------------------------------------------------------------
+| Error Codes
+|--------------------------------------------------------------------------
+| Error Codes
+|
+*/
+$config['api']['error'] = array (
+		'not_contractor'		=> 890,
+		
+	);
 /*
 |--------------------------------------------------------------------------
 | Area types
