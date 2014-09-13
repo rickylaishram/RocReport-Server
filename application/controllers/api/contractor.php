@@ -22,6 +22,6 @@ class Contractor extends RR_Apicontractor {
 
 	private function getJobs() {
 		$this->load->model('job_model', 'job');
-		var_dump('Hello');
+		var_dump($this->contractor_data);
 	}
 }
