@@ -5,10 +5,14 @@ class Auth extends RR_Api {
 	 * Login a user using email and password
 	 */
 	public function login() {
-		$client = $this->auth['client_id'];
+		$client = $this->auth_data['client_id'];
 
 		$email = $this->input->post('email', true);
 		$password = $this->input->post('password', true);
+
+		var_dump($this->auth_data);
+		var_dump($email);
+		var_dump($password);
 
 		// Make sure we have all parameters
 		if(!$client || !$password || !$email)

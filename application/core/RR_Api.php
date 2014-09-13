@@ -8,7 +8,7 @@
  */
 class RR_Api extends CI_Controller {
 	
-	protected $auth = array( 'client_id' => null, 'client_token' => null);
+	protected $auth_data = array( 'client_id' => null, 'client_token' => null);
 
 	/**
 	 * The constructor
@@ -26,8 +26,8 @@ class RR_Api extends CI_Controller {
 		$rate_limit = ($valid ? $this->client->check_rate_limit($id) : false);
 
 		if($id && $valid && $rate_limit ) {
-			$this->client->log_request($id, uri_string(), $_SERVER['REMOTE_ADDR']);
 			$auth['client_id'] = $id;
+			$this->client->log_request($id, uri_string(), $_SERVER['REMOTE_ADDR']);
 		} else if (!$id || !$valid){
 			$this->_response_error(11);
 		} else if (!$rate_limit) {
