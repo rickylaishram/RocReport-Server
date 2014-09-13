@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Contractor extends RR_Api_Contractor {
+class Contractor extends RR_Apicontractor {
 
 	public function jobs($method = null) {
 		switch ($methods) {
