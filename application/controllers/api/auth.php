@@ -38,13 +38,11 @@ class Auth extends RR_Api {
 	 * Registers a new user
 	 */
 	public function register() {
-		$client = $this->auth['client_id'];
-
 		$email = $this->input->post('email', true);
 		$password = $this->input->post('password', true);
 		$name = $this->input->post('name', true);
 
-		if(!$client || !$password || !$email || !$name)
+		if(!$password || !$email || !$name)
 			$this->_response_error(1);
 
 		$this->load->model('user_model', 'user');
