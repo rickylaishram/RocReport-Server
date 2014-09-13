@@ -2,8 +2,8 @@
 
 class Contractor extends RR_Apicontractor {
 
-	public function jobs($method = null) {
-		switch ($methods) {
+	public function job($method = null) {
+		switch ($method) {
 			case 'fetch':
 				$this->getJobs();
 				break;
