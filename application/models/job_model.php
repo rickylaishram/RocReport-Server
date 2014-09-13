@@ -6,13 +6,16 @@ class Job_model extends CI_Model {
 		$this->table = $this->config->item('table');
 	}
 
-	/*
-	* Select the nearby reports (diatances in km)
-	* @params $latitude, $longitude, $distance, $limit
-	* @return array of the nearby reports
-	*/
+	/**
+	 * Select the nearby reports (diatances in km) by type
+	 *
+	 * @param $type String The job category
+	 * @param $latitude Double The latitude
+	 * @param $longitude Double The longitude
+	 * @param $distance Integer The radius
+	 * @return Array The nearby jobs
+	 */
 	function search_nearby_type($type, $latitude, $longitude, $distance) {
-		
 		// Convert distance from km to meters
 		$distance = 1000*$distance;
 
@@ -22,7 +25,24 @@ class Job_model extends CI_Model {
 
 		$query = $this->db->query($sql, array($latitude, $longitude, $latitude, $distance, $type));
 
-		return $query->result();
+		return $query->result_array();
+	}
+
+	/**
+	 * Add a bid for a job
+	 * @param $id String The job id
+	 * @param $amount Integer The amount bidding for (in USD)
+	 * @param $duration Integer The estimated duration to complete job (in days)
+	 * @param $email String The email of the bidding user
+	 */
+	function add_bid($id, $amount, $duration, $email) {
+		$data = array(
+				'report_id' => $id,
+				'email' => $email,
+				'amount' => $amount,
+				'duration' => $duration,
+			);
+		$this->db->insert($this->tables['bid'], $data);
 	}
 
 }
