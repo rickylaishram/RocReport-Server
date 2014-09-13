@@ -130,12 +130,13 @@ class Auth_model extends CI_Model {
 		return ($count == 1) ? true : false;
 	}
 
-	function isContractor() {
-		$email = $this->isLoggedIn();
-
-		if(!$email) 
-			return false;
-
+	/**
+	 * Check if user is a contractor
+	 *
+	 * @param string $email The user email
+	 * @return boolean True if contractor; false otherwise
+	 */
+	function isContractor($email) {
 		$this->db->where('email', $email);
 		$query = $this->db->count_all_results($this->table['contractor']);
 

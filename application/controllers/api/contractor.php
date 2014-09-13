@@ -5,7 +5,7 @@ class Contractor extends RR_Api_Contractor {
 	public function jobs($method = null) {
 		switch ($methods) {
 			case 'fetch':
-				$types = $this->input->get()
+				$this->getJobs();
 				break;
 			
 			default:
@@ -22,6 +22,6 @@ class Contractor extends RR_Api_Contractor {
 
 	private function getJobs() {
 		$this->load->model('job_model', 'job');
-		$this->load->model('contractor_model', 'con');
+		var_dump('Hello');
 	}
 }
