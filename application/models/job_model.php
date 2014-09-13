@@ -42,7 +42,7 @@ class Job_model extends CI_Model {
 				'amount' => $amount,
 				'duration' => $duration,
 			);
-		$this->db->insert($this->tables['bid'], $data);
+		$this->db->insert($this->table['bid'], $data);
 	}
 
 }
