@@ -7,7 +7,7 @@ require(APPPATH.'core/RR_Api.php');
  */
 class RR_Apilogin extends RR_Api {
 
-	protected $user_data = array( 'email' => null, );
+	protected $user_data = array();
 
 	public function __construct(){
 		parent::__construct();
@@ -25,6 +25,7 @@ class RR_Apilogin extends RR_Api {
 		if(!$email)
 			$this->_response_error(14);
 
-		$this->user_data['email'] = $email;
+		$this->load->model('user_model', 'user');
+		$this->user_data = $this->user->get($email);
 	}
 }
