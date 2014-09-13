@@ -11,7 +11,7 @@ class Auth extends RR_Api {
 		$password = $this->input->post('password', true);
 
 		// Make sure we have all parameters
-		if(!$client || !$password || !$email))
+		if(!$client || !$password || !$email)
 			$this->_response_error(1);
 
 		$this->load->model('user_model', 'user');
