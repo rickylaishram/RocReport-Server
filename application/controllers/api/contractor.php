@@ -8,7 +8,7 @@ class Contractor extends RR_Apicontractor {
 				$this->_get_jobs();
 				break;
 			case 'bid':
-				$this->_bid_jobs();
+				$this->_bid_job();
 				break;
 			default:
 				# code...
