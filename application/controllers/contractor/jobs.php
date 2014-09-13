@@ -10,7 +10,7 @@ class Jobs extends RR_Maincontractor {
 
 		$this->load->view('app/header', $this->data);
 		$this->load->view('app/navbar', $this->data);
-		$this->load->view('contract/job.php', $this->data);
+		$this->load->view('contractor/jobs.php', $this->data);
 		$this->load->view('app/footer', $this->data);
 	}
 }
