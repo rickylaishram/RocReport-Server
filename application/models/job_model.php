@@ -16,6 +16,8 @@ class Job_model extends CI_Model {
 		// Based on https://developers.google.com/maps/articles/phpsqlsearch_v3
 		$sql = "SELECT longitude, latitude, report_id, description, added_at, formatted_address, picture, closed, category, ( 6371000 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance FROM ".$this->table['report']." HAVING distance < ? AND closed = 0 AND category = ? ORDER BY added_at DESC";
 
+		var_dump($sql);
+
 		$query = $this->db->query($sql, array($latitude, $longitude, $latitude, $distance, $type));
 
 		return $query->result();
