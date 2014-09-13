@@ -20,6 +20,9 @@ class RR_Maincontractor extends RR_Mainlogin {
 			$this->output->set_header('Location: '.base_url());
 			$this->output->set_status_header('302');
 			$this->output->_display();
+			var_dump('adtsfyavfeyad!!@@')
+		} else {
+			var_dump('agsfdghsafdjha')
 		}
 
 		var_dump('hsgdfjhs');
