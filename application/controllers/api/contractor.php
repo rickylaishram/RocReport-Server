@@ -41,6 +41,6 @@ class Contractor extends RR_Apicontractor {
 		
 		$jobs = $this->job->search_nearby_type($type, $lat, $lng, $dis);
 
-		$this->_response_success()
+		$this->_response_success();
 	}
 }
