@@ -15,7 +15,9 @@ class RR_Maincontractor extends RR_Mainlogin {
 		$this->load->model('auth_model', 'auth');
 
 		if(!$this->auth->isContractor($this->user_data['email'])) {
-			$this->_response_error(13);
+			$this->output->set_header('Location: '.base_url());
+			$this->output->set_status_header('302');
+			$this->output->_display();
 		}
 
 		$this->load->model('contractor_model', 'con');
