@@ -26,7 +26,7 @@ class RR_Api extends CI_Controller {
 		$rate_limit = ($valid ? $this->client->check_rate_limit($id) : false);
 
 		if($id && $valid && $rate_limit ) {
-			$this->auth['client_id'] = $id;
+			$this->auth_data['client_id'] = $id;
 			$this->client->log_request($id, uri_string(), $_SERVER['REMOTE_ADDR']);
 		} else if (!$id || !$valid){
 			$this->_response_error(11);
