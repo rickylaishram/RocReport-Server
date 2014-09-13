@@ -9,10 +9,6 @@ class Jobs extends RR_Maincontractor {
 			$this->output->set_status_header('302');
 			$this->output->_display();
 		} else {
-			$this->laod->model('contractor_model', 'con');
-			$email = $this->auth->isLoggedIn();
-			$con_data = $this->con->getData($email);
-
 			$this->load->view('app/header', $data);
 			$this->load->view('app/navbar', $data);
 			$this->load->view('contract/job.php', $data);
