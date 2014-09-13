@@ -19,7 +19,6 @@ class RR_Maincontractor extends RR_Mainlogin {
 		}
 
 		$this->load->model('contractor_model', 'con');
-		var_dump($this->user_data);
 		$this->contractor_data = $this->con->getData($this->user_data['email']);
 	}
 }
