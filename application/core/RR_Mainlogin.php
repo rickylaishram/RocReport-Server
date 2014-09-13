@@ -25,6 +25,8 @@ class RR_Mainlogin extends CI_Controller {
 		}
 		$this->load->model('user_model', 'user');
 		$this->user_data = $this->user->get($email);
+
+		var_dump($this->user_data);
 	}
 
 }
