@@ -138,7 +138,7 @@ class Auth_model extends CI_Model {
 	 */
 	function isContractor($email) {
 		$this->db->where('email', $email);
-		$query = $this->db->count_all_results($this->table['contractor']);
+		$count = $this->db->count_all_results($this->table['contractor']);
 
 		return ($count == 1) ? true : false;
 	}
