@@ -24,7 +24,7 @@ class Contractor extends RR_Apicontractor {
 		$type = $this->input->get('type', true);
 		$lat = $this->input->get('lat', true);
 		$lng = $this->input->get('lng', true);
-		$dis = $this->input->get('dist', true);
+		$dis = $this->input->get('dist', true); 	// Distance input in km
 
 		if(!$type)
 			$this->_response_error(1);
