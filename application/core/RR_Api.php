@@ -105,27 +105,3 @@ class RR_Api extends CI_Controller {
 		exit();
 	}
 }
-
-/**
- * APIs that require user to be logged in should extend this class
- */
-class RR_Apilogin extends RR_Api {
-	public function __construct(){
-		parent::__construct();
-		
-		$this->load->model('auth_model', 'client');
-
-		$email = $this->auth->getEmail($client, $token);
-	}
-}
-
-
-/**
- * Contractor API controller
- */
-class RR_Apicontractor extends RR_Apilogin {
-	$this->load->model('auth_model', 'auth');
-	if(!$this->auth->isContractor()) {
-		$this->_response_error(13);
-	}
-}
