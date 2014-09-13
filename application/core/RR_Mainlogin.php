@@ -8,7 +8,12 @@
  */
 class RR_Mainlogin extends CI_Controller {
 	
-	protected $user_data = array();
+	protected $data = array(
+			'is_logged_in' 	=> false,
+			'is_admin' 		=> false,
+			'is_super_admin'=> false,
+			'is_contractor'	=> false,
+		);
 
 	public function __construct(){
 		parent::__construct();
@@ -23,8 +28,13 @@ class RR_Mainlogin extends CI_Controller {
 
 			exit();
 		}
+
 		$this->load->model('user_model', 'user');
-		$this->user_data = $this->user->get($email);
+		$this->data['user_data'] = $this->user->get($email);
+
+		$this->data['is_logged_in'] = true;
+		$this->data['is_admin'] = false; // Always false for now
+		$this->data['is_super_admin'] = $this->auth->isSuperAdmin($this->data['user_data']['email']);
 	}
 
 }

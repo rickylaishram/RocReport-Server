@@ -120,11 +120,7 @@ class Auth_model extends CI_Model {
 		return ($count == 1) ? true : false;
 	}
 
-	function isSuperAdmin() {
-		$email = $this->isLoggedIn();
-		if(!$email)
-			return false;
-
+	function isSuperAdmin($email) {
 		$this->db->where('email', $email);
 		$count = $this->db->count_all_results($this->table['sadmin']);
 		return ($count == 1) ? true : false;
