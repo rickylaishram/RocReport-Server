@@ -13,7 +13,6 @@
 		<link href="<?=base_url(); ?>static/css/bootstrap.min.css" rel="stylesheet">
 
 		<link rel="stylesheet" type="text/css" href="<?=base_url(); ?>static/css/bootstrap-select.min.css">
-		<link href="<?=base_url(); ?>static/css/material.css" rel="stylesheet">
 
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
