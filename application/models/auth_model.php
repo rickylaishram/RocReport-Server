@@ -59,14 +59,14 @@ class Auth_model extends CI_Model {
 	function generateNonce($email) {
 		$tick = $this->generateTick();
 
-		return md5($email.$tick.$this->config['nonce']['salt']);
+		return md5($email.$tick.$this->config->item['nonce']['salt']);
 	}
 
 	function checkNonce($nonce, $email) {
 		$tick = $this->generateTick();
 
-		if( (md5($email.$tick.$this->config['nonce']['salt']) === $nonce) 
-			|| (md5($email.($tick-1).$this->config['nonce']['salt']) === $nonce)) {
+		if( (md5($email.$tick.$this->config->item['nonce']['salt']) === $nonce) 
+			|| (md5($email.($tick-1).$this->config->item['nonce']['salt']) === $nonce)) {
 			return true;
 		}
 
@@ -167,6 +167,6 @@ class Auth_model extends CI_Model {
 	 * Generate a tick based on time and lifespan
 	 */
 	private function generateTick() {
-		return ceil(time()/($this->config['nonce']['life']*2));
+		return ceil(time()/($this->config->item['nonce']['life']*2));
 	}
 }
