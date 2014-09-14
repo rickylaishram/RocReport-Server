@@ -34,7 +34,7 @@ class RR_Mainlogin extends CI_Controller {
 
 		$this->data['is_logged_in'] = true;
 		$this->data['is_admin'] = false; // Always false for now
-		$this->data['is_super_admin'] = $this->auth->isSuperAdmin($this->data['user_data']['email']);
+		$this->data['is_super_admin'] = $this->auth->isSuperAdmin($this->data['user_data']->email);
 	}
 
 }
