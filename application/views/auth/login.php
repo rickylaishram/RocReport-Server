@@ -5,7 +5,7 @@
 				<div class="panel-heading panel-header-main">Login</div>
 				
 				<div class="panel-body">
-					<div id="input-message">
+					<div id="message">
 						<?php if($error) : ?>
 							<div class="alert alert-danger">Invalid login credentials.</div>
 						<?php endif; ?>

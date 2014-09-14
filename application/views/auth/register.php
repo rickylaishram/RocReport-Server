@@ -5,38 +5,36 @@
 				<div class="panel-heading panel-header-main">Register</div>
 				
 				<div class="panel-body">
-					<div id="input-message">
-						<?php if($error) : ?>
-							<div class="alert alert-danger">Invalid login credentials.</div>
-						<?php endif; ?>
+					<div id="message">
+						<div class="alert alert-danger">Invalid login credentials.</div>
 					</div>
 
 					<form class="form-horizontal" role="form" action="" method="post">
 						
 						<div class="form-group form-big">
-							<label for="name" class="col-lg-3 control-label">Name</label>
-							<div class="col-lg-9">
+							<label for="name" class="col-lg-4 control-label">Name</label>
+							<div class="col-lg-8">
 								<input type="text" class="form-control" placeholder="Name" autofocus required id="name" name="name">
 							</div>
 						</div>
 
 						<div class="form-group form-big">
-							<label for="email" class="col-lg-3 control-label">Email</label>
-							<div class="col-lg-9">
+							<label for="email" class="col-lg-4 control-label">Email</label>
+							<div class="col-lg-8">
 								<input type="email" class="form-control" placeholder="Email" required id="email" name="email">
 							</div>
 						</div>
 
 						<div class="form-group form-big">
-							<label for="pass1" class="col-lg-3 control-label">Password</label>
-							<div class="col-lg-9">
+							<label for="pass1" class="col-lg-4 control-label">Password</label>
+							<div class="col-lg-8">
 								<input type="password" class="form-control" placeholder="Password" required id="pass1" name="pass">
 							</div>
 						</div>
 
 						<div class="form-group form-big">
-							<label for="pass2" class="col-lg-3 control-label">Confirm Password</label>
-							<div class="col-lg-9">
+							<label for="pass2" class="col-lg-4 control-label">Confirm Password</label>
+							<div class="col-lg-8">
 								<input type="password" class="form-control" placeholder="Confirm Password" required id="pass2" name="pass">
 							</div>
 						</div>
