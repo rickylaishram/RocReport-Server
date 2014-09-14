@@ -337,6 +337,9 @@ html .panel-default>.panel-header-main {
 	border-bottom: 1px solid rgba(51, 181, 229, 1);
 }
 .form-group .form-control:active {
+	-webkit-animation: inputPulse 1s;
+	-moz-animation: inputPulse 1s;
+	-ms-animation: inputPulse 1s;
 	animation: inputPulse 1s;
 }
 .form-group .btn {
@@ -354,6 +357,9 @@ html .panel-default>.panel-header-main {
 .form-big {
 	font-size: 16px;
 }
+@-webkit-keyframes inputPulse,
+@-moz-keyframes inputPulse,
+@-ms-keyframes inputPules,
 @keyframes inputPulse {
 	0% { background-color: rgba(51, 181, 229, 0); }
 	50% { background-color:rgba(51, 181, 229, 0.5); }
