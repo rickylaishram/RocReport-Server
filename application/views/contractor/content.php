@@ -1,13 +1,53 @@
 <div class="container-fluid">
 	<div class="row">
+		
+		<!-- Search Panel -->
 		<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 			<div class="panel panel-default panel-animated-slight">
 				<div class="panel-heading panel-header-main">Search</div>
 				<div class="panel-body">
-					Basic panel example
+					
+					<div class="form-horizontal" role="form">
+						
+						<div class="form-group form-big">
+							<label for="category" class="col-lg-3 control-label">Category</label>
+							<div class="col-lg-9">
+								<select class="form-control" id="category"></select>
+							</div>
+						</div>
+
+						<div class="form-group form-big">
+							<label for="latitude" class="col-lg-3 control-label">Location</label>
+							<div class="col-lg-4">
+								<input type="number" class="form-control" placeholder="Latitude" disabled id="latitude" name="latitude">
+							</div>
+							<div class="col-lg-4">
+								<input type="number" class="form-control" placeholder="Longitude" disabled id="longitude" name="longitude">
+							</div>
+							<div class="col-lg-1">
+								<span class="glyphicon glyphicon-map-marker" id="map-marker"></span>
+							</div>
+						</div>
+
+						<div class="form-group form-big">
+							<label for="pass1" class="col-lg-3 control-label">Radius</label>
+							<div class="col-lg-9">
+								<input type="numer" class="form-control" placeholder="Radius" required id="radius" name="radius">
+							</div>
+						</div>
+
+						<div class="form-group form-big">
+							<label for="inputEmail" class="col-lg-3 control-label"></label>
+							<div class="col-lg-4">
+								<button class="btn btn-primary btn-block" id="btn_submit" type="submit" disabled="disabled">Submit</button>
+							</div>
+						</div>
+						
+					</form>
+
 				</div>
 			</div>
-		</div>
+		</div><!-- /Search Panel -->
 
 		<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
 			<div class="panel panel-default panel-animated-slight">
