@@ -333,10 +333,10 @@ html .panel-default>.panel-header-main {
 	background: rgba(0,0,0,0);
 }
 .form-group .form-control:hover,
-.form-group .form-control:active {
+.form-group .form-control:focus {
 	border-bottom: 1px solid rgba(51, 181, 229, 1);
 }
-.form-group .form-control:active {
+.form-group .form-control:focus {
 	-webkit-animation: inputPulse 1s;
 	-moz-animation: inputPulse 1s;
 	-ms-animation: inputPulse 1s;
