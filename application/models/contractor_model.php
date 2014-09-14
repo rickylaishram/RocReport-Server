@@ -13,7 +13,7 @@ class Contractor_model extends CI_Model {
 		$this->db->where('email', $email);
 		$query = $this->db->get($this->table['contractor']);
 
-		return $query->row_array();
+		return $query->row();
 	}
 
 }

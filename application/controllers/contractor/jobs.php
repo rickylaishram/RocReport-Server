@@ -9,7 +9,13 @@ class Jobs extends RR_Maincontractor {
 		$this->data['page_data']['page_title'] = 'Contractor - Jobs | RocReport';
 		$this->data['page_data']['page_id'] = 8;
 
-		$this->data['data']['jobs'] = $this->job->searchNearbyType()
+		$category = $this->input->get('category', true);
+		$latitude = $this->input->get('latitude', true);
+		$longitude = $this->input->get('longitude', true);
+		$radius = $this->input->get('radius', true);
+
+		if($category && $latitude && $longitude && $radius)
+			$this->data['data']['jobs'] = $this->job->searchNearbyType($category, $latitude, $longitude, $radius);
 
 		$this->load->view('app/header', $this->data);
 		$this->load->view('app/navbar', $this->data);
