@@ -170,7 +170,6 @@ class Auth_model extends CI_Model {
 	 */
 	private function generateTick() {
 		$cnonce = $this->config->item('nonce');
-		var_dump($cnonce);
 		return ceil(time()/($cnonce['life']/2));
 	}
 }

@@ -3,6 +3,7 @@
 	if (isset($data['jobs'])) {
 		var_dump($data['jobs']);
 	}
+	var_dump($nonce);
 	?>
 </div> <!-- /container -->
 
