@@ -22,12 +22,13 @@ class Auth_model extends CI_Model {
 		return md5(time().mt_rand());
 	}
 
-	/*
-	* Generates token for user and client
-	* And saves the it
-	* @params string, string email, clientid
-	* @return string the token
-	*/
+	/**
+	 * Generates token for user and client
+	 * And saves the it
+	 * @param $email The user email
+	 * @param $client The client id
+	 * @return string the token
+	 */
 	function generateToken($email, $client) {
 		$token = md5(time().mt_rand().$email);
 
@@ -55,11 +56,28 @@ class Auth_model extends CI_Model {
 		}
 	}
 
-	/*
-	* ---------------------------------------------
-	* Internal functions (Not to be used with APIs)
-	* ---------------------------------------------
-	*/
+	function generateNonce($email) {
+		$tick = $this->generateTick();
+
+		return md5($email.$tick.$this->config['nonce']['salt']);
+	}
+
+	function checkNonce($nonce, $email) {
+		$tick = $this->generateTick();
+
+		if( (md5($email.$tick.$this->config['nonce']['salt']) === $nonce) 
+			|| (md5($email.($tick-1).$this->config['nonce']['salt']) === $nonce)) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * ---------------------------------------------
+	 * Internal functions (Not to be used with APIs)
+	 * ---------------------------------------------
+	 */
 
 	/* 
 	* Checks is user logged in
@@ -137,5 +155,18 @@ class Auth_model extends CI_Model {
 		$count = $this->db->count_all_results($this->table['contractor']);
 
 		return ($count == 1) ? true : false;
+	}
+
+	/**
+	 * ---------------------------------------------
+	 * Helper Functions
+	 * ---------------------------------------------
+	 */
+
+	/**
+	 * Generate a tick based on time and lifespan
+	 */
+	private function generateTick() {
+		return ceil(time()/($this->config['nonce']['life']*2));
 	}
 }

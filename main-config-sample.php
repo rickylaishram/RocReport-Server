@@ -52,3 +52,9 @@
 	* Google Analytics tracking code
 	*/
 	define('RR_GA_CODE', '');
+
+	/**
+	 * Nonce config
+	 */
+	define('RR_NONCE_LIFE', 3600);
+	define('RR_NONCE_SALT', 'gsdfhTfyevc82630Kdsfyew4262bdubedeg');

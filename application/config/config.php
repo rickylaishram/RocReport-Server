@@ -435,6 +435,9 @@ $config['analytics'] = RR_GA_CODE;
 $config['email'][0] = RR_EMAIL_0;
 $config['email'][1] = RR_EMAIL_1;
 
+$config['nonce']['life'] = RR_NONCE_LIFE;
+$config['nonce']['salt'] = RR_NONCE_SALT;
+
 /*
 | -------------------------------------------------------------------------
 | Native spl_autoload_register() - by Kenneth Vogt
