@@ -163,7 +163,7 @@
 
 		}
 	};
-	r['r']['contractor'] = contractor;
+	r['contractor'] = contractor;
 
 
 	window['r'] = r;
