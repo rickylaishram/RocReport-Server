@@ -90,7 +90,7 @@ class Auth extends CI_Controller {
 				}
 			} else {
 				$data['page_data']['page_title'] = 'Login | RocReport';
-				$data['error'] = true;
+				$data['error'] = false;
 
 				$this->load->view('app/header', $data);
 				$this->load->view('auth/login', $data);

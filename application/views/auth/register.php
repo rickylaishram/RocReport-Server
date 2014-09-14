@@ -1,15 +1,59 @@
-<div class="container">
-	<form class="form-signin" role="form" action="" method="post">
-		<h2 class="form-signin-heading">Register</h2>
-		<div id="message">
-			<div class="alert alert-danger"></div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-4 col-md-offset-4">
+			<div class="panel panel-default panel-animated">
+				<div class="panel-heading panel-header-main">Register</div>
+				
+				<div class="panel-body">
+					<div id="input-message">
+						<?php if($error) : ?>
+							<div class="alert alert-danger">Invalid login credentials.</div>
+						<?php endif; ?>
+					</div>
+
+					<form class="form-horizontal" role="form" action="" method="post">
+						
+						<div class="form-group form-big">
+							<label for="name" class="col-lg-3 control-label">Name</label>
+							<div class="col-lg-9">
+								<input type="text" class="form-control" placeholder="Name" autofocus required id="name" name="name">
+							</div>
+						</div>
+
+						<div class="form-group form-big">
+							<label for="email" class="col-lg-3 control-label">Email</label>
+							<div class="col-lg-9">
+								<input type="email" class="form-control" placeholder="Email" required id="email" name="email">
+							</div>
+						</div>
+
+						<div class="form-group form-big">
+							<label for="pass1" class="col-lg-3 control-label">Password</label>
+							<div class="col-lg-9">
+								<input type="password" class="form-control" placeholder="Password" required id="pass1" name="pass">
+							</div>
+						</div>
+
+						<div class="form-group form-big">
+							<label for="pass2" class="col-lg-3 control-label">Confirm Password</label>
+							<div class="col-lg-9">
+								<input type="password" class="form-control" placeholder="Confirm Password" required id="pass2" name="pass">
+							</div>
+						</div>
+
+						<div class="form-group form-big">
+							<label for="inputEmail" class="col-lg-3 control-label"></label>
+							<div class="col-lg-4">
+								<button class="btn btn-primary btn-block" id="btn_submit" type="submit" disabled="disabled">Register</button>
+							</div>
+						</div>
+						
+					</form>
+				</div>
+
+			</div>
 		</div>
-		<input type="text" class="form-control" placeholder="Username" required autofocus id="name" name="name">
-		<input type="email" class="form-control" placeholder="Email address" required id="email" name="email">
-		<input type="password" class="form-control" placeholder="Password" required id="pass1" name="pass">
-		<input type="password" class="form-control" placeholder="Confirm Password" required id="pass2" name="pass2">
-		<button class="btn btn-lg btn-primary btn-block" id="btn_submit" type="submit" disabled="disabled">Register</button>
-	</form>
+	</div>
 </div> <!-- /container -->
 
 <script src="<?=base_url(); ?>static/js/main.js"></script>
