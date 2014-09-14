@@ -36,7 +36,7 @@ class Auth extends CI_Controller {
 					header('Location: '.base_url());
 				}
 			} else {
-				$data['page_title'] = 'Register | RocReport';
+				$data['page_data']['page_title'] = 'Register | RocReport';
 
 				$this->load->view('app/header', $data);
 				$this->load->view('auth/register', $data);
@@ -73,16 +73,16 @@ class Auth extends CI_Controller {
 						$this->session->set_userdata($browser['cookie']['auth'], $token);
 						header('Location: '.base_url());
 					} else {
-						$data['page_title'] = 'Login | RocReport';
-						$data['error'] = true;
+						$data['page_data']['page_title'] = 'Login | RocReport';
+						$data['page_data']['error'] = true;
 
 						$this->load->view('app/header', $data);
 						$this->load->view('auth/login', $data);
 						$this->load->view('app/footer', $data);
 					}
 				} else {
-					$data['page_title'] = 'Login | RocReport';
-					$data['error'] = true;
+					$data['page_data']['page_title'] = 'Login | RocReport';
+					$data['page_data']['error'] = true;
 
 					$this->load->view('app/header', $data);
 					$this->load->view('auth/login', $data);
