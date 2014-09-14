@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-			<div class="panel panel-default panel-animated">
+			<div class="panel panel-default panel-animated-slight">
 				<div class="panel-heading panel-header-main">Search</div>
 				<div class="panel-body">
 					Basic panel example
@@ -10,7 +10,7 @@
 		</div>
 
 		<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-			<div class="panel panel-default panel-animated">
+			<div class="panel panel-default panel-animated-slight">
 				<div class="panel-heading panel-header-main">Bids</div>
 				<div class="panel-body">
 					Basic panel example
@@ -19,7 +19,7 @@
 		</div>
 
 		<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-			<div class="panel panel-default panel-animated">
+			<div class="panel panel-default panel-animated-slight">
 				<div class="panel-heading panel-header-main">Profile</div>
 				<div class="panel-body">
 					Basic panel example
