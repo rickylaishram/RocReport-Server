@@ -14,7 +14,7 @@ class RR_Papilogin extends RR_Apilogin {
 		$this->load->model('auth_model', 'auth');
 		$nonce = $this->input->get_request_header('Auth-token', true);
 		
-		if(!$nonce && $this->auth->checkNonce($nonce, $this->user_data->email)){
+		if(!$nonce || !$this->auth->checkNonce($nonce, $this->user_data->email)){
 			$this->_response_error(14);
 			var_dump('INVALID');
 		}
