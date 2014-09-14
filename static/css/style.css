@@ -353,27 +353,26 @@ html .panel-default>.panel-header-main {
 	background-color: rgba(51, 181, 229, 1);
 	border-bottom: 1px solid rgba(51, 181, 229, 1);
 }
-
 .form-big {
 	font-size: 16px;
 }
 @-webkit-keyframes inputPulse {
 	0% { background-color: rgba(51, 181, 229, 0); }
-	50% { background-color:rgba(51, 181, 229, 0.5); }
+	50% { background-color:rgba(51, 181, 229, 0.25); }
 	100% { background-color:rgba(251, 181, 229, 0); }
 }
 @-moz-keyframes inputPulse {
 	0% { background-color: rgba(51, 181, 229, 0); }
-	50% { background-color:rgba(51, 181, 229, 0.5); }
+	50% { background-color:rgba(51, 181, 229, 0.25); }
 	100% { background-color:rgba(251, 181, 229, 0); }
 }
 @-ms-keyframes inputPules {
 	0% { background-color: rgba(51, 181, 229, 0); }
-	50% { background-color:rgba(51, 181, 229, 0.5); }
+	50% { background-color:rgba(51, 181, 229, 0.25); }
 	100% { background-color:rgba(251, 181, 229, 0); }
 }
 @keyframes inputPulse {
 	0% { background-color: rgba(51, 181, 229, 0); }
-	50% { background-color:rgba(51, 181, 229, 0.5); }
+	50% { background-color:rgba(51, 181, 229, 0.25); }
 	100% { background-color:rgba(251, 181, 229, 0); }
 }
