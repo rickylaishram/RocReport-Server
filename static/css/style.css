@@ -1,6 +1,7 @@
 body {
 	padding-top: 70px;
 	font-family: 'Roboto Light', sans-serif;
+	background-color: rgba(240,250,240,1);
 }
 
 .navbar-brand, 
@@ -299,13 +300,17 @@ span.loading-dot-6 { -webkit-animation-delay: 0s; -moz-animation-delay: 0s; -ms-
 }
 
 /**
- * --------- Contractor Styling -----------------
+ * --------- Panel Styling -----------------
  */
+.panel-default {
+	background-color: rgba(255,255,255,1);
+	box-shadow: 0px 3px 6px rgba(0,0,0,0.15), 0px 3px 6px rgba(0,0,0,0.2);
+	border-radius: 0px;
+}
 .panel-header-main {
 	font-family: 'Roboto Condensed', sans-serif;
-	font-size: 45px;
+	font-size: 32px;
 	font-weight: 200;
 	text-transform: uppercase;
-
-	border-bottom: 1px solid rgba(50,50,50,0.25);
+	border-radius: 0px;
 }
