@@ -2,7 +2,8 @@
 
 	var $ 	= window.jQuery,
 		d3 	= window.d3,
-		document = window.document;
+		document = window.document,
+		r = [];
 
 	/**
 	 * Register Page
@@ -80,7 +81,7 @@
 			this.el.emailInput.on('keyup', {self: this}, this.handler.keyUpEmail);
 		}
 	};
-	window['r_register'] = register;
+	r['register'] = register;
 
 	/**
 	 * Login page
@@ -132,7 +133,7 @@
 			this.el.emailInput.on('keyup', {self: this}, this.handler.keyUpEmail);
 		}
 	};
-	window['r_login'] = login;
+	r['login'] = login;
 
 	/**
 	 * Contractor page
@@ -162,6 +163,8 @@
 
 		}
 	};
-	window['r']['contractor'] = contractor;
+	r['r']['contractor'] = contractor;
 
+
+	window['r'] = r;
 })(window)
