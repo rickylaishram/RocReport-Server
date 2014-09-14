@@ -323,7 +323,7 @@ html .panel-default>.panel-header-main {
 	animation: panelPopup 500ms ease-in-out;
 }
 @-webkit-keyframes panelPopup {
-	0% { margin-top: 500px; -webkit-transform: perspective(1000px) rotateX(90deg); }
+	0% { margin-top: 2000px; -webkit-transform: perspective(1000px) rotateX(90deg); }
 	100% { margin-top: 0px; -webkit-transform: perspective(1000px) rotateX(0deg); }
 }
 @-moz-keyframes panelPopup {
