@@ -334,7 +334,7 @@ html .panel-default>.panel-header-main {
 }
 .form-group .form-control:hover,
 .form-group .form-control:active {
-	border-bottom: rgba(51, 181, 229, 1);
+	border-bottom: 2px solid rgba(51, 181, 229, 1);
 }
 .form-group .btn {
 	border-radius: 0px;
@@ -345,6 +345,7 @@ html .panel-default>.panel-header-main {
 }
 .form-group .btn-primary {
 	background-color: rgba(51, 181, 229, 1);
+	border-bottom: 1px solid rgba(51, 181, 229, 1);
 }
 
 .form-big {
