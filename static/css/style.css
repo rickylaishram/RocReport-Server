@@ -334,11 +334,10 @@ html .panel-default>.panel-header-main {
 }
 .form-group .form-control:hover,
 .form-group .form-control:active {
-	border-bottom: 2px solid rgba(51, 181, 229, 1);
+	border-bottom: 1px solid rgba(51, 181, 229, 1);
 }
 .form-group .form-control:active {
-	animation-name: inputPulse;
-	animation-duration: 1s;
+	animation: inputPulse 1s;
 }
 .form-group .btn {
 	border-radius: 0px;
@@ -355,18 +354,8 @@ html .panel-default>.panel-header-main {
 .form-big {
 	font-size: 16px;
 }
-
-/**
- * ------- CSS Animations ---------
- */
 @keyframes inputPulse {
-	0% {
-		background-color: rgba(51, 181, 229, 0);
-	}
-	50% {
-		background-color:rgba(51, 181, 229, 0.5);
-	}
-	100% {
-		background-color:rgba(251, 181, 229, 0);
-	}
+	0% { background-color: rgba(51, 181, 229, 0); }
+	50% { background-color:rgba(51, 181, 229, 0.5); }
+	100% { background-color:rgba(251, 181, 229, 0); }
 }
