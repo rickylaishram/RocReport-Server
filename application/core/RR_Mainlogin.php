@@ -31,7 +31,6 @@ class RR_Mainlogin extends CI_Controller {
 
 		$this->load->model('user_model', 'user');
 		$this->data['user_data'] = $this->user->get($email);
-		$this->data['nonce'] = $this->auth->generateNonce($email);
 
 		$this->data['is_logged_in'] = true;
 		$this->data['is_admin'] = false; // Always false for now
