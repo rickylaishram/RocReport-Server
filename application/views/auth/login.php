@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-4 col-md-offset-4">
-			<div class="panel panel-default">
+			<div class="panel panel-default panel-animated">
 				<div class="panel-heading panel-header-main">Login</div>
 				
 				<div class="panel-body">

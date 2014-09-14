@@ -316,7 +316,29 @@ html .panel-default>.panel-header-main {
 	border-radius: 0px;
 	background-color: rgba(255,255,255,1);
 }
-
+.panel-animated {
+	-webkit-animation: panelPopup 1s ease-in;
+	-moz-animation: panelPopup 1s ease-in-out;
+	-ms-animation: panelPopup 1s ease-in-out;
+	animation: panelPopup 1s ease-in-out;
+}
+@-webkit-keyframes panelPopup {
+	0% { margin-top: 500px; -webkit-transform: perspective(1000px) rotateX(45deg); }
+	100% { margin-top: 0px; -webkit-transform: perspective(1000px) rotateX(0deg); }
+}
+@-moz-keyframes panelPopup {
+	0% { margin-top: 500px; -moz-transform: perspective(1000px) rotateX(45deg); }
+	100% { margin-top: 0px; -moz-transform: perspective(1000px) rotateX(0deg); }
+}
+@-ms-keyframes panelPopup {
+	0% { margin-top: 500px; -ms-transform: perspective(1000px) rotateX(45deg); }
+	100% { margin-top: 0px; -ms-transform: perspective(1000px) rotateX(0deg); }
+}
+@keyframes panelPopup {
+	0% { margin-top: 500px; transform: perspective(1000px) rotateX(45deg); }
+	100% { margin-top: 0px; transform: perspective(1000px) rotateX(0deg); }
+}
+}
 /**
  * -------- Form Styling -----------
  */
@@ -337,10 +359,10 @@ html .panel-default>.panel-header-main {
 	border-bottom: 1px solid rgba(51, 181, 229, 1);
 }
 .form-group .form-control:focus {
-	-webkit-animation: inputPulse 1s cubic-bezier(0.030, 0.615, 0.995, 0.415);
-	-moz-animation: inputPulse 1s cubic-bezier(0.030, 0.615, 0.995, 0.415);
-	-ms-animation: inputPulse 1s cubic-bezier(0.030, 0.615, 0.995, 0.415);
-	animation: inputPulse 1s cubic-bezier(0.030, 0.615, 0.995, 0.415);
+	-webkit-animation: inputPulse 1s ease-in;
+	-moz-animation: inputPulse 1s ease-in-out;
+	-ms-animation: inputPulse 1s ease-in-out;
+	animation: inputPulse 1s ease-in-out;
 }
 .form-group .btn {
 	border-radius: 0px;
@@ -355,13 +377,6 @@ html .panel-default>.panel-header-main {
 }
 .form-big {
 	font-size: 16px;
-}
-#input-message {
-	opacity: 0;
-	-webkit-animation: inputMsShow 1s cubic-bezier(0.030, 0.615, 0.995, 0.415);
-	-moz-animation: inputMsShow 1s cubic-bezier(0.030, 0.615, 0.995, 0.415);
-	-ms-animation: inputMsShow 1s cubic-bezier(0.030, 0.615, 0.995, 0.415);
-	animation: inputMsShow 1s cubic-bezier(0.030, 0.615, 0.995, 0.415);
 }
 @-webkit-keyframes inputPulse {
 	0% { background-color: rgba(51, 181, 229, 0); }
