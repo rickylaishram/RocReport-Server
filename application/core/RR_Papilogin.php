@@ -11,12 +11,12 @@ class RR_Papilogin extends RR_Apilogin {
 
 	public function __construct(){
 		parent::__construct();
+		
 		$this->load->model('auth_model', 'auth');
-		$nonce = $this->input->get_request_header('Auth-token', true);
+		$nonce = $this->input->get_request_header('Auth-nonce', true);
 		
 		if(!$nonce || !$this->auth->checkNonce($nonce, $this->user_data->email)){
 			$this->_response_error(14);
-			var_dump('INVALID');
 		}
 
 		var_dump('Nonce!!');
