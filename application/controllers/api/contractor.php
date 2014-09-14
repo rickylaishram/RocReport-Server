@@ -9,7 +9,7 @@ class Contractor extends RR_Apilogin {
 		
 		$this->load->model('auth_model', 'auth');
 
-		if(!$this->auth->isContractor($this->user_data['email'])) {
+		if(!$this->auth->isContractor($this->user_data->email)) {
 			$this->_response_error(13);
 		}
 
