@@ -41,8 +41,7 @@ class RR_Mainlogin extends CI_Controller {
 		$browser = $this->config->item('browser');
 		$this->data['auth']['id'] = $this->session->userdata($browser['cookie']['auth']);
 		$this->data['auth']['token'] = $browser['id'];
-		$this->data['auth']['nonce'] = $this->auth->generateNonce($this->data['user_data']->email)
-
+		$this->data['auth']['nonce'] = $this->auth->generateNonce($this->data['user_data']->email);
 	}
 
 }
