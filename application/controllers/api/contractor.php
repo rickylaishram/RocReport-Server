@@ -44,7 +44,7 @@ class Contractor extends RR_Apicontractor {
 
 		$this->load->model('job_model', 'job');
 		
-		$jobs = $this->job->search_nearby_type($type, $lat, $lng, $dis);
+		$jobs = $this->job->searchNearbyType($type, $lat, $lng, $dis);
 
 		$this->_response_success($jobs);
 	}
@@ -61,7 +61,7 @@ class Contractor extends RR_Apicontractor {
 			$this->_response_error(1);
 
 		$this->load->model('job_model', 'job');
-		$this->job->add_bid($job_id, $amount, $duration, $this->user_data['email']);
+		$this->job->addBid($job_id, $amount, $duration, $this->user_data['email']);
 
 		$this->_response_success(array());
 	}

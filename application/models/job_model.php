@@ -15,7 +15,7 @@ class Job_model extends CI_Model {
 	 * @param $distance Integer The radius
 	 * @return Array The nearby jobs
 	 */
-	function search_nearby_type($type, $latitude, $longitude, $distance) {
+	function searchNearbyType($type, $latitude, $longitude, $distance) {
 		// Convert distance from km to meters
 		$distance = 1000*$distance;
 
@@ -35,7 +35,7 @@ class Job_model extends CI_Model {
 	 * @param $duration Integer The estimated duration to complete job (in days)
 	 * @param $email String The email of the bidding user
 	 */
-	function add_bid($id, $amount, $duration, $email) {
+	function addBid($id, $amount, $duration, $email) {
 		$data = array(
 				'report_id' => $id,
 				'email' => $email,
