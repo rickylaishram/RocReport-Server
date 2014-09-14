@@ -12,21 +12,21 @@
 					</div>
 
 					<form class="form-horizontal" role="form" action="" method="post">
-						<div class="form-group">
+						<div class="form-group form-big">
 							<label for="email" class="col-lg-3 control-label">Email</label>
 							<div class="col-lg-9">
 								<input type="email" class="form-control" placeholder="Email address" required id="email" name="email">
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label for="pass" class="col-lg-3 control-label">Email</label>
+						<div class="form-group form-big">
+							<label for="pass" class="col-lg-3 control-label">Password</label>
 							<div class="col-lg-9">
 								<input type="password" class="form-control" placeholder="Password" required id="pass" name="pass">
 							</div>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group form-big">
 							<label for="inputEmail" class="col-lg-3 control-label"></label>
 							<div class="col-lg-9">
 								<button class="btn btn-lg btn-primary btn-block" id="btn_submit" type="submit" disabled="disabled">Login</button>
