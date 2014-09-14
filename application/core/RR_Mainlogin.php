@@ -36,6 +36,13 @@ class RR_Mainlogin extends CI_Controller {
 		$this->data['is_logged_in'] = true;
 		$this->data['is_admin'] = false; // Always false for now
 		$this->data['is_super_admin'] = $this->auth->isSuperAdmin($this->data['user_data']->email);
+
+		// Set the tokens, ids etc for JS
+		$browser = $this->config->item('browser');
+		$this->data['auth']['id'] = $this->session->userdata($browser['cookie']['auth']);
+		$this->data['auth']['token'] = $browser['id'];
+		$this->data['auth']['nonce'] = $this->auth->generateNonce($this->data['user_data']->email)
+
 	}
 
 }

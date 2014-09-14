@@ -134,5 +134,34 @@
 	};
 	window['r_login'] = login;
 
+	/**
+	 * Contractor page
+	 */
+	var contractor = {
+		el: {
+
+		},
+		handler: {
+
+		},
+		data: {
+			token: null,
+			id: null,
+			nonce: null,
+		},
+		show: {
+
+		},
+		connect: {
+
+		},
+		misc: {
+
+		},
+		init: {
+
+		}
+	};
+	window['r']['contractor'] = contractor;
 
 })(window)

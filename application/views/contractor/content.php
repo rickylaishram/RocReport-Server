@@ -10,34 +10,41 @@
 					<div class="form-horizontal" role="form">
 						
 						<div class="form-group form-big">
-							<label for="category" class="col-lg-3 control-label">Category</label>
-							<div class="col-lg-9">
+							<label for="category" class="col-md-2 control-label">Category</label>
+							<div class="col-lg-10">
 								<select class="form-control" id="category"></select>
 							</div>
 						</div>
 
 						<div class="form-group form-big">
-							<label for="latitude" class="col-lg-3 control-label">Location</label>
+							<label for="latitude" class="col-lg-2 control-label">Address</label>
+							<div class="col-lg-8">
+								<input type="text" class="form-control" placeholder="Address" d="address" name="address">
+							</div>
+							<div class="col-lg-2">
+								<span class="glyphicon glyphicon-map-marker" id="map-marker"></span>
+							</div>
+						</div>
+
+						<div class="form-group form-big">
+							<label for="latitude" class="col-lg-2 control-label"></label>
 							<div class="col-lg-4">
 								<input type="number" class="form-control" placeholder="Latitude" disabled id="latitude" name="latitude">
 							</div>
 							<div class="col-lg-4">
 								<input type="number" class="form-control" placeholder="Longitude" disabled id="longitude" name="longitude">
 							</div>
-							<div class="col-lg-1">
-								<span class="glyphicon glyphicon-map-marker" id="map-marker"></span>
+						</div>
+
+						<div class="form-group form-big">
+							<label for="pass1" class="col-lg-2 control-label">Radius</label>
+							<div class="col-lg-10">
+								<input type="number" class="form-control" placeholder="Radius" required id="radius" name="radius">
 							</div>
 						</div>
 
 						<div class="form-group form-big">
-							<label for="pass1" class="col-lg-3 control-label">Radius</label>
-							<div class="col-lg-9">
-								<input type="numer" class="form-control" placeholder="Radius" required id="radius" name="radius">
-							</div>
-						</div>
-
-						<div class="form-group form-big">
-							<label for="inputEmail" class="col-lg-3 control-label"></label>
+							<label for="inputEmail" class="col-lg-2 control-label"></label>
 							<div class="col-lg-4">
 								<button class="btn btn-primary btn-block" id="btn_submit" type="submit" disabled="disabled">Submit</button>
 							</div>

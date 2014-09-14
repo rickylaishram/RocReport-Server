@@ -391,6 +391,10 @@ html .panel-default>.panel-header-main {
 	-ms-animation: inputPulse 1s ease-in-out;
 	animation: inputPulse 1s ease-in-out;
 }
+.form-group .form-error {
+	border-bottom: 1px solid rgba(255, 68, 68, 1);
+	background-color: rgba(255, 68, 68, 1);
+}
 .form-group .btn {
 	border-radius: 0px;
 	font-family: 'Roboto Condensed', sans-serif;
