@@ -78,9 +78,9 @@
 
 <script src="<?=base_url(); ?>static/js/main.js"></script>
 <script type="text/javascript">
-	r.data.token = <?=json_encode($auth['token']); ?>;
-	r.data.id = <?=json_encode($auth['id']); ?>;
-	r.data.nonce = <?=json_encode($auth['nonce']); ?>;
+	r.contractor.data.token = <?=json_encode($auth['token']); ?>;
+	r.contractor.data.id = <?=json_encode($auth['id']); ?>;
+	r.contractor.data.nonce = <?=json_encode($auth['nonce']); ?>;
 
 	r.init();
 </script>

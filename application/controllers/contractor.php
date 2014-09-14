@@ -8,8 +8,6 @@ class Contractor extends RR_Maincontractor {
 		$this->data['page_data']['page_title'] = 'Contractor | RocReport';
 		$this->data['page_data']['page_id'] = 8;
 
-		var_dump($this->data);
-
 		$this->load->view('app/header', $this->data);
 		$this->load->view('app/navbar', $this->data);
 		$this->load->view('contractor/content.php', $this->data);
