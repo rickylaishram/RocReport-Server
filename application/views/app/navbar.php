@@ -46,7 +46,7 @@
 			</div>
 		</div>
 
-		<!--<div class="loading-container">
+		<div class="loading-container">
 			<span>Loading</span>
 			<span class="loading-dot-1"></span>
 			<span class="loading-dot-2"></span>
@@ -54,4 +54,4 @@
 			<span class="loading-dot-4"></span>
 			<span class="loading-dot-5"></span>
 			<span class="loading-dot-6"></span>
-		</div>-->
+		</div>
