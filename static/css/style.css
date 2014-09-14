@@ -1,11 +1,6 @@
-@font-face {
-	font-family: 'Roboto Light';
-	src: url('../fonts/Roboto-Light.ttf');
-}
-
 body {
 	padding-top: 70px;
-	font-family: 'Roboto Light', 'Ubuntu', sans-serif;
+	font-family: 'Roboto Light', sans-serif;
 }
 
 .navbar-brand, 
@@ -301,4 +296,19 @@ span.loading-dot-6 { -webkit-animation-delay: 0s; -moz-animation-delay: 0s; -ms-
 	font-size: 16px;
 	color: #555;
 	padding: 4px 0;
+}
+
+/**
+ * --------- Contractor Styling -----------------
+ */
+.con-main {
+	box-shadow: 0px 0px 2px rgba(50,50,50,0.5);
+}
+
+.col-header {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 45px;
+	font-weight: 400;
+
+	border-bottom: 1px solid rgba(50,50,50,0.25);
 }

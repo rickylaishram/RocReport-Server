@@ -15,13 +15,15 @@
 		<link rel="stylesheet" type="text/css" href="<?=base_url(); ?>static/css/bootstrap-select.min.css">
 		<link href="<?=base_url(); ?>static/css/bootflat.min.css" rel="stylesheet">
 
-		<link href='//fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
+		
 		<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
 		
 		<!-- Custom styles for this template -->
 		<link href="<?=base_url(); ?>static/css/style.css" rel="stylesheet">
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 		<script src="<?=base_url(); ?>static/js/d3.min.js"></script>
 		<script src="<?=base_url(); ?>static/js/bootstrap.min.js"></script>
