@@ -14,8 +14,10 @@ class Jobs extends RR_Maincontractor {
 		$longitude = $this->input->get('longitude', true);
 		$radius = $this->input->get('radius', true);
 
-		if($category && $latitude && $longitude && $radius)
+		//if($category && $latitude && $longitude && $radius)
 			$this->data['data']['jobs'] = $this->job->searchNearbyType($category, $latitude, $longitude, $radius);
+
+
 
 		$this->load->view('app/header', $this->data);
 		$this->load->view('app/navbar', $this->data);
