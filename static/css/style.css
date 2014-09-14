@@ -332,11 +332,19 @@ html .panel-default>.panel-header-main {
 	border-bottom: 1px solid rgba(50,50,50,0.5);
 	background: rgba(0,0,0,0);
 }
+.form-group .form-control:hover,
+.form-group .form-control:active {
+	border-bottom: rgba(51, 181, 229, 1);
+}
 .form-group .btn {
 	border-radius: 0px;
 	font-family: 'Roboto Condensed', sans-serif;
 	font-weight: 500;
 	padding: 10px 15px;
+	color: rgba(255,255,255,1);
+}
+.form-group .btn-primary {
+	background-color: rgba(51, 181, 229, 1);
 }
 
 .form-big {

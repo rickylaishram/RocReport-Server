@@ -28,8 +28,8 @@
 
 						<div class="form-group form-big">
 							<label for="inputEmail" class="col-lg-3 control-label"></label>
-							<div class="col-lg-9">
-								<button class="btn btn-lg btn-primary btn-block" id="btn_submit" type="submit" disabled="disabled">Login</button>
+							<div class="col-lg-4">
+								<button class="btn btn-primary btn-block" id="btn_submit" type="submit" disabled="disabled">Login</button>
 							</div>
 						</div>
 						
