@@ -356,6 +356,14 @@ html .panel-default>.panel-header-main {
 .form-big {
 	font-size: 16px;
 }
+#input-message {
+	height: 0px;
+	overflow: hidden;
+	-webkit-animation: inputMsgrow 1s;
+	-moz-animation: inputMsgrow 1s;
+	-ms-animation: inputMsgrow 1s;
+	animation: inputMsgrow 1s;
+}
 @-webkit-keyframes inputPulse {
 	0% { background-color: rgba(51, 181, 229, 0); }
 	50% { background-color:rgba(51, 181, 229, 0.25); }
@@ -377,6 +385,23 @@ html .panel-default>.panel-header-main {
 	100% { background-color:rgba(251, 181, 229, 0); }
 }
 
+@-webkit-keyframes inputMsgrow {
+	0% { height: 0px; }
+	100% { height: 100%; }
+}
+@-moz-keyframes inputMsgrow {
+	0% { height: 0px; }
+	100% { height: 100%; }
+}
+@-ms-keyframes inputMsgrow {
+	0% { height: 0px; }
+	100% { height: 100%; }
+}
+@keyframes inputMsgrow {
+	0% { height: 0px; }
+	100% { height: 100%; }
+}
+
 /**
  * ------ Alert Styling ---------
  */
@@ -388,3 +413,4 @@ html .panel-default>.panel-header-main {
 	border-color: rgba(255, 68, 68, 1);
 	color: rgba(255,255,255,1);
 }
+
