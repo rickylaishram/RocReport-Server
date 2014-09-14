@@ -76,7 +76,7 @@ class Contractor extends RR_Apilogin {
 			$this->_response_error(1);
 
 		$this->load->model('job_model', 'job');
-		$this->job->addBid($job_id, $amount, $duration, $this->user_data['email']);
+		$this->job->addBid($job_id, $amount, $duration, $this->user_data->email);
 
 		$this->_response_success(array());
 	}
