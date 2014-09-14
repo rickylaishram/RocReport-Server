@@ -35,7 +35,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<?php if($is_logged_in): ?>
-							<li><a><?=$user_data['name']; ?></a></li>
+							<li><a><?=$user_data->name; ?></a></li>
 						<?php endif; ?>
 						<?php if(!$is_logged_in): ?>
 							<li><a href="<?=base_url(); ?>auth/login/">Login</a></li>
