@@ -169,7 +169,7 @@ class Auth_model extends CI_Model {
 	 * Generate a tick based on time and lifespan
 	 */
 	private function generateTick() {
-		$cnonce = $this->config->item('cnonce');
+		$cnonce = $this->config->item('nonce');
 		var_dump($cnonce);
 		return ceil(time()/($cnonce['life']/2));
 	}
