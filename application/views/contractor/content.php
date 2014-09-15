@@ -63,7 +63,7 @@
 			<div class="panel panel-default panel-animated-slight">
 				<div class="panel-heading panel-header-main">Bids</div>
 				<div class="panel-body">
-					Basic panel example
+					<div class="contractor-bid-results"></div>
 				</div>
 			</div>
 		</div>
@@ -72,7 +72,7 @@
 			<div class="panel panel-default panel-animated-slight">
 				<div class="panel-heading panel-header-main">Profile</div>
 				<div class="panel-body">
-					Basic panel example
+					
 				</div>
 			</div>
 		</div>

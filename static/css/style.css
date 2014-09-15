@@ -471,15 +471,18 @@ html .panel-default>.panel-header-main {
 /**
  * ----- Contractor Page Styling ----- 
  */
+.bid-item,
 .search-item {
 	-webkit-animation: itemUp 250ms ease-in;
 	-moz-animation: itemUp 250ms ease-in-out;
 	-ms-animation: itemUp 250ms ease-in-out;
 	animation: itemUp 250ms ease-in-out;
 }
+.bid-item img,
 .search-item img {
 	width: 100%;
 }
+.bid-item .description
 .search-item .description {
 	margin-bottom: 15px;
 	font-family: 'Roboto Light', sans-serif;
@@ -487,12 +490,21 @@ html .panel-default>.panel-header-main {
 	font-size: 16px;
 	color: rgba(50,50,50,1);
 }
+.bid-item .address
 .search-item .address {
 	margin-bottom: 15px;
 	font-family: 'Roboto Light', sans-serif;
 	font-weight: 300;
 	font-size: 16px;
 	color: rgba(50,50,50,0.75);
+}
+.bid-item .bid-amount,
+.bit-item .bid-duration {
+	margin-bottom: 15px;
+	font-family: 'Roboto Light', sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	color: rgba(50,50,50,1);
 }
 
 .divider-horizontal {
