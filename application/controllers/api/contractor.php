@@ -51,11 +51,11 @@ class Contractor extends RR_Apilogin {
 
 		// If any other parameter is not supplied, use default
 		if(!$lat)
-			$lat = $this->contractor_data['latitude'];
+			$lat = $this->contractor_data->latitude;
 		if(!$lng)
-			$lng = $this->contractor_data['longitude'];
+			$lng = $this->contractor_data->longitude;
 		if(!$dis)
-			$dis = $this->contractor_data['radius'];
+			$dis = $this->contractor_data->radius;
 
 		$this->load->model('job_model', 'job');
 		
