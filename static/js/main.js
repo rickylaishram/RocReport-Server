@@ -288,7 +288,7 @@
 					amount = $('.bid-amount[report_id="'+report_id+'"]').val(),
 					duration = $('.bid-duration[report_id="'+report_id+'"]').val();
 
-				self.connect.addBid(self, id, amount, duration);
+				self.connect.addBid(self, report_id, amount, duration);
 			}
 		},
 		connect: {
