@@ -190,12 +190,31 @@
 							$('<div></div>').addClass('address').text(address),
 							$('<div></div>').addClass('row form-group').append([
 								$('<div></div>').addClass('col-lg-3').append(
-									$('<button></button>').addClass('btn btn-primary btn-map btn-block').attr('type', 'submit').append(
+									$('<button></button>').addClass('btn btn-primary btn-map btn-block')
+									.attr('type', 'submit')
+									.append(
 										$('<span></span>').addClass('glyphicon glyphicon-map-marker')
 									)
 								),
 								$('<div></div>').addClass('col-lg-3').append(
-									$('<button></button>').addClass('btn btn-primary btn-bid btn-block').attr('type', 'submit').text('Bid')
+									$('<input></input>').addClass('form-control bid-amount')
+									.attr({
+										'type': 'number',
+										'placeholder': 'Amount',
+									})
+								),
+								$('<div></div>').addClass('col-lg-3').append(
+									$('<input></input>').addClass('form-control bid-duration')
+									.attr({
+										'type': 'number',
+										'placeholder': 'Duration',
+									})
+								),
+								$('<div></div>').addClass('col-lg-3').append(
+									$('<button></button>').addClass('btn btn-primary btn-bid btn-block')
+										.attr('type', 'submit')
+										.data('report_id', reportid)
+										.text('Bid')
 								)
 							]),
 						]),
