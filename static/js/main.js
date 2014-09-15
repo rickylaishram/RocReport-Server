@@ -164,6 +164,7 @@
 			inputRadius: $('#radius'),
 			listJobs: $('.contractor-search-results'),
 			listBids: $('.contractor-bid-results'),
+			btnBid: $('.btn-bid'),
 		},
 		data: {
 			token: null,
@@ -198,6 +199,7 @@
 								),
 								$('<div></div>').addClass('col-lg-3').append(
 									$('<input></input>').addClass('form-control bid-amount')
+									.data('report_id', reportid)
 									.attr({
 										'type': 'number',
 										'placeholder': 'Amount',
@@ -205,6 +207,7 @@
 								),
 								$('<div></div>').addClass('col-lg-3').append(
 									$('<input></input>').addClass('form-control bid-duration')
+									.data('report_id', reportid)
 									.attr({
 										'type': 'number',
 										'placeholder': 'Duration',
@@ -279,6 +282,15 @@
 
 				self.connect.fetchJobs(self);
 			},
+			bidClick: function(e) {
+				var self = e.data.self,
+					report_id = $(this).data('report_id'),
+					amount = $('.bid-amount:data(report_id=='+report_id+')').val(),
+					duration = $('.bid-duration:data(report_id=='+report_id+')').val();
+
+				console.log(amount);
+				console.log(duration);
+			}
 		},
 		connect: {
 			fetchCategories: function(self) {
@@ -368,6 +380,7 @@
 			this.connect.fetchBids(this);
 
 			this.el.btnSearchjobs.on('click', {self: this}, this.handler.searchJobs);
+			this.el.btnBid.on('click', {self: this}, this.handler.bidClick);
 		}
 	};
 
