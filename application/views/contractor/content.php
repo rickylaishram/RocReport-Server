@@ -7,6 +7,7 @@
 				<div class="panel-heading panel-header-main">Search</div>
 				<div class="panel-body">
 					
+					<!-- Forn Starts -->
 					<div class="form-horizontal" role="form">
 						
 						<div class="form-group form-big">
@@ -50,7 +51,9 @@
 							</div>
 						</div>
 						
-					</div>
+					</div><!-- /Form Starts -->
+
+					<div class="contractor-search-results"></div>
 
 				</div>
 			</div>

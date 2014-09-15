@@ -162,6 +162,7 @@
 			inputLongitude: $('#longitude'),
 			inputLatitide: $('#latitude'),
 			inputRadius: $('#radius'),
+			listJobs: $('.contractor-search-results'),
 		},
 		data: {
 			token: null,
@@ -176,6 +177,21 @@
 			selectorOption: function(val, name) {
 				return $('<option></option>').attr('value', val).text(name);
 			},
+			searchItem: function(description, image, time, latitude, longitude, address, reportid, distance) {
+				return $('<div></div>').addClass('search-item row').append([
+						$('<div></div>').addClass('col-lg-4').append(
+							$('<img></img>').attr('src', image)
+						),
+						$('<div></div>').addClass('col-lg-8').append([
+							$('<div></div>').addClass('description').text(description),
+							$('<div></div>').addClass('address').text(addClass),
+							$('<div></div>').addClass('bottom').append([
+								$('<span></span>').addClass('glyphicon glyphicon-map-marker'),
+								$('<button></button>').addClass('btn btn-primary btn-bid').attr('type', 'submit').text('Bid'),
+							]),
+						]),
+					]);
+			},
 		},
 		show: {
 			categories: function(self, data) {
@@ -183,6 +199,11 @@
 					self.el.categorySelector.append(self.tmpl.selectorOption(data[i].id, data[i].name));
 				};
 			},
+			searchResults: function(self, data) {
+				for (var i = data.length - 1; i >= 0; i--) {
+					self.el.listJobs.append(self.tmpl.searchItem(data[i].description, data[i].picture, data[i].latitude, data[i].longitude, data[i].formatted_address, data[i].report_id, data[i].distance));
+				};
+			}
 		},
 
 		handler: {
@@ -241,6 +262,7 @@
 
 						if(data.status) {
 							console.log(data);
+							self.show.searchResults(data.data);
 						} else {
 							// Error
 						}
