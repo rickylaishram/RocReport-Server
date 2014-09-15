@@ -16,7 +16,7 @@
 			$('#loading-container').hide();
 		},
 		init: function() {
-			$.ajaxError(function(data) {
+			$(document).ajaxError(function(data) {
 				try {
 					consolee.log(data);
 				} catch (e) {}
