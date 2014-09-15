@@ -200,7 +200,7 @@
 						data = JSON.parse(data);
 
 						if(data.status) {
-							self.show.categories(data.data);
+							self.show.categories(self, data.data);
 						} else {
 							// Error
 						}
