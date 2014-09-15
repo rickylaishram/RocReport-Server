@@ -181,7 +181,7 @@
 				return $('<div></div>').addClass('search-item row').append([
 						$('<div></div>').addClass('col-lg-4').append(
 							//$('<img></img>').attr('src', image)
-							$('<img.</img>').attr('src', 'http://i.imgur.com/lLCho4e.jpg')
+							$('<img></img>').attr('src', 'http://i.imgur.com/lLCho4e.jpg')
 						),
 						$('<div></div>').addClass('col-lg-8').append([
 							$('<div></div>').addClass('description').text(description),
