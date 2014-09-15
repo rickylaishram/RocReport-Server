@@ -38,8 +38,8 @@ class RR_Mainlogin extends CI_Controller {
 
 		// Set the tokens, ids etc for JS
 		$browser = $this->config->item('browser');
-		$this->data['auth']['id'] = $this->session->userdata($browser['cookie']['auth']);
-		$this->data['auth']['token'] = $browser['id'];
+		$this->data['auth']['token'] = $this->session->userdata($browser['cookie']['auth']);
+		$this->data['auth']['id'] = $browser['id'];
 		$this->data['auth']['nonce'] = $this->auth->generateNonce($this->data['user_data']->email);
 	}
 
