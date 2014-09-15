@@ -303,7 +303,7 @@
 						'Auth-nonce': self.data.nonce,
 					},
 					cache: false,
-					type: 'GET',
+					type: 'POST',
 					data: {
 						'id': id,
 						'amount': amount,
