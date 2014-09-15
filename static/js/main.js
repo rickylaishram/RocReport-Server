@@ -170,6 +170,7 @@
 		},
 		url: {
 			fetchCategories: null,
+			fetchJobs: null,
 		},
 		tmpl: {
 			selectorOption: function(val, name) {

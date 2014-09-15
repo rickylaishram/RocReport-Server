@@ -46,7 +46,7 @@
 						<div class="form-group form-big">
 							<label for="" class="col-lg-2 control-label"></label>
 							<div class="col-lg-4">
-								<button class="btn btn-primary btn-block" id="btn_search_job" type="submit" disabled="disabled">Search</button>
+								<button class="btn btn-primary btn-block" id="btn_search_job" type="submit" >Search</button>
 							</div>
 						</div>
 						
@@ -83,6 +83,7 @@
 	r.contractor.data.nonce = <?=json_encode($auth['nonce']); ?>;
 
 	r.contractor.url.fetchCategories = <?=json_encode(base_url().'private_api/category/fetch'); ?>;
+	r.contractor.url.fetchJobs = <?=json_encode(base_url().'private_api/contractor/job/fetch'); ?>;
 
 	r.contractor.init();
 </script>
