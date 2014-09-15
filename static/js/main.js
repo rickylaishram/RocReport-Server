@@ -304,7 +304,7 @@
 					},
 					cache: false,
 					type: 'GET',
-					data {
+					data: {
 						'id': id,
 						'amount': amount,
 						'duration': duration,
