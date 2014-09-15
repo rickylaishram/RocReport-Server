@@ -49,7 +49,7 @@ class Job_model extends CI_Model {
 		$this->db->select('*');
 		$this->db->from($this->table['bid']);
 		$this->db->where($this->table['bid'].'.email', $email);
-		$this->db->join($this->table['report'], $this->table['report'].'.report_id = '.$this->table['bid'].'.report_id');
+		$this->db->join($this->table['report'], $this->table['bid'].'.report_id = '.$this->table['report'].'.report_id');
 		$query = $this->db->get();
 
 		return $query->row();
