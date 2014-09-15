@@ -174,6 +174,7 @@
 			fetchCategories: null,
 			fetchJobs: null,
 			fetchBids: null,
+			addBid: null,
 		},
 		tmpl: {
 			selectorOption: function(val, name) {
@@ -282,18 +283,44 @@
 				self.connect.fetchJobs(self);
 			},
 			bidClick: function(e) {
-				console.log('bidclick');
-
 				var self = e.data.self,
 					report_id = $(this).data('report_id'),
 					amount = $('.bid-amount[report_id="'+report_id+'"]').val(),
 					duration = $('.bid-duration[report_id="'+report_id+'"]').val();
 
-				console.log(amount);
-				console.log(duration);
+				self.connect.addBid(self, id, amount, duration);
 			}
 		},
 		connect: {
+			addBid: function(self, id, amount, duration) {
+				al.showLoading();
+
+				$.ajax({
+					url: self.url.addBid,
+					headers: {
+						'Auth-id': self.data.id,
+						'Auth-token': self.data.token,
+						'Auth-nonce': self.data.nonce,
+					},
+					cache: false,
+					type: 'GET',
+					data {
+						'id': id,
+						'amount': amount,
+						'duration': duration,
+					},
+					success: function(data) {
+						gl.hideLoading();
+						data = JSON.parse(data);
+
+						if(data.status) {
+							self.fetchBids(self);
+						} else {
+							// Error
+						}
+					}
+				});
+			},
 			fetchCategories: function(self) {
 				gl.showLoading();
 
