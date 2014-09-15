@@ -157,7 +157,7 @@
 	 */
 	contractor = {
 		el: {
-
+			categorySelector: $('#category'),
 		},
 		handler: {
 
@@ -170,8 +170,17 @@
 		url: {
 			fetchCategories: null,
 		},
+		tmpl: {
+			selectorOption: function(val, name) {
+				return $('option').attr('val', val).text(name);
+			},
+		},
 		show: {
-
+			categories: function(self, data) {
+				for (var i = data.length - 1; i >= 0; i--) {
+					self.el.categorySelector.append(self.tmpl.selectorOption(data[i].id, data[id].name));
+				};
+			},
 		},
 		connect: {
 			fetchCategories: function(self) {
@@ -188,7 +197,13 @@
 					type: 'GET',
 					success: function(data) {
 						gl.hideLoading();
-						console.log(data);
+						data = JSON.encode(data);
+
+						if(data.status) {
+							self.show.categories(data.data);
+						} else {
+							// Error
+						}
 					}
 				});
 			}
