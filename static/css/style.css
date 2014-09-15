@@ -482,7 +482,7 @@ html .panel-default>.panel-header-main {
 .search-item img {
 	width: 100%;
 }
-.bid-item .description
+.bid-item .description,
 .search-item .description {
 	margin-bottom: 15px;
 	font-family: 'Roboto Light', sans-serif;
@@ -490,7 +490,7 @@ html .panel-default>.panel-header-main {
 	font-size: 16px;
 	color: rgba(50,50,50,1);
 }
-.bid-item .address
+.bid-item .address,
 .search-item .address {
 	margin-bottom: 15px;
 	font-family: 'Roboto Light', sans-serif;
@@ -499,7 +499,7 @@ html .panel-default>.panel-header-main {
 	color: rgba(50,50,50,0.75);
 }
 .bid-item .bid-amount,
-.bit-item .bid-duration {
+.bid-item .bid-duration {
 	margin-bottom: 15px;
 	font-family: 'Roboto Light', sans-serif;
 	font-weight: 300;
