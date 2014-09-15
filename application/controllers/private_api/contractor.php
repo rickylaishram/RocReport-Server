@@ -99,7 +99,7 @@ class Contractor extends RR_Papilogin {
 	private function _big_fetch() {
 		$this->load->model('job_model', 'job');
 		$email = $this->user_data->email;
-		$bids = $this->auth->getBids($email);
+		$bids = $this->job->getBids($email);
 
 		$this->_response_success($bids);
 	}
