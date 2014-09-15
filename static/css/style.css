@@ -472,10 +472,10 @@ html .panel-default>.panel-header-main {
  * ----- Contractor Page Styling ----- 
  */
 .search-item {
-	-webkit-animation: itemUp 1s ease-in;
-	-moz-animation: itemUp 1s ease-in-out;
-	-ms-animation: itemUp 1s ease-in-out;
-	animation: itemUp 1s ease-in-out;
+	-webkit-animation: itemUp 250ms ease-in;
+	-moz-animation: itemUp 250ms ease-in-out;
+	-ms-animation: itemUp 250ms ease-in-out;
+	animation: itemUp 250ms ease-in-out;
 }
 .search-item img {
 	width: 100%;
@@ -485,10 +485,10 @@ html .panel-default>.panel-header-main {
 	border-bottom: 1px solid rgba(221, 221, 221, 1);
 	margin: 10px 0px;
 
-	-webkit-animation: itemUp 1s ease-in;
-	-moz-animation: itemUp 1s ease-in-out;
-	-ms-animation: itemUp 1s ease-in-out;
-	animation: itemUp 1s ease-in-out;
+	-webkit-animation: itemUp 250ms ease-in;
+	-moz-animation: itemUp 250ms ease-in-out;
+	-ms-animation: itemUp 250ms ease-in-out;
+	animation: itemUp 250ms ease-in-out;
 }
 
 @-webkit-keyframes itemUp {
