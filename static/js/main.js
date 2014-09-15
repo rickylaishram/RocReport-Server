@@ -168,7 +168,7 @@
 			nonce: null,
 		},
 		url: {
-			fetchCategories: null;
+			fetchCategories: null,
 		},
 		show: {
 
