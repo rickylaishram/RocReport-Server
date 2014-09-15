@@ -180,7 +180,8 @@
 			searchItem: function(description, image, time, latitude, longitude, address, reportid, distance) {
 				return $('<div></div>').addClass('search-item row').append([
 						$('<div></div>').addClass('col-lg-4').append(
-							$('<img></img>').attr('src', image)
+							//$('<img></img>').attr('src', image)
+							$('<img.</img>').attr('src', 'http://i.imgur.com/lLCho4e.jpg')
 						),
 						$('<div></div>').addClass('col-lg-8').append([
 							$('<div></div>').addClass('description').text(description),
@@ -201,7 +202,7 @@
 			},
 			searchResults: function(self, data) {
 				for (var i = data.length - 1; i >= 0; i--) {
-					self.el.listJobs.append(self.tmpl.searchItem(data[i].description, data[i].picture, data[i].latitude, data[i].longitude, data[i].formatted_address, data[i].report_id, data[i].distance));
+					self.el.listJobs.append(self.tmpl.searchItem(data[i].description, data[i].picture, data[i].added_at, data[i].latitude, data[i].longitude, data[i].formatted_address, data[i].report_id, data[i].distance));
 				};
 			}
 		},
