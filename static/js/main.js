@@ -333,7 +333,7 @@
 						data = JSON.parse(data);
 
 						if(data.status) {
-							self.show.bidItem(self, data.data);
+							self.show.bids(self, data.data);
 						} else {
 							// Error
 						}
