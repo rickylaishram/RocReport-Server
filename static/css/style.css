@@ -472,14 +472,43 @@ html .panel-default>.panel-header-main {
  * ----- Contractor Page Styling ----- 
  */
 .search-item {
-
+	-webkit-animation: itemUp 1s ease-in;
+	-moz-animation: itemUp 1s ease-in-out;
+	-ms-animation: itemUp 1s ease-in-out;
+	animation: itemUp 1s ease-in-out;
 }
 .search-item img {
 	width: 100%;
 }
-.horizontalDivider {
+.divider-horizontal {
 	width: 100%;
-	border-bottom: 1px solid rgba(50,50,50,1);
-	padding: 10px 0px;
+	border-bottom: 1px solid rgba(221, 221, 221, 1);
+	margin: 10px 0px;
+
+	-webkit-animation: itemUp 1s ease-in;
+	-moz-animation: itemUp 1s ease-in-out;
+	-ms-animation: itemUp 1s ease-in-out;
+	animation: itemUp 1s ease-in-out;
+}
+
+@-webkit-keyframes itemUp {
+	0% { margin-top: 50px; opacity: 0;}
+	10% { margin-top: 50px; opacity: 1;}
+	100% { margin-top: 10px; opacity: 1;}
+}
+@-moz-keyframes itemUp {
+	0% { margin-top: 50px; opacity: 0;}
+	10% { margin-top: 50px; opacity: 1;}
+	100% { margin-top: 10px; opacity: 1;}
+}
+@-ms-keyframes itemUp {
+	0% { margin-top: 50px; opacity: 0;}
+	10% { margin-top: 50px; opacity: 1;}
+	100% { margin-top: 10px; opacity: 1;}
+}
+@keyframes itemUp {
+	0% { margin-top: 50px; opacity: 0;}
+	10% { margin-top: 50px; opacity: 1;}
+	100% { margin-top: 10px; opacity: 1;}
 }
 
