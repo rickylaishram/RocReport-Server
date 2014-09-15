@@ -52,7 +52,7 @@ class Job_model extends CI_Model {
 		$this->db->join($this->table['report'], $this->table['bid'].'.report_id = '.$this->table['report'].'.report_id');
 		$query = $this->db->get();
 
-		return $query->row();
+		return $query->result();
 	}
 
 }
