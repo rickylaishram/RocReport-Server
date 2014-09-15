@@ -166,7 +166,7 @@
 		misc: {
 
 		},
-		init: {
+		init: function(){
 			console.log(login);
 		}
 	};
