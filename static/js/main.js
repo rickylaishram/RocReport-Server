@@ -262,7 +262,7 @@
 
 						if(data.status) {
 							console.log(data);
-							self.show.searchResults(data.data);
+							self.show.searchResults(self, data.data);
 						} else {
 							// Error
 						}
