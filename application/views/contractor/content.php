@@ -82,5 +82,7 @@
 	r.contractor.data.id = <?=json_encode($auth['id']); ?>;
 	r.contractor.data.nonce = <?=json_encode($auth['nonce']); ?>;
 
+	r.contractor.url.fetchCategories = <?=base_url(); ?>'/private_api/category/fetch';
+
 	r.contractor.init();
 </script>
