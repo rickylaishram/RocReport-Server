@@ -184,7 +184,7 @@
 						),
 						$('<div></div>').addClass('col-lg-8').append([
 							$('<div></div>').addClass('description').text(description),
-							$('<div></div>').addClass('address').text(addClass),
+							$('<div></div>').addClass('address').text(address),
 							$('<div></div>').addClass('bottom').append([
 								$('<span></span>').addClass('glyphicon glyphicon-map-marker'),
 								$('<button></button>').addClass('btn btn-primary btn-bid').attr('type', 'submit').text('Bid'),
