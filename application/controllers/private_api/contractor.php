@@ -31,6 +31,18 @@ class Contractor extends RR_Papilogin {
 		}
 	}
 
+	public function bid($method = null) {
+		switch ($method) {
+			case 'fetch':
+				$this->_big_fetch();
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+	}
+
 	/*
 	 |--------------------------------------------------------------------------
 	 | Api Methods
@@ -79,5 +91,16 @@ class Contractor extends RR_Papilogin {
 		$this->job->addBid($job_id, $amount, $duration, $this->user_data->email);
 
 		$this->_response_success(array());
+	}
+
+	/**
+	 * Fetch my bids
+	 */
+	private function _big_fetch() {
+		$this->load->model('job_model', 'job');
+		$email = $this->user_data->email;
+		$bids = $this->auth->getBids($email);
+
+		$this->_response_success($bids);
 	}
 }

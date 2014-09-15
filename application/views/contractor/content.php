@@ -87,6 +87,7 @@
 
 	r.contractor.url.fetchCategories = <?=json_encode(base_url().'private_api/category/fetch'); ?>;
 	r.contractor.url.fetchJobs = <?=json_encode(base_url().'private_api/contractor/job/fetch'); ?>;
+	r.contractor.url.fetchBids = <?=json_encode(base_url().'private_api/contractor/bid/fetch'); ?>;
 
 	r.contractor.init();
 </script>

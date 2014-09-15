@@ -172,6 +172,7 @@
 		url: {
 			fetchCategories: null,
 			fetchJobs: null,
+			fetchBids: null,
 		},
 		tmpl: {
 			selectorOption: function(val, name) {
@@ -284,12 +285,37 @@
 					}
 				});
 			},
+			fetchBids: function(self) {
+				gl.showLoading();
+
+				$.ajax({
+					url: self.url.fetchBids,
+					headers: {
+						'Auth-id': self.data.id,
+						'Auth-token': self.data.token,
+						'Auth-nonce': self.data.nonce,
+					},
+					cache: false,
+					type: 'GET',
+					success: function(data) {
+						gl.hideLoading();
+						data = JSON.parse(data);
+
+						if(data.status) {
+							console.log(data);
+						} else {
+							// Error
+						}
+					}
+				});
+			},
 		},
 		misc: {
 
 		},
 		init: function(){
 			this.connect.fetchCategories(this);
+			this.connect.fetchBids(this);
 
 			this.el.btnSearchjobs.on('click', {self: this}, this.handler.searchJobs);
 		}
