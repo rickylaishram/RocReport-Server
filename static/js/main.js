@@ -287,7 +287,7 @@
 				var self = e.data.self,
 					report_id = $(this).data('report_id'),
 					amount = $('.bid-amount[report_id="'+report_id+'"]').val(),
-					duration = $('.bid-duration:[report_id="'+report_id+'"]').val();
+					duration = $('.bid-duration[report_id="'+report_id+'"]').val();
 
 				console.log(amount);
 				console.log(duration);
