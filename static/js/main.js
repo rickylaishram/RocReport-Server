@@ -221,7 +221,7 @@
 				gl.showLoading();
 
 				$.ajax({
-					url: self.url.fetchCategories,
+					url: self.url.fetchJobs,
 					headers: {
 						'Auth-id': self.data.id,
 						'Auth-token': self.data.token,
