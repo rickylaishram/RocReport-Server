@@ -191,7 +191,7 @@
 									$('<span></span>').addClass('glyphicon glyphicon-map-marker')
 								),
 								$('<div></div>').addClass('col-lg-3').append(
-									$('<button></button>').addClass('btn btn-primary btn-bid').attr('type', 'submit').text('Bid'),
+									$('<button></button>').addClass('btn btn-primary btn-bid').attr('type', 'submit').text('Bid')
 								)
 							]),
 						]),
