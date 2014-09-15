@@ -186,9 +186,13 @@
 						$('<div></div>').addClass('col-lg-8').append([
 							$('<div></div>').addClass('description').text(description),
 							$('<div></div>').addClass('address').text(address),
-							$('<div></div>').addClass('bottom').append([
-								$('<span></span>').addClass('glyphicon glyphicon-map-marker'),
-								$('<button></button>').addClass('btn btn-primary btn-bid').attr('type', 'submit').text('Bid'),
+							$('<div></div>').addClass('row form-group').append([
+								$('<div></div>').addClass('col-lg-3').append(
+									$('<span></span>').addClass('glyphicon glyphicon-map-marker')
+								),
+								$('<div></div>').addClass('col-lg-3').append(
+									$('<button></button>').addClass('btn btn-primary btn-bid').attr('type', 'submit').text('Bid'),
+								)
 							]),
 						]),
 					]);
