@@ -189,7 +189,7 @@
 					success: function(data) {
 						gl.hideLoading();
 						console.log(data);
-					}.
+					}
 				});
 			}
 		},
