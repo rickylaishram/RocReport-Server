@@ -293,7 +293,7 @@
 		},
 		connect: {
 			addBid: function(self, id, amount, duration) {
-				al.showLoading();
+				gl.showLoading();
 
 				$.ajax({
 					url: self.url.addBid,
