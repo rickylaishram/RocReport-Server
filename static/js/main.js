@@ -314,7 +314,7 @@
 						data = JSON.parse(data);
 
 						if(data.status) {
-							self.fetchBids(self);
+							self.connect.fetchBids(self);
 						} else {
 							// Error
 						}
