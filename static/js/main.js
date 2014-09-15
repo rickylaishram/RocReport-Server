@@ -178,7 +178,7 @@
 		show: {
 			categories: function(self, data) {
 				for (var i = data.length - 1; i >= 0; i--) {
-					self.el.categorySelector.append(self.tmpl.selectorOption(data[i].id, data[id].name));
+					self.el.categorySelector.append(self.tmpl.selectorOption(data[i].id, data[i].name));
 				};
 			},
 		},
