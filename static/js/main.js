@@ -246,7 +246,7 @@
 				self.el.listBids.empty();
 
 				for (var i = data.length - 1; i >= 0; i--) {
-					self.el.listJobs.append(self.tmpl.bidItem(data[i].description, data[i].picture, data[i].added_at, data[i].latitude, data[i].longitude, data[i].formatted_address, data[i].report_id, data[i].distance, data[i].amount, data[i].duration));
+					self.el.listBids.append(self.tmpl.bidItem(data[i].description, data[i].picture, data[i].added_at, data[i].latitude, data[i].longitude, data[i].formatted_address, data[i].report_id, data[i].distance, data[i].amount, data[i].duration));
 					if(i > 0) {
 						self.el.listBids.append(self.tmpl.horizontalDivider());
 					}
