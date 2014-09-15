@@ -358,19 +358,19 @@ html .panel-default>.panel-header-main {
 	100% { -webkit-transform: perspective(1000px) rotateX(0deg); }
 }
 @-moz-keyframes panelBoble {
-	0% { -webkit-transform: perspective(1000px) rotateX(0deg); }
-	50% { -webkit-transform: perspective(1000px) rotateX(5deg); }
-	100% { -webkit-transform: perspective(1000px) rotateX(0deg); }
+	0% { -moz-transform: perspective(1000px) rotateX(0deg); }
+	50% { -moz-transform: perspective(1000px) rotateX(5deg); }
+	100% { -moz-transform: perspective(1000px) rotateX(0deg); }
 }
 @-ms-keyframes panelBoble {
-	0% { -webkit-transform: perspective(1000px) rotateX(0deg); }
-	50% { -webkit-transform: perspective(1000px) rotateX(5deg); }
-	100% { -webkit-transform: perspective(1000px) rotateX(0deg); }
+	0% { -ms-transform: perspective(1000px) rotateX(0deg); }
+	50% { -ms-transform: perspective(1000px) rotateX(5deg); }
+	100% { -ms-transform: perspective(1000px) rotateX(0deg); }
 }
 @keyframes panelBoble {
-	0% { -webkit-transform: perspective(1000px) rotateX(0deg); }
-	50% { -webkit-transform: perspective(1000px) rotateX(5deg); }
-	100% { -webkit-transform: perspective(1000px) rotateX(0deg); }
+	0% { -transform: perspective(1000px) rotateX(0deg); }
+	50% { -transform: perspective(1000px) rotateX(5deg); }
+	100% { -transform: perspective(1000px) rotateX(0deg); }
 }
 /**
  * -------- Form Styling -----------
@@ -507,23 +507,19 @@ html .panel-default>.panel-header-main {
 }
 
 @-webkit-keyframes itemUp {
-	0% { margin-top: 50px; opacity: 0;}
-	50% { margin-top: 30px; opacity: 1;}
-	100% { margin-top: 10px; opacity: 1;}
+	0% { margin-top: 50px; -webkit-transform: perspective(1000px) rotateX(30deg);}
+	100% { margin-top: 10px; -webkit-transform: perspective(1000px) rotateX(0deg);}
 }
 @-moz-keyframes itemUp {
-	0% { margin-top: 50px; opacity: 0;}
-	50% { margin-top: 30px; opacity: 1;}
-	100% { margin-top: 10px; opacity: 1;}
+	0% { margin-top: 50px; -moz-transform: perspective(1000px) rotateX(30deg);}
+	100% { margin-top: 10px; -moz-transform: perspective(1000px) rotateX(0deg);}
 }
 @-ms-keyframes itemUp {
-	0% { margin-top: 50px; opacity: 0;}
-	50% { margin-top: 30px; opacity: 1;}
-	100% { margin-top: 10px; opacity: 1;}
+	0% { margin-top: 50px; -ms-transform: perspective(1000px) rotateX(30deg);}
+	100% { margin-top: 10px; -ms-transform: perspective(1000px) rotateX(0deg);}
 }
 @keyframes itemUp {
-	0% { margin-top: 50px; opacity: 0;}
-	50% { margin-top: 30px; opacity: 1;}
-	100% { margin-top: 10px; opacity: 1;}
+	0% { margin-top: 50px; -transform: perspective(1000px) rotateX(30deg);}
+	100% { margin-top: 10px; -transform: perspective(1000px) rotateX(0deg);}
 }
 
