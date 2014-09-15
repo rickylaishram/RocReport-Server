@@ -468,3 +468,18 @@ html .panel-default>.panel-header-main {
 	color: rgba(255,255,255,1);
 }
 
+/**
+ * ----- Contractor Page Styling ----- 
+ */
+.search-item {
+
+}
+.search-item img {
+	width: 100%;
+}
+.horizontalDivider {
+	width: 100%;
+	border-bottom: 1px solid rgba(50,50,50,1);
+	padding: 10px 0px;
+}
+
