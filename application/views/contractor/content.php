@@ -29,10 +29,10 @@
 						<div class="form-group form-big">
 							<label for="latitude" class="col-lg-2 control-label"></label>
 							<div class="col-lg-4">
-								<input type="number" class="form-control" placeholder="Latitude" disabled id="latitude" name="latitude">
+								<input type="number" class="form-control" placeholder="Latitude" id="latitude" name="latitude">
 							</div>
 							<div class="col-lg-4">
-								<input type="number" class="form-control" placeholder="Longitude" disabled id="longitude" name="longitude">
+								<input type="number" class="form-control" placeholder="Longitude" id="longitude" name="longitude">
 							</div>
 						</div>
 
@@ -44,9 +44,9 @@
 						</div>
 
 						<div class="form-group form-big">
-							<label for="inputEmail" class="col-lg-2 control-label"></label>
+							<label for="" class="col-lg-2 control-label"></label>
 							<div class="col-lg-4">
-								<button class="btn btn-primary btn-block" id="btn_submit" type="submit" disabled="disabled">Submit</button>
+								<button class="btn btn-primary btn-block" id="btn_search_job" type="submit" disabled="disabled">Search</button>
 							</div>
 						</div>
 						
@@ -82,7 +82,7 @@
 	r.contractor.data.id = <?=json_encode($auth['id']); ?>;
 	r.contractor.data.nonce = <?=json_encode($auth['nonce']); ?>;
 
-	r.contractor.url.fetchCategories = <?=json_encode(base_url().'/private_api/category/fetch'); ?>;
+	r.contractor.url.fetchCategories = <?=json_encode(base_url().'private_api/category/fetch'); ?>;
 
 	r.contractor.init();
 </script>

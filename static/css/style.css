@@ -386,6 +386,9 @@ html .panel-default>.panel-header-main {
 	box-shadow: none;
 	border-bottom: 1px solid rgba(50,50,50,0.5);
 	background: rgba(0,0,0,0);
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
 }
 .form-group .form-control:hover,
 .form-group .form-control:focus {

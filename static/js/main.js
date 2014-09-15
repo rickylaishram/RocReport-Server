@@ -158,9 +158,10 @@
 	contractor = {
 		el: {
 			categorySelector: $('#category'),
-		},
-		handler: {
-
+			btnSearchjobs: $('#btn_search_job'),
+			inputLongitude: $('#longitude'),
+			inputLatitide: $('#latitude'),
+			inputRadius: $('#radius'),
 		},
 		data: {
 			token: null,
@@ -172,7 +173,7 @@
 		},
 		tmpl: {
 			selectorOption: function(val, name) {
-				return $('<option></option>').attr('val', val).text(name);
+				return $('<option></option>').attr('value', val).text(name);
 			},
 		},
 		show: {
@@ -180,6 +181,14 @@
 				for (var i = data.length - 1; i >= 0; i--) {
 					self.el.categorySelector.append(self.tmpl.selectorOption(data[i].id, data[i].name));
 				};
+			},
+		},
+
+		handler: {
+			searchJobs: function(e) {
+				var self = e.data.self;
+
+				self.connect.fetchJobs(self);
 			},
 		},
 		connect: {
@@ -206,13 +215,45 @@
 						}
 					}
 				});
-			}
+			},
+			fetchJobs: function(self) {
+				gl.showLoading();
+
+				$.ajax({
+					url: self.url.fetchCategories,
+					headers: {
+						'Auth-id': self.data.id,
+						'Auth-token': self.data.token,
+						'Auth-nonce': self.data.nonce,
+					},
+					cache: false,
+					type: 'GET',
+					data: {
+						'type': self.el.categorySelector.val(),
+						'lat': self.el.inputLatitide.val(),
+						'lng': self.el.inputLongitude.val(),
+						'dist': self.el.inputRadius.val(),
+					},
+					success: function(data) {
+						gl.hideLoading();
+						data = JSON.parse(data);
+
+						if(data.status) {
+							console.log(data);
+						} else {
+							// Error
+						}
+					}
+				});
+			},
 		},
 		misc: {
 
 		},
 		init: function(){
 			this.connect.fetchCategories(this);
+
+			this.el.btnSearchjobs.on('click', {self: this}, this.handler.searchJobs);
 		}
 	};
 
