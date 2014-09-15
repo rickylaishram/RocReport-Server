@@ -237,6 +237,7 @@ a.list-group-item:hover,
 	padding-top: 200px;
 	color: rgba(255,255,255,1);
 	background-color: rgba(0,0,0,0.75);
+	display: none;
 }
 .loading-container>span {
 	display: block;

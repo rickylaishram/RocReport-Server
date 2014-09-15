@@ -6,6 +6,13 @@
 		r = [];
 
 	/**
+	 * Global functions
+	 */
+	var gl = {
+
+	};
+
+	/**
 	 * Register Page
 	 */
 	var register = {
@@ -160,7 +167,7 @@
 
 		},
 		init: {
-
+			console.log(login);
 		}
 	};
 	r['contractor'] = contractor;
