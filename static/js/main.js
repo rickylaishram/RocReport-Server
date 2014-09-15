@@ -197,7 +197,7 @@
 					type: 'GET',
 					success: function(data) {
 						gl.hideLoading();
-						data = JSON.encode(data);
+						data = JSON.parse(data);
 
 						if(data.status) {
 							self.show.categories(data.data);
