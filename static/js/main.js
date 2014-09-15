@@ -9,13 +9,25 @@
 	 * Global functions
 	 */
 	var gl = {
-
-	};
-
+		showLoading: function() {
+			$('#loading-container').show();
+		},
+		hideLoading: function() {
+			$('#loading-container').hide();
+		},
+		init: function() {
+			$.ajaxError(function(data) {
+				try {
+					consolee.log(data);
+				} catch (e) {}
+			});
+		},
+	},
+	
 	/**
 	 * Register Page
 	 */
-	var register = {
+	register = {
 		el: {
 			pass1Input: 	$('#pass1'),
 			pass2Input: 	$('#pass2'),
@@ -87,13 +99,12 @@
 			this.el.nameInput.on('keyup', {self: this}, this.handler.keyUpName);
 			this.el.emailInput.on('keyup', {self: this}, this.handler.keyUpEmail);
 		}
-	};
-	r['register'] = register;
-
+	},
+	
 	/**
 	 * Login page
 	 */
-	var login = {
+	login = {
 		el: {
 			passInput: 		$('#pass'),
 			emailInput: 	$('#email'),
@@ -139,13 +150,12 @@
 			this.el.passInput.on('keyup', {self: this}, this.handler.keyUpPass);
 			this.el.emailInput.on('keyup', {self: this}, this.handler.keyUpEmail);
 		}
-	};
-	r['login'] = login;
+	},
 
 	/**
 	 * Contractor page
 	 */
-	var contractor = {
+	contractor = {
 		el: {
 
 		},
@@ -157,19 +167,44 @@
 			id: null,
 			nonce: null,
 		},
+		url: {
+			fetchCategories: null;
+		},
 		show: {
 
 		},
 		connect: {
+			fetchCategories: function(self) {
+				gl.showLoading();
 
+				$.ajax({
+					url: self.url.fetchCategories,
+					headers: {
+						'Auth-id': self.data.id,
+						'Auth-token': self.data.token,
+						'Auth-nonce': self.data.nonce,
+					},
+					cache: false,
+					type: 'GET',
+					success: function(data) {
+						gl.hideLoading();
+						console.log(data);
+					}.
+				});
+			}
 		},
 		misc: {
 
 		},
 		init: function(){
-			console.log(login);
+			this.connect.fetchCategories(this);
 		}
 	};
+
+
+	gl.init();
+	r['register'] = register;
+	r['login'] = login;
 	r['contractor'] = contractor;
 
 
