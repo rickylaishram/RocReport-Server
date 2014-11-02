@@ -9,10 +9,10 @@ class Main extends CI_Controller {
 		$data['page_id'] = 0;
 		$data['browser'] = $this->config->item('browser');
 
-		$this->load->view('app/header', $data);
-		$this->load->view('app/navbar', $data);
-		$this->load->view('main/content.php', $data);
-		$this->load->view('app/footer', $data);
+		$this->load->view('front/header', $data);
+		$this->load->view('front/navbar', $data);
+		$this->load->view('front/content.php', $data);
+		$this->load->view('front/footer', $data);
 	}
 
 	function contact() {
