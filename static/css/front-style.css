@@ -1,0 +1,11 @@
+body {
+	background-color: rgba(255,255,255,1);
+}
+
+#front-what-slider {
+	font-size: 48px;
+}
+
+#front-what-slider .glyphicon {
+	font-size: 120px;
+}
