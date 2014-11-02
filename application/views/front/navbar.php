@@ -14,26 +14,12 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li <?php if($page_data['page_id'] == 0) echo 'class="active"'; ?>><a href="<?=base_url(); ?>">Home</a></li>
-
-						<?php if(isset($is_logged_in) && $is_logged_in): ?>
-							<!--<li <?php if($page_data['page_id'] == 1) echo 'class="active"'; ?> ><a href="<?=base_url(); ?>report/add/">Report Issue</a></li>-->
-							<li <?php if($page_data['page_id'] == 2) echo 'class="active"'; ?>> <a href="<?=base_url(); ?>report/">Reports</a></li>
-							<li <?php if($page_data['page_id'] == 6) echo 'class="active"'; ?>> <a href="<?=base_url(); ?>add_report/">Add Report</a></li>
-						<?php endif; ?>
-						<?php if(isset($is_admin) && $is_admin): ?>
-							<li <?php if($page_data['page_id'] == 3) echo 'class="active"'; ?>><a href="<?=base_url(); ?>admin/">Admin</a></li>
-						<?php endif; ?>
-						<?php if(isset($is_super_admin) && $is_super_admin): ?>
-							<li <?php if($page_data['page_id'] == 4) echo 'class="active"'; ?>><a href="<?=base_url(); ?>superadmin/">Super Admin</a></li>
-						<?php endif; ?>
-						<?php if(isset($is_contractor) && $is_contractor): ?>
-							<li <?php if($page_data['page_id'] == 8) echo 'class="active"'; ?>><a href="<?=base_url(); ?>contractor/">Contractor</a></li>
-						<?php endif; ?>
-						<li <?php if($page_data['page_id'] == 5) echo 'class="active"'; ?>><a href="<?=base_url(); ?>about/">About</a></li>
-						<li <?php if($page_data['page_id'] == 7) echo 'class="active"'; ?>><a href="<?=base_url(); ?>main/contact/">Contact Us</a></li>
+						<li class="front-nav" data-content="front-what">What is Rocreport?</li>
+						<li class="front-nav" data-content="front-signup">How do I sign up?</li>
+						<li class="front-nav" data-content="front-app">Mobile App</li>
+						<li class="front-nav" data-content="front-api">API</li>
 					</ul>
-					<ul class="nav navbar-nav navbar-right">
+					<!--<ul class="nav navbar-nav navbar-right">
 						<?php if($is_logged_in): ?>
 							<li><a><?=$user_data->name; ?></a></li>
 						<?php endif; ?>
@@ -41,17 +27,7 @@
 							<li><a href="<?=base_url(); ?>auth/login/">Login</a></li>
 							<li><a href="<?=base_url(); ?>auth/register/">Register</a></li>
 						<?php endif; ?>
-					</ul>
+					</ul>-->
 				</div><!--/.nav-collapse -->
 			</div>
-		</div>
-
-		<div class="loading-container">
-			<span>Loading</span>
-			<span class="loading-dot-1"></span>
-			<span class="loading-dot-2"></span>
-			<span class="loading-dot-3"></span>
-			<span class="loading-dot-4"></span>
-			<span class="loading-dot-5"></span>
-			<span class="loading-dot-6"></span>
 		</div>
